@@ -1,0 +1,8 @@
+@import '/src/app/styles/index.scss';
+
+.Button {
+    @include reset-button;
+    cursor: pointer;
+    color: var(--theme-normal-font-color-inverted);
+}
+

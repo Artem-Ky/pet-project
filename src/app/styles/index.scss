@@ -1,0 +1,9 @@
+
+// общие файлы
+
+@import './variables/normalize', './variables/fonts', './variables/variables', './variables/mixins', './variables/media', './variables/utils', './variables/globals';
+
+//темы приложения
+
+@import './themes/index-theme.scss', './themes/light.scss', './themes/dark.scss';
+

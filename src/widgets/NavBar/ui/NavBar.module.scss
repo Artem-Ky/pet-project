@@ -1,0 +1,17 @@
+
+.NavBar {
+    width: 100%;
+    height: var(--NavBar-height);
+    background-color: var(--theme-bg-color-inverted);
+    color: var(--theme-normal-font-color-inverted);
+    padding-inline: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.linksList {
+    display: flex;
+    column-gap: 20px;
+    list-style: none;
+    margin-left: auto;
+}
