@@ -1,26 +1,27 @@
-import cnBind from "classnames/bind";
 import { AppLink } from "shared/ui/Link";
 import { AppLinkTheme } from "shared/ui/Link/ui/AppLink";
+import { useTranslation } from "react-i18next";
 import cls from "./NavBar.module.scss";
+
 
 interface NavbarProps {
   classNames?: string[];
 }
 
 export const NavBar = ({ classNames }: NavbarProps) => {
-    const cn = cnBind.bind(cls);
+    const { t } = useTranslation();
 
     return (
         <div className={cls.NavBar}>
             <ul className={cls.linksList}>
                 <li>
                     <AppLink theme={AppLinkTheme.SECONDARY} to="/">
-                        main
+                        {t('Главная страница')}
                     </AppLink>
                 </li>
                 <li>
                     <AppLink theme={AppLinkTheme.SECONDARY} to="/about">
-                        about
+                        {t('Страница о нас')}
                     </AppLink>
                 </li>
             </ul>

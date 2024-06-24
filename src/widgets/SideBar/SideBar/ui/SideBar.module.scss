@@ -1,23 +1,20 @@
-
-
 .SideBar {
-    height: calc(100vh - var(--NavBar-height));
-    width: var(--sideBar-width);
     background-color: var(--theme-bg-color-inverted);
-
+    height: calc(100vh - var(--nav-bar-height));
     position: relative;
     transition: width 0.3s;
+    width: var(--side-bar-width);
 }
 
 .Close {
-    width: var(--sideBar-width-close);
+    width: var(--side-bar-width-close);
 }
 
 .switchers {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    position: absolute;
     bottom: 20px;
     column-gap: 20px;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
 }

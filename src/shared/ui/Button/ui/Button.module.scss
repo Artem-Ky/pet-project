@@ -1,8 +1,8 @@
-@import '/src/app/styles/index.scss';
+@import '/src/app/styles/index';
 
 .Button {
     @include reset-button;
+
     cursor: pointer;
     color: var(--theme-normal-font-color-inverted);
 }
-
