@@ -4,11 +4,8 @@ import { useTranslation } from "react-i18next";
 import cls from "./NavBar.module.scss";
 
 
-interface NavbarProps {
-  classNames?: string[];
-}
 
-export const NavBar = ({ classNames }: NavbarProps) => {
+export const NavBar = () => {
     const { t } = useTranslation();
 
     return (
