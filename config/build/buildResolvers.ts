@@ -1,5 +1,5 @@
-import {ResolveOptions} from "webpack";
-import { BuildOptions } from "./types/config";
+import { ResolveOptions } from 'webpack';
+import { BuildOptions } from './types/config';
 
 export function buildResolvers(options: BuildOptions): ResolveOptions {
     return {
@@ -8,13 +8,13 @@ export function buildResolvers(options: BuildOptions): ResolveOptions {
         modules: [options.paths.src, 'node_modules'],
         mainFiles: ['index'],
         alias: {
-            '@': options.paths.src
+            '@': options.paths.src,
         },
         fallback: {
-            "console": require.resolve("console-browserify"),
-            "util": require.resolve("util/"),
-            "assert": require.resolve("assert/"),
-            "process": require.resolve("process/browser"),
+            console: require.resolve('console-browserify'),
+            util: require.resolve('util/'),
+            assert: require.resolve('assert/'),
+            process: require.resolve('process/browser'),
         },
-    }
+    };
 }

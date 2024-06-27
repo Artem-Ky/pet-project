@@ -5,7 +5,7 @@ import { ThemeButton } from 'shared/ui/Button/ui/Button';
 export const LangSwitcher = () => {
     const { i18n, t } = useTranslation();
 
-    const translateToggle = () => {
+    const translateToggle = async () => {
         i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru');
     };
 

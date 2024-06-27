@@ -1,6 +1,7 @@
-import { ButtonHTMLAttributes, FC } from 'react'
-import cnBind from 'classnames/bind'
-import cls from './Button.module.scss'
+/* eslint-disable react/button-has-type */
+import { ButtonHTMLAttributes, FC } from 'react';
+import cnBind from 'classnames/bind';
+import cls from './Button.module.scss';
 
 export enum ThemeButton {
     INVERTED_COLOR = 'inverted-color'
@@ -9,7 +10,7 @@ export enum ThemeButton {
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     classNames?: string[]
     theme?: ThemeButton,
-    type?: "button" | "submit" | "reset"
+    type?: 'button' | 'submit' | 'reset'
 }
 
 export const Button: FC<ButtonProps> = (props) => {
@@ -19,8 +20,8 @@ export const Button: FC<ButtonProps> = (props) => {
         type = 'button',
         theme,
         ...otherProps
-    } = props
-    const cn = cnBind.bind(cls)
+    } = props;
+    const cn = cnBind.bind(cls);
 
     return (
         <button
@@ -28,11 +29,11 @@ export const Button: FC<ButtonProps> = (props) => {
             className={cn(
                 cls.Button,
                 cls[theme],
-                ...classNames.map((clsName) => cls[clsName] || clsName)
+                ...classNames.map((clsName) => cls[clsName] || clsName),
             )}
             {...otherProps}
         >
             {children}
         </button>
-    )
-}
+    );
+};

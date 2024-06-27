@@ -9,11 +9,11 @@ export const Router = () => (
             <Route
                 key={path}
                 path={path}
-                element={
-                    <Suspense fallback={<PageLoader/>}>
+                element={(
+                    <Suspense fallback={<PageLoader />}>
                         <div className="page-wrapper">{element}</div>
                     </Suspense>
-                }
+                )}
             />
         ))}
     </Routes>

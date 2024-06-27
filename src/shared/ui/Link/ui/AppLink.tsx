@@ -1,11 +1,11 @@
-import cnBind from "classnames/bind";
-import { Link, LinkProps } from "react-router-dom";
-import { FC } from "react";
-import cls from "./AppLink.module.scss";
+import cnBind from 'classnames/bind';
+import { Link, LinkProps } from 'react-router-dom';
+import { FC } from 'react';
+import cls from './AppLink.module.scss';
 
 export enum AppLinkTheme {
-  PRIMARY = "primary",
-  SECONDARY = "secondary",
+  PRIMARY = 'primary',
+  SECONDARY = 'secondary',
 }
 
 interface AppLinkProps extends LinkProps {

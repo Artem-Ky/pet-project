@@ -23,6 +23,7 @@ export const SideBar: FC<SideBarProps> = (props) => {
 
     return (
         <div
+            data-testid="sidebar"
             className={cn(
                 cls.SideBar,
                 { [cls.Close]: isClose },
@@ -34,6 +35,7 @@ export const SideBar: FC<SideBarProps> = (props) => {
                 <LangSwitcher />
             </div>
             <Button
+                data-testid="sidebar-toggle"
                 theme={ThemeButton.INVERTED_COLOR}
                 onClick={onToggleHandler}
             >
