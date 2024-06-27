@@ -2,7 +2,9 @@ import { ButtonHTMLAttributes, FC } from 'react'
 import cnBind from 'classnames/bind'
 import cls from './Button.module.scss'
 
-export enum ThemeButton {}
+export enum ThemeButton {
+    INVERTED_COLOR = 'inverted-color'
+}
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     classNames?: string[]

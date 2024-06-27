@@ -9,6 +9,12 @@ export function buildResolvers(options: BuildOptions): ResolveOptions {
         mainFiles: ['index'],
         alias: {
             '@': options.paths.src
-        }
+        },
+        fallback: {
+            "console": require.resolve("console-browserify"),
+            "util": require.resolve("util/"),
+            "assert": require.resolve("assert/"),
+            "process": require.resolve("process/browser"),
+        },
     }
 }

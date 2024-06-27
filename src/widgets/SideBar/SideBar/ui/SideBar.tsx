@@ -4,6 +4,7 @@ import { ThemeSwitcher } from 'widgets/ThemeSwither';
 import { useTranslation } from 'react-i18next';
 import { LangSwitcher } from 'widgets/LangSwitcher/ui/LangSwitcher';
 import { Button } from 'shared/ui/Button';
+import { ThemeButton } from 'shared/ui/Button/ui/Button';
 import cls from './SideBar.module.scss';
 
 interface SideBarProps {
@@ -32,7 +33,12 @@ export const SideBar: FC<SideBarProps> = (props) => {
                 <ThemeSwitcher />
                 <LangSwitcher />
             </div>
-            <Button onClick={onToggleHandler}>{t('закрыть')}</Button>
+            <Button
+                theme={ThemeButton.INVERTED_COLOR}
+                onClick={onToggleHandler}
+            >
+                {t('закрыть')}
+            </Button>
         </div>
     );
 };
