@@ -6,7 +6,8 @@ const MainPage = () => {
 
     return (
         <>
-            <div>{t('Главная страница', { ns: 'mainPage' })}</div> <BugButton />
+            <div>{t('Главная страница', { ns: 'mainPage' })}</div> 
+            <BugButton />
         </>
     );
 };

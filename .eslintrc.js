@@ -42,7 +42,7 @@ module.exports = {
         'no-underscore-dangle': 'off',
         'react/button-has-type': 'off',
         'i18next/no-literal-string': ['error', { markupOnly: true }],
-        'max-len': ['error', { ignoreComments: true }]
+        'max-len': ['error', { ignoreComments: true, code: 100 }]
         
     },
     globals: {

@@ -1,9 +1,10 @@
 import HTMLWebpackPlugin from "html-webpack-plugin";
 import webpack from "webpack";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer'
 import {BuildOptions} from "./types/config";
 
-// eslint-disable-next-line max-len
+
 export function buildPlugins({paths, isDev}: BuildOptions): webpack.WebpackPluginInstance[] {
 
     return [
@@ -21,6 +22,9 @@ export function buildPlugins({paths, isDev}: BuildOptions): webpack.WebpackPlugi
         new webpack.HotModuleReplacementPlugin(),
         new webpack.ProvidePlugin({
             process: 'process/browser',
+        }),
+        new BundleAnalyzerPlugin({
+            openAnalyzer: false
         }),
     ]
 }
