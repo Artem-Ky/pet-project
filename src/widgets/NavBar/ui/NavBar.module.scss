@@ -2,8 +2,8 @@
 .NavBar {
     width: 100%;
     height: var(--nav-bar-height);
-    background-color: var(--theme-bg-color-inverted);
-    color: var(--theme-normal-font-color-inverted);
+    background-color: var(--main-color);
+    color: var(--main-font-color);
     padding-inline: 20px;
     display: flex;
     align-items: center;

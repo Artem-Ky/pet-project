@@ -8,10 +8,10 @@ describe('Button', () => {
         expect(screen.getByText('Test')).toBeInTheDocument();
     });
 
-    test('Test Inverted Theme', () => {
+    test('Test Clear Theme', () => {
         // eslint-disable-next-line i18next/no-literal-string
-        render(<Button theme={ThemeButton.INVERTED_COLOR}>Test</Button>);
-        expect(screen.getByText('Test')).toHaveClass('inverted-color');
+        render(<Button theme={ThemeButton.CLEAR}>Test</Button>);
+        expect(screen.getByText('Test')).toHaveClass('clear');
         screen.debug();
     });
 });

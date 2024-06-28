@@ -1,23 +1,39 @@
 @import './media';
 
 :root {
-    --color-dark: #191a23;
-    --color-dark-alt: #292a32;
-    --color-light: #fff;
-    --color-accent: #b9ff66;
-    --color-gray: #f3f3f3;
-    --color-gray-alt: #898989;
-    --color-gold: #f8be38;
-    --border: 1px solid var(--color-dark);
-    --border-radius: 14px;
-    --border-radius-small: 7px;
-    --border-radius-large: 45px;
-    --shadow: 0 5px 0 0 var(--color-dark);
-    --font-family-base: 'Space Grotesk', 'sans-serif';
-    --container-width: 1240px;
-    --container-padding-x: 20px;
-    --section-padding-y: 70px;
-    --transition-duration: 0.2s;
+    // цвета
+    --green-grey-color: #24484E;
+    --green-grey-color-alt: #365B61;
+    --green-grey-color-dark: #183A40;
+    --green-gray-color-light: #40808A;
+    --light-color: #FDFDFD;
+    --light-color-alt: #F3F1F1;
+    --orange-color: #F15A3B;
+    --red-color: #C83939;
+    --red-color-light: #FB7A7A;
+    --black-color: #191919;
+    --black-color-alt: #252525;
+    --black-color-light: #363636;
+    --gray-color: #717171;
+    --gray-color-alt: #606060;
+    --gray-color-light: #929292;
+    --gray-color-dark: #454545;
+
+    //  шрифты
+
+    /* Inter */
+
+    --font-inter-xxl-semibold: normal 600 24px 'Inter', sans-serif;
+    --font-inter-lg-semibold: normal 600 16px 'Inter', sans-serif;
+    --font-inter-lg-regular: normal 400 16px 'Inter', sans-serif;
+    --font-inter-md-semibold: normal 600 14px 'Inter', sans-serif;
+    --font-inter-md-regular: normal 400 14px 'Inter', sans-serif;
+    --font-inter-sm-semibold: normal 600 12px 'Inter', sans-serif;
+    --font-inter-sm-regular: normal 400 12px 'Inter', sans-serif;
+
+    /* Tuffy */
+
+    --font-tuffy-md-bold: normal 700 16px 'Tuffy', sans-serif;
 
     //  компоненты
 
@@ -27,11 +43,9 @@
     --side-bar-width: 300px;
     --side-bar-width-close: 80px;
 
-    @include desktop {
-        --section-padding-y: 50px;
-    }
-
-    @include mobile {
-        --section-padding-y: 30px;
-    }
+    //  остальное
+    
+    --border-radius-small: 7px;
+    --font-family-base: 'Inter', 'sans-serif';
+    --transition-duration: 0.2s;
 }

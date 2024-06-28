@@ -37,7 +37,7 @@
 
 @mixin square($size) {
     width: $size;
-    aspect-ratio: 1;
+    height: $size;
 }
 
 @mixin sr-only {

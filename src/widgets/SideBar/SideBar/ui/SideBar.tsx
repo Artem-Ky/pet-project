@@ -36,7 +36,7 @@ export const SideBar: FC<SideBarProps> = (props) => {
             </div>
             <Button
                 data-testid="sidebar-toggle"
-                theme={ThemeButton.INVERTED_COLOR}
+                theme={ThemeButton.CLEAR}
                 onClick={onToggleHandler}
             >
                 {t('закрыть')}

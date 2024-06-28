@@ -1,6 +1,35 @@
 .app_dark_theme {
-    --theme-bg-color: var(--color-dark);
-    --theme-bg-color-inverted: var(--color-light);
-    --theme-normal-font-color: var(--color-light);
-    --theme-normal-font-color-inverted: var(--color-dark);
+    //  main color
+    --main-color: var(--green-grey-color);
+    --main-color-alt: var(--green-grey-color-dark);
+
+    //  bg color
+
+    --bg-color: var(--black-color-alt);
+
+    //  accent color
+
+    --accent-color: var(--orange-color);
+    --accent-color-alt: var(--red-color-light);
+
+    //  main font color
+
+    --main-font-color: var(--light-color);
+
+    // sub font color
+
+    --sub-font-color: var(--gray-color-light);
+    --sub-font-color-alt: var(--gray-color-light);
+
+    // input color
+
+    --input-color: var(--gray-color-alt);
+    --input-color-light: var(--gray-color);
+    --input-colo-dark: var(--gray-color-dark);
+
+    //  button color
+
+    --button-color: var(--black-color-alt);
+    --button-color-light: var(--black-color-light);
+    --button-color-dark: var(--black-color);
 }

@@ -1,12 +1,19 @@
-@import '/src/app/styles/index';
+@import 'app/styles/index';
 
 .Button {
-    @include reset-button;
-
     cursor: pointer;
-    color: var(--theme-normal-font-color);
+    color: var(--main-font-color);
+    background-color: var(--bg-color);
+    display: flex;
 }
 
-.inverted-color {
-    color: var(--theme-normal-font-color-inverted);
+.outline {
+    padding: 10px 15px;
+    background-color: transparent;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+}
+
+.clear {
+    @include reset-button;
 }

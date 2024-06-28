@@ -4,7 +4,8 @@ import cnBind from 'classnames/bind';
 import cls from './Button.module.scss';
 
 export enum ThemeButton {
-    INVERTED_COLOR = 'inverted-color'
+    CLEAR = 'clear',
+    OUTLINE = 'outline'
 }
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {

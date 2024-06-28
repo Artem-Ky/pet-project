@@ -2,8 +2,9 @@ import { AppLink } from 'shared/ui/Link';
 import { AppLinkTheme } from 'shared/ui/Link/ui/AppLink';
 import { useTranslation } from 'react-i18next';
 import cls from './NavBar.module.scss';
+import { FC } from 'react';
 
-export const NavBar = () => {
+export const NavBar: FC = () => {
     const { t } = useTranslation();
 
     return (
