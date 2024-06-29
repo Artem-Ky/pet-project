@@ -45,3 +45,4 @@ jobs:
               uses: chromaui/action@latest
               with:
                 projectToken: chpt_59d489414231a04
+                buildScriptName: storybook:build
