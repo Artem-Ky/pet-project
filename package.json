@@ -11,9 +11,10 @@
     "lint:ts:fix": "eslint \"**/*.{ts,tsx}\" --fix",
     "lint:scss": "npx stylelint \"**/*.scss\"",
     "lint:scss:fix": "npx stylelint \"**/*.scss\" --fix",
-    "unit": "jest --config ./config/jest/jest.config.ts",
+    "test:unit": "jest --config ./config/jest/jest.config.ts",
+    "test:ui": "concurrently \"npm run storybook\" \"wait-on http://localhost:6006 && npx loki test\"",
     "storybook": "storybook dev -p 6006 -c ./config/storybook",
-    "build-storybook": "storybook build -c ./config/storybook"
+    "storybook:build": "storybook build -c ./config/storybook"
   },
   "keywords": [],
   "author": "",
@@ -50,6 +51,7 @@
     "babel-jest": "^29.7.0",
     "babel-loader": "^9.1.3",
     "babel-plugin-i18next-extract": "^0.10.0",
+    "concurrently": "^8.2.2",
     "css-loader": "^6.6.0",
     "eslint": "^8.57.0",
     "eslint-config-airbnb": "^19.0.4",
@@ -85,6 +87,7 @@
     "ts-node": "^10.5.0",
     "typescript": "^4.5.5",
     "typescript-eslint": "^7.13.1",
+    "wait-on": "^7.2.0",
     "webpack": "^5.92.1",
     "webpack-bundle-analyzer": "^4.10.2",
     "webpack-cli": "^4.9.2",
