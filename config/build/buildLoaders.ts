@@ -28,7 +28,7 @@ export function buildLoaders({ isDev }: BuildOptions): webpack.RuleSetRule[] {
         },
     };
 
-    const cssLoader = BuildCSSLoader(isDev)
+    const cssLoader = BuildCSSLoader(isDev);
 
     const typescriptLoader = {
         test: /\.tsx?$/,
