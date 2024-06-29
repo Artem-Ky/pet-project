@@ -7,7 +7,7 @@ const MainPage: FC = () => {
 
     return (
         <>
-            <div>{t('Главная страница', { ns: 'mainPage' })}</div>
+            <div>{t('Главная страница сайта', { ns: 'mainPage' })}</div>
             <BugButton />
         </>
     );

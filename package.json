@@ -12,12 +12,10 @@
     "lint:scss": "npx stylelint \"**/*.scss\"",
     "lint:scss:fix": "npx stylelint \"**/*.scss\" --fix",
     "test:unit": "jest --config ./config/jest/jest.config.ts",
-    "test:ui": "concurrently \"npm run storybook\" \"wait-on http://localhost:6006 && npx loki test\"",
-    "test:ui:ok": "npx loki approve",
-    "test:ui:ci": "loki --requireReference --reactUri file:./storybook-static",
+    "test:ui": "npx chromatic --project-token=chpt_59d489414231a04 --build-script-name storybook:build",
+    "test:ui:ok": "npx chromatic --project-token=chpt_59d489414231a04 --build-script-name storybook:build --auto-accept-changes",
     "storybook": "storybook dev -p 6006 -c ./config/storybook",
-    "storybook:build": "storybook build -c ./config/storybook",
-    "chromatic": "npx chromatic --project-token=chpt_59d489414231a04 --build-script-name storybook:build"
+    "storybook:build": "storybook build -c ./config/storybook"
   },
   "keywords": [],
   "author": "",
