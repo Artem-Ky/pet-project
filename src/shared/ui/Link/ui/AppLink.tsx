@@ -15,7 +15,7 @@ interface AppLinkProps extends LinkProps {
 
 export const AppLink: FC<AppLinkProps> = (props) => {
     const {
-        classNames, children, theme, to, ...otherProps
+        classNames = [], children, theme, to, ...otherProps
     } = props;
     const cn = cnBind.bind(cls);
 
