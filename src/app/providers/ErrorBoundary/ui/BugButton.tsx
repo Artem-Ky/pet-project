@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Button } from 'shared/ui/Button';
+import { ButtonVariant } from 'shared/ui/Button/ui/Button';
 
 // компонент для тестирования errorBoundary
 export const BugButton = () => {
@@ -17,6 +18,7 @@ export const BugButton = () => {
 
     return (
         <Button
+            variant={ButtonVariant.CLEAR}
             onClick={throwError}
             // eslint-disable-next-line i18next/no-literal-string
         >

@@ -1,20 +1,70 @@
 .SideBar {
+    padding-block: 20px;
     background-color: var(--main-color);
     height: calc(100vh - var(--nav-bar-height));
     position: relative;
     transition: width 0.3s;
     width: var(--side-bar-width);
-}
-
-.Close {
-    width: var(--side-bar-width-close);
+    font: var(--font-inter-lg-regular);
 }
 
 .switchers {
-    bottom: 20px;
+    bottom: 60px;
     column-gap: 20px;
     display: flex;
     justify-content: center;
     position: absolute;
     width: 100%;
+}
+
+.closeBtn {
+    position: absolute;
+    background-color: var(--gray-color);
+    left: 10px;
+    bottom: 10px;
+}
+
+.linksList {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    padding-inline: 10px;
+}
+
+.linkItem {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+}
+
+.linkIcon {
+    stroke: none;
+    fill: var(--light-color);
+    height: 16px;
+    width: 16px;
+    margin-top: -1.25px;
+}
+
+.link {
+    opacity: 1;
+}
+
+.Close {
+    width: var(--side-bar-width-close);
+
+    .switchers {
+        flex-direction: column;
+        row-gap: 20px;
+    }
+
+    .link {
+        opacity: 0;
+        width: 0;
+        transition: opacity 0.2s;
+    }
+
+    .linkItem {
+        justify-content: center;
+    }
+
 }

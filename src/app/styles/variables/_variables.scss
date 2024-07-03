@@ -13,7 +13,7 @@
     --red-color-light: #FB7A7A;
     --black-color: #191919;
     --black-color-alt: #252525;
-    --black-color-light: #363636;
+    --black-color-light: #424242;
     --gray-color: #717171;
     --gray-color-alt: #606060;
     --gray-color-light: #929292;
@@ -41,11 +41,28 @@
     --button-height: 68px;
     --nav-bar-height: 50px;
     --side-bar-width: 300px;
-    --side-bar-width-close: 80px;
+    --side-bar-width-close: 55px;
 
     //  остальное
     
     --border-radius-small: 7px;
     --font-family-base: 'Inter', 'sans-serif';
     --transition-duration: 0.2s;
+
+    //  кнопки
+
+    //  small
+    --button-height-s: 27px;
+    --button-width-s: 86px;
+
+    //  medium
+    --button-height-m: 30px;
+    --button-width-m: 116px;
+
+    //  large
+    --button-height-l: 35px;
+    --button-width-l: 156px;
+
+
+
 }

@@ -1,19 +1,116 @@
 @import 'app/styles/index';
 
 .Button {
+    @include reset-button;
+
     cursor: pointer;
-    color: var(--main-font-color);
-    background-color: var(--bg-color);
     display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--border-radius-small);
+    font: var(--font-inter-sm-semibold);
+    line-height: 1.2;
 }
 
-.outline {
+.small {
+    height: var(--button-height-s);
+    width:  var(--button-width-s);
+    padding: 5px 8px;
+}
+
+.medium {
+    height: var(--button-height-m);
+    width:  var(--button-width-m);
+    padding: 8px 12px;
+}
+
+.large {
+    height: var(--button-height-l);
+    width:  var(--button-width-l);
     padding: 10px 15px;
-    background-color: transparent;
-    border: 1px solid var(--accent-color);
-    color: var(--accent-color);
+}
+
+.square {
+    padding: 0;
+}
+
+.square.small {
+    height: var(--button-height-s);
+    width: var(--button-height-s);
+}
+
+.square.medium {
+    height: var(--button-height-m);
+    width: var(--button-height-m);
+}
+
+.square.large {
+    height: var(--button-height-l);
+    width: var(--button-height-l);
+}
+
+.white {
+    background-color: var(--light-color);
+    color: var(--green-grey-color);
+
+    @include hover {
+        color: var(--green-gray-color-light);
+    }
+}
+
+.light-white {
+    background-color: var(--light-white);
+    color: var(--light-white-color);
+
+    @include hover {
+        color: var(--light-white-color-hover);
+        background-color: var(--light-white-hover);
+    }
+}
+
+.white-dark {
+    background-color: var(--white-dark);
+    color: var(--white-dark-color);
+
+    @include hover {
+        color: var(--white-dark-color-hover);
+        background-color: var(--white-dark-hover);
+    }
 }
 
 .clear {
     @include reset-button;
+
+    cursor: pointer;
+    color: var(--main-font-color);
+    background-color: transparent;
 }
+
+.outline {
+    border: 1px solid currentcolor;
+
+    &-grey-white {
+        border-color: var(--gray-white-outline);
+    }
+
+    &-green-white {
+        border-color: var(--green-white-outline);
+
+        @include hover {
+            border-color: var(--green-white-outline-hover);
+        }
+    }
+
+    &-success {
+        border-color: var(--green-gray-color-light);
+    }
+
+    &-error {
+        border-color: var(--accent-color);
+    }
+}
+
+.fullWidth {
+    width: 100%;
+}
+

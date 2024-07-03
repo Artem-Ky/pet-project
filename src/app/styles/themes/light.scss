@@ -15,6 +15,7 @@
     //  main font color
 
     --main-font-color: var(--black-color);
+    --inverted-font-color: var(--light-color);
 
     // sub font color
 
@@ -32,4 +33,21 @@
     --button-color: var(--green-grey-color-alt);
     --button-color-light: var(--green-gray-color-light);
     --button-color-dark: var(--green-grey-color-dark);
+
+    //  specific button color
+
+    --white-dark: var(--light-color);
+    --white-dark-hover: var(--white-dark);
+    --white-dark-color: var(--main-color);
+    --white-dark-color-hover: var(--green-gray-color-light);
+    --light-white: var(--button-color);
+    --light-white-hover: var(--button-color-light);
+    --light-white-color: var(--light-color);
+    --light-white-color-hover: var(--light-color);
+    
+    //  outline color
+
+    --gray-white-outline: var(--gray-color);
+    --green-white-outline: var(--green-grey-color);
+    --green-white-outline-hover: var(--green-gray-color-light);
 }
