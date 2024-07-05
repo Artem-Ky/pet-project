@@ -23,8 +23,8 @@ export function useTheme(): UseThemeResult {
         default:
             newTheme = Theme.LIGHT;
         }
-        console.log(newTheme);
         setTheme?.(newTheme);
+        document.body.className = newTheme;
         localStorage.setItem(LOCAL_STORAGE_THEME_KEY, newTheme);
     };
 

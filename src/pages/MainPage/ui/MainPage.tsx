@@ -8,6 +8,7 @@ const MainPage: FC = () => {
     return (
         <>
             <div>{t('Главная страница сайта', { ns: 'mainPage' })}</div>
+
             <BugButton />
         </>
     );

@@ -1,14 +1,15 @@
 
 
+
 body {
     font-family: Inter, sans-serif;
     font-weight: 400;
+    color: var(--main-color);
 }
 
 .app {
-    background-color: var(--bg-color);
-    color: var(--main-color);
     min-height: 100vh;
+    background-color: var(--bg-color);
 }
 
 .content-page {

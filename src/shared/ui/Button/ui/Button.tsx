@@ -52,11 +52,11 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
     //  цвет обводки
 
-    outlineColor?: OutlineColor
+    outlineColor?: OutlineColor;
 
     //  кнопка будет квадратной (по высоте)
 
-    isSquare?: boolean
+    isSquare?: boolean;
 }
 
 export const Button: FC<ButtonProps> = (props) => {
