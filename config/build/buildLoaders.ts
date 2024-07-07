@@ -45,11 +45,19 @@ export function buildLoaders({ isDev }: BuildOptions): webpack.RuleSetRule[] {
         ],
     };
 
+    const mjsLoader = {
+        test: /\.m?js$/,
+        resolve: {
+            fullySpecified: false,
+        },
+    };
+
     return [
         fileLoader,
         svgLoader,
         babelLoader,
         typescriptLoader,
         cssLoader,
+        mjsLoader,
     ];
 }
