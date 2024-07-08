@@ -17,7 +17,8 @@
     "test:ui": "npx chromatic --project-token=chpt_59d489414231a04 --build-script-name storybook:build --force-rebuild",
     "test:ui:ok": "npx chromatic --project-token=chpt_59d489414231a04 --build-script-name storybook:build --auto-accept-changes --force-rebuild",
     "storybook": "storybook dev -p 6006 -c ./config/storybook",
-    "storybook:build": "storybook build -c ./config/storybook"
+    "storybook:build": "storybook build -c ./config/storybook",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "",
@@ -97,7 +98,8 @@
     "webpack": "^5.92.1",
     "webpack-bundle-analyzer": "^4.10.2",
     "webpack-cli": "^4.9.2",
-    "webpack-dev-server": "^4.7.4"
+    "webpack-dev-server": "^4.7.4",
+    "husky": "^8.0.0"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.6",
