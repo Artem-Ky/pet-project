@@ -5,7 +5,7 @@ import {
     Button,
     ButtonVariant,
     ButtonColor,
-    OutlineColor,
+    ButtonOutlineColor,
     ButtonSize,
 } from './Button';
 
@@ -34,7 +34,7 @@ export default {
         // Контроль цвета контура (доступен только для варианта outline)
         outlineColor: {
             control: 'select',
-            options: Object.values(OutlineColor),
+            options: Object.values(ButtonOutlineColor),
             description: 'Цвет контура для outline варианта',
         },
         // Контроль полноэкранного размера кнопки

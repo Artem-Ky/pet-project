@@ -12,7 +12,7 @@ export enum ButtonColor {
     WHITE_DARK = 'white-dark',
     LIGHT_WHITE = 'light-white',
 }
-export enum OutlineColor {
+export enum ButtonOutlineColor {
     Success = 'outline-success',
     Error = 'outline-error',
     Gray_White = 'outline-grey-white',
@@ -52,7 +52,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
     //  цвет обводки
 
-    outlineColor?: OutlineColor;
+    outlineColor?: ButtonOutlineColor;
 
     //  кнопка будет квадратной (по высоте)
 

@@ -17,18 +17,26 @@ interface ModalProps {
     children?: ReactNode;
     isOpen?: boolean;
     onClose?: () => void;
+    lazy?: boolean;
 }
 
 export const Modal: FC<ModalProps> = (props) => {
     const {
-        classNames = [], children, isOpen, onClose,
+        classNames = [], children, isOpen, onClose, lazy,
     } = props;
     const cn = cnBind.bind(cls);
 
     const ANIMATION_DELAY = 300;
 
     const [isClosing, setIsClosing] = useState(false);
+    const [isMounted, setIsMounted] = useState(false);
     const timeRef = useRef<ReturnType<typeof setTimeout>>();
+
+    useEffect(() => {
+        if (isOpen) {
+            setIsMounted(true);
+        }
+    }, [isOpen]);
 
     const closeHandler = useCallback(() => {
         if (onClose) {
@@ -63,6 +71,10 @@ export const Modal: FC<ModalProps> = (props) => {
         };
     }, [isOpen, onKeyDown]);
 
+    if (lazy && !isMounted) {
+        return null;
+    }
+
     return (
         <Portal element={document.getElementById('app') ?? document.body}>
             <div
@@ -70,11 +82,18 @@ export const Modal: FC<ModalProps> = (props) => {
                     cls.Modal,
                     { [cls.opened]: isOpen },
                     { [cls.isClosing]: isClosing },
-                    ...classNames.map((clsName) => cls[clsName] || clsName),
                 )}
             >
-                <div onClick={closeHandler} className={cls.overlay}>
-                    <div onClick={onContentClick} className={cn(cls.content)}>
+                <div onClick={closeHandler} className={cn(cls.overlay)}>
+                    <div
+                        onClick={onContentClick}
+                        className={cn(
+                            cls.content,
+                            ...classNames.map(
+                                (clsName) => cls[clsName] || clsName,
+                            ),
+                        )}
+                    >
                         {children}
                     </div>
                 </div>

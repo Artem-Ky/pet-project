@@ -1,0 +1,52 @@
+@import 'app/styles/index';
+
+.Input {
+    @include reset-button;
+
+    color: var(--main-font-color);
+    border-radius: var(--border-radius-small);
+    font: var(--font-inter-md-regular);
+    outline: none;
+    padding: 8px 30px 8px 8px;
+    background-color: var(--input-bg);
+
+    &::placeholder {
+        color: var(--gray-color);
+    }
+
+    &:focus {
+        background-color: var(--input-active-bg);
+    }
+
+    @include hover {
+        background-color: var(--input-active-bg);
+    }
+}
+
+.inputWrapper {
+    display: flex;
+    position: relative;
+}
+
+.small {
+    height: var(--input-height-s);
+    width:  var(--input-width-s);
+}
+
+.medium {
+    height: var(--input-height-m);
+    width:  var(--input-width-m);
+}
+
+.large {
+    height: var(--input-height-l);
+    width:  var(--input-width-l);
+    font: var(--font-inter-lg-regular);
+}
+
+.showPasswordButton {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    translate: -50% -50%;
+}

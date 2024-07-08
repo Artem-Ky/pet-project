@@ -4,12 +4,17 @@
     @include reset-button;
 
     cursor: pointer;
+    color: var(--main-font-color);
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: var(--border-radius-small);
     font: var(--font-inter-sm-semibold);
     line-height: 1.2;
+
+    @include hover {
+        opacity: 0.7;
+    }
 }
 
 .small {
