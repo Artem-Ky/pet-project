@@ -4,5 +4,5 @@ import { LoginSchema } from '../../types/LoginSchema';
 
 export const getRememberMe = createSelector(
     getLoginState,
-    (loginForm: LoginSchema) => loginForm.rememberMe,
+    (loginForm: LoginSchema) => loginForm?.rememberMe || false,
 );

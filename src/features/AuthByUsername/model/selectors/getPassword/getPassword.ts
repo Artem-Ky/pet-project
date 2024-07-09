@@ -4,5 +4,5 @@ import { LoginSchema } from '../../types/LoginSchema';
 
 export const getPassword = createSelector(
     getLoginState,
-    (loginForm: LoginSchema) => loginForm.password,
+    (loginForm: LoginSchema) => loginForm?.password || '',
 );

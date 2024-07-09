@@ -41,7 +41,9 @@ export const NavBar: FC = () => {
             <Button variant={ButtonVariant.CLEAR} onClick={onOpenModal}>
                 {t('Войти')}
             </Button>
-            <LoginModal isOpen={isAuthModalOpen} onClose={onCloseModal} />
+            {isAuthModalOpen && (
+                <LoginModal isOpen={isAuthModalOpen} onClose={onCloseModal} />
+            )}
         </div>
     );
 };
