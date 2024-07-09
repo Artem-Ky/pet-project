@@ -9,4 +9,8 @@ describe('getLoginError', () => {
         };
         expect(getUsername(state as StateSchema)).toEqual('toad');
     });
+    test('should work with empty state', () => {
+        const state: DeepPartial<StateSchema> = {};
+        expect(getUsername(state as StateSchema)).toEqual('');
+    });
 });
