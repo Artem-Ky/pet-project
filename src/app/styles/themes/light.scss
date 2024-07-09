@@ -38,18 +38,23 @@
 
     --white-dark: var(--light-color);
     --white-dark-hover: var(--white-dark);
+    --white-dark-disabled: var(--light-color);
     --white-dark-color: var(--main-color);
     --white-dark-color-hover: var(--green-gray-color-light);
+    --white-dark-color-disabled: var(--button-color-dark);
     --light-white: var(--button-color);
     --light-white-hover: var(--button-color-light);
+    --light-white-disabled: var(--button-color-dark);
     --light-white-color: var(--light-color);
     --light-white-color-hover: var(--light-color);
+    --light-white-color-disabled: var(--light-color);
     
     //  outline color
 
     --gray-white-outline: var(--gray-color);
     --green-white-outline: var(--green-grey-color);
     --green-white-outline-hover: var(--green-gray-color-light);
+    --green-white-outline-disabled: var(--button-color-dark);
 
     //  input color
 

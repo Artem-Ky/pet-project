@@ -89,3 +89,18 @@ OutlineDark.args = {
     variant: ButtonVariant.OUTLINE,
 };
 OutlineDark.decorators = [ThemeDecorator(Theme.DARK)];
+
+export const DefaultDisabled = Template.bind({});
+DefaultDisabled.args = {
+    children: 'Text',
+    disabled: true,
+    color: ButtonColor.LIGHT_WHITE,
+};
+
+export const DefaultDisabledDark = Template.bind({});
+DefaultDisabledDark.args = {
+    children: 'Text',
+    disabled: true,
+    color: ButtonColor.LIGHT_WHITE,
+};
+DefaultDisabledDark.decorators = [ThemeDecorator(Theme.DARK)];

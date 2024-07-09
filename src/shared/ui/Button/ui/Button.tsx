@@ -57,6 +57,9 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     //  кнопка будет квадратной (по высоте)
 
     isSquare?: boolean;
+
+    //  отключить кнопку
+    disabled?: boolean;
 }
 
 export const Button: FC<ButtonProps> = (props) => {
@@ -69,6 +72,7 @@ export const Button: FC<ButtonProps> = (props) => {
         color,
         size,
         outlineColor,
+        disabled,
         isSquare,
         ...otherProps
     } = props;
@@ -77,6 +81,7 @@ export const Button: FC<ButtonProps> = (props) => {
     return (
         <button
             type={type}
+            disabled={disabled}
             className={cn(
                 cls.Button,
                 cls[size],

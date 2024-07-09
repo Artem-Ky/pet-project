@@ -1,0 +1,12 @@
+import { StateSchema } from 'app/providers/StoreProvider';
+import { DeepPartial } from 'utility-types';
+import { getPassword } from './getPassword';
+
+describe('getLoginError', () => {
+    test('should return password', () => {
+        const state: DeepPartial<StateSchema> = {
+            loginForm: { password: '123' },
+        };
+        expect(getPassword(state as StateSchema)).toEqual('123');
+    });
+});

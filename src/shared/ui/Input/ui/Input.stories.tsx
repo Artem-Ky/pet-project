@@ -30,6 +30,13 @@ const Template: StoryFn<typeof Input> = (args) => (
     </div>
 );
 
+const TemplateRC: StoryFn<typeof Input> = (args) => (
+    <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+        <Input {...args} />
+        <Input {...args} checked />
+    </div>
+);
+
 export const Default = Template.bind({});
 Default.args = {
     placeholder: 'test...',
@@ -53,3 +60,25 @@ PasswordDark.args = {
     type: 'password',
 };
 PasswordDark.decorators = [ThemeDecorator(Theme.DARK)];
+
+export const CheckBox = TemplateRC.bind({});
+CheckBox.args = {
+    type: 'checkbox',
+};
+
+export const CheckBoxDark = TemplateRC.bind({});
+CheckBoxDark.args = {
+    type: 'checkbox',
+};
+CheckBoxDark.decorators = [ThemeDecorator(Theme.DARK)];
+
+export const Radio = TemplateRC.bind({});
+Radio.args = {
+    type: 'radio',
+};
+
+export const RadioDark = TemplateRC.bind({});
+RadioDark.args = {
+    type: 'radio',
+};
+RadioDark.decorators = [ThemeDecorator(Theme.DARK)];

@@ -1,11 +1,33 @@
+@import 'app/styles/index';
+
 .LoginForm {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     row-gap: 25px;
+    max-width: var(--input-width-m);
 }
 
 .LoginFormButton {
     width: var(--input-width-m);
+}
+
+.checkbox {
+    align-self: flex-end;
+}
+
+.checkboxLabel {
+    user-select: none;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    align-self: flex-end;
+    column-gap: 15px;
+    font: var(--font-inter-md-semibold);
+    color: var(--gray-color);
+
+    @include hover {
+        filter: brightness(1.3);
+    }
 }

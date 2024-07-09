@@ -11,9 +11,14 @@
     border-radius: var(--border-radius-small);
     font: var(--font-inter-sm-semibold);
     line-height: 1.2;
+    transition-duration: 0s;
 
     @include hover {
         opacity: 0.7;
+    }
+
+    &:disabled {
+        opacity: 0.5;
     }
 }
 
@@ -71,6 +76,11 @@
         color: var(--light-white-color-hover);
         background-color: var(--light-white-hover);
     }
+
+    &:disabled {
+        color: var(--light-white-color-disabled);
+        background-color: var(--light-white-disabled);
+    }
 }
 
 .white-dark {
@@ -80,6 +90,11 @@
     @include hover {
         color: var(--white-dark-color-hover);
         background-color: var(--white-dark-hover);
+    }
+
+    &:disabled {
+        color: var(--white-dark-color-disabled);
+        background-color: var(--white-dark-disabled);
     }
 }
 
@@ -104,6 +119,11 @@
         @include hover {
             border-color: var(--green-white-outline-hover);
         }
+
+        &:disabled {
+            border-color: var(--green-white-outline-disabled);
+        }
+        
     }
 
     &-success {

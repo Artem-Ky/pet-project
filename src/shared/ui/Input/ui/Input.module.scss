@@ -50,3 +50,75 @@
     top: 50%;
     translate: -50% -50%;
 }
+
+.emulatorCheckBox {
+    @include flex-center;
+    @include square(25px);
+  
+    position: relative;
+    background-color: transparent;
+    border: 2px solid var(--gray-color);
+    border-radius: 5px;
+  
+    &::after {
+        @include abs-center;
+        @include square(15px);
+
+        content: '';
+        background-color: var(--gray-color);
+    }
+  }
+
+  .checkbox {
+    width: 30px;
+    display: flex;
+    align-items: center;
+    column-gap: 14px;
+    transition-duration: var(--transition-duration);
+  
+    &:checked ~ .emulatorCheckBox::after {
+      display: inline-block;
+    }
+    
+    &:not(:checked) ~ .emulatorCheckBox::after {
+      display: none;
+    }
+    
+}
+  
+  .emulatorRadioButton {
+    @include flex-center;
+    @include square(25px);
+  
+    position: relative;
+    background-color: transparent;
+    border: 2px solid var(--gray-color);
+    border-radius: 50%;
+  
+    &::after {
+        @include abs-center;
+        @include square(15px);
+
+        content: '';
+        background-color: var(--gray-color);
+        border-radius: 50%;
+    }
+}
+
+.radio {
+    width: 30px;
+    display: flex;
+    align-items: center;
+    column-gap: 14px;
+    transition-duration: var(--transition-duration);
+  
+    &:checked + .emulatorRadioButton::after {
+      display: inline-block;
+    }
+    
+    &:not(:checked) + .emulatorRadioButton::after {
+      display: none;
+    }
+    
+}
+
