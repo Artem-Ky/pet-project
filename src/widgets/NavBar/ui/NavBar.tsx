@@ -1,14 +1,16 @@
 import { useTranslation } from 'react-i18next';
-import { FC, useCallback, useState } from 'react';
+import {
+    FC, memo, useCallback, useState,
+} from 'react';
 import { Button } from 'shared/ui/Button';
 import { ButtonVariant } from 'shared/ui/Button/ui/Button';
 import { LoginModal } from 'features/AuthByUsername';
 import { useSelector } from 'react-redux';
 import { getUserAuthData, userActions } from 'entities/User';
-import { useAppDispatch } from 'app/providers/StoreProvider';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import cls from './NavBar.module.scss';
 
-export const NavBar: FC = () => {
+export const NavBar: FC = memo(() => {
     const { t } = useTranslation();
     const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
     const authData = useSelector(getUserAuthData);
@@ -46,4 +48,4 @@ export const NavBar: FC = () => {
             )}
         </div>
     );
-};
+});

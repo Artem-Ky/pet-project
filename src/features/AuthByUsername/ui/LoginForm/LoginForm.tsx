@@ -1,6 +1,4 @@
-import {
-    FC, memo, useCallback,
-} from 'react';
+import { FC, memo, useCallback } from 'react';
 import cnBind from 'classnames/bind';
 import { useTranslation } from 'react-i18next';
 import { Input } from 'shared/ui/Input';
@@ -13,12 +11,13 @@ import {
 } from 'shared/ui/Button/ui/Button';
 import { useSelector } from 'react-redux';
 import {
-    useAppDispatch,
-} from 'app/providers/StoreProvider';
-import {
     Text, TextAlign, TextSize, TextTheme,
 } from 'shared/ui/Text/ui/Text';
-import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import {
+    DynamicModuleLoader,
+    ReducersList,
+} from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { getLoginError } from '../../model/selectors/getLoginError/getLoginError';
 import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername';
 import { getRememberMe } from '../../model/selectors/getRememberMe/getRememberMe';
@@ -30,10 +29,11 @@ import cls from './LoginForm.module.scss';
 
 interface LoginFormProps {
     classNames?: string[];
+    onSuccess: () => void;
 }
 
 const LoginForm: FC<LoginFormProps> = memo((props: LoginFormProps) => {
-    const { classNames = [] } = props;
+    const { classNames = [], onSuccess } = props;
     const cn = cnBind.bind(cls);
     const { t } = useTranslation();
     const dispatch = useAppDispatch();
@@ -63,15 +63,18 @@ const LoginForm: FC<LoginFormProps> = memo((props: LoginFormProps) => {
         dispatch(loginActions.setRememberMe(!rememberMe));
     }, [dispatch, rememberMe]);
 
-    const onLoginClick = useCallback(() => {
-        dispatch(
+    const onLoginClick = useCallback(async () => {
+        const result = await dispatch(
             loginByUsername({
                 username,
                 password,
                 remember: rememberMe,
             }),
         );
-    }, [dispatch, password, username, rememberMe]);
+        if (result.meta.requestStatus === 'fulfilled') {
+            onSuccess();
+        }
+    }, [dispatch, password, username, rememberMe, onSuccess]);
 
     return (
         <DynamicModuleLoader reducers={initialReducers}>

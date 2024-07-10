@@ -1,0 +1,25 @@
+.linkItem {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+}
+
+.linkIcon {
+    stroke: none;
+    fill: var(--light-color);
+    height: 16px;
+    width: 16px;
+    margin-top: -1.25px;
+}
+
+.link {
+    opacity: 1;
+}
+
+.Close {
+    .link {
+        opacity: 0;
+        width: 0;
+        transition: opacity 0.2s;
+    }
+}

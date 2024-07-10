@@ -3,8 +3,8 @@ import { SideBar } from 'widgets/SideBar';
 import { Suspense, useEffect } from 'react';
 import classNames from 'classnames';
 import { userActions } from 'entities/User';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Router } from './providers/router';
-import { useAppDispatch } from './providers/StoreProvider';
 
 const App = () => {
     const dispatch = useAppDispatch();

@@ -1,9 +1,9 @@
 import { Button } from 'shared/ui/Button';
 import { useTranslation } from 'react-i18next';
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import { ButtonVariant } from 'shared/ui/Button/ui/Button';
 
-export const LangSwitcher: FC = () => {
+export const LangSwitcher: FC = memo(() => {
     const { i18n, t } = useTranslation();
 
     const translateToggle = async () => {
@@ -15,4 +15,4 @@ export const LangSwitcher: FC = () => {
             {t('Язык')}
         </Button>
     );
-};
+});

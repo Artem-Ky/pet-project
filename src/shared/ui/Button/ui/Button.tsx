@@ -1,5 +1,5 @@
 /* eslint-disable react/button-has-type */
-import { ButtonHTMLAttributes, FC } from 'react';
+import { ButtonHTMLAttributes, FC, memo } from 'react';
 import cnBind from 'classnames/bind';
 import cls from './Button.module.scss';
 
@@ -62,7 +62,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     disabled?: boolean;
 }
 
-export const Button: FC<ButtonProps> = (props) => {
+export const Button: FC<ButtonProps> = memo((props:ButtonProps) => {
     const {
         children,
         classNames = [],
@@ -97,4 +97,4 @@ export const Button: FC<ButtonProps> = (props) => {
             {children}
         </button>
     );
-};
+});
