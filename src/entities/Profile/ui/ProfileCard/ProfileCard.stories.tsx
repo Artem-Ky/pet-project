@@ -2,18 +2,18 @@ import { StoryFn, Meta } from '@storybook/react';
 import { Theme } from 'shared/const/theme';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
-import ProfilePage from './ProfilePage';
+import { ProfileCard } from './ProfileCard';
 
 export default {
-    title: 'pages/ProfilePage',
-    component: ProfilePage,
+    title: 'widget/ProfileCard',
+    component: ProfileCard,
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-} as Meta<typeof ProfilePage>;
+} as Meta<typeof ProfileCard>;
 
-const Template: StoryFn<typeof ProfilePage> = () => (
-    <ProfilePage />
+const Template: StoryFn<typeof ProfileCard> = (args) => (
+    <ProfileCard {...args} />
 );
 
 export const Light = Template.bind({});

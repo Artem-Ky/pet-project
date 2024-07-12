@@ -8,6 +8,7 @@ export enum ButtonVariant {
     OUTLINE = 'outline',
 }
 export enum ButtonColor {
+    NO_COLOR = 'no-color',
     WHITE = 'white',
     WHITE_DARK = 'white-dark',
     LIGHT_WHITE = 'light-white',
@@ -20,6 +21,7 @@ export enum ButtonOutlineColor {
 }
 
 export enum ButtonSize {
+    NO_SIZE = 'no-size',
     SMALL = 'small',
     MEDIUM = 'medium',
     LARGE = 'large',
@@ -62,16 +64,16 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     disabled?: boolean;
 }
 
-export const Button: FC<ButtonProps> = memo((props:ButtonProps) => {
+export const Button: FC<ButtonProps> = memo((props: ButtonProps) => {
     const {
         children,
         classNames = [],
-        variant,
+        variant = ButtonVariant.CLEAR,
         type = 'button',
         fullWidth = false,
-        color,
-        size,
-        outlineColor,
+        color = ButtonColor.NO_COLOR,
+        size = ButtonSize.NO_SIZE,
+        outlineColor = ButtonOutlineColor.Gray_White,
         disabled,
         isSquare,
         ...otherProps

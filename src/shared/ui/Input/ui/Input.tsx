@@ -41,7 +41,7 @@ export const Input: FC<InputProps> = memo((props) => {
         value,
         onChange,
         autoFocus,
-        size,
+        size = InputSize.MEDIUM,
         ...otherProps
     } = props;
     const [inputType, setInputType] = useState<React.HTMLInputTypeAttribute>(type);

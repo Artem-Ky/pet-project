@@ -11,8 +11,8 @@ export default {
     },
 } as Meta<typeof NotFoundPage>;
 
-const Template: StoryFn<typeof NotFoundPage> = (args) => (
-    <NotFoundPage {...args} />
+const Template: StoryFn<typeof NotFoundPage> = () => (
+    <NotFoundPage />
 );
 
 export const Light = Template.bind({});

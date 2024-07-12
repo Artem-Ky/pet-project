@@ -1,0 +1,30 @@
+.ProfileCard {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+.label {
+    display: inline-block;
+    width: auto;
+}
+
+.name {
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+    width: var(--input-width-m);
+}
