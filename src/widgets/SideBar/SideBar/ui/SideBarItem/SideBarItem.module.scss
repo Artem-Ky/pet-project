@@ -1,8 +1,3 @@
-.linkItem {
-    display: flex;
-    align-items: center;
-    column-gap: 8px;
-}
 
 .linkIcon {
     stroke: none;
@@ -12,8 +7,23 @@
     margin-top: -1.25px;
 }
 
+.Active {
+    background-color: var(--green-grey-color-dark);
+    border-radius: var(--border-radius-small);
+}
+
 .link {
     opacity: 1;
+}
+
+.linkItem {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+}
+
+.item {
+    padding-left: 30px;
 }
 
 .Close {
@@ -21,5 +31,15 @@
         opacity: 0;
         width: 0;
         transition: opacity 0.2s;
+    }
+
+}
+
+.CloseItem {
+    padding-left: 0;
+    margin-inline: 11px;
+
+    .linkItem {
+        column-gap: 0;
     }
 }

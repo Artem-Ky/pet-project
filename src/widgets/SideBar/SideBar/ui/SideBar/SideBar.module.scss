@@ -1,20 +1,14 @@
 .SideBar {
-    padding-block: 20px;
+    padding-block: 32px;
+    padding-inline: 10px;
     background-color: var(--main-color);
-    height: calc(100vh - var(--nav-bar-height));
+    height: 100vh;
     position: relative;
     transition: width 0.3s;
     width: var(--side-bar-width);
     font: var(--font-inter-lg-regular);
-}
-
-.switchers {
-    bottom: 60px;
-    column-gap: 20px;
-    display: flex;
-    justify-content: center;
-    position: absolute;
-    width: 100%;
+    border-top-right-radius: var(--border-radius-sidebar);
+    border-bottom-right-radius: var(--border-radius-sidebar);
 }
 
 .closeBtn {
@@ -27,17 +21,18 @@
 .linksList {
     display: flex;
     flex-direction: column;
-    row-gap: 20px;
-    padding-inline: 10px;
+
+    &:not(:first-child) {
+        margin-top: 28px;
+    }
+
+    &:first-child {
+        margin-top: 52px;
+    }
 }
 
 .Close {
     width: var(--side-bar-width-close);
-
-    .switchers {
-        flex-direction: column;
-        row-gap: 20px;
-    }
 
     .linksList {
         justify-content: center;
@@ -45,3 +40,8 @@
     }
 
 }
+
+.title {
+    margin-left: 30px;
+}
+

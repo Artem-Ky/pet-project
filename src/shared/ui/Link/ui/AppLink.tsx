@@ -4,8 +4,8 @@ import { FC, memo } from 'react';
 import cls from './AppLink.module.scss';
 
 export enum AppLinkTheme {
-    PRIMARY = 'primary',
-    SECONDARY = 'secondary',
+    WHITE = 'white',
+    MAIN_COLOR = 'main-color',
 }
 
 interface AppLinkProps extends LinkProps {
@@ -17,25 +17,23 @@ export const AppLink: FC<AppLinkProps> = memo((props: AppLinkProps) => {
     const {
         classNames = [],
         children,
-        theme = AppLinkTheme.PRIMARY,
+        theme = AppLinkTheme.WHITE,
         to,
         ...otherProps
     } = props;
     const cn = cnBind.bind(cls);
 
     return (
-        <li>
-            <Link
-                to={to}
-                className={cn(
-                    cls.AppLink,
-                    [cls[theme]],
-                    ...classNames.map((clsName) => cls[clsName] || clsName),
-                )}
-                {...otherProps}
-            >
-                {children}
-            </Link>
-        </li>
+        <Link
+            to={to}
+            className={cn(
+                cls.AppLink,
+                [cls[theme]],
+                ...classNames.map((clsName) => cls[clsName] || clsName),
+            )}
+            {...otherProps}
+        >
+            {children}
+        </Link>
     );
 });

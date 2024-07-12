@@ -46,22 +46,18 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
             </div>
             <div className={cls.form}>
                 <div className={cls.name}>
-                    <label className={cls.label} htmlFor="firstName">
-                        {t('Имя', { ns: 'profile' })}
-                        <Input
-                            id="firstName"
-                            value={data?.first}
-                            placeholder={t('Ваше имя', { ns: 'profile' })}
-                        />
-                    </label>
-                    <label className={cls.label} htmlFor="lastName">
-                        {t('Фамилия', { ns: 'profile' })}
-                        <Input
-                            id="lastName"
-                            value={data?.lastname}
-                            placeholder={t('Ваша фамилия', { ns: 'profile' })}
-                        />
-                    </label>
+                    <Text label={t('Имя', { ns: 'profile' })} className={cls.label} labelId="firstName" />
+                    <Input
+                        id="firstName"
+                        value={data?.first}
+                        placeholder={t('Ваше имя', { ns: 'profile' })}
+                    />
+                    <Text label={t('Фамилия', { ns: 'profile' })} className={cls.label} labelId="lastName" />
+                    <Input
+                        id="lastName"
+                        value={data?.lastname}
+                        placeholder={t('Ваша фамилия', { ns: 'profile' })}
+                    />
                 </div>
             </div>
         </div>

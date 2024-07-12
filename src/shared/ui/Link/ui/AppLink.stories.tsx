@@ -29,26 +29,26 @@ dark.decorators = [ThemeDecorator(Theme.DARK)];
 
 export const PRIMARY = Template.bind({});
 PRIMARY.args = {
-    theme: AppLinkTheme.PRIMARY,
+    theme: AppLinkTheme.MAIN_COLOR,
     children: 'Text',
 };
 
 export const PRIMARY_DARK = Template.bind({});
 PRIMARY_DARK.args = {
-    theme: AppLinkTheme.PRIMARY,
+    theme: AppLinkTheme.MAIN_COLOR,
     children: 'Text',
 };
 PRIMARY_DARK.decorators = [ThemeDecorator(Theme.DARK)];
 
 export const SECONDARY = Template.bind({});
 SECONDARY.args = {
-    theme: AppLinkTheme.SECONDARY,
+    theme: AppLinkTheme.WHITE,
     children: 'Text',
 };
 
 export const SECONDARY_DARK = Template.bind({});
 SECONDARY_DARK.args = {
-    theme: AppLinkTheme.SECONDARY,
+    theme: AppLinkTheme.WHITE,
     children: 'Text',
 };
 SECONDARY_DARK.decorators = [ThemeDecorator(Theme.DARK)];

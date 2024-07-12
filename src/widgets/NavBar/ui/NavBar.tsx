@@ -6,6 +6,8 @@ import { Button } from 'shared/ui/Button';
 import { ButtonVariant } from 'shared/ui/Button/ui/Button';
 import { LoginModal } from 'features/AuthByUsername';
 import { useSelector } from 'react-redux';
+import { ThemeSwitcher } from 'widgets/ThemeSwither';
+import { LangSwitcher } from 'widgets/LangSwitcher/ui/LangSwitcher';
 import { getUserAuthData, userActions } from 'entities/User';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import cls from './NavBar.module.scss';
@@ -34,6 +36,8 @@ export const NavBar: FC = memo(() => {
                 <Button variant={ButtonVariant.CLEAR} onClick={onLogOut}>
                     {t('Выйти')}
                 </Button>
+                <ThemeSwitcher />
+                <LangSwitcher />
             </div>
         );
     }
@@ -43,6 +47,8 @@ export const NavBar: FC = memo(() => {
             <Button variant={ButtonVariant.CLEAR} onClick={onOpenModal}>
                 {t('Войти')}
             </Button>
+            <ThemeSwitcher />
+            <LangSwitcher />
             {isAuthModalOpen && (
                 <LoginModal isOpen={isAuthModalOpen} onClose={onCloseModal} />
             )}

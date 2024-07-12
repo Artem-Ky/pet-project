@@ -26,13 +26,13 @@
     }
   ],
   "profile": {
-    "first": "Тимур",
-    "lastname": "Ульби",
+    "first": "Хомяк",
+    "lastname": "Тапальщик",
     "age": 22,
     "currency": "RUB",
     "country": "Russia",
     "city": "Moscow",
     "username": "admin",
-    "avatar": "https://pic.rutubelist.ru/user/3b/27/3b2758ad5492a76b578f7ee072e4e894.jpg"
+    "avatar": "https://s3-alpha-sig.figma.com/img/98db/eb1a/3733ecc49e308c67d78a0356258ab56e?Expires=1721606400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=pODYH-sfzVXF1kQBZgqdXheHdw4Bgwj2zAIN7BX-wNUFP-zEzlX29oSQ-970NmXFDHSRdmtoVYPldb4D5ikRaYDqvHlDxnq2kbEydCzjkcYcW9L~gBTAjJES~rx3vZIO89L5DFH4itJs52EJqAruFwnQyEvhJy3kFrXvlGVQGCOnGglq8BqvxWZilMvbjX6Gk-2cykl-i4hnHdb~GiyPsdY5QmBytPAfDw8cnoi2rDkvBpanWFFhi~t5N15-y8tBWoVQ~dWvP41wddOA9kJQQDESV2pa6h5gHcHtHbDlVZt1A5fYgWGDjaps5w7LM3SexKFZjDEhCkf~OECcKVhZsw__"
   }
 }

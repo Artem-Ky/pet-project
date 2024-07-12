@@ -26,7 +26,7 @@
 
     --font-inter-xxl-semibold: normal 600 24px 'Inter', sans-serif;
     --font-inter-lg-semibold: normal 600 16px 'Inter', sans-serif;
-    --font-inter-lg-regular: normal 400 16px 'Inter', sans-serif;
+    --font-inter-lg-regular: normal 400 16px/19.4px 'Inter', sans-serif;
     --font-inter-md-semibold: normal 600 14px 'Inter', sans-serif;
     --font-inter-md-regular: normal 400 14px 'Inter', sans-serif;
     --font-inter-sm-semibold: normal 600 12px 'Inter', sans-serif;
@@ -34,18 +34,20 @@
 
     /* Tuffy */
 
-    --font-tuffy-md-bold: normal 700 16px 'Tuffy', sans-serif;
+    --font-tuffy-md-bold: normal 700 16px/24px 'Tuffy', sans-serif;
 
     //  компоненты
 
     --button-height: 68px;
-    --nav-bar-height: 50px;
+    --nav-bar-height: 27px;
     --side-bar-width: 300px;
     --side-bar-width-close: 55px;
+    --link-height: 38px;
 
     //  остальное
     
     --border-radius-small: 7px;
+    --border-radius-sidebar: 10px;
     --border-radius-medium: 12px;
     --font-family-base: 'Inter', 'sans-serif';
     --transition-duration: 0.2s;

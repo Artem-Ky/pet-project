@@ -17,13 +17,13 @@ export const SideBarItemsList: SideBarItemType[] = [
         text: 'Главная страница',
     },
     {
-        path: RoutePath.about,
-        Icon: AboutIcon,
-        text: 'Страница о нас',
-    },
-    {
         path: RoutePath.profile,
         Icon: ProfileIcon,
         text: 'Профиль',
+    },
+    {
+        path: RoutePath.about,
+        Icon: AboutIcon,
+        text: 'Страница о нас',
     },
 ];

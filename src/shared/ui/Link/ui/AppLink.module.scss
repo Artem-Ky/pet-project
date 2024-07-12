@@ -2,12 +2,13 @@
 
 .AppLink {
     color: var(--light-color);
+    height: var(--link-height);
 }
 
-.primary {
+.main-color {
     color: var(--main-color);
 }
 
-.secondary {
-    color: var(--accent-color);
+.white {
+    color: var(--light-color);
 }

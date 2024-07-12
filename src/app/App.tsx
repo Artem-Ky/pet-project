@@ -16,10 +16,12 @@ const App = () => {
     return (
         <div className={classNames('app')}>
             <Suspense fallback="">
-                <NavBar />
                 <div className="content-page">
                     <SideBar />
-                    <Router />
+                    <div className="content">
+                        <NavBar />
+                        <Router />
+                    </div>
                 </div>
             </Suspense>
         </div>

@@ -2,10 +2,13 @@
 .NavBar {
     width: 100%;
     height: var(--nav-bar-height);
-    background-color: var(--main-color);
+    background-color: var(--bg-color);
     color: var(--main-font-color);
-    padding-inline: 20px;
+    padding-inline: 40px;
+    margin-top: 32px;
     display: flex;
-    justify-content: flex-end;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
     align-items: center;
+    column-gap: 24px;
 }
