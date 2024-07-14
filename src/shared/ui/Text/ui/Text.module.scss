@@ -1,6 +1,36 @@
-.title,
-.text {
-    color: var(--main-font-color);
+.main {
+    .title,
+    .text {
+        color: var(--main-font-color);
+    }
+}
+
+.black-white {
+    .title,
+    .text {
+        color: var(--main-font-color);
+    }
+}
+
+.white {
+    .title,
+    .text {
+        color: var(--light-color);
+    }
+}
+
+.white-gray {
+    .title,
+    .text {
+        color: var(--sub-font-color-alt);
+    }
+}
+
+.gray {
+    .title,
+    .text {
+        color: var(--gray-color);
+    }
 }
 
 .error {
@@ -14,10 +44,7 @@
 }
 
 .inverted {
-    .title {
-        color: var(--inverted-font-color);
-    }
-
+    .title,
     .text {
         color: var(--inverted-font-color);
     }

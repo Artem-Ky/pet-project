@@ -24,13 +24,13 @@
 
     /* Inter */
 
-    --font-inter-xxl-semibold: normal 600 24px 'Inter', sans-serif;
-    --font-inter-lg-semibold: normal 600 16px 'Inter', sans-serif;
+    --font-inter-xxl-semibold: normal 600 24px/29px 'Inter', sans-serif;
+    --font-inter-lg-semibold: normal 600 16px/19.4px 'Inter', sans-serif;
     --font-inter-lg-regular: normal 400 16px/19.4px 'Inter', sans-serif;
-    --font-inter-md-semibold: normal 600 14px 'Inter', sans-serif;
-    --font-inter-md-regular: normal 400 14px 'Inter', sans-serif;
-    --font-inter-sm-semibold: normal 600 12px 'Inter', sans-serif;
-    --font-inter-sm-regular: normal 400 12px 'Inter', sans-serif;
+    --font-inter-md-semibold: normal 600 14px/17px 'Inter', sans-serif;
+    --font-inter-md-regular: normal 400 14px/17px 'Inter', sans-serif;
+    --font-inter-sm-semibold: normal 600 12px/14.5px 'Inter', sans-serif;
+    --font-inter-sm-regular: normal 400 12px/14.5px 'Inter', sans-serif;
 
     /* Tuffy */
 
@@ -39,7 +39,7 @@
     //  компоненты
 
     --button-height: 68px;
-    --nav-bar-height: 27px;
+    --nav-bar-height: 47px;
     --side-bar-width: 300px;
     --side-bar-width-close: 55px;
     --link-height: 38px;
@@ -69,16 +69,23 @@
     //  инпуты
 
     //  small
-    --input-height-s: 40px;
-    --input-width-s: 130px;
+    --input-height-s: 38px;
+    --input-width-s: 128px;
 
     //  medium
-    --input-height-m: 40px;
-    --input-width-m: 220px;
+    --input-height-m: 38px;
+    --input-width-m: 218px;
 
     //  large
-    --input-height-l: 43px;
-    --input-width-l: 463px;
+    --input-height-l: 41px;
+    --input-width-l: 461px;
+
+    //  avatar
+    --avatar-round-small: 16px;
+    --avatar-round-medium: 24px;
+    --avatar-round-large: 32px;
+    --avatar-square-big-height: 173px;
+    --avatar-square-big-width: 135px;
 
 
 

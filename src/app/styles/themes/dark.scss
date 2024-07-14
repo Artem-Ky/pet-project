@@ -20,13 +20,13 @@
     // sub font color
 
     --sub-font-color: var(--gray-color-light);
-    --sub-font-color-alt: var(--gray-color-light);
+    --sub-font-color-alt: var(--light-color);
 
     // input color
 
     --input-color: var(--gray-color-alt);
     --input-color-light: var(--gray-color);
-    --input-colo-dark: var(--gray-color-dark);
+    --input-color-dark: var(--gray-color-dark);
 
     //  button color
 
@@ -60,4 +60,11 @@
 
     --input-bg: var(--gray-color-dark);
     --input-active-bg: var(--gray-color-alt);
+    --input-readonly-bg: var(--input-color-light);
+
+    //  select color
+
+    --select-bg: var(--gray-color-dark);
+    --select-item-bg: var(--gray-color);
+    --select-item-border-bottom: var(--gray-color-light);
 }

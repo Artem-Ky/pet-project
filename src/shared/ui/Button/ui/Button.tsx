@@ -4,6 +4,7 @@ import cnBind from 'classnames/bind';
 import cls from './Button.module.scss';
 
 export enum ButtonVariant {
+    DEFAULT,
     CLEAR = 'clear',
     OUTLINE = 'outline',
 }
@@ -12,6 +13,7 @@ export enum ButtonColor {
     WHITE = 'white',
     WHITE_DARK = 'white-dark',
     LIGHT_WHITE = 'light-white',
+    ALT_WHITE_DARK_GRAY = 'select'
 }
 export enum ButtonOutlineColor {
     Success = 'outline-success',
@@ -68,7 +70,7 @@ export const Button: FC<ButtonProps> = memo((props: ButtonProps) => {
     const {
         children,
         classNames = [],
-        variant = ButtonVariant.CLEAR,
+        variant = ButtonVariant.DEFAULT,
         type = 'button',
         fullWidth = false,
         color = ButtonColor.NO_COLOR,

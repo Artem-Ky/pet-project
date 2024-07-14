@@ -4,6 +4,10 @@ import cls from './Text.module.scss';
 
 export enum TextTheme {
     MAIN = 'primary',
+    BLACK_WHITE = 'black-white',
+    WHITE = 'white',
+    WHITE_GRAY = 'white-gray',
+    GRAY = 'gray',
     INVERTED = 'inverted',
     ERROR = 'error',
 }

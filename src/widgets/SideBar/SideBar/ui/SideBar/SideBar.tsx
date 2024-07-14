@@ -4,7 +4,7 @@ import {
 import cnBind from 'classnames/bind';
 import { Button } from 'shared/ui/Button';
 import { ButtonSize, ButtonVariant } from 'shared/ui/Button/ui/Button';
-import { Text, TextSize } from 'shared/ui/Text/ui/Text';
+import { Text, TextSize, TextTheme } from 'shared/ui/Text/ui/Text';
 import { useLocation } from 'react-router-dom';
 import cls from './SideBar.module.scss';
 import { SideBarItemsList } from '../../model/items';
@@ -21,7 +21,12 @@ export const SideBar: FC = memo(() => {
 
     const itemsList = useMemo(
         () => SideBarItemsList.map((item) => (
-            <SideBarItem isActive={item.path === location.pathname} Item={item} isClose={isClose} key={item.path} />
+            <SideBarItem
+                isActive={item.path === location.pathname}
+                Item={item}
+                isClose={isClose}
+                key={item.path}
+            />
         )),
         [isClose, location.pathname],
     );
@@ -31,7 +36,14 @@ export const SideBar: FC = memo(() => {
             data-testid="sidebar"
             className={cn(cls.SideBar, { [cls.Close]: isClose })}
         >
-            {!isClose && <Text className={cls.title} title="Toad App" size={TextSize.XL_TITLE} />}
+            {!isClose && (
+                <Text
+                    className={cls.title}
+                    theme={TextTheme.WHITE}
+                    title="Toad App"
+                    size={TextSize.XL_TITLE}
+                />
+            )}
             <ul className={cls.linksList}>{itemsList}</ul>
             <Button
                 variant={ButtonVariant.CLEAR}

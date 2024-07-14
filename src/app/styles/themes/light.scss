@@ -26,7 +26,7 @@
 
     --input-color: var(--light-color-alt);
     --input-color-light: var(--light-color-alt);
-    --input-colo-dark: var(--light-color-alt);
+    --input-color-dark: var(--light-color-alt);
 
     //  button color
 
@@ -60,4 +60,11 @@
 
     --input-bg: var(--light-color-alt);
     --input-active-bg: var(--light-color);
+    --input-readonly-bg: var(--light-color-alt);
+
+    //  select color
+
+    --select-bg: var(--light-color-alt);
+    --select-item-bg: var(--light-color);
+    --select-item-border-bottom: var(--gray-color);
 }

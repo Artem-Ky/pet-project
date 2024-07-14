@@ -1,0 +1,27 @@
+.Avatar {
+    object-fit: cover;
+}
+
+.big-square {
+    width: var(--avatar-square-big-width);
+    height: var(--avatar-square-big-height);
+    border-radius: var(--border-radius-small);
+}
+
+.small-round {
+    width: var(--avatar-round-small);
+    height: var(--avatar-round-small);
+    border-radius: 50%;
+}
+
+.medium-round {
+    width: var(--avatar-round-medium);
+    height: var(--avatar-round-medium);
+    border-radius: 50%;
+}
+
+.large-round {
+    width: var(--avatar-round-large);
+    height: var(--avatar-round-large);
+    border-radius: 50%;
+}

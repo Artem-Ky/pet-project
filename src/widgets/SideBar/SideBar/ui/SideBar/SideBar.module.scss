@@ -3,7 +3,9 @@
     padding-inline: 10px;
     background-color: var(--main-color);
     height: 100vh;
-    position: relative;
+    position: sticky;
+    top: 0;
+    flex-shrink: 0;
     transition: width 0.3s;
     width: var(--side-bar-width);
     font: var(--font-inter-lg-regular);

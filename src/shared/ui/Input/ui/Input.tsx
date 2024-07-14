@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React, {
     FC,
     InputHTMLAttributes,
@@ -9,12 +8,11 @@ import React, {
 } from 'react';
 import cnBind from 'classnames/bind';
 import { Button } from 'shared/ui/Button';
-import { on } from 'events';
 import cls from './Input.module.scss';
 
 type HTMLInputProps = Omit<
     InputHTMLAttributes<HTMLInputElement>,
-    'value' | 'onChange' | 'size'
+    'value' | 'onChange' | 'size' | 'readOnly'
 >;
 
 export enum InputSize {
@@ -31,9 +29,11 @@ interface InputProps extends HTMLInputProps {
     onChange?: (value: string) => void;
     autoFocus?: boolean;
     size?: InputSize;
+    readonly?: boolean;
+    select?: boolean;
 }
 
-export const Input: FC<InputProps> = memo((props) => {
+export const Input: FC<InputProps> = memo((props: InputProps) => {
     const {
         classNames = [],
         id,
@@ -41,6 +41,8 @@ export const Input: FC<InputProps> = memo((props) => {
         value,
         onChange,
         autoFocus,
+        readonly,
+        select = false,
         size = InputSize.MEDIUM,
         ...otherProps
     } = props;
@@ -77,14 +79,16 @@ export const Input: FC<InputProps> = memo((props) => {
                 value={value}
                 onChange={onChangeValue}
                 className={cn(cls.Input, cls[size], {
+                    [cls.readOnly]: readonly,
                     'sr-only': type === 'checkbox' || type === 'radio',
                     [cls.checkbox]: type === 'checkbox',
                     [cls.radio]: type === 'radio',
                 })}
+                readOnly={readonly}
                 {...otherProps}
             />
             {type === 'checkbox' && <span className={cls.emulatorCheckBox} />}
-            {type === 'radio' && <span className={cls.emulatorRadioButton} />}
+            {type === 'radio' && !select && <span className={cls.emulatorRadioButton} />}
             {type === 'password' && (
                 <Button
                     classNames={[cls.showPasswordButton]}

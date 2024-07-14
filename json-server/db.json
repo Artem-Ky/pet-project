@@ -28,7 +28,8 @@
   "profile": {
     "first": "Хомяк",
     "lastname": "Тапальщик",
-    "age": 22,
+    "birthDate": "2001-04-21",
+    "age": "13.07.2002",
     "currency": "RUB",
     "country": "Russia",
     "city": "Moscow",
