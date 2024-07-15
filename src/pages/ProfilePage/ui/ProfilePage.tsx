@@ -4,9 +4,11 @@ import {
     getProfileForm,
     getProfileIsLoading,
     getProfileReadOnly,
+    getProfileValidateErrors,
     profileActions,
     ProfileCard,
     profileReducer,
+    ValidateProfileError,
 } from 'entities/Profile';
 import {
     FC, memo, useCallback, useEffect,
@@ -31,6 +33,27 @@ const ProfilePage: FC = memo(() => {
     const error = useSelector(getProfileError);
     const readonly = useSelector(getProfileReadOnly);
     const formData = useSelector(getProfileForm);
+    const validateErrors = useSelector(getProfileValidateErrors);
+
+    const ErrorProfileTranslate = {
+        [ValidateProfileError.SERVER_ERROR]: t(
+            'Ошибка сервера при сохранении',
+            { ns: 'profile' },
+        ),
+        [ValidateProfileError.INCORRECT_CURRENCY]: t('Не выбрана валюта', {
+            ns: 'profile',
+        }),
+        [ValidateProfileError.INCORRECT_USERNAME]: t('Отсутсвует username', {
+            ns: 'profile',
+        }),
+        [ValidateProfileError.INCORRECT_USER_DATA]: t(
+            'Отсутствует имя пользователя или его фамилия',
+            { ns: 'profile' },
+        ),
+        [ValidateProfileError.NO_DATA]: t('ошибка получения вашего профиля', {
+            ns: 'profile',
+        }),
+    };
 
     useEffect(() => {
         dispatch(fetchProfileData());
@@ -96,6 +119,10 @@ const ProfilePage: FC = memo(() => {
                     theme={TextTheme.BLACK_WHITE}
                     title={t('Профиль', { ns: 'profile' })}
                 />
+                {validateErrors?.length
+                    && validateErrors.map((item) => (
+                        <Text theme={TextTheme.ERROR} text={ErrorProfileTranslate[item]} key={item} />
+                    ))}
                 <ProfileCard
                     data={formData}
                     isLoading={isLoading}
