@@ -31,6 +31,18 @@ export enum SelectItemType {
     BUTTON,
 }
 
+export enum SelectItemWidth {
+    SMALL = 'width-small',
+    MEDIUM = 'width-medium',
+    LARGE = 'width-large',
+}
+
+export enum SelectItemHeight {
+    SMALL = 'height-small',
+    MEDIUM = 'height-medium',
+    LARGE = 'height-large',
+}
+
 type SelectOptionBase = {
     label: string;
     type: SelectItemType;
@@ -69,6 +81,9 @@ interface SelectProps {
     openSide?: SelectOpenSide;
     onChange?: (value?: string) => void;
     readonly?: boolean;
+    fullWidth?: boolean;
+    height?: SelectItemHeight;
+    width?: SelectItemWidth;
 }
 
 export const Select: FC<SelectProps> = memo((props: SelectProps) => {
@@ -81,6 +96,9 @@ export const Select: FC<SelectProps> = memo((props: SelectProps) => {
         openSide = SelectOpenSide.DEFAULT,
         onChange,
         title,
+        fullWidth,
+        height = SelectItemHeight.MEDIUM,
+        width = SelectItemWidth.MEDIUM,
     } = props;
 
     const [isOpen, setIsOpen] = useState(false);
@@ -169,6 +187,8 @@ export const Select: FC<SelectProps> = memo((props: SelectProps) => {
                     cn({
                         [cls.buttonSelect]: type === SelectType.DEFAULT,
                         [cls.readonly]: readonly,
+                        [cls[height]]: type === SelectType.DEFAULT,
+                        [cls[width]]: type === SelectType.DEFAULT,
                         [cls.buttonSelectOpen]:
                             type === SelectType.DEFAULT && isOpen,
                     }),
@@ -200,6 +220,7 @@ export const Select: FC<SelectProps> = memo((props: SelectProps) => {
                     className={cn(cls.selectDropdownList, cls[openSide], {
                         [cls.active]: isOpen,
                         [cls.iconList]: type === SelectType.ICON,
+                        [cls.fillWidth]: fullWidth,
                     })}
                     role="listbox"
                     id="select-dropdown"
@@ -208,6 +229,9 @@ export const Select: FC<SelectProps> = memo((props: SelectProps) => {
                         <li
                             role="option"
                             key={item.label}
+                            className={cn(cls[height], cls[width], {
+                                [cls.fillWidth]: fullWidth,
+                            })}
                             aria-selected={selectedOption === item.label}
                             tabIndex={0}
                             onClick={(e) => (item.type === SelectItemType.DEFAULT
@@ -240,7 +264,10 @@ export const Select: FC<SelectProps> = memo((props: SelectProps) => {
                                     <Text
                                         size={TextSize.M}
                                         align={TextAlign.CENTER}
-                                        theme={item.textTheme || TextTheme.BLACK_WHITE}
+                                        theme={
+                                            item.textTheme
+                                            || TextTheme.BLACK_WHITE
+                                        }
                                         label={item.label}
                                         labelId={item.label}
                                     />
@@ -252,7 +279,10 @@ export const Select: FC<SelectProps> = memo((props: SelectProps) => {
                                     <Text
                                         size={TextSize.M}
                                         align={TextAlign.CENTER}
-                                        theme={item.textTheme || TextTheme.BLACK_WHITE}
+                                        theme={
+                                            item.textTheme
+                                            || TextTheme.BLACK_WHITE
+                                        }
                                         label={item.label}
                                         labelId={item.label}
                                     />
@@ -264,7 +294,10 @@ export const Select: FC<SelectProps> = memo((props: SelectProps) => {
                                     <Text
                                         size={TextSize.M}
                                         align={TextAlign.CENTER}
-                                        theme={item.textTheme || TextTheme.BLACK_WHITE}
+                                        theme={
+                                            item.textTheme
+                                            || TextTheme.BLACK_WHITE
+                                        }
                                         label={item.label}
                                         labelId={item.label}
                                     />

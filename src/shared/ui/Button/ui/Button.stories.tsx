@@ -42,6 +42,11 @@ export default {
             control: 'boolean',
             description: 'Ширина кнопки 100%',
         },
+        // Контроль отключения кнопки
+        disabled: {
+            control: 'boolean',
+            description: 'disabled button',
+        },
     },
 } as Meta<typeof Button>;
 

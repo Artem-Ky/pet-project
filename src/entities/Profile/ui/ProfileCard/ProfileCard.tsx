@@ -103,7 +103,7 @@ export const ProfileCard: FC<ProfileCardProps> = (props: ProfileCardProps) => {
                         theme={TextTheme.BLACK_WHITE}
                     />
                     <div className={cls.InputsWrapper}>
-                        <div>
+                        <div className={cls.InputWrapper}>
                             <Text
                                 label={t('Имя', { ns: 'profile' })}
                                 size={TextSize.S}
@@ -119,7 +119,7 @@ export const ProfileCard: FC<ProfileCardProps> = (props: ProfileCardProps) => {
                                 readonly={readonly}
                             />
                         </div>
-                        <div>
+                        <div className={cls.InputWrapper}>
                             <Text
                                 label={t('Фамилия', { ns: 'profile' })}
                                 size={TextSize.S}
@@ -139,7 +139,7 @@ export const ProfileCard: FC<ProfileCardProps> = (props: ProfileCardProps) => {
                         </div>
                     </div>
                     <div className={cls.InputsWrapper}>
-                        <div>
+                        <div className={cls.InputWrapper}>
                             <Text
                                 label={t('Дата рождения', { ns: 'profile' })}
                                 size={TextSize.S}
@@ -156,7 +156,7 @@ export const ProfileCard: FC<ProfileCardProps> = (props: ProfileCardProps) => {
                                 readonly={readonly}
                             />
                         </div>
-                        <div>
+                        <div className={cls.InputWrapper}>
                             <Text
                                 label={t('Город', { ns: 'profile' })}
                                 size={TextSize.S}
@@ -181,7 +181,7 @@ export const ProfileCard: FC<ProfileCardProps> = (props: ProfileCardProps) => {
                         className={cls.optionTitle}
                     />
                     <div className={cls.InputsWrapper}>
-                        <div>
+                        <div className={cls.InputWrapper}>
                             <Text
                                 label={t('Имя пользователя', { ns: 'profile' })}
                                 size={TextSize.S}
@@ -196,7 +196,7 @@ export const ProfileCard: FC<ProfileCardProps> = (props: ProfileCardProps) => {
                                 readonly={readonly}
                             />
                         </div>
-                        <div>
+                        <div className={cls.InputWrapper}>
                             <Text
                                 label={t('Ссылка на аватар', { ns: 'profile' })}
                                 size={TextSize.S}
@@ -216,7 +216,7 @@ export const ProfileCard: FC<ProfileCardProps> = (props: ProfileCardProps) => {
                         </div>
                     </div>
                     <div className={cls.InputsWrapper}>
-                        <div>
+                        <div className={cls.InputWrapper}>
                             <Text
                                 label={t('Валюта', { ns: 'profile' })}
                                 size={TextSize.S}

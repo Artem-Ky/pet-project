@@ -2,6 +2,7 @@
 
 .Select {
     position: relative;
+    display: inline-block;
 }
 
 .buttonSelect {
@@ -76,8 +77,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        min-width: 93px;
-        min-height: 40px;
 
         @include hover{
             background-color: var(--select-item-bg);
@@ -124,4 +123,32 @@
 .center {
     right: -50%;
 
+}
+
+.width-small {
+    width: var(--select-width-small);
+}
+
+.width-medium {
+    width: var(--select-width-medium);
+}
+
+.width-large {
+    width: var(--select-width-large);
+}
+
+.height-small {
+    height: var(--select-height-small);
+}
+
+.height-medium {
+    height: var(--select-height-medium);
+}
+
+.height-large {
+    height: var(--select-height-large);
+}
+
+.fillWidth {
+    width: 100%;
 }

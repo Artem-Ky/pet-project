@@ -20,7 +20,6 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Text, TextSize, TextTheme } from 'shared/ui/Text/ui/Text';
 import { useSelector } from 'react-redux';
 import { Country } from 'shared/const/common';
-import { Select } from 'shared/ui/Select';
 import { Currency } from 'entities/CurrencySelect';
 import cls from './ProfilePage.module.scss';
 import { ProfileFooter } from './ProfileFooter/ProfileFooter';
@@ -110,7 +109,7 @@ const ProfilePage: FC = memo(() => {
                     onChangeAvatar={onChangeAvatar}
                     onChangeCurrency={onChangeCurrency}
                 />
-                <ProfileFooter />
+                <ProfileFooter error={error !== undefined || isLoading} />
             </div>
         </DynamicModuleLoader>
     );

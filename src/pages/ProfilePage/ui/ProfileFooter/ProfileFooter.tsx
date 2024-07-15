@@ -1,4 +1,6 @@
-import { FC, useCallback, useState } from 'react';
+import {
+    FC, memo, useCallback, useState,
+} from 'react';
 import cnBind from 'classnames/bind';
 import { Button } from 'shared/ui/Button';
 import {
@@ -8,16 +10,21 @@ import {
 } from 'shared/ui/Button/ui/Button';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { getProfileReadOnly, profileActions, updateProfileData } from 'entities/Profile';
+import {
+    getProfileReadOnly,
+    profileActions,
+    updateProfileData,
+} from 'entities/Profile';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import cls from './ProfileFooter.module.scss';
 
 interface ProfileFooterProps {
     classNames?: string[];
+    error?: boolean;
 }
 
-export const ProfileFooter: FC<ProfileFooterProps> = (props) => {
-    const { classNames = [] } = props;
+export const ProfileFooter: FC<ProfileFooterProps> = memo((props: ProfileFooterProps) => {
+    const { classNames = [], error } = props;
     const cn = cnBind.bind(cls);
     const { t } = useTranslation('profile');
     const dispatch = useAppDispatch();
@@ -35,6 +42,10 @@ export const ProfileFooter: FC<ProfileFooterProps> = (props) => {
     const onSave = useCallback(() => {
         dispatch(updateProfileData());
     }, [dispatch]);
+
+    if (error) {
+        return null;
+    }
 
     return (
         <div className={cls.ButtonsWrapper}>
@@ -68,4 +79,4 @@ export const ProfileFooter: FC<ProfileFooterProps> = (props) => {
             )}
         </div>
     );
-};
+});

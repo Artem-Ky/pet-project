@@ -8,16 +8,21 @@ export default {
     component: Input,
     argTypes: {
         backgroundColor: { control: 'color' },
-        // Контроль размера кнопки
+        // Контроль размера инпута
         size: {
             control: 'select',
             options: Object.values(InputSize),
-            description: 'Размер кнопки',
+            description: 'Контроль размера инпута',
         },
         //  вся ширина
         fullWidth: {
             control: 'boolean',
-            description: 'Ширина кнопки 100%',
+            description: 'Ширина инпута 100%',
+        },
+        //  disabled input
+        readonly: {
+            control: 'boolean',
+            description: 'disabled',
         },
     },
 } as Meta<typeof Input>;
