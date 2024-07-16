@@ -71,3 +71,15 @@ DarkEdit.args = {
     },
 };
 DarkEdit.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({})];
+
+export const LightError = Template.bind({});
+LightError.args = {
+    error: 'Пример ошибки!',
+};
+LightError.decorators = [StoreDecorator({})];
+
+export const DarkError = Template.bind({});
+DarkError.args = {
+    error: 'Пример ошибки!',
+};
+DarkError.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({})];

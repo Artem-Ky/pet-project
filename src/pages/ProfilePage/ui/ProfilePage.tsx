@@ -56,7 +56,9 @@ const ProfilePage: FC = memo(() => {
     };
 
     useEffect(() => {
-        dispatch(fetchProfileData());
+        if (__PROJECT__ !== 'storybook') {
+            dispatch(fetchProfileData());
+        }
     }, [dispatch]);
     const reducers: ReducersList = {
         profile: profileReducer,
@@ -121,7 +123,11 @@ const ProfilePage: FC = memo(() => {
                 />
                 {validateErrors?.length
                     && validateErrors.map((item) => (
-                        <Text theme={TextTheme.ERROR} text={ErrorProfileTranslate[item]} key={item} />
+                        <Text
+                            theme={TextTheme.ERROR}
+                            text={ErrorProfileTranslate[item]}
+                            key={item}
+                        />
                     ))}
                 <ProfileCard
                     data={formData}

@@ -21,3 +21,20 @@ Light.decorators = [StoreDecorator({})];
 export const Dark = Template.bind({});
 Dark.args = {};
 Dark.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({})];
+
+export const LightAuth = Template.bind({});
+LightAuth.args = {};
+LightAuth.decorators = [
+    StoreDecorator({
+        user: { authData: {} },
+    }),
+];
+
+export const DarkAuth = Template.bind({});
+DarkAuth.args = {};
+DarkAuth.decorators = [
+    ThemeDecorator(Theme.DARK),
+    StoreDecorator({
+        user: { authData: {} },
+    }),
+];
