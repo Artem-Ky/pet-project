@@ -33,6 +33,13 @@
     }
 }
 
+.gray-light {
+    .title,
+    .text {
+        color: var(--gray-color-light);
+    }
+}
+
 .error {
     .title {
         color: var(--accent-color);

@@ -8,6 +8,7 @@ export enum TextTheme {
     WHITE = 'white',
     WHITE_GRAY = 'white-gray',
     GRAY = 'gray',
+    GRAY_LIGHT = 'gray-light',
     INVERTED = 'inverted',
     ERROR = 'error',
 }

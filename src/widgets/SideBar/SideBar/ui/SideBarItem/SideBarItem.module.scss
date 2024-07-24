@@ -1,10 +1,16 @@
 
 .linkIcon {
+    margin-top: -1.25px;
+}
+
+.fill-no-stroke {
     stroke: none;
     fill: var(--light-color);
-    height: 16px;
-    width: 16px;
-    margin-top: -1.25px;
+}
+
+.stroke-no-fill {
+    stroke: var(--light-color);
+    fill: none;
 }
 
 .Active {

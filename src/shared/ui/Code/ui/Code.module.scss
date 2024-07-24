@@ -1,0 +1,24 @@
+.CodeContainer {
+    position: relative;
+    border: 1px solid var(--main-font-color);
+    padding: 20px;
+    overflow: auto;
+}
+
+.Code {
+    position: relative;
+    padding: 20px;
+    overflow: auto;
+    white-space: pre;
+}
+
+.copyBtn {
+    position: sticky;
+    left: 100%;
+    top: 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1;
+
+}

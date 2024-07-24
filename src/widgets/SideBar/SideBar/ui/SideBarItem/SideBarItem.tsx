@@ -6,6 +6,7 @@ import cnBind from 'classnames/bind';
 import { Text, TextSize, TextTheme } from 'shared/ui/Text/ui/Text';
 import { useSelector } from 'react-redux';
 import { getUserAuthData } from 'entities/User';
+import { Icon } from 'shared/ui/Icon';
 import cls from './SideBarItem.module.scss';
 import { SideBarItemType } from '../../model/items';
 
@@ -43,7 +44,7 @@ export const SideBarItem = memo(
                     theme={AppLinkTheme.WHITE}
                     to={Item.path}
                 >
-                    <Item.Icon className={cls.linkIcon} />
+                    <Icon icon={Item.Icon} variant={Item.IconType} classNames={[cls.linkIcon]} />
                     <Text
                         size={TextSize.L}
                         theme={TextTheme.WHITE}
