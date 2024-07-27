@@ -23,6 +23,8 @@ import { Text, TextSize, TextTheme } from 'shared/ui/Text/ui/Text';
 import { useSelector } from 'react-redux';
 import { Country } from 'shared/const/common';
 import { Currency } from 'entities/CurrencySelect';
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
+import { useParams } from 'react-router-dom';
 import cls from './ProfilePage.module.scss';
 import { ProfileFooter } from './ProfileFooter/ProfileFooter';
 
@@ -34,6 +36,7 @@ const ProfilePage: FC = memo(() => {
     const readonly = useSelector(getProfileReadOnly);
     const formData = useSelector(getProfileForm);
     const validateErrors = useSelector(getProfileValidateErrors);
+    const { id } = useParams<{ id: string }>();
 
     const ErrorProfileTranslate = {
         [ValidateProfileError.SERVER_ERROR]: t(
@@ -55,11 +58,14 @@ const ProfilePage: FC = memo(() => {
         }),
     };
 
-    useEffect(() => {
-        if (__PROJECT__ !== 'storybook') {
-            dispatch(fetchProfileData());
+    useInitialEffect(() => {
+        dispatch(fetchProfileData('1'));
+        if (id) {
+            console.log(id);
+            dispatch(fetchProfileData(id));
         }
-    }, [dispatch]);
+    });
+
     const reducers: ReducersList = {
         profile: profileReducer,
     };

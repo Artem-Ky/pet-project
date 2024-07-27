@@ -108,7 +108,7 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
         );
     } else {
         content = (
-            <div className={cls.content}>
+            <div>
                 <Text
                     title={article?.title}
                     theme={TextTheme.BLACK_WHITE}

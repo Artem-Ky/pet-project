@@ -31,6 +31,7 @@ interface InputProps extends HTMLInputProps {
     size?: InputSize;
     readonly?: boolean;
     select?: boolean;
+    fullWidth?: boolean;
 }
 
 export const Input: FC<InputProps> = memo((props: InputProps) => {
@@ -44,6 +45,7 @@ export const Input: FC<InputProps> = memo((props: InputProps) => {
         readonly,
         select = false,
         size = InputSize.MEDIUM,
+        fullWidth,
         ...otherProps
     } = props;
     const [inputType, setInputType] = useState<React.HTMLInputTypeAttribute>(type);
@@ -69,6 +71,7 @@ export const Input: FC<InputProps> = memo((props: InputProps) => {
         <div
             className={cn(
                 cls.inputWrapper,
+                { [cls.fullWidth]: fullWidth },
                 ...classNames.map((clsName) => cls[clsName] || clsName),
             )}
         >
@@ -79,6 +82,7 @@ export const Input: FC<InputProps> = memo((props: InputProps) => {
                 value={value}
                 onChange={onChangeValue}
                 className={cn(cls.Input, cls[size], {
+                    [cls.fullWidth]: fullWidth,
                     [cls.readOnly]: readonly,
                     'sr-only': type === 'checkbox' || type === 'radio',
                     [cls.checkbox]: type === 'checkbox',
@@ -88,7 +92,9 @@ export const Input: FC<InputProps> = memo((props: InputProps) => {
                 {...otherProps}
             />
             {type === 'checkbox' && <span className={cls.emulatorCheckBox} />}
-            {type === 'radio' && !select && <span className={cls.emulatorRadioButton} />}
+            {type === 'radio' && !select && (
+                <span className={cls.emulatorRadioButton} />
+            )}
             {type === 'password' && (
                 <Button
                     classNames={[cls.showPasswordButton]}

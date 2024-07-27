@@ -5,6 +5,7 @@ import { Currency } from 'entities/CurrencySelect';
 import { updateProfileData } from './updateProfileData';
 
 const data = {
+    id: '1',
     first: 'toad',
     lastname: '505',
     birthDate: '2003-06-07',

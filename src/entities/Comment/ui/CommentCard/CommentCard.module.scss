@@ -1,0 +1,23 @@
+@import 'app/styles/index';
+
+.CommentCard {
+    padding: 10px;
+    border: 1px solid var(--main-font-color);
+}
+
+.header {
+    display: flex;
+    align-items: center;
+
+    @include hover {
+        opacity: 0.7;
+    }
+}
+
+.text {
+    margin-top: 10px;
+}
+
+.username {
+    margin-left: 10px;
+}

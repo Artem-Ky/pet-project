@@ -11,11 +11,13 @@ import {
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import {
+    getProfileData,
     getProfileReadOnly,
     profileActions,
     updateProfileData,
 } from 'entities/Profile';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { getUserAuthData } from 'entities/User';
 import cls from './ProfileFooter.module.scss';
 
 interface ProfileFooterProps {
@@ -29,6 +31,10 @@ export const ProfileFooter: FC<ProfileFooterProps> = memo((props: ProfileFooterP
     const { t } = useTranslation('profile');
     const dispatch = useAppDispatch();
     const [isDisabled, setIsDesabled] = useState(false);
+
+    const authData = useSelector(getUserAuthData);
+    const profileData = useSelector(getProfileData);
+    const canEdit = authData?.id === profileData?.id;
 
     const readonly = useSelector(getProfileReadOnly);
     const onEdit = useCallback(() => {
@@ -48,34 +54,38 @@ export const ProfileFooter: FC<ProfileFooterProps> = memo((props: ProfileFooterP
     }
 
     return (
-        <div className={cls.ButtonsWrapper}>
-            {readonly ? (
-                <Button
-                    size={ButtonSize.LARGE}
-                    variant={ButtonVariant.OUTLINE}
-                    onClick={onEdit}
-                >
-                    {t('Редактировать', { ns: 'profile' })}
-                </Button>
-            ) : (
-                <>
-                    <Button
-                        size={ButtonSize.LARGE}
-                        variant={ButtonVariant.OUTLINE}
-                        onClick={onCanselEdit}
-                        disabled={isDisabled}
-                    >
-                        {t('Отмена', { ns: 'profile' })}
-                    </Button>
-                    <Button
-                        size={ButtonSize.LARGE}
-                        color={ButtonColor.LIGHT_WHITE}
-                        onClick={onSave}
-                        disabled={isDisabled}
-                    >
-                        {t('сохранить', { ns: 'profile' })}
-                    </Button>
-                </>
+        <div className={cls.ButtonsPosition}>
+            {canEdit && (
+                <div className={cls.ButtonsWrapper}>
+                    {readonly ? (
+                        <Button
+                            size={ButtonSize.LARGE}
+                            variant={ButtonVariant.OUTLINE}
+                            onClick={onEdit}
+                        >
+                            {t('Редактировать', { ns: 'profile' })}
+                        </Button>
+                    ) : (
+                        <>
+                            <Button
+                                size={ButtonSize.LARGE}
+                                variant={ButtonVariant.OUTLINE}
+                                onClick={onCanselEdit}
+                                disabled={isDisabled}
+                            >
+                                {t('Отмена', { ns: 'profile' })}
+                            </Button>
+                            <Button
+                                size={ButtonSize.LARGE}
+                                color={ButtonColor.LIGHT_WHITE}
+                                onClick={onSave}
+                                disabled={isDisabled}
+                            >
+                                {t('сохранить', { ns: 'profile' })}
+                            </Button>
+                        </>
+                    )}
+                </div>
             )}
         </div>
     );

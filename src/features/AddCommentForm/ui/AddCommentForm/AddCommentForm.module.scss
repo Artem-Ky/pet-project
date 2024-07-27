@@ -1,0 +1,9 @@
+.AddCommentForm {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.addCommentButton {
+    align-self: flex-end;
+}

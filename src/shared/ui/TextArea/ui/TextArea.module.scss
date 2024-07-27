@@ -1,0 +1,68 @@
+@import 'app/styles/index';
+
+.TextArea {
+    @include reset-button;
+
+    color: var(--main-font-color);
+    border: 1px solid transparent;
+    border-radius: var(--border-radius-small);
+    font: var(--font-inter-md-regular);
+    outline: none;
+    padding: 8px 30px 8px 8px;
+    background-color: var(--input-bg);
+    resize: none;
+
+    &::placeholder {
+        color: var(--gray-color);
+    }
+
+    &:focus {
+        background-color: var(--input-active-bg);
+    }
+
+    @include hover {
+        background-color: var(--input-active-bg);
+    }
+}
+
+.overflow-auto {
+    overflow: auto;
+}
+
+.readOnly {
+    opacity: 0.7;
+
+    @include hover {
+        background-color: var(--input-bg);
+    }
+
+    &:focus {
+        background-color: var(--input-bg);
+    }
+}
+
+.small {
+    // height: var(--input-height-s);
+    // min-height: var(--input-height-s);
+    // max-height: calc(var(--input-height-s) * 2);
+    width:  var(--input-width-s);
+}
+
+.medium {
+    // height: calc(var(--input-height-m) * 2);
+    // min-height: calc(var(--input-height-m) * 2);
+    // max-height: calc(var(--input-height-m) * 4);
+    width:  var(--input-width-m);
+}
+
+.large {
+    // height: calc(var(--input-height-l) * 3);
+    // min-height: calc(var(--input-height-l) * 3);
+    // max-height: calc(var(--input-height-l) * 6);
+    width:  var(--input-width-l);
+    font: var(--font-inter-lg-regular);
+}
+
+.fullWidth {
+    width: 100%;
+}
