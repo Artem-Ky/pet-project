@@ -6,21 +6,23 @@ import { Button } from 'shared/ui/Button';
 import { ButtonSize, ButtonVariant } from 'shared/ui/Button/ui/Button';
 import { Text, TextSize, TextTheme } from 'shared/ui/Text/ui/Text';
 import { useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import cls from './SideBar.module.scss';
-import { SideBarItemsList } from '../../model/items';
 import { SideBarItem } from '../SideBarItem/SideBarItem';
+import { getSideBarItems } from '../../model/selectors/getSideBarItems';
 
 export const SideBar: FC = memo(() => {
     const [isClose, setIsClose] = useState(false);
     const cn = cnBind.bind(cls);
     const location = useLocation();
+    const sideBarItemsList = useSelector(getSideBarItems);
 
     const onToggleHandler = useCallback(() => {
         setIsClose((prev) => !prev);
     }, []);
 
     const itemsList = useMemo(
-        () => SideBarItemsList.map((item) => (
+        () => sideBarItemsList.map((item) => (
             <SideBarItem
                 isActive={item.path === location.pathname}
                 Item={item}
@@ -28,7 +30,7 @@ export const SideBar: FC = memo(() => {
                 key={item.path}
             />
         )),
-        [isClose, location.pathname],
+        [isClose, location.pathname, sideBarItemsList],
     );
 
     return (

@@ -11,10 +11,13 @@ import { LangSwitcher } from 'widgets/LangSwitcher/ui/LangSwitcher';
 import { getUserAuthData, userActions } from 'entities/User';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import {
-    Select, SelectItemType, SelectOpenSide, SelectOption, SelectType,
+    Select,
+    SelectItemType,
+    SelectOpenSide,
+    SelectOption,
+    SelectType,
 } from 'shared/ui/Select';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
-import { getProfileAvatar } from 'entities/Profile';
 import { Avatar } from 'shared/ui/Avatar';
 import { AvatarSize } from 'shared/ui/Avatar/ui/Avatar';
 import { TextTheme } from 'shared/ui/Text/ui/Text';
@@ -25,7 +28,6 @@ export const NavBar: FC = memo(() => {
     const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
     const authData = useSelector(getUserAuthData);
     const dispatch = useAppDispatch();
-    const avatar = useSelector(getProfileAvatar);
 
     const onCloseModal = useCallback(() => {
         setIsAuthModalOpen(false);
@@ -39,18 +41,22 @@ export const NavBar: FC = memo(() => {
         dispatch(userActions.logout());
     }, [dispatch]);
 
-    const optionsList: SelectOption[] = [
-        { label: 'Админка', type: SelectItemType.LINK, to: '/admin' },
-        { label: 'Профиль', type: SelectItemType.LINK, to: RoutePath.profile },
-        {
-            label: 'Выйти',
-            type: SelectItemType.BUTTON,
-            onClick: onLogOut,
-            textTheme: TextTheme.ERROR,
-        },
-    ];
-
     if (authData) {
+        const optionsList: SelectOption[] = [
+            { label: 'Админка', type: SelectItemType.LINK, to: '/admin' },
+            {
+                label: 'Профиль',
+                type: SelectItemType.LINK,
+                to: RoutePath.profile + authData.id,
+            },
+            {
+                label: 'Выйти',
+                type: SelectItemType.BUTTON,
+                onClick: onLogOut,
+                textTheme: TextTheme.ERROR,
+            },
+        ];
+
         return (
             <div className={cls.NavBar}>
                 <Select
@@ -60,7 +66,7 @@ export const NavBar: FC = memo(() => {
                 >
                     <Avatar
                         size={AvatarSize.MEDIUM_ROUND}
-                        src={avatar}
+                        src={authData.avatar}
                         alt={t('Ваш аватар')}
                     />
                 </Select>
