@@ -11,6 +11,8 @@ export enum IconSize {
 export enum IconColor {
     WHITE = 'white',
     BLACK_WHITE = 'black-white',
+    LIGHT_GRAY = 'light-gray',
+    LIGHT__GRAY_WHITE = 'lightGray-white'
 }
 
 export enum IconTypeVariant {

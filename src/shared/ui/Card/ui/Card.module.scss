@@ -1,0 +1,53 @@
+.Card {
+    background-color: var(--article-card-color-bg);
+    border-radius: var(--border-radius-small);
+}
+
+.LITTLE {
+    padding: var(--article-card-plate-padding);
+
+    &.small {
+        width: var(--article-card-plate-width-s);
+        height: var(--article-card-plate-height-s);
+    }
+    
+    &.medium {
+        width: var(--article-card-plate-width-m);
+        height: var(--article-card-plate-height-m);
+    }
+    
+    &.large {
+        width: var(--article-card-plate-width-l);
+        height: var(--article-card-plate-height-l);
+    }
+}
+
+.BIG {
+    padding: var(--article-card-list-padding);
+
+    &.small {
+        width: var(--article-card-list-width-s);
+        height: var(--article-card-list-height-s);
+    }
+    
+    &.medium {
+        width: var(--article-card-list-width-m);
+        height: var(--article-card-list-height-m);
+    }
+    
+    &.large {
+        width: var(--article-card-list-width-l);
+        height: var(--article-card-list-height-l);
+    }
+}
+
+.BIG, 
+.LITTLE {
+    &.fullWidth {
+        width: 100%;
+    }
+
+    &.heightAuto {
+        height: auto;
+    }
+}

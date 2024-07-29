@@ -23,6 +23,14 @@
     &.black-white {
         --color: var(--main-font-color);
     }
+
+    &.lightGray-white {
+        --color: var(--icon-gray-light-white-color)
+    }
+
+    &.light-gray {
+        --color: var(--gray-color-light);
+    }
     
     &.fill-no-stroke {
         stroke: none;

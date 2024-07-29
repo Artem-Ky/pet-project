@@ -83,7 +83,7 @@
     //  avatar
     --avatar-round-small: 16px;
     --avatar-round-medium: 24px;
-    --avatar-round-large: 32px;
+    --avatar-round-large: 36px;
     --avatar-square-big-height: 173px;
     --avatar-square-big-width: 135px;
 
@@ -98,5 +98,24 @@
     // skeleton 
     --skeleton-shadow: var(--gray-color);
     --skeleton-color: var(--gray-color-light);
+
+    // article card
+        // plate view
+    --article-card-plate-height-s: 218px;
+    --article-card-plate-width-s: 165px;
+    --article-card-plate-height-m: 270px;
+    --article-card-plate-width-m: 214px;
+    --article-card-plate-height-l: 370px;
+    --article-card-plate-width-l: 281px;
+    --article-card-plate-padding: 8px;
+
+        // list view
+    --article-card-list-height-s: 580px;
+    --article-card-list-width-s: 550px;
+    --article-card-list-height-m: 830px;
+    --article-card-list-width-m: 780px;
+    --article-card-list-height-l: 996px;
+    --article-card-list-width-l: 780px;
+    --article-card-list-padding: 24px;
 
 }

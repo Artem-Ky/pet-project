@@ -10,7 +10,7 @@ import {
 import { ArticleDetails } from './ArticleDetails';
 
 export default {
-    title: 'entities/ArticleDetails',
+    title: 'entities/Article/ArticleDetails',
     component: ArticleDetails,
     argTypes: {
         backgroundColor: { control: 'color' },
@@ -29,6 +29,11 @@ const article: Article = {
     views: 1022,
     createdAt: '26.02.2022',
     type: [ArticleType.IT],
+    user: {
+        id: '1',
+        username: 'cat',
+        avatar: 'https://www.funnyart.club/uploads/posts/2022-12/thumbs/1671406601_www-funnyart-club-p-kartinki-kotika-pushina-krasivo-14.png',
+    },
     blocks: [
         {
             id: '1',

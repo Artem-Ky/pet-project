@@ -1,39 +1,38 @@
 import { StoryFn, Meta } from '@storybook/react';
 import { Theme } from 'shared/const/theme';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
-import { Article, ArticleBlockType, ArticleType } from 'entities/Article';
-import ArticleDetailsPage from './ArticleDetailsPage';
+import { Article, ArticleView } from 'entities/Article/model/types/article';
+import { ArticleListItem } from './ArticleListItem';
 
 export default {
-    title: 'pages/ArticleDetailsPage',
-    component: ArticleDetailsPage,
+    title: 'entities/Article/ArticleListItem',
+    component: ArticleListItem,
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-} as Meta<typeof ArticleDetailsPage>;
+} as Meta<typeof ArticleListItem>;
 
-const Template: StoryFn<typeof ArticleDetailsPage> = (args) => (
-    <ArticleDetailsPage {...args} />
+const Template: StoryFn<typeof ArticleListItem> = (args) => (
+    <ArticleListItem {...args} />
 );
 
-const article: Article = {
+const article = {
     id: '1',
-    title: 'Javascript news',
+    title: 'Javascript news Javascript news Javascript news Javascript news',
     subtitle: 'Что нового в JS за 2022 год?',
     img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
-    views: 1022,
+    views: 102200000,
     createdAt: '26.02.2022',
+    type: ['IT', 'some tags', 'and other tags'],
     user: {
         id: '1',
         username: 'cat',
         avatar: 'https://www.funnyart.club/uploads/posts/2022-12/thumbs/1671406601_www-funnyart-club-p-kartinki-kotika-pushina-krasivo-14.png',
     },
-    type: [ArticleType.IT],
     blocks: [
         {
             id: '1',
-            type: ArticleBlockType.TEXT,
+            type: 'TEXT',
             title: 'Заголовок этого блока',
             paragraphs: [
                 'Программа, которую по традиции называют «Hello, world!», очень проста. Она выводит куда-либо фразу «Hello, world!», или другую подобную, средствами некоего языка.',
@@ -43,33 +42,34 @@ const article: Article = {
         },
         {
             id: '4',
-            type: ArticleBlockType.CODE,
+            type: 'CODE',
             code: '<!DOCTYPE html>\n<html>\n  <body>\n    <p id="hello"></p>\n\n    <script>\n      document.getElementById("hello").innerHTML = "Hello, world!";\n    </script>\n  </body>\n</html>;',
         },
-        {
-            id: '5',
-            type: ArticleBlockType.TEXT,
-            title: 'Заголовок этого блока',
-            paragraphs: [
-                'Программа, которую по традиции называют «Hello, world!», очень проста. Она выводит куда-либо фразу «Hello, world!», или другую подобную, средствами некоего языка.',
-                'Существуют и другие способы запуска JS-кода в браузере. Так, если говорить об обычном использовании программ на JavaScript, они загружаются в браузер для обеспечения работы веб-страниц. Как правило, код оформляют в виде отдельных файлов с расширением .js, которые подключают к веб-страницам, но программный код можно включать и непосредственно в код страницы. Всё это делается с помощью тега <script>. Когда браузер обнаруживает такой код, он выполняет его. Подробности о теге script можно посмотреть на сайте w3school.com. В частности, рассмотрим пример, демонстрирующий работу с веб-страницей средствами JavaScript, приведённый на этом ресурсе. Этот пример можно запустить и средствами данного ресурса (ищите кнопку Try it Yourself), но мы поступим немного иначе. А именно, создадим в каком-нибудь текстовом редакторе (например — в VS Code или в Notepad++) новый файл, который назовём hello.html, и добавим в него следующий код:',
-            ],
-        },
     ],
+} as Article;
+
+export const LightPlate = Template.bind({});
+LightPlate.args = {
+    view: ArticleView.PLATE,
+    article,
 };
 
-export const Light = Template.bind({});
-Light.args = {};
-Light.decorators = [StoreDecorator({
-    articleDetails: {
-        data: article,
-    },
-})];
+export const DarPlate = Template.bind({});
+DarPlate.args = {
+    view: ArticleView.PLATE,
+    article,
+};
+DarPlate.decorators = [ThemeDecorator(Theme.DARK)];
 
-export const Dark = Template.bind({});
-Dark.args = {};
-Dark.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({
-    articleDetails: {
-        data: article,
-    },
-})];
+export const LightList = Template.bind({});
+LightList.args = {
+    view: ArticleView.LIST,
+    article,
+};
+
+export const DarkList = Template.bind({});
+DarkList.args = {
+    view: ArticleView.LIST,
+    article,
+};
+DarkList.decorators = [ThemeDecorator(Theme.DARK)];

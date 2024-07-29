@@ -22,6 +22,10 @@ export default {
             options: Object.values(TextAlign),
             description: 'положение текста',
         },
+        widthAuto: {
+            control: 'boolean',
+            description: 'ширина авто',
+        },
     },
 } as Meta<typeof Text>;
 

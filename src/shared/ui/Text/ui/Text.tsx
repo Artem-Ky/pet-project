@@ -39,6 +39,7 @@ interface TextProps {
     theme?: TextTheme;
     align?: TextAlign;
     size?: TextSize;
+    widthAuto?: boolean;
 
     'data-testid'?: string;
 }
@@ -67,6 +68,7 @@ export const Text = memo((props: TextProps) => {
         theme = TextTheme.MAIN,
         align = TextAlign.LEFT,
         size = TextSize.M,
+        widthAuto,
         'data-testid': dataTestId = 'Text',
     } = props;
 
@@ -77,6 +79,7 @@ export const Text = memo((props: TextProps) => {
             className={cn(
                 cls.Text,
                 {
+                    [cls.widthAuto]: widthAuto,
                     [cls[theme]]: true,
                     [cls[align]]: true,
                     [cls[size]]: true,
