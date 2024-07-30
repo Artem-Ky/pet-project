@@ -53,9 +53,9 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo(
         if (article.views < 1000) {
             viewCount = String(article.views);
         } else if (article.views < 1000000) {
-            viewCount = `${String(article.views / 1000)}k`;
+            viewCount = `${String(Math.floor(article.views / 1000))}k`;
         } else {
-            viewCount = `${String(article.views / 1000000)}m`;
+            viewCount = `${String(Math.floor(article.views / 1000000))}m`;
         }
 
         classNames.push(cls[view]);
