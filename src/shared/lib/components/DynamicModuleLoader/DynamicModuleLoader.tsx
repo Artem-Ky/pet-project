@@ -25,16 +25,25 @@ export const DynamicModuleLoader: FC<DynamicModuleLoaderProps> = (props) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
+        const mountedReducers = store.reducerManager.getReducerMap();
         Object.entries(reducers).forEach(([name, reducer]) => {
-            store.reducerManager.add(name as StateSchemaKey, reducer);
-            dispatch({ type: `@INIT ${name} reducer` });
+            // eslint-disable-next-line no-prototype-builtins
+            const isMounted = mountedReducers.hasOwnProperty(name as StateSchemaKey);
+            if (!isMounted) {
+                store.reducerManager.add(name as StateSchemaKey, reducer);
+                dispatch({ type: `@INIT ${name} reducer` });
+            }
         });
 
         return () => {
             if (removeAfterUnmount) {
                 Object.entries(reducers).forEach(([name, reducer]) => {
-                    store.reducerManager.remove(name as StateSchemaKey);
-                    dispatch({ type: `@DESTROY ${name} reducer` });
+                    // eslint-disable-next-line no-prototype-builtins
+                    const isMounted = mountedReducers.hasOwnProperty(name as StateSchemaKey);
+                    if (isMounted) {
+                        store.reducerManager.remove(name as StateSchemaKey);
+                        dispatch({ type: `@DESTROY ${name} reducer` });
+                    }
                 });
             }
         };

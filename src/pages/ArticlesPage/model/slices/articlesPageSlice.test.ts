@@ -67,6 +67,7 @@ describe('articlesPageSlice', () => {
             view: ArticleView.PLATE,
             page: 1,
             hasMore: true,
+            _innited: false,
         };
     });
 
