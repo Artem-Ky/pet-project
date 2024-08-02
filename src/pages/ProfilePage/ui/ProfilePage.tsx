@@ -25,6 +25,7 @@ import { Country } from 'shared/const/common';
 import { Currency } from 'entities/CurrencySelect';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { useParams } from 'react-router-dom';
+import { Page } from 'widgets/Page';
 import cls from './ProfilePage.module.scss';
 import { ProfileFooter } from './ProfileFooter/ProfileFooter';
 
@@ -121,7 +122,7 @@ const ProfilePage: FC = memo(() => {
 
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-            <div className={cls.profilePageWrapper}>
+            <Page classNames={[cls.profilePageWrapper]}>
                 <Text
                     size={TextSize.XXL_TITLE}
                     theme={TextTheme.BLACK_WHITE}
@@ -149,7 +150,7 @@ const ProfilePage: FC = memo(() => {
                     onChangeCurrency={onChangeCurrency}
                 />
                 <ProfileFooter error={error !== undefined || isLoading} />
-            </div>
+            </Page>
         </DynamicModuleLoader>
     );
 });

@@ -1,0 +1,15 @@
+.Page {
+    flex-grow: 1;
+    padding: 13px;
+    height: calc(100% - var(--nav-bar-height) - var(--nav-bar-padding));
+}
+
+.pageHeightScroll {
+    height: calc(100vh - var(--nav-bar-height) - var(--nav-bar-padding));
+    overflow-y: auto;
+}
+
+.trigger {
+    height: 20px;
+    margin: 10px;
+}

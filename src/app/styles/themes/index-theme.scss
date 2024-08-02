@@ -16,13 +16,7 @@ body {
     display: flex;
 }
 
-.page-wrapper {
-    flex-grow: 1;
-    padding: 13px;
-    height: calc(100% - var(--nav-bar-height));
-}
-
 .content {
     width: 100%;
-    padding-top: 22px;
+    padding-top: var(--nav-bar-padding);
 }

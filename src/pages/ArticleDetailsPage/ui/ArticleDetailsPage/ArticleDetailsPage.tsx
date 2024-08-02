@@ -16,8 +16,9 @@ import { AddCommentForm } from 'features/AddCommentForm';
 import { Button } from 'shared/ui/Button';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { ButtonSize, ButtonVariant } from 'shared/ui/Button/ui/Button';
+import { Page } from 'widgets/Page';
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
-import { getArticleCommentsIsLoading } from '../../model/selectors/comments';
+import { getArticleCommentsIsLoading } from '../../model/selectors/getComments';
 import {
     articleDetailsCommentsReducer,
     getArticleComments,
@@ -68,11 +69,13 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
 
     return (
         <DynamicModuleLoader reducers={reducersList} removeAfterUnmount>
-            <div
-                className={cn(
-                    cls.ArticleDetailsPage,
-                    ...classNames.map((clsName) => cls[clsName] || clsName),
-                )}
+            <Page
+                classNames={[
+                    cn(
+                        cls.ArticleDetailsPage,
+                        ...classNames.map((clsName) => cls[clsName] || clsName),
+                    ),
+                ]}
             >
                 <Button
                     onClick={onBackToList}
@@ -96,7 +99,7 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
                         />
                     </>
                 )}
-            </div>
+            </Page>
         </DynamicModuleLoader>
     );
 };

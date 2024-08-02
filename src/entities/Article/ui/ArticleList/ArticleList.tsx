@@ -36,18 +36,18 @@ export const ArticleList: FC<ArticleListProps> = memo(
             <ArticleListItem key={article.id} article={article} view={view} />
         );
 
-        if (isLoading) {
-            return (
-                <div
-                    className={cn(
-                        cls.ArticleList,
-                        ...classNames.map((clsName) => cls[clsName] || clsName),
-                    )}
-                >
-                    {getSkeletons(view)}
-                </div>
-            );
-        }
+        // if (isLoading) {
+        //     return (
+        //         <div
+        //             className={cn(
+        //                 cls.ArticleList,
+        //                 ...classNames.map((clsName) => cls[clsName] || clsName),
+        //             )}
+        //         >
+        //             {getSkeletons(view)}
+        //         </div>
+        //     );
+        // }
 
         return (
             <div
@@ -57,6 +57,7 @@ export const ArticleList: FC<ArticleListProps> = memo(
                 )}
             >
                 {articles.length > 0 ? articles.map(renderArticle) : null}
+                {isLoading && getSkeletons(view)}
             </div>
         );
     },

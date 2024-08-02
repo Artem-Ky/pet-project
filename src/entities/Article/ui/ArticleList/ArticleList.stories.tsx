@@ -140,12 +140,14 @@ DarkList.decorators = [ThemeDecorator(Theme.DARK)];
 
 export const LightLoadingPlate = Template.bind({});
 LightLoadingPlate.args = {
+    articles: [],
     isLoading: true,
     view: ArticleView.PLATE,
 };
 
 export const DarkLoadingPlate = Template.bind({});
 DarkLoadingPlate.args = {
+    articles: [],
     isLoading: true,
     view: ArticleView.PLATE,
 };
@@ -153,12 +155,14 @@ DarkLoadingPlate.decorators = [ThemeDecorator(Theme.DARK)];
 
 export const LightLoadingList = Template.bind({});
 LightLoadingList.args = {
+    articles: [],
     isLoading: true,
     view: ArticleView.LIST,
 };
 
 export const DarkLoadingList = Template.bind({});
 DarkLoadingList.args = {
+    articles: [],
     isLoading: true,
     view: ArticleView.LIST,
 };

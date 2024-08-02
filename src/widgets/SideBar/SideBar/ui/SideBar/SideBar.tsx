@@ -34,7 +34,7 @@ export const SideBar: FC = memo(() => {
     );
 
     return (
-        <div
+        <menu
             data-testid="sidebar"
             className={cn(cls.SideBar, { [cls.Close]: isClose })}
         >
@@ -57,6 +57,6 @@ export const SideBar: FC = memo(() => {
             >
                 {isClose ? '>' : '<'}
             </Button>
-        </div>
+        </menu>
     );
 });

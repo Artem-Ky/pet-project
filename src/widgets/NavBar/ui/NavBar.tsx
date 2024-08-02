@@ -58,7 +58,7 @@ export const NavBar: FC = memo(() => {
         ];
 
         return (
-            <div className={cls.NavBar}>
+            <header className={cls.NavBar}>
                 <Select
                     type={SelectType.ICON}
                     optionsList={optionsList}
@@ -72,12 +72,12 @@ export const NavBar: FC = memo(() => {
                 </Select>
                 <ThemeSwitcher />
                 <LangSwitcher />
-            </div>
+            </header>
         );
     }
 
     return (
-        <div className={cls.NavBar}>
+        <header className={cls.NavBar}>
             <Button variant={ButtonVariant.CLEAR} onClick={onOpenModal}>
                 {t('Войти')}
             </Button>
@@ -86,6 +86,6 @@ export const NavBar: FC = memo(() => {
             {isAuthModalOpen && (
                 <LoginModal isOpen={isAuthModalOpen} onClose={onCloseModal} />
             )}
-        </div>
+        </header>
     );
 });
