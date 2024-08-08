@@ -52,10 +52,21 @@ export default {
     },
 } as Meta<typeof Select>;
 
-const optionsList: SelectOption[] = [
-    { label: 'Админка', type: SelectItemType.LINK, to: '/admin' },
-    { label: 'Профиль', type: SelectItemType.LINK, to: RoutePath.profile },
+const optionsList: SelectOption<string>[] = [
     {
+        value: 'Админка',
+        label: 'Админка',
+        type: SelectItemType.LINK,
+        to: '/admin',
+    },
+    {
+        value: 'Профиль',
+        label: 'Профиль',
+        type: SelectItemType.LINK,
+        to: RoutePath.profile,
+    },
+    {
+        value: 'Выйти',
         label: 'Выйти',
         type: SelectItemType.BUTTON,
         onClick: () => {},
@@ -63,11 +74,11 @@ const optionsList: SelectOption[] = [
     },
 ];
 
-const optionsListSecond: SelectOption[] = [
-    { label: 'Яблоко', type: SelectItemType.DEFAULT },
-    { label: 'Апельсин', type: SelectItemType.DEFAULT },
-    { label: 'Ананас', type: SelectItemType.DEFAULT },
-    { label: 'Вишня', type: SelectItemType.DEFAULT },
+const optionsListSecond: SelectOption<string>[] = [
+    { value: 'Яблоко', label: 'Яблоко', type: SelectItemType.DEFAULT },
+    { value: 'Апельсин', label: 'Апельсин', type: SelectItemType.DEFAULT },
+    { value: 'Ананас', label: 'Ананас', type: SelectItemType.DEFAULT },
+    { value: 'Вишня', label: 'Вишня', type: SelectItemType.DEFAULT },
 ];
 
 const TemplateIcon: StoryFn<typeof Select> = (args) => (

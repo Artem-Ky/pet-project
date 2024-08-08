@@ -10,7 +10,6 @@ import {
 } from 'shared/ui/Text/ui/Text';
 import { AppLink } from 'shared/ui/Link';
 import { To, useNavigate } from 'react-router-dom';
-import { Currency } from 'entities/CurrencySelect';
 import cls from './Select.module.scss';
 
 export enum SelectType {
@@ -43,53 +42,56 @@ export enum SelectItemHeight {
     LARGE = 'height-large',
 }
 
-type SelectOptionBase = {
+type SelectOptionBase<T extends string> = {
     label: string;
     type: SelectItemType;
+    value: T;
     textTheme?: TextTheme;
 };
 
-type SelectOptionLink = SelectOptionBase & {
+type SelectOptionLink<T extends string> = SelectOptionBase<T> & {
     type: SelectItemType.LINK;
     to: To;
     onClick?: never;
 };
 
-type SelectOptionButton = SelectOptionBase & {
+type SelectOptionButton<T extends string> = SelectOptionBase<T> & {
     type: SelectItemType.BUTTON;
     to?: never;
     onClick: () => void;
 };
 
-type SelectOptionDefault = SelectOptionBase & {
+type SelectOptionDefault<T extends string> = SelectOptionBase<T> & {
     type: SelectItemType.DEFAULT;
     to?: never;
     onClick?: never;
 };
 
-export type SelectOption =
-    | SelectOptionLink
-    | SelectOptionButton
-    | SelectOptionDefault;
+export type SelectOption<T extends string> =
+    | SelectOptionLink<T>
+    | SelectOptionButton<T>
+    | SelectOptionDefault<T>;
 
-interface SelectProps {
+interface SelectProps<T extends string> {
     className?: string;
     children?: ReactNode;
     title?: string;
-    optionsList: SelectOption[];
+    value: T;
+    optionsList: SelectOption<T>[];
     type?: SelectType;
     openSide?: SelectOpenSide;
-    onChange?: (value?: string) => void;
+    onChange?: (value: T) => void;
     readonly?: boolean;
     fullWidth?: boolean;
     height?: SelectItemHeight;
     width?: SelectItemWidth;
 }
 
-export const Select: FC<SelectProps> = memo((props: SelectProps) => {
+export const Select = <T extends string>(props: SelectProps<T>) => {
     const {
         className = [],
         children,
+        value,
         type = SelectType.DEFAULT,
         optionsList,
         readonly,
@@ -102,18 +104,27 @@ export const Select: FC<SelectProps> = memo((props: SelectProps) => {
     } = props;
 
     const [isOpen, setIsOpen] = useState(false);
-    const [selectedOption, setSelectedOption] = useState<
-        string | number | null
-    >(`${type === SelectType.DEFAULT && title}`);
-    const [optionListCopy, setOptionListCopy] = useState<SelectOption[]>([]);
+    const [selectedOptionValue, setSelectedOptionValue] = useState<T>(
+        value || ('' as T),
+    );
+    const [selectedOptionView, setSelectedOptionView] = useState<
+        string | number
+    >(title || '');
+
+    const [optionListCopy, setOptionListCopy] = useState<SelectOption<T>[]>([]);
     const cn = cnBind.bind(cls);
     const navigate = useNavigate();
 
     useEffect(() => {
+        setSelectedOptionValue(value);
+        setSelectedOptionView(title || '');
+    }, [title, value]);
+
+    useEffect(() => {
         setOptionListCopy([
-            ...optionsList.filter((item) => item.label !== selectedOption),
+            ...optionsList.filter((item) => item.value !== selectedOptionValue),
         ]);
-    }, [optionsList, selectedOption]);
+    }, [optionsList, selectedOptionValue]);
 
     useEffect(() => {
         if (readonly !== undefined && readonly) {
@@ -125,12 +136,13 @@ export const Select: FC<SelectProps> = memo((props: SelectProps) => {
         setIsOpen(!isOpen);
     };
 
-    const handleOptionClick = (value: string | number) => {
-        const currencyValue = Object.values(Currency).find(
-            (currency) => currency === value,
-        );
-        setSelectedOption(value);
-        onChange?.(currencyValue);
+    const handleOptionClick = (value: T, view: string | number) => {
+        console.log(selectedOptionValue);
+        setSelectedOptionValue(value);
+        console.log(selectedOptionView);
+        console.log(title);
+        setSelectedOptionView(view);
+        onChange?.(value);
         setIsOpen(false);
     };
 
@@ -146,11 +158,12 @@ export const Select: FC<SelectProps> = memo((props: SelectProps) => {
 
     const handleOptionKeyDown = (
         event: React.KeyboardEvent<HTMLLIElement>,
-        value: string | number,
+        value: T,
+        view: string | number,
     ) => {
         if (event.key === 'Enter' || event.key === ' ') {
             event.preventDefault();
-            handleOptionClick(value);
+            handleOptionClick(value, view);
         }
     };
 
@@ -205,7 +218,7 @@ export const Select: FC<SelectProps> = memo((props: SelectProps) => {
                     {type === SelectType.ICON && children}
                     {type === SelectType.DEFAULT && (
                         <span className={cls.value}>
-                            {selectedOption || title}
+                            {selectedOptionView || title}
                         </span>
                     )}
                     <span
@@ -232,16 +245,23 @@ export const Select: FC<SelectProps> = memo((props: SelectProps) => {
                             className={cn(cls[height], cls[width], {
                                 [cls.fillWidth]: fullWidth,
                             })}
-                            aria-selected={selectedOption === item.label}
+                            aria-selected={selectedOptionValue === item.value}
                             tabIndex={0}
                             onClick={(e) => (item.type === SelectItemType.DEFAULT
-                                    && handleOptionClick(item.label))
+                                    && handleOptionClick(
+                                        item.value,
+                                        item.label,
+                                    ))
                                 || (item.type === SelectItemType.BUTTON
                                     && handleOptionButtonClick(item.onClick))
                                 || (item.type === SelectItemType.LINK
                                     && handleOptionLinkClick(item.to))}
                             onKeyDown={(e) => (item.type === SelectItemType.DEFAULT
-                                    && handleOptionKeyDown(e, item.label))
+                                    && handleOptionKeyDown(
+                                        e,
+                                        item.value,
+                                        item.label,
+                                    ))
                                 || (item.type === SelectItemType.BUTTON
                                     && handleOptionButtonKeyDown(
                                         e,
@@ -252,13 +272,14 @@ export const Select: FC<SelectProps> = memo((props: SelectProps) => {
                         >
                             {item.type === SelectItemType.DEFAULT && (
                                 <>
-                                    {' '}
                                     <Input
                                         type="radio"
                                         id={item.label}
                                         select
                                         name="social-account"
-                                        checked={selectedOption === item.label}
+                                        checked={
+                                            selectedOptionValue === item.value
+                                        }
                                         readonly
                                     />
                                     <Text
@@ -309,4 +330,4 @@ export const Select: FC<SelectProps> = memo((props: SelectProps) => {
             )}
         </div>
     );
-});
+};

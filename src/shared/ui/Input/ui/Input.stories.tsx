@@ -1,7 +1,8 @@
 import { StoryFn, Meta } from '@storybook/react';
 import { Theme } from 'shared/const/theme';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { Input, InputSize } from './Input';
+import testAvatar from 'app/testAvatar.jpg';
+import { Input, InputSize, InputView } from './Input';
 
 export default {
     title: 'shared/Input',
@@ -39,6 +40,133 @@ const TemplateRC: StoryFn<typeof Input> = (args) => (
     <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
         <Input {...args} />
         <Input {...args} checked />
+    </div>
+);
+
+const smallIcon = (
+    <img
+        src={testAvatar}
+        alt="1"
+        style={{
+            position: 'absolute',
+            display: 'flex',
+            top: '50%',
+            translate: '0 -50%',
+            alignItems: 'center',
+            width: 16,
+            height: 16,
+        }}
+    />
+);
+
+const mediumIcon = (
+    <img
+        src={testAvatar}
+        alt="1"
+        style={{
+            position: 'absolute',
+            display: 'flex',
+            top: '50%',
+            translate: '0 -50%',
+            alignItems: 'center',
+            width: 20,
+            height: 20,
+        }}
+    />
+);
+
+const largeIcon = (
+    <img
+        src={testAvatar}
+        alt="1"
+        style={{
+            position: 'absolute',
+            display: 'flex',
+            top: '50%',
+            translate: '0 -50%',
+            alignItems: 'center',
+            width: 24,
+            height: 24,
+        }}
+    />
+);
+
+const TemplateIcon: StoryFn<typeof Input> = (args) => (
+    <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+        <div
+            style={{
+                display: 'flex',
+                flexDirection: 'column',
+                rowGap: '10px',
+                flexWrap: 'wrap',
+            }}
+        >
+            <Input {...args} size={InputSize.SMALL} view={InputView.ICON_SMALL}>
+                {smallIcon}
+            </Input>
+            <Input
+                {...args}
+                size={InputSize.SMALL}
+                view={InputView.ICON_MEDIUM}
+            >
+                {mediumIcon}
+            </Input>
+            <Input {...args} size={InputSize.SMALL} view={InputView.ICON_LARGE}>
+                {largeIcon}
+            </Input>
+        </div>
+        <div
+            style={{
+                display: 'flex',
+                flexDirection: 'column',
+                rowGap: '10px',
+                flexWrap: 'wrap',
+            }}
+        >
+            <Input
+                {...args}
+                size={InputSize.MEDIUM}
+                view={InputView.ICON_SMALL}
+            >
+                {smallIcon}
+            </Input>
+            <Input
+                {...args}
+                size={InputSize.MEDIUM}
+                view={InputView.ICON_MEDIUM}
+            >
+                {mediumIcon}
+            </Input>
+            <Input
+                {...args}
+                size={InputSize.MEDIUM}
+                view={InputView.ICON_LARGE}
+            >
+                {largeIcon}
+            </Input>
+        </div>
+        <div
+            style={{
+                display: 'flex',
+                flexDirection: 'column',
+                rowGap: '10px',
+                flexWrap: 'wrap',
+            }}
+        >
+            <Input {...args} size={InputSize.LARGE} view={InputView.ICON_SMALL}>
+                {smallIcon}
+            </Input>
+            <Input
+                {...args}
+                size={InputSize.LARGE}
+                view={InputView.ICON_MEDIUM}
+            >
+                {mediumIcon}
+            </Input>
+            <Input {...args} size={InputSize.LARGE} view={InputView.ICON_LARGE}>
+                {largeIcon}
+            </Input>
+        </div>
     </div>
 );
 
@@ -87,3 +215,10 @@ RadioDark.args = {
     type: 'radio',
 };
 RadioDark.decorators = [ThemeDecorator(Theme.DARK)];
+
+export const WithIcon = TemplateIcon.bind({});
+WithIcon.args = {};
+
+export const WithIconDark = TemplateIcon.bind({});
+WithIconDark.args = {};
+WithIconDark.decorators = [ThemeDecorator(Theme.DARK)];

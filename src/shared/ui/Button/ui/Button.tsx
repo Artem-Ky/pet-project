@@ -18,6 +18,7 @@ export enum ButtonColor {
 export enum ButtonOutlineColor {
     Success = 'outline-success',
     Error = 'outline-error',
+    Gray = 'outline-grey',
     Gray_White = 'outline-grey-white',
     Green_White = 'outline-green-white',
 }

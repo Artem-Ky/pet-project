@@ -57,6 +57,26 @@
     font: var(--font-inter-lg-regular);
 }
 
+.iconWrapper {
+    position: relative;
+
+    * {
+        left: 8px;
+    }
+}
+
+.iconSmall {
+    padding-left: 28px;
+}
+
+.iconMedium {
+    padding-left: 32px;
+}
+
+.iconLarge {
+    padding-left: 36px;
+}
+
 .fullWidth {
     width: 100%;
 }

@@ -2,6 +2,7 @@ import React, {
     FC,
     InputHTMLAttributes,
     memo,
+    ReactNode,
     useEffect,
     useRef,
     useState,
@@ -21,9 +22,18 @@ export enum InputSize {
     LARGE = 'large',
 }
 
+export enum InputView {
+    DEFAULT,
+    ICON_SMALL = 'iconSmall',
+    ICON_MEDIUM = 'iconMedium',
+    ICON_LARGE = 'iconLarge',
+}
+
 interface InputProps extends HTMLInputProps {
     classNames?: string[];
+    children?: ReactNode;
     id: string;
+    view?: InputView;
     type?: React.HTMLInputTypeAttribute;
     value?: string;
     onChange?: (value: string) => void;
@@ -38,6 +48,8 @@ export const Input: FC<InputProps> = memo((props: InputProps) => {
     const {
         classNames = [],
         id,
+        children,
+        view = InputView.DEFAULT,
         type = 'text',
         value,
         onChange,
@@ -71,17 +83,21 @@ export const Input: FC<InputProps> = memo((props: InputProps) => {
         <div
             className={cn(
                 cls.inputWrapper,
-                { [cls.fullWidth]: fullWidth },
+                {
+                    [cls.fullWidth]: fullWidth,
+                    [cls.iconWrapper]: view !== InputView.DEFAULT,
+                },
                 ...classNames.map((clsName) => cls[clsName] || clsName),
             )}
         >
+            {children}
             <input
                 id={id}
                 ref={inputRef}
                 type={inputType}
                 value={value}
                 onChange={onChangeValue}
-                className={cn(cls.Input, cls[size], {
+                className={cn(cls.Input, cls[size], cls[view], {
                     [cls.fullWidth]: fullWidth,
                     [cls.readOnly]: readonly,
                     'sr-only': type === 'checkbox' || type === 'radio',

@@ -1,5 +1,5 @@
 import { StateSchema } from 'app/providers/StoreProvider';
-import { ArticleView } from 'entities/Article';
+import { ArticleSortField, ArticleType, ArticleView } from 'entities/Article';
 import { DeepPartial } from 'utility-types';
 import {
     getArticlesPageIsLoading,
@@ -8,6 +8,10 @@ import {
     getArticlesPageNum,
     getArticlesPageLimit,
     getArticlesPageHasMore,
+    getArticlesPageOrder,
+    getArticlesPageSort,
+    getArticlesPageSearch,
+    getArticlesPageType,
 } from './articlesPageSelectors';
 
 describe('Articles Page Selectors', () => {
@@ -70,5 +74,25 @@ describe('Articles Page Selectors', () => {
     test('getArticlesPageHasMore with default state', () => {
         const defaultState: DeepPartial<StateSchema> = {};
         expect(getArticlesPageHasMore(defaultState as StateSchema)).toBeUndefined();
+    });
+
+    test('getArticlesPageOrder with default state', () => {
+        const defaultState: DeepPartial<StateSchema> = {};
+        expect(getArticlesPageOrder(defaultState as StateSchema)).toBe('asc');
+    });
+
+    test('getArticlesPageSort with default state', () => {
+        const defaultState: DeepPartial<StateSchema> = {};
+        expect(getArticlesPageSort(defaultState as StateSchema)).toBe(ArticleSortField.CREATED);
+    });
+
+    test('getArticlesPageSearch with default state', () => {
+        const defaultState: DeepPartial<StateSchema> = {};
+        expect(getArticlesPageSearch(defaultState as StateSchema)).toBe('');
+    });
+
+    test('getArticlesPageType with default state', () => {
+        const defaultState: DeepPartial<StateSchema> = {};
+        expect(getArticlesPageType(defaultState as StateSchema)).toBe(ArticleType.ALL);
     });
 });

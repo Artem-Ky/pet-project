@@ -14,8 +14,9 @@ export const CurrencySelect: FC<CurrencySelectProps> = memo(
     (props: CurrencySelectProps) => {
         const { currentCurrency, readonly, onChange } = props;
 
-        const optionsList: SelectOption[] = useMemo(
+        const optionsList: SelectOption<Currency>[] = useMemo(
             () => Object.values(Currency).map((currency) => ({
+                value: currency,
                 label: currency,
                 type: SelectItemType.DEFAULT,
             })),
@@ -30,6 +31,7 @@ export const CurrencySelect: FC<CurrencySelectProps> = memo(
             <Select
                 title={currentCurrency}
                 optionsList={optionsList}
+                value={currentCurrency || Currency.RUB}
                 readonly={readonly}
                 onChange={onChangeCurrency}
             />

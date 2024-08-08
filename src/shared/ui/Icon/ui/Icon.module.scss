@@ -19,6 +19,10 @@
     &.white {
         --color: var(--light-color);
     }
+
+    &.gray {
+        --color: var(--gray-color);
+    }
     
     &.black-white {
         --color: var(--main-font-color);

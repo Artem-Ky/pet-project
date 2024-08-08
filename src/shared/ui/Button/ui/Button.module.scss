@@ -113,6 +113,10 @@
 .outline {
     border: 1px solid currentcolor;
 
+    &-grey {
+        border-color: var(--gray-color);
+    }
+
     &-grey-white {
         border-color: var(--gray-white-outline);
     }

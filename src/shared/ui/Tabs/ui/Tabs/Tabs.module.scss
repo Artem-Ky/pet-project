@@ -1,0 +1,11 @@
+.Tabs {
+    display: flex;
+    column-gap: 5px;
+
+    .active {
+        background-color: var(--green-grey-color-alt);
+        border-color: var(--green-grey-color-alt);
+        color: var(--light-color);
+    }
+}
+

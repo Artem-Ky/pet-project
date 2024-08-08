@@ -42,14 +42,21 @@ export const NavBar: FC = memo(() => {
     }, [dispatch]);
 
     if (authData) {
-        const optionsList: SelectOption[] = [
-            { label: 'Админка', type: SelectItemType.LINK, to: '/admin' },
+        const optionsList: SelectOption<string>[] = [
             {
+                value: 'Админка',
+                label: 'Админка',
+                type: SelectItemType.LINK,
+                to: '/admin',
+            },
+            {
+                value: 'Профиль',
                 label: 'Профиль',
                 type: SelectItemType.LINK,
                 to: RoutePath.profile + authData.id,
             },
             {
+                value: 'Выйти',
                 label: 'Выйти',
                 type: SelectItemType.BUTTON,
                 onClick: onLogOut,
@@ -62,6 +69,7 @@ export const NavBar: FC = memo(() => {
                 <Select
                     type={SelectType.ICON}
                     optionsList={optionsList}
+                    value=""
                     openSide={SelectOpenSide.CENTER}
                 >
                     <Avatar
