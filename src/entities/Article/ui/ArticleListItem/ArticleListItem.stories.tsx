@@ -2,6 +2,7 @@ import { StoryFn, Meta } from '@storybook/react';
 import { Theme } from 'shared/const/theme';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Article, ArticleView } from 'entities/Article/model/types/article';
+import testAvatar from 'app/testAvatar.jpg';
 import { ArticleListItem } from './ArticleListItem';
 
 export default {
@@ -20,14 +21,14 @@ const article = {
     id: '1',
     title: 'Javascript news Javascript news Javascript news Javascript news',
     subtitle: 'Что нового в JS за 2022 год?',
-    img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
+    img: testAvatar,
     views: 102200000,
     createdAt: '26.02.2022',
     type: ['IT', 'some tags', 'and other tags'],
     user: {
         id: '1',
         username: 'cat',
-        avatar: 'https://www.funnyart.club/uploads/posts/2022-12/thumbs/1671406601_www-funnyart-club-p-kartinki-kotika-pushina-krasivo-14.png',
+        avatar: testAvatar,
     },
     blocks: [
         {
@@ -54,12 +55,12 @@ LightPlate.args = {
     article,
 };
 
-export const DarPlate = Template.bind({});
-DarPlate.args = {
+export const DarkPlate = Template.bind({});
+DarkPlate.args = {
     view: ArticleView.PLATE,
     article,
 };
-DarPlate.decorators = [ThemeDecorator(Theme.DARK)];
+DarkPlate.decorators = [ThemeDecorator(Theme.DARK)];
 
 export const LightList = Template.bind({});
 LightList.args = {
