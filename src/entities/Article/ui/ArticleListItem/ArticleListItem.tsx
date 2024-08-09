@@ -1,4 +1,6 @@
-import { FC, memo, useCallback } from 'react';
+import {
+    FC, HTMLAttributeAnchorTarget, memo, useCallback,
+} from 'react';
 import cnBind from 'classnames/bind';
 import {
     Text, TextAlign, TextSize, TextTheme,
@@ -14,6 +16,7 @@ import { Button } from 'shared/ui/Button';
 import { ButtonSize, ButtonVariant } from 'shared/ui/Button/ui/Button';
 import { useNavigate } from 'react-router-dom';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
+import { AppLink } from 'shared/ui/Link';
 import cls from './ArticleListItem.module.scss';
 import {
     Article,
@@ -27,19 +30,17 @@ interface ArticleListItemProps {
     classNames?: string[];
     article: Article;
     view: ArticleView;
+    target?: HTMLAttributeAnchorTarget;
 }
 
 export const ArticleListItem: FC<ArticleListItemProps> = memo(
     (props: ArticleListItemProps) => {
-        const { classNames = [], article, view } = props;
+        const {
+            classNames = [], article, view, target,
+        } = props;
         const cn = cnBind.bind(cls);
         const { t } = useTranslation('article');
-        const navigate = useNavigate();
         let viewCount: string;
-
-        const onOpenArticle = useCallback(() => {
-            navigate(RoutePath.article_details + article.id);
-        }, [navigate, article.id]);
 
         const types = (
             <Text
@@ -64,48 +65,53 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo(
             classNames.push(cls.articleGap);
 
             return (
-                <Card
-                    view={CardView.LITTLE}
-                    size={CardSize.MEDIUM}
-                    onClick={onOpenArticle}
-                    classNames={classNames}
+                <AppLink
+                    to={RoutePath.article_details + article.id}
+                    classNames={[cls.plateCardLink]}
+                    target={target}
                 >
-                    <Text
-                        theme={TextTheme.BLACK_WHITE}
-                        size={TextSize.L}
-                        text={article.createdAt}
-                        className={cls.date}
-                    />
-                    <div className={cls.imageWrapper}>
-                        <img
-                            src={article.img}
-                            alt="article preview"
-                            loading="lazy"
-                            className={cls.articleImage}
+                    <Card
+                        view={CardView.LITTLE}
+                        size={CardSize.MEDIUM}
+                        classNames={classNames}
+                    >
+                        <Text
+                            theme={TextTheme.BLACK_WHITE}
+                            size={TextSize.L}
+                            text={article.createdAt}
+                            className={cls.date}
                         />
-                    </div>
-                    <div className={cls.cardMeta}>
-                        {types}
-                        <div className={cls.viewWrapper}>
-                            <Text
-                                theme={TextTheme.GRAY_LIGHT}
-                                size={TextSize.S}
-                                text={viewCount}
-                                widthAuto
-                            />
-                            <Icon
-                                color={IconColor.LIGHT_GRAY}
-                                icon={viewIcon}
+                        <div className={cls.imageWrapper}>
+                            <img
+                                src={article.img}
+                                alt="article preview"
+                                loading="lazy"
+                                className={cls.articleImage}
                             />
                         </div>
-                    </div>
-                    <Text
-                        theme={TextTheme.BLACK_WHITE}
-                        size={TextSize.M}
-                        text={String(article.title)}
-                        className={cls.paragraphsTagsWrapper}
-                    />
-                </Card>
+                        <div className={cls.cardMeta}>
+                            {types}
+                            <div className={cls.viewWrapper}>
+                                <Text
+                                    theme={TextTheme.GRAY_LIGHT}
+                                    size={TextSize.S}
+                                    text={viewCount}
+                                    widthAuto
+                                />
+                                <Icon
+                                    color={IconColor.LIGHT_GRAY}
+                                    icon={viewIcon}
+                                />
+                            </div>
+                        </div>
+                        <Text
+                            theme={TextTheme.BLACK_WHITE}
+                            size={TextSize.M}
+                            text={String(article.title)}
+                            className={cls.paragraphsTagsWrapper}
+                        />
+                    </Card>
+                </AppLink>
             );
         }
 
@@ -169,13 +175,14 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo(
                         />
                     )}
                     <div className={cls.footer}>
-                        <Button
-                            variant={ButtonVariant.OUTLINE}
-                            size={ButtonSize.LARGE}
-                            onClick={onOpenArticle}
-                        >
-                            {t('Читать далее', { ns: 'article' })}
-                        </Button>
+                        <AppLink to={RoutePath.article_details + article.id}>
+                            <Button
+                                variant={ButtonVariant.OUTLINE}
+                                size={ButtonSize.LARGE}
+                            >
+                                {t('Читать далее', { ns: 'article' })}
+                            </Button>
+                        </AppLink>
                         <div className={cls.viewWrapper}>
                             <Icon
                                 color={IconColor.LIGHT_GRAY}

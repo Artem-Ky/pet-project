@@ -4,3 +4,9 @@
     row-gap: 20px;
     padding-inline: 67px;
 }
+
+.recommendation {
+    flex-wrap: nowrap;
+    overflow: auto hidden;
+    min-height: 280px;
+}

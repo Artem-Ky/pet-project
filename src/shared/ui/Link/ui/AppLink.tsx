@@ -1,6 +1,6 @@
 import cnBind from 'classnames/bind';
 import { Link, LinkProps } from 'react-router-dom';
-import { FC, memo } from 'react';
+import { FC, HTMLAttributeAnchorTarget, memo } from 'react';
 import cls from './AppLink.module.scss';
 
 export enum AppLinkTheme {
@@ -11,12 +11,14 @@ export enum AppLinkTheme {
 interface AppLinkProps extends LinkProps {
     classNames?: string[];
     theme?: AppLinkTheme;
+    target?: HTMLAttributeAnchorTarget
 }
 
 export const AppLink: FC<AppLinkProps> = memo((props: AppLinkProps) => {
     const {
         classNames = [],
         children,
+        target,
         theme = AppLinkTheme.WHITE,
         to,
         ...otherProps
@@ -26,6 +28,7 @@ export const AppLink: FC<AppLinkProps> = memo((props: AppLinkProps) => {
     return (
         <Link
             to={to}
+            target={target}
             className={cn(
                 cls.AppLink,
                 [cls[theme]],

@@ -1,4 +1,4 @@
-import { FC, memo } from 'react';
+import { FC, HTMLAttributeAnchorTarget, memo } from 'react';
 import cnBind from 'classnames/bind';
 import { Text, TextSize } from 'shared/ui/Text/ui/Text';
 import { useTranslation } from 'react-i18next';
@@ -12,6 +12,7 @@ interface ArticleListProps {
     articles: Article[];
     isLoading?: boolean;
     view?: ArticleView;
+    target?: HTMLAttributeAnchorTarget;
 }
 
 export const ArticleList: FC<ArticleListProps> = memo(
@@ -21,6 +22,7 @@ export const ArticleList: FC<ArticleListProps> = memo(
             articles,
             isLoading,
             view = ArticleView.PLATE,
+            target,
         } = props;
         const cn = cnBind.bind(cls);
         const { t } = useTranslation();
@@ -36,10 +38,12 @@ export const ArticleList: FC<ArticleListProps> = memo(
             ));
 
         const renderArticle = (article: Article) => (
-            <ArticleListItem key={article.id} article={article} view={view} />
+            <ArticleListItem key={article.id} article={article} view={view} target={target} />
         );
 
         if (!isLoading && !articles.length) {
+            console.log(isLoading);
+            console.log(articles);
             return (
                 <div className={cn(cls.ArticleList, [cls[view]])}>
                     <Text size={TextSize.L} title={t('Статьи не найдены')} />

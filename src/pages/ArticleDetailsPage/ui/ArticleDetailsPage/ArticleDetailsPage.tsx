@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
-import { memo, useCallback } from 'react';
-import { ArticleDetails } from 'entities/Article';
+import { memo, useCallback, useEffect } from 'react';
+import { ArticleDetails, ArticleList } from 'entities/Article';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Text, TextSize, TextTheme } from 'shared/ui/Text/ui/Text';
 import { CommentList } from 'entities/Comment';
@@ -17,6 +17,12 @@ import { Button } from 'shared/ui/Button';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { ButtonSize, ButtonVariant } from 'shared/ui/Button/ui/Button';
 import { Page } from 'widgets/Page';
+import { articleDetailsPageReducer } from '../../model/slices';
+import { getArticleRecommendationsIsLoading } from '../../model/selectors/getRecommendation';
+import {
+    articleDetailsPageRecommendationsReducer,
+    getArticleRecommendations,
+} from '../../model/slices/articleDetailsPageRecommendationsSlice';
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import { getArticleCommentsIsLoading } from '../../model/selectors/getComments';
 import {
@@ -25,6 +31,7 @@ import {
 } from '../../model/slices/articleDetailsCommentsSlice';
 import cls from './ArticleDetailsPage.module.scss';
 import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
+import { fetchArticleRecommendations } from '../../model/services/fetchArticleRecommendations/fetchArticleRecommendations';
 
 interface ArticleDetailsPageProps {
     classNames?: string[];
@@ -32,6 +39,7 @@ interface ArticleDetailsPageProps {
 
 const reducersList: ReducersList = {
     articleDetailsComments: articleDetailsCommentsReducer,
+    articleDetailsRecommendations: articleDetailsPageRecommendationsReducer,
 };
 
 const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
@@ -39,10 +47,16 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
     const { t } = useTranslation('article-details');
     let { id } = useParams<{ id: string }>();
     const cn = cnBind.bind(cls);
-    const comments = useSelector(getArticleComments.selectAll);
-    const commentsIsLoading = useSelector(getArticleCommentsIsLoading);
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
+
+    const recommendations = useSelector(getArticleRecommendations.selectAll);
+
+    const comments = useSelector(getArticleComments.selectAll);
+    const recommendationsLoading = useSelector(
+        getArticleRecommendationsIsLoading,
+    );
+    const commentsIsLoading = useSelector(getArticleCommentsIsLoading);
 
     const onBackToList = useCallback(() => {
         navigate(RoutePath.articles);
@@ -56,6 +70,7 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
     );
 
     useInitialEffect(() => {
+        dispatch(fetchArticleRecommendations());
         dispatch(fetchCommentsByArticleId(id));
     });
 
@@ -85,20 +100,29 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
                     {t('назад')}
                 </Button>
                 <ArticleDetails id={id} />
-                {!commentsIsLoading && (
-                    <>
-                        <Text
-                            size={TextSize.XXL_TITLE}
-                            theme={TextTheme.BLACK_WHITE}
-                            title={t('Комментарии')}
-                        />
-                        <AddCommentForm onSendComment={onSendCommnet} />
-                        <CommentList
-                            isLoading={commentsIsLoading}
-                            comments={comments}
-                        />
-                    </>
-                )}
+                <>
+                    <Text
+                        size={TextSize.XXL_TITLE}
+                        theme={TextTheme.BLACK_WHITE}
+                        title={t('Рекомендуем')}
+                    />
+                    <ArticleList
+                        target="_blank"
+                        articles={recommendations}
+                        isLoading={recommendationsLoading}
+                        classNames={[cls.recommendation]}
+                    />
+                    <Text
+                        size={TextSize.XXL_TITLE}
+                        theme={TextTheme.BLACK_WHITE}
+                        title={t('Комментарии')}
+                    />
+                    <AddCommentForm onSendComment={onSendCommnet} />
+                    <CommentList
+                        isLoading={commentsIsLoading}
+                        comments={comments}
+                    />
+                </>
             </Page>
         </DynamicModuleLoader>
     );
