@@ -1,7 +1,10 @@
 import { FC, memo, useCallback } from 'react';
 import cnBind from 'classnames/bind';
 import {
-    ArticleSortField, ArticleType, ArticleTypeTabs, ArticleView,
+    ArticleSortField,
+    ArticleType,
+    ArticleTypeTabs,
+    ArticleView,
 } from 'entities/Article';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
@@ -16,6 +19,14 @@ import {
 import { OrderSort } from 'features/OrderSort';
 import { SortOrder } from 'shared/types';
 import { useDebounce } from 'shared/lib/hooks/useDebounce/useDebounce';
+import { Button } from 'shared/ui/Button';
+import {
+    ButtonOutlineColor,
+    ButtonSize,
+    ButtonVariant,
+} from 'shared/ui/Button/ui/Button';
+import { AppLink } from 'shared/ui/Link';
+import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList';
 import { articlesPageActions } from '../../model/slices/articlesPageSlice';
 import cls from './ArticlesPageFilters.module.scss';
@@ -99,26 +110,38 @@ export const ArticlesPageFilters: FC<ArticlesPageFiltersProps> = memo(
                     ...classNames.map((clsName) => cls[clsName] || clsName),
                 )}
             >
-                <Input
-                    classNames={[cls.searchIconContainer]}
-                    placeholder={t('Поиск')}
-                    value={search}
-                    onChange={onChangeSearch}
-                    size={InputSize.LARGE}
-                    view={InputView.ICON_MEDIUM}
-                    id="search"
-                >
-                    <Icon
-                        classNames={[cls.searchIcon]}
-                        variant={IconTypeVariant.STROKE_NO_FILL}
-                        size={IconSize.MEDIUM}
-                        color={IconColor.GRAY}
-                        icon={searchIcon}
-                    />
-                </Input>
-                <label className="sr-only" htmlFor="search">
-                    {t('Поиск: введите текст')}
-                </label>
+                <div className={cls.selectFilters}>
+                    <div>
+                        <Input
+                            classNames={[cls.searchIconContainer]}
+                            placeholder={t('Поиск')}
+                            value={search}
+                            onChange={onChangeSearch}
+                            size={InputSize.LARGE}
+                            view={InputView.ICON_MEDIUM}
+                            id="search"
+                        >
+                            <Icon
+                                classNames={[cls.searchIcon]}
+                                variant={IconTypeVariant.STROKE_NO_FILL}
+                                size={IconSize.MEDIUM}
+                                color={IconColor.GRAY}
+                                icon={searchIcon}
+                            />
+                        </Input>
+                        <label className="sr-only" htmlFor="search">
+                            {t('Поиск: введите текст')}
+                        </label>
+                    </div>
+                    <AppLink to={RoutePath.article_create}>
+                        <Button
+                            size={ButtonSize.LARGE}
+                            variant={ButtonVariant.OUTLINE}
+                        >
+                            {t('Создать статью')}
+                        </Button>
+                    </AppLink>
+                </div>
                 <div className={cls.selectFilters}>
                     <ArticleTypeTabs onChangeType={onChangeType} value={type} />
                     <div className={cls.otherSort}>

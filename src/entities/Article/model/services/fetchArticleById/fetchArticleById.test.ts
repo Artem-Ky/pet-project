@@ -22,7 +22,11 @@ describe('fetchArticleById.test', () => {
 
         const result = await thunk.callThunk('1');
 
-        expect(thunk.api.get).toHaveBeenCalledWith('/articles/1');
+        expect(thunk.api.get).toHaveBeenCalledWith('/articles/1', {
+            params: {
+                _expand: 'user',
+            },
+        });
         expect(result.meta.requestStatus).toBe('fulfilled');
         expect(result.payload).toEqual(article);
     });
@@ -33,7 +37,11 @@ describe('fetchArticleById.test', () => {
 
         const result = await thunk.callThunk('1');
 
-        expect(thunk.api.get).toHaveBeenCalledWith('/articles/1');
+        expect(thunk.api.get).toHaveBeenCalledWith('/articles/1', {
+            params: {
+                _expand: 'user',
+            },
+        });
         expect(result.meta.requestStatus).toBe('rejected');
         expect(result.payload).toBe('error');
     });

@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
-import { memo, useCallback, useEffect } from 'react';
+import { memo, useCallback } from 'react';
 import { ArticleDetails, ArticleList } from 'entities/Article';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Text, TextSize, TextTheme } from 'shared/ui/Text/ui/Text';
 import { CommentList } from 'entities/Comment';
 import cnBind from 'classnames/bind';
@@ -13,9 +13,6 @@ import {
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { AddCommentForm } from 'features/AddCommentForm';
-import { Button } from 'shared/ui/Button';
-import { RoutePath } from 'shared/config/routeConfig/routeConfig';
-import { ButtonSize, ButtonVariant } from 'shared/ui/Button/ui/Button';
 import { Page } from 'widgets/Page';
 import { articleDetailsPageReducer } from '../../model/slices';
 import { getArticleRecommendationsIsLoading } from '../../model/selectors/getRecommendation';
@@ -32,6 +29,7 @@ import {
 import cls from './ArticleDetailsPage.module.scss';
 import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
 import { fetchArticleRecommendations } from '../../model/services/fetchArticleRecommendations/fetchArticleRecommendations';
+import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 
 interface ArticleDetailsPageProps {
     classNames?: string[];
@@ -48,7 +46,6 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
     let { id } = useParams<{ id: string }>();
     const cn = cnBind.bind(cls);
     const dispatch = useAppDispatch();
-    const navigate = useNavigate();
 
     const recommendations = useSelector(getArticleRecommendations.selectAll);
 
@@ -57,10 +54,6 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
         getArticleRecommendationsIsLoading,
     );
     const commentsIsLoading = useSelector(getArticleCommentsIsLoading);
-
-    const onBackToList = useCallback(() => {
-        navigate(RoutePath.articles);
-    }, [navigate]);
 
     const onSendCommnet = useCallback(
         (comment: string) => {
@@ -92,13 +85,7 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
                     ),
                 ]}
             >
-                <Button
-                    onClick={onBackToList}
-                    size={ButtonSize.MEDIUM}
-                    variant={ButtonVariant.OUTLINE}
-                >
-                    {t('назад')}
-                </Button>
+                <ArticleDetailsPageHeader />
                 <ArticleDetails id={id} />
                 <>
                     <Text
