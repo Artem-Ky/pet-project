@@ -23,6 +23,8 @@ module.exports = {
         '@typescript-eslint',
         'i18next',
         'react-hooks',
+        // 'toad505-plugin',
+        'ulbi-tv-plugin',
     ],
     rules: {
         'react/jsx-indent': [2, 4],
@@ -54,6 +56,8 @@ module.exports = {
         'react-hooks/rules-of-hooks': 'error',
         'react-hooks/exhaustive-deps': 'error',
         'no-param-reassign': 'off',
+        // 'toad505-plugin/path-checker': 'error',
+        'ulbi-tv-plugin/path-checker': 'error',
     },
     globals: {
         __IS_DEV__: true,

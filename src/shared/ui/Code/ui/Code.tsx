@@ -1,9 +1,9 @@
 import { memo, useCallback } from 'react';
 import CopyIcon from 'shared/assets/icons/copy.svg';
 import cnBind from 'classnames/bind';
-import { Icon, IconColor, IconSize } from 'shared/ui/Icon';
-import { Button } from 'shared/ui/Button';
-import { ButtonVariant } from 'shared/ui/Button/ui/Button';
+import { Icon, IconColor, IconSize } from '../../Icon';
+import { Button } from '../../Button';
+import { ButtonVariant } from '../../Button/ui/Button';
 import cls from './Code.module.scss';
 
 interface CodeProps {

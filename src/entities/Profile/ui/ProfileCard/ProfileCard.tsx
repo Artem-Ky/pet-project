@@ -6,12 +6,12 @@ import {
 } from 'shared/ui/Text/ui/Text';
 import { Input } from 'shared/ui/Input';
 import { InputSize } from 'shared/ui/Input/ui/Input';
-import { Profile } from 'entities/Profile/model/types/profile';
 import { Loader } from 'shared/ui/Loader/Loader';
 import { Country } from 'shared/const/common';
 import { Avatar } from 'shared/ui/Avatar';
 import { AvatarSize } from 'shared/ui/Avatar/ui/Avatar';
 import { Currency, CurrencySelect } from 'entities/CurrencySelect';
+import { Profile } from '../../model/types/profile';
 import cls from './ProfileCard.module.scss';
 
 interface ProfileCardProps {

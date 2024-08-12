@@ -2,14 +2,14 @@ import React, {
     FC, memo, ReactNode, useEffect, useState,
 } from 'react';
 import cnBind from 'classnames/bind';
-import { Button } from 'shared/ui/Button';
-import { ButtonColor } from 'shared/ui/Button/ui/Button';
-import { Input } from 'shared/ui/Input';
+import { To, useNavigate } from 'react-router-dom';
+import { Button } from '../../Button';
+import { ButtonColor } from '../../Button/ui/Button';
+import { Input } from '../../Input';
 import {
     Text, TextAlign, TextSize, TextTheme,
-} from 'shared/ui/Text/ui/Text';
-import { AppLink } from 'shared/ui/Link';
-import { To, useNavigate } from 'react-router-dom';
+} from '../../Text/ui/Text';
+import { AppLink } from '../../Link';
 import cls from './Select.module.scss';
 
 export enum SelectType {

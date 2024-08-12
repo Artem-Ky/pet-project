@@ -97,7 +97,11 @@ export const ArticleList: FC<ArticleListProps> = memo(
                     scrollTop,
                 }) => (
                     <div
-                        ref={registerChild as LegacyRef<HTMLDivElement> | undefined}
+                        ref={
+                            registerChild as
+                                | LegacyRef<HTMLDivElement>
+                                | undefined
+                        }
                         className={cn(
                             cls.ArticleList,
                             ...classNames.map(

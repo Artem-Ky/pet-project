@@ -3,9 +3,9 @@ import { StoryFn, Meta } from '@storybook/react';
 import { Theme } from 'shared/const/theme';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
-import { TextTheme } from 'shared/ui/Text/ui/Text';
-import { Avatar } from 'shared/ui/Avatar';
 import testAvatar from 'app/testAvatar.jpg';
+import { TextTheme } from '../../Text/ui/Text';
+import { Avatar } from '../../Avatar';
 import {
     Select,
     SelectItemHeight,

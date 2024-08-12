@@ -72,6 +72,8 @@
     "eslint-plugin-react": "^7.34.3",
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-storybook": "^0.8.0",
+    "eslint-plugin-toad505-plugin": "^0.0.0",
+    "eslint-plugin-ulbi-tv-plugin": "^0.0.10",
     "file-loader": "^6.2.0",
     "globals": "^15.6.0",
     "html-webpack-plugin": "^5.5.0",

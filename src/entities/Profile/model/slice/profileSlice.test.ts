@@ -1,9 +1,9 @@
-import {
-    profileActions, profileReducer, ProfileSchema, updateProfileData, ValidateProfileError,
-} from 'entities/Profile';
 import { Country } from 'shared/const/common';
 import { Currency } from 'entities/CurrencySelect';
 import { DeepPartial } from 'utility-types';
+import {
+    profileActions, profileReducer, ProfileSchema, updateProfileData, ValidateProfileError,
+} from '../..';
 
 const data = {
     first: 'toad',

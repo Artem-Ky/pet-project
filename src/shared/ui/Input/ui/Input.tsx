@@ -8,7 +8,7 @@ import React, {
     useState,
 } from 'react';
 import cnBind from 'classnames/bind';
-import { Button } from 'shared/ui/Button';
+import { Button } from '../../Button';
 import cls from './Input.module.scss';
 
 type HTMLInputProps = Omit<

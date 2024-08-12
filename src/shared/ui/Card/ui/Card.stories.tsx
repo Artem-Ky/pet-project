@@ -1,7 +1,7 @@
 import { StoryFn, Meta } from '@storybook/react';
 import { Theme } from 'shared/const/theme';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { Text, TextTheme } from 'shared/ui/Text/ui/Text';
+import { Text, TextTheme } from '../../Text/ui/Text';
 import { Card, CardSize } from './Card';
 
 export default {
