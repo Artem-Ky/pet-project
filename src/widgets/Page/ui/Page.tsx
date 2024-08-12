@@ -19,6 +19,8 @@ interface PageProps {
     onScrollEnd?: () => void;
 }
 
+export const PAGE_ID = 'PAGE_ID';
+
 export const Page: FC<PageProps> = memo((props: PageProps) => {
     const { classNames = [], children, onScrollEnd } = props;
     const cn = cnBind.bind(cls);
@@ -55,6 +57,7 @@ export const Page: FC<PageProps> = memo((props: PageProps) => {
                 cls.Page,
                 { [cls.pageHeightScroll]: onScrollEnd },
             )}
+            id={PAGE_ID}
             onScroll={onScroll}
         >
             {children}

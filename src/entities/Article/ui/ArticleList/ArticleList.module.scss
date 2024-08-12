@@ -4,3 +4,8 @@
     justify-content: flex-start;
     gap: 20px;
 }
+
+.row {
+    display: inline-flex;
+    column-gap: 20px;
+}
