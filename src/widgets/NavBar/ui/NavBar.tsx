@@ -21,6 +21,7 @@ import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { Avatar } from 'shared/ui/Avatar';
 import { AvatarSize } from 'shared/ui/Avatar/ui/Avatar';
 import { TextTheme } from 'shared/ui/Text/ui/Text';
+import { HStack } from 'shared/ui/Stack';
 import cls from './NavBar.module.scss';
 
 export const NavBar: FC = memo(() => {
@@ -66,34 +67,42 @@ export const NavBar: FC = memo(() => {
 
         return (
             <header className={cls.NavBar}>
-                <Select
-                    type={SelectType.ICON}
-                    optionsList={optionsList}
-                    value=""
-                    openSide={SelectOpenSide.CENTER}
-                >
-                    <Avatar
-                        size={AvatarSize.MEDIUM_ROUND}
-                        src={authData.avatar}
-                        alt={t('Ваш аватар')}
-                    />
-                </Select>
-                <ThemeSwitcher />
-                <LangSwitcher />
+                <HStack gap="20c" justify="end">
+                    <LangSwitcher />
+                    <ThemeSwitcher />
+                    <Select
+                        type={SelectType.ICON}
+                        optionsList={optionsList}
+                        value=""
+                        openSide={SelectOpenSide.CENTER}
+                    >
+                        <Avatar
+                            size={AvatarSize.MEDIUM_ROUND}
+                            src={authData.avatar}
+                            alt={t('Ваш аватар')}
+                        />
+                    </Select>
+                </HStack>
             </header>
         );
     }
 
     return (
         <header className={cls.NavBar}>
-            <Button variant={ButtonVariant.CLEAR} onClick={onOpenModal}>
-                {t('Войти')}
-            </Button>
-            <ThemeSwitcher />
-            <LangSwitcher />
-            {isAuthModalOpen && (
-                <LoginModal isOpen={isAuthModalOpen} onClose={onCloseModal} />
-            )}
+            <HStack gap="20c" justify="end" wrap="wrap">
+                <LangSwitcher />
+                {isAuthModalOpen && (
+                    <LoginModal
+                        isOpen={isAuthModalOpen}
+                        onClose={onCloseModal}
+                    />
+                )}
+                <ThemeSwitcher />
+
+                <Button variant={ButtonVariant.CLEAR} onClick={onOpenModal}>
+                    {t('Войти')}
+                </Button>
+            </HStack>
         </header>
     );
 });

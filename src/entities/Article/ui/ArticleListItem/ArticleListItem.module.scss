@@ -6,19 +6,6 @@
 
     --brightness: 1;
 
-    &.articleGap {
-        display: flex;
-        flex-direction: column;
-        row-gap: 10px;
-        flex-shrink: 0;
-    }
-
-    .imageWrapper {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
     .articleImage {
         object-fit: fill;
         width: 190px;
@@ -27,11 +14,8 @@
     }
     
     .cardMeta {
-        display: flex;
-        justify-content: space-between;
         margin-top: var(--article-card-padding);
-        align-items: center;
-        column-gap: 4px;
+        width: 100%;
     }
     
     .tags {
@@ -45,13 +29,6 @@
             overflow: hidden;
             text-overflow: ellipsis;
         }
-    }
-    
-    .viewWrapper {
-        display: flex;
-        column-gap: 5px;
-        align-items: center;
-        flex-grow: 1;
     }
 
     .date {
@@ -73,58 +50,15 @@
 }
 
 .LIST {
-    .article {
-        display: flex;
-        flex-direction: column;
-        row-gap: 16px;
-        height: 100%;
-    }
-
-    .meta {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-
-    .author {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        column-gap: 10px;
-    }
-
-    .imageWrapper {
-        display: flex;
-        justify-content: center;
-    }
-
     .articleImage {
         object-fit: contain;
-        min-width: 732px;
-        max-width: 1200px;
-        height: auto;
-        max-height: 420px;
+        width: auto;
+        height: 420px;
         border-radius: var(--border-radius-small);
     }
 
-    .footer {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+    .marginTopAuto {
         margin-top: auto;
-    }
-
-    .viewWrapper {
-        display: flex;
-        column-gap: 5px;
-        justify-content: flex-end;
-        align-items: center;
-        flex-grow: 1;
-    }
-
-    .textBlock {
-        max-height: 50px;
-        overflow-y: hidden;
     }
 }
 

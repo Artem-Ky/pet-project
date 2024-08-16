@@ -25,16 +25,12 @@ export function useInfiniteScroll({
             };
 
             observer.current = new IntersectionObserver(([entry]) => {
-                console.log('Intersection entry:', entry);
                 if (entry.isIntersecting) {
-                    console.log('Trigger is intersecting');
                     callback();
                 }
             }, options);
 
             observer.current.observe(triggerElement);
-        } else {
-            console.log('Callback or triggerElement not defined');
         }
 
         return () => {

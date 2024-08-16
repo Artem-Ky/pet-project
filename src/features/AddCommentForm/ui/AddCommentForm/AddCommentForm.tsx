@@ -10,6 +10,7 @@ import {
     DynamicModuleLoader,
     ReducersList,
 } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { VStack } from 'shared/ui/Stack';
 import {
     addCommentFormActions,
     addCommentFormReducer,
@@ -41,13 +42,10 @@ const AddCommentForm: FC<AddCommentFormProps> = memo(
             [dispatch],
         );
 
-        const onSendHnadler = useCallback(
-            () => {
-                onSendComment(comment);
-                handleCommentChange('');
-            },
-            [handleCommentChange, onSendComment, comment],
-        );
+        const onSendHnadler = useCallback(() => {
+            onSendComment(comment);
+            handleCommentChange('');
+        }, [handleCommentChange, onSendComment, comment]);
 
         const reducerList: ReducersList = {
             addCommentForm: addCommentFormReducer,
@@ -55,11 +53,15 @@ const AddCommentForm: FC<AddCommentFormProps> = memo(
 
         return (
             <DynamicModuleLoader reducers={reducerList} removeAfterUnmount>
-                <div
-                    className={cn(
-                        cls.AddCommentForm,
-                        ...classNames.map((clsName) => cls[clsName] || clsName),
-                    )}
+                <VStack
+                    gap="16r"
+                    classNames={[
+                        cn(
+                            ...classNames.map(
+                                (clsName) => cls[clsName] || clsName,
+                            ),
+                        ),
+                    ]}
                 >
                     <label className="sr-only" htmlFor="comment">
                         {t('Введите текст комментария')}
@@ -79,7 +81,7 @@ const AddCommentForm: FC<AddCommentFormProps> = memo(
                     >
                         {t('отправить')}
                     </Button>
-                </div>
+                </VStack>
             </DynamicModuleLoader>
         );
     },

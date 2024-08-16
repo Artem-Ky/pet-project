@@ -34,7 +34,7 @@ export const SideBar: FC = memo(() => {
     );
 
     return (
-        <menu
+        <aside
             data-testid="sidebar"
             className={cn(cls.SideBar, { [cls.Close]: isClose })}
         >
@@ -46,7 +46,9 @@ export const SideBar: FC = memo(() => {
                     size={TextSize.XL_TITLE}
                 />
             )}
-            <ul className={cls.linksList}>{itemsList}</ul>
+            <nav>
+                <ul className={cls.linksList}>{itemsList}</ul>
+            </nav>
             <Button
                 variant={ButtonVariant.CLEAR}
                 data-testid="sidebar-toggle"
@@ -57,6 +59,6 @@ export const SideBar: FC = memo(() => {
             >
                 {isClose ? '>' : '<'}
             </Button>
-        </menu>
+        </aside>
     );
 });

@@ -1,6 +1,4 @@
-import {
-    FC, HTMLAttributeAnchorTarget, memo, useCallback,
-} from 'react';
+import { FC, HTMLAttributeAnchorTarget, memo } from 'react';
 import cnBind from 'classnames/bind';
 import {
     Text, TextAlign, TextSize, TextTheme,
@@ -14,9 +12,9 @@ import { AvatarSize } from 'shared/ui/Avatar/ui/Avatar';
 import { CardView } from 'shared/ui/Card/ui/Card';
 import { Button } from 'shared/ui/Button';
 import { ButtonSize, ButtonVariant } from 'shared/ui/Button/ui/Button';
-import { useNavigate } from 'react-router-dom';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { AppLink } from 'shared/ui/Link';
+import { HStack, VStack } from 'shared/ui/Stack';
 import cls from './ArticleListItem.module.scss';
 import {
     Article,
@@ -62,7 +60,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo(
         classNames.push(cls[view]);
 
         if (view === ArticleView.PLATE) {
-            classNames.push(cls.articleGap);
+            // classNames.push(cls.articleGap);
 
             return (
                 <AppLink
@@ -75,41 +73,52 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo(
                         size={CardSize.MEDIUM}
                         classNames={classNames}
                     >
-                        <Text
-                            theme={TextTheme.BLACK_WHITE}
-                            size={TextSize.L}
-                            text={article.createdAt}
-                            className={cls.date}
-                        />
-                        <div className={cls.imageWrapper}>
-                            <img
-                                src={article.img}
-                                alt="article preview"
-                                loading="lazy"
-                                className={cls.articleImage}
+                        <VStack gap="8r" shrink="0">
+                            <Text
+                                theme={TextTheme.BLACK_WHITE}
+                                size={TextSize.L}
+                                text={article.createdAt}
+                                className={cls.date}
                             />
-                        </div>
-                        <div className={cls.cardMeta}>
-                            {types}
-                            <div className={cls.viewWrapper}>
-                                <Text
-                                    theme={TextTheme.GRAY_LIGHT}
-                                    size={TextSize.S}
-                                    text={viewCount}
-                                    widthAuto
+                            <HStack
+                                align="center"
+                                justify="center"
+                                className={cls.imageWrapper}
+                            >
+                                <img
+                                    src={article.img}
+                                    alt="article preview"
+                                    loading="lazy"
+                                    className={cls.articleImage}
                                 />
-                                <Icon
-                                    color={IconColor.LIGHT_GRAY}
-                                    icon={viewIcon}
-                                />
-                            </div>
-                        </div>
-                        <Text
-                            theme={TextTheme.BLACK_WHITE}
-                            size={TextSize.M}
-                            text={String(article.title)}
-                            className={cls.paragraphsTagsWrapper}
-                        />
+                            </HStack>
+                            <HStack
+                                justify="between"
+                                align="center"
+                                gap="4c"
+                                classNames={[cls.cardMeta]}
+                            >
+                                {types}
+                                <HStack gap="4c" align="center" grow="1">
+                                    <Text
+                                        theme={TextTheme.GRAY_LIGHT}
+                                        size={TextSize.S}
+                                        text={viewCount}
+                                        widthAuto
+                                    />
+                                    <Icon
+                                        color={IconColor.LIGHT_GRAY}
+                                        icon={viewIcon}
+                                    />
+                                </HStack>
+                            </HStack>
+                            <Text
+                                theme={TextTheme.BLACK_WHITE}
+                                size={TextSize.M}
+                                text={String(article.title)}
+                                className={cls.paragraphsTagsWrapper}
+                            />
+                        </VStack>
                     </Card>
                 </AppLink>
             );
@@ -127,9 +136,13 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo(
                 heightAuto
                 fullWidth
             >
-                <div className={cls.article}>
-                    <div className={cls.meta}>
-                        <div className={cls.author}>
+                <VStack gap="16r">
+                    <HStack
+                        justify="between"
+                        align="center"
+                        fullWidth
+                    >
+                        <HStack justify="start" align="center" gap="8c">
                             <Avatar
                                 alt={t('изображение автора статьи')}
                                 src={article.user.avatar}
@@ -140,14 +153,14 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo(
                                 size={TextSize.L_BOLD}
                                 theme={TextTheme.BLACK_WHITE}
                             />
-                        </div>
+                        </HStack>
                         <Text
                             text={article.createdAt}
                             size={TextSize.L_BOLD}
                             theme={TextTheme.BLACK_WHITE}
                             align={TextAlign.RIGHT}
                         />
-                    </div>
+                    </HStack>
                     <Text
                         title={article.title}
                         size={TextSize.XXL_TITLE}
@@ -159,22 +172,23 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo(
                         theme={TextTheme.BLACK_WHITE}
                     />
                     {types}
-                    <div className={cls.imageWrapper}>
+                    <HStack justify="center" fullWidth>
                         <img
                             src={article.img}
                             alt="article preview"
                             loading="lazy"
                             className={cls.articleImage}
                         />
-                    </div>
+                    </HStack>
                     {textBlock && (
-                        <ArticleTextBlockComponent
-                            block={textBlock}
-                            classNames={[cls.textBlock]}
-                            short
-                        />
+                        <ArticleTextBlockComponent block={textBlock} short />
                     )}
-                    <div className={cls.footer}>
+                    <HStack
+                        justify="between"
+                        align="center"
+                        fullWidth
+                        classNames={[cls.marginTopAuto]}
+                    >
                         <AppLink to={RoutePath.article_details + article.id}>
                             <Button
                                 variant={ButtonVariant.OUTLINE}
@@ -183,7 +197,12 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo(
                                 {t('Читать далее', { ns: 'article' })}
                             </Button>
                         </AppLink>
-                        <div className={cls.viewWrapper}>
+                        <HStack
+                            justify="end"
+                            align="center"
+                            gap="4c"
+                            grow="1"
+                        >
                             <Icon
                                 color={IconColor.LIGHT_GRAY}
                                 icon={viewIcon}
@@ -194,9 +213,9 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo(
                                 text={viewCount}
                                 widthAuto
                             />
-                        </div>
-                    </div>
-                </div>
+                        </HStack>
+                    </HStack>
+                </VStack>
             </Card>
         );
     },

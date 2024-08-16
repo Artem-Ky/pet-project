@@ -2,6 +2,7 @@ import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Text, TextTheme } from 'shared/ui/Text/ui/Text';
 import cnBind from 'classnames/bind';
+import { VStack } from 'shared/ui/Stack';
 import cls from './CommentList.module.scss';
 import { CommentCard } from '../CommentCard/CommentCard';
 import { Comment } from '../../model/types/comment';
@@ -20,16 +21,16 @@ export const CommentList = memo((props: CommentListProps) => {
     if (isLoading) {
         if (comments?.length && comments.length < 10) {
             return (
-                <div className={cn(cls.CommentList, cls[className])}>
+                <VStack gap="16r" className={cn(cls[className])}>
                     {comments.map(() => (
                         <CommentCard isLoading />
                     ))}
-                </div>
+                </VStack>
             );
         }
 
         return (
-            <div className={cn(cls.CommentList, cls[className])}>
+            <VStack fullWidth gap="16r" className={cn(cls[className])}>
                 <CommentCard isLoading />
                 <CommentCard isLoading />
                 <CommentCard isLoading />
@@ -40,12 +41,12 @@ export const CommentList = memo((props: CommentListProps) => {
                 <CommentCard isLoading />
                 <CommentCard isLoading />
                 <CommentCard isLoading />
-            </div>
+            </VStack>
         );
     }
 
     return (
-        <div className={cn(cls.CommentList, cls[className])}>
+        <VStack fullWidth gap="16r" className={cn(cls[className])}>
             {comments?.length ? (
                 comments.map((comment) => (
                     <CommentCard
@@ -61,6 +62,6 @@ export const CommentList = memo((props: CommentListProps) => {
                     text={t('Комментарии отсутствуют')}
                 />
             )}
-        </div>
+        </VStack>
     );
 });

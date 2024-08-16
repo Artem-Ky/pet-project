@@ -1,6 +1,4 @@
-import {
-    FC, memo, useCallback, useMemo, useState,
-} from 'react';
+import { FC, memo, useMemo } from 'react';
 import cnBind from 'classnames/bind';
 import { Button } from 'shared/ui/Button';
 import { ButtonSize, ButtonVariant } from 'shared/ui/Button/ui/Button';
@@ -19,7 +17,7 @@ import sortUp from 'shared/assets/icons/sort/SortUp.svg';
 import sortDown from 'shared/assets/icons/sort/sortDown.svg';
 import { SortOrder } from 'shared/types';
 import { ArticleSortField } from 'entities/Article';
-import cls from './OrderSort.module.scss';
+import { HStack } from 'shared/ui/Stack';
 
 interface OrderSortProps {
     classNames?: string[];
@@ -33,7 +31,6 @@ export const OrderSort: FC<OrderSortProps> = memo((props: OrderSortProps) => {
     const {
         classNames = [], order, sort, onChangeOrder, onChangeSort,
     } = props;
-    const cn = cnBind.bind(cls);
     const { t } = useTranslation();
 
     const sortOptions = useMemo<SelectOption<ArticleSortField>[]>(
@@ -63,12 +60,7 @@ export const OrderSort: FC<OrderSortProps> = memo((props: OrderSortProps) => {
     };
 
     return (
-        <div
-            className={cn(
-                cls.OrderSort,
-                ...classNames.map((clsName) => cls[clsName] || clsName),
-            )}
-        >
+        <HStack gap="4c" classNames={[...classNames.map((clsName) => clsName)]}>
             <Button
                 onClick={
                     order === 'asc'
@@ -107,6 +99,6 @@ export const OrderSort: FC<OrderSortProps> = memo((props: OrderSortProps) => {
                 height={SelectItemHeight.SMALL}
                 optionsList={sortOptions}
             />
-        </div>
+        </HStack>
     );
 });

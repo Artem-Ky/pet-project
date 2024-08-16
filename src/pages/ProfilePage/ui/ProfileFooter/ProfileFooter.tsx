@@ -1,7 +1,6 @@
 import {
     FC, memo, useCallback, useState,
 } from 'react';
-import cnBind from 'classnames/bind';
 import { Button } from 'shared/ui/Button';
 import {
     ButtonColor,
@@ -18,75 +17,73 @@ import {
 } from 'entities/Profile';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { getUserAuthData } from 'entities/User';
-import cls from './ProfileFooter.module.scss';
+import { HStack } from 'shared/ui/Stack';
 
 interface ProfileFooterProps {
     classNames?: string[];
     error?: boolean;
 }
 
-export const ProfileFooter: FC<ProfileFooterProps> = memo((props: ProfileFooterProps) => {
-    const { classNames = [], error } = props;
-    const cn = cnBind.bind(cls);
-    const { t } = useTranslation('profile');
-    const dispatch = useAppDispatch();
-    const [isDisabled, setIsDesabled] = useState(false);
+export const ProfileFooter: FC<ProfileFooterProps> = memo(
+    (props: ProfileFooterProps) => {
+        const { classNames = [], error } = props;
+        const { t } = useTranslation('profile');
+        const dispatch = useAppDispatch();
 
-    const authData = useSelector(getUserAuthData);
-    const profileData = useSelector(getProfileData);
-    const canEdit = authData?.id === profileData?.id;
+        const authData = useSelector(getUserAuthData);
+        const profileData = useSelector(getProfileData);
+        const canEdit = authData?.id === profileData?.id;
 
-    const readonly = useSelector(getProfileReadOnly);
-    const onEdit = useCallback(() => {
-        dispatch(profileActions.setReadOnly(false));
-    }, [dispatch]);
+        const readonly = useSelector(getProfileReadOnly);
+        const onEdit = useCallback(() => {
+            dispatch(profileActions.setReadOnly(false));
+        }, [dispatch]);
 
-    const onCanselEdit = useCallback(() => {
-        dispatch(profileActions.cancelEdit());
-    }, [dispatch]);
+        const onCanselEdit = useCallback(() => {
+            dispatch(profileActions.cancelEdit());
+        }, [dispatch]);
 
-    const onSave = useCallback(() => {
-        dispatch(updateProfileData());
-    }, [dispatch]);
+        const onSave = useCallback(() => {
+            dispatch(updateProfileData());
+        }, [dispatch]);
 
-    if (error) {
-        return null;
-    }
+        if (error) {
+            return null;
+        }
 
-    return (
-        <div className={cls.ButtonsPosition}>
-            {canEdit && (
-                <div className={cls.ButtonsWrapper}>
-                    {readonly ? (
-                        <Button
-                            size={ButtonSize.LARGE}
-                            variant={ButtonVariant.OUTLINE}
-                            onClick={onEdit}
-                        >
-                            {t('Редактировать', { ns: 'profile' })}
-                        </Button>
-                    ) : (
-                        <>
+        return (
+            <HStack justify="end" side="bottom" wrap="nowrap" maxWidth>
+                {canEdit && (
+                    <HStack gap="20c" side="bottom">
+                        {readonly ? (
                             <Button
                                 size={ButtonSize.LARGE}
                                 variant={ButtonVariant.OUTLINE}
-                                onClick={onCanselEdit}
-                                disabled={isDisabled}
+                                onClick={onEdit}
                             >
-                                {t('Отмена', { ns: 'profile' })}
+                                {t('Редактировать', { ns: 'profile' })}
                             </Button>
-                            <Button
-                                size={ButtonSize.LARGE}
-                                color={ButtonColor.LIGHT_WHITE}
-                                onClick={onSave}
-                                disabled={isDisabled}
-                            >
-                                {t('сохранить', { ns: 'profile' })}
-                            </Button>
-                        </>
-                    )}
-                </div>
-            )}
-        </div>
-    );
-});
+                        ) : (
+                            <>
+                                <Button
+                                    size={ButtonSize.LARGE}
+                                    variant={ButtonVariant.OUTLINE}
+                                    onClick={onCanselEdit}
+                                >
+                                    {t('Отмена', { ns: 'profile' })}
+                                </Button>
+                                <Button
+                                    size={ButtonSize.LARGE}
+                                    color={ButtonColor.LIGHT_WHITE}
+                                    onClick={onSave}
+                                >
+                                    {t('сохранить', { ns: 'profile' })}
+                                </Button>
+                            </>
+                        )}
+                    </HStack>
+                )}
+            </HStack>
+        );
+    },
+);

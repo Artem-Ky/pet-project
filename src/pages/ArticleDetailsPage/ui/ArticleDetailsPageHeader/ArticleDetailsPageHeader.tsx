@@ -6,8 +6,8 @@ import { useNavigate } from 'react-router-dom';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { getUserAuthData } from 'entities/User';
 import { getArticleDetailsData } from 'entities/Article';
+import { HStack } from 'shared/ui/Stack';
 import cls from './ArticleDetailsPageHeader.module.scss';
 import { getCanUserEditArticle } from '../../model/selectors/getCanUserEditAricle';
 
@@ -33,11 +33,12 @@ export const ArticleDetailsPageHeader: FC<ArticleDetailsPageHeaderProps> = memo(
         }, [navigate, article]);
 
         return (
-            <div
-                className={cn(
-                    cls.ArticleDetailsPageHeader,
-                    ...classNames.map((clsName) => cls[clsName] || clsName),
-                )}
+            <HStack
+                align="center"
+                gap="20c"
+                classNames={[
+                    cn(...classNames.map((clsName) => cls[clsName] || clsName)),
+                ]}
             >
                 <Button
                     onClick={onBackToList}
@@ -55,7 +56,7 @@ export const ArticleDetailsPageHeader: FC<ArticleDetailsPageHeaderProps> = memo(
                         {t('Редактировать')}
                     </Button>
                 )}
-            </div>
+            </HStack>
         );
     },
 );

@@ -1,6 +1,4 @@
-import React, {
-    FC, memo, ReactNode, useEffect, useState,
-} from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
 import cnBind from 'classnames/bind';
 import { To, useNavigate } from 'react-router-dom';
 import { Button } from '../../Button';
@@ -137,10 +135,7 @@ export const Select = <T extends string>(props: SelectProps<T>) => {
     };
 
     const handleOptionClick = (value: T, view: string | number) => {
-        console.log(selectedOptionValue);
         setSelectedOptionValue(value);
-        console.log(selectedOptionView);
-        console.log(title);
         setSelectedOptionView(view);
         onChange?.(value);
         setIsOpen(false);

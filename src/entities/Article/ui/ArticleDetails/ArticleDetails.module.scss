@@ -5,21 +5,9 @@
 }
 
 .Info {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
     &:not(:first-child) {
         margin-top: 13px;
     }
-}
-
-.authorWrapper,
-.metaWrapper {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    column-gap: 6px;
 }
 
 .avatar {

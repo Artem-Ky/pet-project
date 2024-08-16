@@ -11,6 +11,7 @@ import { Country } from 'shared/const/common';
 import { Avatar } from 'shared/ui/Avatar';
 import { AvatarSize } from 'shared/ui/Avatar/ui/Avatar';
 import { Currency, CurrencySelect } from 'entities/CurrencySelect';
+import { HStack, VStack } from 'shared/ui/Stack';
 import { Profile } from '../../model/types/profile';
 import cls from './ProfileCard.module.scss';
 
@@ -49,190 +50,178 @@ export const ProfileCard: FC<ProfileCardProps> = (props: ProfileCardProps) => {
 
     if (isLoading) {
         return (
-            <div
-                className={cn(
-                    cls.ProfileCard,
-                    cls.Loading,
-                    ...classNames.map((clsName) => cls[clsName] || clsName),
-                )}
-            >
+            <HStack justify="center" maxWidth>
                 <Loader />
-            </div>
+            </HStack>
         );
     }
 
     if (error) {
         return (
-            <div
-                className={cn(
-                    cls.ProfileCard,
-                    cls.Loading,
-                    ...classNames.map((clsName) => cls[clsName] || clsName),
+            <Text
+                title={t(
+                    'Произошла ошибка при загрузке профиля, попробуйте обновить страницу, текст ошибки: ',
                 )}
-            >
-                <Text
-                    title={t(
-                        'Произошла ошибка при загрузке профиля, попробуйте обновить страницу, текст ошибки: ',
-                    )}
-                    text={error}
-                    size={TextSize.L_BOLD}
-                    theme={TextTheme.ERROR}
-                    align={TextAlign.CENTER}
-                />
-            </div>
+                text={error}
+                size={TextSize.L_BOLD}
+                theme={TextTheme.ERROR}
+                align={TextAlign.CENTER}
+            />
         );
     }
 
     return (
-        <div
-            className={cn(
-                cls.ProfileCard,
-                ...classNames.map((clsName) => cls[clsName] || clsName),
-            )}
+        <HStack
+            gap="20"
+            wrap="wrap"
+            classNames={[
+                cn(
+                    cls.main,
+                    ...classNames.map((clsName) => cls[clsName] || clsName),
+                ),
+            ]}
         >
-            <div className={cls.main}>
-                <Avatar
-                    src={data?.avatar}
-                    alt="you cute avatar"
-                    size={AvatarSize.BIG_SQUARE}
+            <Avatar
+                src={data?.avatar}
+                alt="you cute avatar"
+                size={AvatarSize.BIG_SQUARE}
+            />
+            <VStack wrap="nowrap" gap="16r">
+                <Text
+                    title={t('Личные данные', { ns: 'profile' })}
+                    size={TextSize.L_BOLD}
+                    theme={TextTheme.BLACK_WHITE}
                 />
-                <div className={cls.personal}>
-                    <Text
-                        title={t('Личные данные', { ns: 'profile' })}
-                        size={TextSize.L_BOLD}
-                        theme={TextTheme.BLACK_WHITE}
-                    />
-                    <div className={cls.InputsWrapper}>
-                        <div className={cls.InputWrapper}>
-                            <Text
-                                label={t('Имя', { ns: 'profile' })}
-                                size={TextSize.S}
-                                theme={TextTheme.WHITE_GRAY}
-                                className={cls.label}
-                                labelId="firstName"
-                            />
-                            <Input
-                                id="firstName"
-                                value={data?.first}
-                                placeholder={t('Ваше имя', { ns: 'profile' })}
-                                onChange={onChangeFirstName}
-                                readonly={readonly}
-                            />
-                        </div>
-                        <div className={cls.InputWrapper}>
-                            <Text
-                                label={t('Фамилия', { ns: 'profile' })}
-                                size={TextSize.S}
-                                theme={TextTheme.WHITE_GRAY}
-                                className={cls.label}
-                                labelId="lastName"
-                            />
-                            <Input
-                                id="lastName"
-                                value={data?.lastname}
-                                placeholder={t('Вашу фамилия', {
-                                    ns: 'profile',
-                                })}
-                                onChange={onChangeLastName}
-                                readonly={readonly}
-                            />
-                        </div>
-                    </div>
-                    <div className={cls.InputsWrapper}>
-                        <div className={cls.InputWrapper}>
-                            <Text
-                                label={t('Дата рождения', { ns: 'profile' })}
-                                size={TextSize.S}
-                                theme={TextTheme.WHITE_GRAY}
-                                className={cls.label}
-                                labelId="birthDate"
-                            />
-                            <Input
-                                id="birthDate"
-                                size={InputSize.SMALL}
-                                type="date"
-                                value={data?.birthDate}
-                                onChange={onChangeBirthDate}
-                                readonly={readonly}
-                            />
-                        </div>
-                        <div className={cls.InputWrapper}>
-                            <Text
-                                label={t('Город', { ns: 'profile' })}
-                                size={TextSize.S}
-                                theme={TextTheme.WHITE_GRAY}
-                                className={cls.label}
-                                labelId="city"
-                            />
-                            <Input
-                                id="city"
-                                value={`${data?.country}, ${data?.city}`}
-                                onChange={onChangeLocation}
-                                readonly={readonly}
-                            />
-                        </div>
-                    </div>
-                </div>
-                <div className={cls.option}>
-                    <Text
-                        title={t('Настройки профиля', { ns: 'profile' })}
-                        size={TextSize.L_BOLD}
-                        theme={TextTheme.BLACK_WHITE}
-                        className={cls.optionTitle}
-                    />
-                    <div className={cls.InputsWrapper}>
-                        <div className={cls.InputWrapper}>
-                            <Text
-                                label={t('Имя пользователя', { ns: 'profile' })}
-                                size={TextSize.S}
-                                theme={TextTheme.WHITE_GRAY}
-                                className={cls.label}
-                                labelId="username"
-                            />
-                            <Input
-                                id="username"
-                                value={data?.username}
-                                onChange={onChangeUsername}
-                                readonly={readonly}
-                            />
-                        </div>
-                        <div className={cls.InputWrapper}>
-                            <Text
-                                label={t('Ссылка на аватар', { ns: 'profile' })}
-                                size={TextSize.S}
-                                theme={TextTheme.WHITE_GRAY}
-                                className={cls.label}
-                                labelId="link"
-                            />
-                            <Input
-                                id="link"
-                                value={data?.avatar}
-                                onChange={onChangeAvatar}
-                                placeholder={t('Вставте ссылку на аватар', {
-                                    ns: 'profile',
-                                })}
-                                readonly={readonly}
-                            />
-                        </div>
-                    </div>
-                    <div className={cls.InputsWrapper}>
-                        <div className={cls.InputWrapper}>
-                            <Text
-                                label={t('Валюта', { ns: 'profile' })}
-                                size={TextSize.S}
-                                theme={TextTheme.WHITE_GRAY}
-                                className={cls.label}
-                                labelId="money"
-                            />
-                            <CurrencySelect
-                                currentCurrency={data?.currency}
-                                readonly={readonly}
-                                onChange={onChangeCurrency}
-                            />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                <HStack gap="16c" wrap="nowrap">
+                    <VStack wrap="nowrap">
+                        <Text
+                            label={t('Имя', { ns: 'profile' })}
+                            size={TextSize.S}
+                            theme={TextTheme.WHITE_GRAY}
+                            className={cls.label}
+                            labelId="firstName"
+                        />
+                        <Input
+                            id="firstName"
+                            value={data?.first}
+                            placeholder={t('Ваше имя', { ns: 'profile' })}
+                            onChange={onChangeFirstName}
+                            readonly={readonly}
+                        />
+                    </VStack>
+                    <VStack wrap="nowrap">
+                        <Text
+                            label={t('Фамилия', { ns: 'profile' })}
+                            size={TextSize.S}
+                            theme={TextTheme.WHITE_GRAY}
+                            className={cls.label}
+                            labelId="lastName"
+                        />
+                        <Input
+                            id="lastName"
+                            value={data?.lastname}
+                            placeholder={t('Вашу фамилия', {
+                                ns: 'profile',
+                            })}
+                            onChange={onChangeLastName}
+                            readonly={readonly}
+                        />
+                    </VStack>
+                </HStack>
+                <HStack gap="16c" wrap="nowrap">
+                    <VStack wrap="nowrap">
+                        <Text
+                            label={t('Дата рождения', { ns: 'profile' })}
+                            size={TextSize.S}
+                            theme={TextTheme.WHITE_GRAY}
+                            className={cls.label}
+                            labelId="birthDate"
+                        />
+                        <Input
+                            id="birthDate"
+                            size={InputSize.SMALL}
+                            type="date"
+                            value={data?.birthDate}
+                            onChange={onChangeBirthDate}
+                            readonly={readonly}
+                        />
+                    </VStack>
+                    <VStack wrap="nowrap">
+                        <Text
+                            label={t('Город', { ns: 'profile' })}
+                            size={TextSize.S}
+                            theme={TextTheme.WHITE_GRAY}
+                            className={cls.label}
+                            labelId="city"
+                        />
+                        <Input
+                            id="city"
+                            value={`${data?.country}, ${data?.city}`}
+                            onChange={onChangeLocation}
+                            readonly={readonly}
+                        />
+                    </VStack>
+                </HStack>
+            </VStack>
+            <VStack wrap="nowrap" gap="16r">
+                <Text
+                    title={t('Настройки профиля', { ns: 'profile' })}
+                    size={TextSize.L_BOLD}
+                    theme={TextTheme.BLACK_WHITE}
+                    className={cls.optionTitle}
+                />
+                <HStack gap="16c" wrap="nowrap">
+                    <VStack wrap="nowrap">
+                        <Text
+                            label={t('Имя пользователя', { ns: 'profile' })}
+                            size={TextSize.S}
+                            theme={TextTheme.WHITE_GRAY}
+                            className={cls.label}
+                            labelId="username"
+                        />
+                        <Input
+                            id="username"
+                            value={data?.username}
+                            onChange={onChangeUsername}
+                            readonly={readonly}
+                        />
+                    </VStack>
+                    <VStack wrap="nowrap">
+                        <Text
+                            label={t('Ссылка на аватар', { ns: 'profile' })}
+                            size={TextSize.S}
+                            theme={TextTheme.WHITE_GRAY}
+                            className={cls.label}
+                            labelId="link"
+                        />
+                        <Input
+                            id="link"
+                            value={data?.avatar}
+                            onChange={onChangeAvatar}
+                            placeholder={t('Вставте ссылку на аватар', {
+                                ns: 'profile',
+                            })}
+                            readonly={readonly}
+                        />
+                    </VStack>
+                </HStack>
+                <HStack gap="16c" wrap="nowrap">
+                    <VStack wrap="nowrap">
+                        <Text
+                            label={t('Валюта', { ns: 'profile' })}
+                            size={TextSize.S}
+                            theme={TextTheme.WHITE_GRAY}
+                            className={cls.label}
+                            labelId="money"
+                        />
+                        <CurrencySelect
+                            currentCurrency={data?.currency}
+                            readonly={readonly}
+                            onChange={onChangeCurrency}
+                        />
+                    </VStack>
+                </HStack>
+            </VStack>
+        </HStack>
     );
 };

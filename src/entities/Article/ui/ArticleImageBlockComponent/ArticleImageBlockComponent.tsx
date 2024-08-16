@@ -3,6 +3,7 @@ import {
     Text, TextAlign, TextSize, TextTheme,
 } from 'shared/ui/Text/ui/Text';
 import cnBind from 'classnames/bind';
+import { HStack } from 'shared/ui/Stack';
 import cls from './ArticleImageBlockComponent.module.scss';
 import { ArticleImageBlock } from '../../model/types/article';
 
@@ -22,13 +23,13 @@ export const ArticleImageBlockComponent = memo(
                     ...classNames.map((clsName) => cls[clsName] || clsName),
                 )}
             >
-                <div className={cls.imgWrapper}>
+                <HStack align="center" justify="center">
                     <img
                         src={block.src}
                         alt={block.title}
                         className={cls.img}
                     />
-                </div>
+                </HStack>
                 {block.title && (
                     <Text
                         theme={TextTheme.BLACK_WHITE}

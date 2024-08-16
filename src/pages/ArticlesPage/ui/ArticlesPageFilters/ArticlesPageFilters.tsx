@@ -20,13 +20,10 @@ import { OrderSort } from 'features/OrderSort';
 import { SortOrder } from 'shared/types';
 import { useDebounce } from 'shared/lib/hooks/useDebounce/useDebounce';
 import { Button } from 'shared/ui/Button';
-import {
-    ButtonOutlineColor,
-    ButtonSize,
-    ButtonVariant,
-} from 'shared/ui/Button/ui/Button';
+import { ButtonSize, ButtonVariant } from 'shared/ui/Button/ui/Button';
 import { AppLink } from 'shared/ui/Link';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
+import { HStack, VStack } from 'shared/ui/Stack';
 import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList';
 import { articlesPageActions } from '../../model/slices/articlesPageSlice';
 import cls from './ArticlesPageFilters.module.scss';
@@ -104,16 +101,15 @@ export const ArticlesPageFilters: FC<ArticlesPageFiltersProps> = memo(
         );
 
         return (
-            <div
-                className={cn(
-                    cls.ArticlesPageFilters,
-                    ...classNames.map((clsName) => cls[clsName] || clsName),
-                )}
+            <VStack
+                gap="32r"
+                classNames={[
+                    cn(...classNames.map((clsName) => cls[clsName] || clsName)),
+                ]}
             >
-                <div className={cls.selectFilters}>
+                <HStack align="center" justify="between" fullWidth>
                     <div>
                         <Input
-                            classNames={[cls.searchIconContainer]}
                             placeholder={t('Поиск')}
                             value={search}
                             onChange={onChangeSearch}
@@ -141,10 +137,10 @@ export const ArticlesPageFilters: FC<ArticlesPageFiltersProps> = memo(
                             {t('Создать статью')}
                         </Button>
                     </AppLink>
-                </div>
-                <div className={cls.selectFilters}>
+                </HStack>
+                <HStack align="center" justify="between" fullWidth>
                     <ArticleTypeTabs onChangeType={onChangeType} value={type} />
-                    <div className={cls.otherSort}>
+                    <HStack align="center" gap="20c">
                         <OrderSort
                             order={order}
                             sort={sort}
@@ -152,9 +148,9 @@ export const ArticlesPageFilters: FC<ArticlesPageFiltersProps> = memo(
                             onChangeSort={onChangeSort}
                         />
                         <ViewSwitcher view={view} onViewClick={onChangeView} />
-                    </div>
-                </div>
-            </div>
+                    </HStack>
+                </HStack>
+            </VStack>
         );
     },
 );

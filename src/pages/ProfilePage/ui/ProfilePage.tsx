@@ -10,9 +10,7 @@ import {
     profileReducer,
     ValidateProfileError,
 } from 'entities/Profile';
-import {
-    FC, memo, useCallback, useEffect,
-} from 'react';
+import { FC, memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
     DynamicModuleLoader,
@@ -26,6 +24,7 @@ import { Currency } from 'entities/CurrencySelect';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { useParams } from 'react-router-dom';
 import { Page } from 'widgets/Page';
+import { VStack } from 'shared/ui/Stack';
 import cls from './ProfilePage.module.scss';
 import { ProfileFooter } from './ProfileFooter/ProfileFooter';
 
@@ -60,9 +59,7 @@ const ProfilePage: FC = memo(() => {
     };
 
     useInitialEffect(() => {
-        dispatch(fetchProfileData('1'));
         if (id) {
-            console.log(id);
             dispatch(fetchProfileData(id));
         }
     });
@@ -123,33 +120,39 @@ const ProfilePage: FC = memo(() => {
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
             <Page classNames={[cls.profilePageWrapper]}>
-                <Text
-                    size={TextSize.XXL_TITLE}
-                    theme={TextTheme.BLACK_WHITE}
-                    title={t('Профиль', { ns: 'profile' })}
-                />
-                {validateErrors?.length
-                    && validateErrors.map((item) => (
-                        <Text
-                            theme={TextTheme.ERROR}
-                            text={ErrorProfileTranslate[item]}
-                            key={item}
+                <VStack gap="20r" maxHeight wrap="nowrap">
+                    <Text
+                        size={TextSize.XXL_TITLE}
+                        theme={TextTheme.BLACK_WHITE}
+                        title={t('Профиль', { ns: 'profile' })}
+                    />
+                    {validateErrors?.length
+                        && validateErrors.map((item) => (
+                            <Text
+                                theme={TextTheme.ERROR}
+                                text={ErrorProfileTranslate[item]}
+                                key={item}
+                            />
+                        ))}
+                    <ProfileCard
+                        data={formData}
+                        isLoading={isLoading}
+                        error={error}
+                        readonly={readonly}
+                        onChangeFirstName={onChangeFirstName}
+                        onChangeLastName={onChangeLastName}
+                        onChangeLocation={onChangeLocation}
+                        onChangeBirthDate={onChangeBirthDate}
+                        onChangeUsername={onChangeUsername}
+                        onChangeAvatar={onChangeAvatar}
+                        onChangeCurrency={onChangeCurrency}
+                    />
+                    {!isLoading && (
+                        <ProfileFooter
+                            error={error !== undefined || isLoading}
                         />
-                    ))}
-                <ProfileCard
-                    data={formData}
-                    isLoading={isLoading}
-                    error={error}
-                    readonly={readonly}
-                    onChangeFirstName={onChangeFirstName}
-                    onChangeLastName={onChangeLastName}
-                    onChangeLocation={onChangeLocation}
-                    onChangeBirthDate={onChangeBirthDate}
-                    onChangeUsername={onChangeUsername}
-                    onChangeAvatar={onChangeAvatar}
-                    onChangeCurrency={onChangeCurrency}
-                />
-                <ProfileFooter error={error !== undefined || isLoading} />
+                    )}
+                </VStack>
             </Page>
         </DynamicModuleLoader>
     );

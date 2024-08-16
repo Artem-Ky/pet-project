@@ -14,7 +14,6 @@ import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEf
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { AddCommentForm } from 'features/AddCommentForm';
 import { Page } from 'widgets/Page';
-import { articleDetailsPageReducer } from '../../model/slices';
 import { getArticleRecommendationsIsLoading } from '../../model/selectors/getRecommendation';
 import {
     articleDetailsPageRecommendationsReducer,

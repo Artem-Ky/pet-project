@@ -2,6 +2,7 @@ import { FC } from 'react';
 import cnBind from 'classnames/bind';
 import { useTranslation } from 'react-i18next';
 import { Button } from 'shared/ui/Button';
+import { VStack } from 'shared/ui/Stack';
 import cls from './PageError.module.scss';
 
 interface PageErrorProps {
@@ -19,14 +20,18 @@ export const PageError: FC<PageErrorProps> = (props) => {
     };
 
     return (
-        <div
-            className={cn(
-                cls.PageError,
-                ...classNames.map((clsName) => cls[clsName] || clsName),
-            )}
+        <VStack
+            justify="center"
+            align="center"
+            classNames={[
+                cn(
+                    cls.PageError,
+                    ...classNames.map((clsName) => cls[clsName] || clsName),
+                ),
+            ]}
         >
             <p>{t('Произошла непредвиденная ошибка')}</p>
             <Button onClick={reloadPage}>{t('Обновить страницу')}</Button>
-        </div>
+        </VStack>
     );
 };

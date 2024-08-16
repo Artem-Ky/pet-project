@@ -51,7 +51,7 @@ export const ArticleTextBlockComponent = memo(
         }
 
         const combinedText = block.paragraphs.join(' ');
-        const truncatedText = truncateText(combinedText, 250);
+        const truncatedText = truncateText(combinedText, 350);
 
         return (
             <div

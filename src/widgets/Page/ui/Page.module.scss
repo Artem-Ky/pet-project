@@ -2,6 +2,7 @@
     flex-grow: 1;
     padding: 13px;
     height: calc(100% - var(--nav-bar-height) - var(--nav-bar-padding));
+    max-width: 100%;
 }
 
 .pageHeightScroll {

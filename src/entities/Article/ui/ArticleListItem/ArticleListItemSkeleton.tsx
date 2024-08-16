@@ -3,6 +3,7 @@ import { memo } from 'react';
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
 import { Card, CardSize } from 'shared/ui/Card';
 import { CardView } from 'shared/ui/Card/ui/Card';
+import { HStack, VStack } from 'shared/ui/Stack';
 import cls from './ArticleListItem.module.scss';
 import { ArticleView } from '../../model/types/article';
 
@@ -25,35 +26,48 @@ export const ArticleListItemSkeleton = memo(
                     heightAuto
                     fullWidth
                 >
-                    <div className={cls.article}>
-                        <div className={cls.meta}>
-                            <div className={cls.author}>
+                    <VStack gap="16r">
+                        <HStack
+                            justify="between"
+                            align="center"
+                            classNames={[cls.fullWidth]}
+                        >
+                            <HStack justify="start" align="center" gap="8c">
                                 <Skeleton height={36} width={36} border="50%" />
                                 <Skeleton height={20} width={50} />
-                            </div>
+                            </HStack>
                             <Skeleton height={20} width={100} />
-                        </div>
+                        </HStack>
                         <Skeleton height={40} width={300} />
                         <Skeleton height={30} width={500} />
                         <Skeleton height={20} width={300} />
-                        <div className={cls.imageWrapper}>
+                        <HStack justify="center" classNames={[cls.fullWidth]}>
                             <Skeleton
                                 className={cls.articleImage}
                                 height={400}
                                 width={600}
                             />
-                        </div>
+                        </HStack>
 
                         <Skeleton height={60} width="100%" />
 
-                        <div className={cls.footer}>
+                        <HStack
+                            justify="between"
+                            align="center"
+                            classNames={[cls.marginTopAuto, cls.fullWidth]}
+                        >
                             <Skeleton height={30} width={100} />
-                            <div className={cls.viewWrapper}>
+                            <HStack
+                                justify="end"
+                                align="center"
+                                gap="4c"
+                                grow="1"
+                            >
                                 <Skeleton height={10} width={10} />
                                 <Skeleton height={10} width={100} />
-                            </div>
-                        </div>
-                    </div>
+                            </HStack>
+                        </HStack>
+                    </VStack>
                 </Card>
             );
         }

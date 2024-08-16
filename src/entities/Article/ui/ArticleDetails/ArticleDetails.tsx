@@ -13,6 +13,7 @@ import { Avatar } from 'shared/ui/Avatar';
 import { AvatarSize } from 'shared/ui/Avatar/ui/Avatar';
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
 import cnBind from 'classnames/bind';
+import { HStack } from 'shared/ui/Stack';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 import { ArticleImageBlockComponent } from '../ArticleImageBlockComponent/ArticleImageBlockComponent';
 import { ArticleCodeBlockComponent } from '../ArticleCodeBlockComponent/ArticleCodeBlockComponent';
@@ -114,8 +115,12 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
                     theme={TextTheme.BLACK_WHITE}
                     size={TextSize.XXL_TITLE}
                 />
-                <div className={cls.Info}>
-                    <div className={cls.authorWrapper}>
+                <HStack
+                    justify="between"
+                    align="center"
+                    classNames={[cls.Info]}
+                >
+                    <HStack align="center" gap="8c">
                         <Avatar
                             size={AvatarSize.MEDIUM_ROUND}
                             src={article?.img}
@@ -127,8 +132,8 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
                             theme={TextTheme.BLACK_WHITE}
                             size={TextSize.M}
                         />
-                    </div>
-                    <div className={cls.metaWrapper}>
+                    </HStack>
+                    <HStack align="center" gap="8c">
                         <div className={cls.articleInfo}>
                             <Text
                                 theme={TextTheme.GRAY_LIGHT}
@@ -146,8 +151,8 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
                                 size={TextSize.S}
                             />
                         </div>
-                    </div>
-                </div>
+                    </HStack>
+                </HStack>
                 <div className={cls.main}>
                     {article?.blocks.map(renderBlock)}
                 </div>

@@ -1,27 +1,3 @@
-.ArticlesPageFilters {
-    display: flex;
-    flex-direction: column;
-    row-gap: 30px;
-}
-
-.selectFilters {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.otherSort {
-    display: flex;
-    align-items: center;
-    column-gap: 25px;
-}
-
-.tagsSort {
-    display: flex;
-    align-items: center;
-    column-gap: 12px;
-}
-
 .searchIcon {
     position: absolute;
     display: flex;

@@ -7,6 +7,7 @@ import {
     Icon, IconColor, IconSize, IconTypeVariant,
 } from 'shared/ui/Icon';
 import { ArticleView } from 'entities/Article';
+import { HStack } from 'shared/ui/Stack';
 import cls from './ViewSwitcher.module.scss';
 
 interface ViewSwitcherProps {
@@ -25,11 +26,15 @@ export const ViewSwitcher: FC<ViewSwitcherProps> = memo(
         };
 
         return (
-            <div
-                className={cn(
-                    cls.ViewSwitcher,
-                    ...classNames.map((clsName) => cls[clsName] || clsName),
-                )}
+            <HStack
+                justify="between"
+                align="center"
+                classNames={[
+                    cn(
+                        cls.ViewSwitcher,
+                        ...classNames.map((clsName) => cls[clsName] || clsName),
+                    ),
+                ]}
             >
                 <Button
                     onClick={onClick(ArticleView.PLATE)}
@@ -61,7 +66,7 @@ export const ViewSwitcher: FC<ViewSwitcherProps> = memo(
                         icon={ListIcon}
                     />
                 </Button>
-            </div>
+            </HStack>
         );
     },
 );
