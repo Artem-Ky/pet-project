@@ -20,8 +20,8 @@ import {
 import { HStack } from 'shared/ui/Stack';
 import { Article, ArticleView } from '../../model/types/article';
 import cls from './ArticleList.module.scss';
-import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton';
+import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 
 interface ArticleListProps {
     classNames?: string[];
@@ -172,7 +172,9 @@ export const ArticleList: FC<ArticleListProps> = memo(
 
         return (
             <WindowScroller
-                scrollElement={document.getElementById(PAGE_ID) as Element || window}
+                scrollElement={
+                    (document.getElementById(PAGE_ID) as Element) || window
+                }
             >
                 {({
                     height,
