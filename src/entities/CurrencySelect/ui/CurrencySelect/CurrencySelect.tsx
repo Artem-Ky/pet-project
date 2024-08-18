@@ -1,7 +1,8 @@
 import {
     FC, memo, useCallback, useMemo,
 } from 'react';
-import { Select, SelectItemType, SelectOption } from 'shared/ui/Select';
+import { ListBox, ListBoxItem } from 'shared/ui/ListBox/ListBox';
+import { HStack } from 'shared/ui/Stack';
 import { Currency } from '../../model/currency';
 
 interface CurrencySelectProps {
@@ -14,27 +15,31 @@ export const CurrencySelect: FC<CurrencySelectProps> = memo(
     (props: CurrencySelectProps) => {
         const { currentCurrency, readonly, onChange } = props;
 
-        const optionsList: SelectOption<Currency>[] = useMemo(
+        const optionsList2: ListBoxItem[] = useMemo(
             () => Object.values(Currency).map((currency) => ({
                 value: currency,
-                label: currency,
-                type: SelectItemType.DEFAULT,
+                content: currency,
             })),
             [],
         );
 
-        const onChangeCurrency = useCallback((value?: string) => {
-            onChange?.(value as Currency);
-        }, [onChange]);
+        const onChangeCurrency = useCallback(
+            (value?: string) => {
+                onChange?.(value as Currency);
+            },
+            [onChange],
+        );
 
         return (
-            <Select
-                title={currentCurrency}
-                optionsList={optionsList}
-                value={currentCurrency || Currency.RUB}
-                readonly={readonly}
-                onChange={onChangeCurrency}
-            />
+            <HStack>
+                <ListBox
+                    value={currentCurrency}
+                    defaultValue={Currency.RUB}
+                    items={optionsList2}
+                    readonly={readonly}
+                    onChange={onChangeCurrency}
+                />
+            </HStack>
         );
     },
 );

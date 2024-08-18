@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, ReactNode } from 'react';
 import cnBind from 'classnames/bind';
 import cls from './Text.module.scss';
 
@@ -40,6 +40,7 @@ interface TextProps {
     align?: TextAlign;
     size?: TextSize;
     widthAuto?: boolean;
+    children?: ReactNode;
 
     'data-testid'?: string;
 }
@@ -69,6 +70,7 @@ export const Text = memo((props: TextProps) => {
         align = TextAlign.LEFT,
         size = TextSize.M,
         widthAuto,
+        children,
         'data-testid': dataTestId = 'Text',
     } = props;
 
@@ -108,6 +110,11 @@ export const Text = memo((props: TextProps) => {
                 >
                     {label}
                 </label>
+            )}
+            {children && (
+                <p className={cls.text} data-testid={`${dataTestId}.Children`}>
+                    {children}
+                </p>
             )}
         </div>
     );
