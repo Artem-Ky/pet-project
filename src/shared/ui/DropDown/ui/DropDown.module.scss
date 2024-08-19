@@ -1,0 +1,69 @@
+@import 'app/styles/index';
+
+.DropDown {
+    position: relative;
+    z-index: 2;
+    font: var(--font-inter-md-regular);
+    display: inline-block;
+}
+
+.menu {
+    position: absolute;
+    background-color: var(--select-bg);
+    outline: none;
+    min-width: max-content;
+    border-radius: var(--border-radius-small);
+}
+
+.item {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-inline: 10px;
+}
+
+.buttonHover {
+    @include hover {
+        background-color: var(--select-item-bg);
+        border-radius: var(--border-radius-small);
+        opacity: 1;
+    }
+}
+
+.height-small {
+    height: var(--select-height-small);
+}
+
+.height-medium {
+    height: var(--select-height-medium);
+}
+
+.height-large {
+    height: var(--select-height-large);
+}
+
+.disabled {
+    opacity: 0.3;
+}
+
+.active {
+    background-color: var(--select-item-bg);
+    border-radius: var(--border-radius-small);
+}
+
+.disableDefaultHover {
+    @include hover {
+        opacity: 1;
+    }
+}
+
+.widthAutoPadding {
+    width: auto;
+    padding-inline: 10px;
+}
+
+.BorderRadius {
+    border-radius: var(--border-radius-small);
+}

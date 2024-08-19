@@ -114,7 +114,6 @@ export const ListBox: FC<ListBoxProps> = memo((props: ListBoxProps) => {
                             as="div"
                             disabled={readonly}
                             ref={refs.setReference}
-                            className={cls.trigger}
                         >
                             <Button
                                 color={ButtonColor.ALT_WHITE_DARK_GRAY}

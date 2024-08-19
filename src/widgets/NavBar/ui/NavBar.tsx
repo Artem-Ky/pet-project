@@ -10,18 +10,15 @@ import { ThemeSwitcher } from 'widgets/ThemeSwither';
 import { LangSwitcher } from 'widgets/LangSwitcher/ui/LangSwitcher';
 import { getUserAuthData, userActions } from 'entities/User';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import {
-    Select,
-    SelectItemType,
-    SelectOpenSide,
-    SelectOption,
-    SelectType,
-} from 'shared/ui/Select';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { Avatar } from 'shared/ui/Avatar';
 import { AvatarSize } from 'shared/ui/Avatar/ui/Avatar';
-import { TextTheme } from 'shared/ui/Text/ui/Text';
 import { HStack } from 'shared/ui/Stack';
+import {
+    DropDown,
+    dropDownContentColor,
+    DropdownItem,
+} from 'shared/ui/DropDown/ui/DropDown';
 import cls from './NavBar.module.scss';
 
 export const NavBar: FC = memo(() => {
@@ -43,25 +40,19 @@ export const NavBar: FC = memo(() => {
     }, [dispatch]);
 
     if (authData) {
-        const optionsList: SelectOption<string>[] = [
+        const optionsList: DropdownItem[] = [
             {
-                value: 'Админка',
-                label: 'Админка',
-                type: SelectItemType.LINK,
-                to: '/admin',
+                content: 'Админка',
+                href: '/admin',
             },
             {
-                value: 'Профиль',
-                label: 'Профиль',
-                type: SelectItemType.LINK,
-                to: RoutePath.profile + authData.id,
+                content: 'Профиль',
+                href: RoutePath.profile + authData.id,
             },
             {
-                value: 'Выйти',
-                label: 'Выйти',
-                type: SelectItemType.BUTTON,
+                content: 'Выйти',
+                contentColor: dropDownContentColor.RED,
                 onClick: onLogOut,
-                textTheme: TextTheme.ERROR,
             },
         ];
 
@@ -70,18 +61,16 @@ export const NavBar: FC = memo(() => {
                 <HStack gap="20c" justify="end">
                     <LangSwitcher />
                     <ThemeSwitcher />
-                    <Select
-                        type={SelectType.ICON}
-                        optionsList={optionsList}
-                        value=""
-                        openSide={SelectOpenSide.CENTER}
-                    >
-                        <Avatar
-                            size={AvatarSize.MEDIUM_ROUND}
-                            src={authData.avatar}
-                            alt={t('Ваш аватар')}
-                        />
-                    </Select>
+                    <DropDown
+                        items={optionsList}
+                        trigger={(
+                            <Avatar
+                                size={AvatarSize.MEDIUM_ROUND}
+                                src={authData.avatar}
+                                alt={t('Ваш аватар')}
+                            />
+                        )}
+                    />
                 </HStack>
             </header>
         );
