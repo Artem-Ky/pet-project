@@ -1,160 +1,33 @@
-import {
-    fetchProfileData,
-    getProfileError,
-    getProfileForm,
-    getProfileIsLoading,
-    getProfileReadOnly,
-    getProfileValidateErrors,
-    profileActions,
-    ProfileCard,
-    profileReducer,
-    ValidateProfileError,
-} from 'entities/Profile';
-import { FC, memo, useCallback } from 'react';
-import { useTranslation } from 'react-i18next';
-import {
-    DynamicModuleLoader,
-    ReducersList,
-} from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { Text, TextSize, TextTheme } from 'shared/ui/Text/ui/Text';
-import { useSelector } from 'react-redux';
-import { Country } from 'shared/const/common';
-import { Currency } from 'entities/CurrencySelect';
-import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
+import { FC, memo } from 'react';
 import { useParams } from 'react-router-dom';
 import { Page } from 'widgets/Page';
-import { VStack } from 'shared/ui/Stack';
+import { EditableProfileCard } from 'features/EditableProfileCard';
+import { Text, TextSize, TextTheme } from 'shared/ui/Text/ui/Text';
+import { useTranslation } from 'react-i18next';
 import cls from './ProfilePage.module.scss';
-import { ProfileFooter } from './ProfileFooter/ProfileFooter';
 
 const ProfilePage: FC = memo(() => {
+    let { id } = useParams<{ id: string }>();
     const { t } = useTranslation('profile');
-    const dispatch = useAppDispatch();
-    const isLoading = useSelector(getProfileIsLoading);
-    const error = useSelector(getProfileError);
-    const readonly = useSelector(getProfileReadOnly);
-    const formData = useSelector(getProfileForm);
-    const validateErrors = useSelector(getProfileValidateErrors);
-    const { id } = useParams<{ id: string }>();
 
-    const ErrorProfileTranslate = {
-        [ValidateProfileError.SERVER_ERROR]: t(
-            'Ошибка сервера при сохранении',
-            { ns: 'profile' },
-        ),
-        [ValidateProfileError.INCORRECT_CURRENCY]: t('Не выбрана валюта', {
-            ns: 'profile',
-        }),
-        [ValidateProfileError.INCORRECT_USERNAME]: t('Отсутсвует username', {
-            ns: 'profile',
-        }),
-        [ValidateProfileError.INCORRECT_USER_DATA]: t(
-            'Отсутствует имя пользователя или его фамилия',
-            { ns: 'profile' },
-        ),
-        [ValidateProfileError.NO_DATA]: t('ошибка получения вашего профиля', {
-            ns: 'profile',
-        }),
-    };
+    if (__PROJECT__ === 'storybook') {
+        id = '1';
+    }
 
-    useInitialEffect(() => {
-        if (id) {
-            dispatch(fetchProfileData(id));
-        }
-    });
-
-    const reducers: ReducersList = {
-        profile: profileReducer,
-    };
-
-    const onChangeFirstName = useCallback(
-        (value?: string) => {
-            dispatch(profileActions.updateProfile({ first: value }));
-        },
-        [dispatch],
-    );
-
-    const onChangeLastName = useCallback(
-        (value?: string) => {
-            dispatch(profileActions.updateProfile({ lastname: value }));
-        },
-        [dispatch],
-    );
-
-    const onChangeLocation = useCallback(
-        (value?: string, country?: Country) => {
-            dispatch(profileActions.updateProfile({ country, city: value }));
-        },
-        [dispatch],
-    );
-
-    const onChangeBirthDate = useCallback(
-        (value?: string) => {
-            dispatch(profileActions.updateProfile({ birthDate: value }));
-        },
-        [dispatch],
-    );
-
-    const onChangeUsername = useCallback(
-        (value?: string) => {
-            dispatch(profileActions.updateProfile({ username: value }));
-        },
-        [dispatch],
-    );
-
-    const onChangeAvatar = useCallback(
-        (value?: string) => {
-            dispatch(profileActions.updateProfile({ avatar: value }));
-        },
-        [dispatch],
-    );
-
-    const onChangeCurrency = useCallback(
-        (value?: Currency) => {
-            dispatch(profileActions.updateProfile({ currency: value }));
-        },
-        [dispatch],
-    );
+    if (!id) {
+        return (
+            <Text
+                size={TextSize.XXL_TITLE}
+                theme={TextTheme.ERROR}
+                title={t('Профиль не найден', { ns: 'profile' })}
+            />
+        );
+    }
 
     return (
-        <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-            <Page classNames={[cls.profilePageWrapper]}>
-                <VStack gap="20r" maxHeight wrap="nowrap">
-                    <Text
-                        size={TextSize.XXL_TITLE}
-                        theme={TextTheme.BLACK_WHITE}
-                        title={t('Профиль', { ns: 'profile' })}
-                    />
-                    {validateErrors?.length
-                        && validateErrors.map((item) => (
-                            <Text
-                                theme={TextTheme.ERROR}
-                                text={ErrorProfileTranslate[item]}
-                                key={item}
-                            />
-                        ))}
-                    <ProfileCard
-                        data={formData}
-                        isLoading={isLoading}
-                        error={error}
-                        readonly={readonly}
-                        onChangeFirstName={onChangeFirstName}
-                        onChangeLastName={onChangeLastName}
-                        onChangeLocation={onChangeLocation}
-                        onChangeBirthDate={onChangeBirthDate}
-                        onChangeUsername={onChangeUsername}
-                        onChangeAvatar={onChangeAvatar}
-                        onChangeCurrency={onChangeCurrency}
-                    />
-                    {!isLoading && (
-                        <ProfileFooter
-                            error={error !== undefined || isLoading}
-                        />
-                    )}
-                </VStack>
-            </Page>
-        </DynamicModuleLoader>
+        <Page classNames={[cls.profilePageWrapper]}>
+            <EditableProfileCard id={id} />
+        </Page>
     );
 });
 

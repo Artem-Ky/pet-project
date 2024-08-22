@@ -27,11 +27,7 @@ export const ArticleListItemSkeleton = memo(
                     fullWidth
                 >
                     <VStack gap="16r">
-                        <HStack
-                            justify="between"
-                            align="center"
-                            classNames={[cls.fullWidth]}
-                        >
+                        <HStack justify="between" align="center" fullWidth>
                             <HStack justify="start" align="center" gap="8c">
                                 <Skeleton height={36} width={36} border="50%" />
                                 <Skeleton height={20} width={50} />
@@ -41,7 +37,7 @@ export const ArticleListItemSkeleton = memo(
                         <Skeleton height={40} width={300} />
                         <Skeleton height={30} width={500} />
                         <Skeleton height={20} width={300} />
-                        <HStack justify="center" classNames={[cls.fullWidth]}>
+                        <HStack justify="center" fullWidth>
                             <Skeleton
                                 className={cls.articleImage}
                                 height={400}
@@ -54,7 +50,8 @@ export const ArticleListItemSkeleton = memo(
                         <HStack
                             justify="between"
                             align="center"
-                            classNames={[cls.marginTopAuto, cls.fullWidth]}
+                            fullWidth
+                            classNames={[cls.marginTopAuto]}
                         >
                             <Skeleton height={30} width={100} />
                             <HStack
@@ -78,22 +75,27 @@ export const ArticleListItemSkeleton = memo(
                 size={CardSize.MEDIUM}
                 classNames={[cls[view]]}
             >
-                <div className={cls.imageWrapper}>
+                <HStack justify="center" fullWidth>
                     <Skeleton
                         className={cls.articleImage}
                         height={190}
                         width={190}
                         border="3"
                     />
-                </div>
-                <div className={cls.cardMeta}>
+                </HStack>
+                <HStack
+                    justify="between"
+                    align="center"
+                    fullWidth
+                    classNames={[cls.marginTopAuto]}
+                >
                     <Skeleton height={20} width={90} />
-                    <div className={cls.viewWrapper}>
+                    <HStack justify="end" align="center" gap="4c" grow="1">
                         <Skeleton height={10} width={10} />
-                        <Skeleton height={10} width={90} />
-                    </div>
-                </div>
-                <Skeleton height={30} width={195} />
+                        <Skeleton height={10} width={50} />
+                    </HStack>
+                </HStack>
+                <Skeleton height={30} width={180} />
             </Card>
         );
     },

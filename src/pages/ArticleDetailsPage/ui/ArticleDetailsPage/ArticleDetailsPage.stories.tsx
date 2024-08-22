@@ -3,10 +3,11 @@ import { Theme } from 'shared/const/theme';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 import { Article, ArticleBlockType, ArticleType } from 'entities/Article';
+import { ArticleRecommendationsList } from 'features/ArticleRecommendationsList';
 import ArticleDetailsPage from './ArticleDetailsPage';
 
 export default {
-    title: 'pages/ArticleDetailsPage',
+    title: 'pages/ArticleDetailsPage/ArticleDetailsPage',
     component: ArticleDetailsPage,
     argTypes: {
         backgroundColor: { control: 'color' },
@@ -60,16 +61,23 @@ const article: Article = {
 
 export const Light = Template.bind({});
 Light.args = {};
-Light.decorators = [StoreDecorator({
-    articleDetails: {
-        data: article,
-    },
-})];
+Light.decorators = [
+    StoreDecorator({
+        articleDetails: {
+            data: article,
+            isLoading: false,
+        },
+    }),
+];
 
 export const Dark = Template.bind({});
 Dark.args = {};
-Dark.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({
-    articleDetails: {
-        data: article,
-    },
-})];
+Dark.decorators = [
+    ThemeDecorator(Theme.DARK),
+    StoreDecorator({
+        articleDetails: {
+            data: article,
+            isLoading: false,
+        },
+    }),
+];

@@ -50,7 +50,7 @@ export const ProfileCard: FC<ProfileCardProps> = (props: ProfileCardProps) => {
 
     if (isLoading) {
         return (
-            <HStack justify="center" maxWidth>
+            <HStack justify="center" fullWidth>
                 <Loader />
             </HStack>
         );

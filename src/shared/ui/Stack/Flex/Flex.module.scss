@@ -98,12 +98,12 @@
     column-gap: 32px;
 }
 
-.maxWidth {
-    width: 100%;
+.autoWidth {
+    width: auto;
 }
 
-.maxHeight {
-    height: 100%;
+.autoHeight {
+    height: auto;
 }
 
 .wrap {
@@ -156,4 +156,8 @@
 
 .fullWidth {
     width: 100%;
+}
+
+.fullHeight {
+    height: 100%;
 }

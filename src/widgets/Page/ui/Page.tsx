@@ -37,10 +37,13 @@ export const Page: FC<PageProps> = memo((props: PageProps) => {
     });
 
     useInitialEffect(() => {
+        console.log(scrollPosition);
+        console.log(wrapperRef);
         wrapperRef.current.scrollTop = scrollPosition;
     });
 
     const onScroll = useThrottle((e: UIEvent<HTMLDivElement>) => {
+        console.log(e.currentTarget.scrollTop);
         dispatch(
             pageScrollActions.setScrollPosition({
                 position: e.currentTarget.scrollTop,

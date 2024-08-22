@@ -55,6 +55,7 @@ const AddCommentForm: FC<AddCommentFormProps> = memo(
             <DynamicModuleLoader reducers={reducerList} removeAfterUnmount>
                 <VStack
                     gap="16r"
+                    fullWidth
                     classNames={[
                         cn(
                             ...classNames.map(

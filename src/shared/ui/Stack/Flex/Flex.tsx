@@ -1,5 +1,5 @@
 import {
-    DetailedHTMLProps, FC, HTMLAttributes, memo, ReactNode,
+    DetailedHTMLProps, FC, forwardRef, HTMLAttributes, ReactNode,
 } from 'react';
 import cnBind from 'classnames/bind';
 import cls from './Flex.module.scss';
@@ -107,12 +107,13 @@ export interface FlexProps extends DivProps {
     side?: Side;
     shrink?: FlexShrink;
     grow?: FlexGrow;
-    maxWidth?: boolean;
-    maxHeight?: boolean;
+    autoWidth?: boolean;
+    autoHeight?: boolean;
     fullWidth?: boolean;
+    fullHeight?: boolean;
 }
 
-export const Flex: FC<FlexProps> = (props: FlexProps) => {
+export const Flex: FC<FlexProps> = forwardRef((props: FlexProps, ref) => {
     const {
         classNames = [],
         children,
@@ -124,9 +125,10 @@ export const Flex: FC<FlexProps> = (props: FlexProps) => {
         side = 'default',
         shrink = '1',
         grow = '0',
-        maxWidth,
-        maxHeight,
+        autoWidth,
+        autoHeight,
         fullWidth,
+        fullHeight,
     } = props;
     const cn = cnBind.bind(cls);
 
@@ -143,14 +145,20 @@ export const Flex: FC<FlexProps> = (props: FlexProps) => {
 
     return (
         <div
+            ref={ref}
             className={cn(
                 cls.Flex,
                 ...classNames.map((clsName) => cls[clsName] || clsName),
                 classes,
-                { [cls.maxWidth]: maxWidth, [cls.maxHeight]: maxHeight, [cls.fullWidth]: fullWidth },
+                {
+                    [cls.autoWidth]: autoWidth,
+                    [cls.autoHeight]: autoHeight,
+                    [cls.fullWidth]: fullWidth,
+                    [cls.fullHeight]: fullHeight,
+                },
             )}
         >
             {children}
         </div>
     );
-};
+});

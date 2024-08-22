@@ -1,15 +1,13 @@
 import {
-    FC, Fragment, memo, ReactNode,
+    FC, memo, ReactNode,
 } from 'react';
 import cnBind from 'classnames/bind';
 import {
     Menu, MenuButton, MenuItem, MenuItems,
 } from '@headlessui/react';
 import {
-    autoPlacement,
     autoUpdate,
     flip,
-    inline,
     offset,
     useFloating,
 } from '@floating-ui/react-dom';
@@ -20,7 +18,6 @@ import {
 import { Button } from '../../Button';
 import { HStack } from '../../Stack';
 import cls from './DropDown.module.scss';
-import { ButtonColor } from '../../Button/ui/Button';
 
 export enum dropDownContentColor {
     BLACK_WHITE = 'BLACK_WHITE',
@@ -115,8 +112,9 @@ export const DropDown: FC<DropDownProps> = memo((props: DropDownProps) => {
                             ref={refs.setFloating}
                             style={floatingStyles}
                         >
-                            {items.map((item) => (
-                                <MenuItem as="div" disabled={item.disabled}>
+                            {items.map((item, index) => (
+                                // eslint-disable-next-line react/no-array-index-key
+                                <MenuItem as="div" disabled={item.disabled} key={index}>
                                     {({ focus }) => (
                                         // eslint-disable-next-line react/jsx-no-useless-fragment
                                         <>

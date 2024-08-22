@@ -1,32 +1,23 @@
-import {
-    FC, memo, useCallback, useState,
-} from 'react';
-import { Button } from 'shared/ui/Button';
-import {
-    ButtonColor,
-    ButtonSize,
-    ButtonVariant,
-} from 'shared/ui/Button/ui/Button';
+import { FC, memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
-import {
-    getProfileData,
-    getProfileReadOnly,
-    profileActions,
-    updateProfileData,
-} from 'entities/Profile';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useSelector } from 'react-redux';
 import { getUserAuthData } from 'entities/User';
 import { HStack } from 'shared/ui/Stack';
+import { Button } from 'shared/ui/Button';
+import { ButtonColor, ButtonSize, ButtonVariant } from 'shared/ui/Button/ui/Button';
+import { getProfileData } from '../../model/selectors/getProfileData/getProfileData';
+import { getProfileReadOnly } from '../../model/selectors/getProfileReadOnly/getProfileReadOnly';
+import { profileActions } from '../../model/slice/profileSlice';
+import { updateProfileData } from '../../model/services/updateProfileData/updateProfileData';
 
-interface ProfileFooterProps {
+interface EditableProfileCardFooterProps {
     classNames?: string[];
-    error?: boolean;
 }
 
-export const ProfileFooter: FC<ProfileFooterProps> = memo(
-    (props: ProfileFooterProps) => {
-        const { classNames = [], error } = props;
+export const EditableProfileCardFooter: FC<EditableProfileCardFooterProps> = memo(
+    (props: EditableProfileCardFooterProps) => {
+        const { classNames = [] } = props;
         const { t } = useTranslation('profile');
         const dispatch = useAppDispatch();
 
@@ -47,12 +38,8 @@ export const ProfileFooter: FC<ProfileFooterProps> = memo(
             dispatch(updateProfileData());
         }, [dispatch]);
 
-        if (error) {
-            return null;
-        }
-
         return (
-            <HStack justify="end" side="bottom" wrap="nowrap" maxWidth>
+            <HStack justify="end" side="bottom" wrap="nowrap" fullWidth>
                 {canEdit && (
                     <HStack gap="20c" side="bottom">
                         {readonly ? (

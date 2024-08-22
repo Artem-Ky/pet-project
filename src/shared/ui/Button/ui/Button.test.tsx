@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import { ComponentRender } from 'shared/lib/tests/componentRender/ComponentRender';
 import { Button, ButtonVariant } from './Button';
 

@@ -13,7 +13,7 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { Avatar } from 'shared/ui/Avatar';
 import { AvatarSize } from 'shared/ui/Avatar/ui/Avatar';
-import { HStack } from 'shared/ui/Stack';
+import { HStack, VStack } from 'shared/ui/Stack';
 import {
     DropDown,
     dropDownContentColor,
@@ -58,7 +58,7 @@ export const NavBar: FC = memo(() => {
 
         return (
             <header className={cls.NavBar}>
-                <HStack gap="20c" justify="end">
+                <HStack gap="20c" justify="end" fullHeight>
                     <LangSwitcher />
                     <ThemeSwitcher />
                     <DropDown
@@ -78,7 +78,7 @@ export const NavBar: FC = memo(() => {
 
     return (
         <header className={cls.NavBar}>
-            <HStack gap="20c" justify="end" wrap="wrap">
+            <VStack gap="20c" justify="end" fullHeight>
                 <LangSwitcher />
                 {isAuthModalOpen && (
                     <LoginModal
@@ -91,7 +91,7 @@ export const NavBar: FC = memo(() => {
                 <Button variant={ButtonVariant.CLEAR} onClick={onOpenModal}>
                     {t('Войти')}
                 </Button>
-            </HStack>
+            </VStack>
         </header>
     );
 });

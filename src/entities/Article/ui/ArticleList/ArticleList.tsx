@@ -29,6 +29,7 @@ interface ArticleListProps {
     isLoading?: boolean;
     view?: ArticleView;
     target?: HTMLAttributeAnchorTarget;
+    noVirtualized?: boolean;
 }
 
 export const ArticleList: FC<ArticleListProps> = memo(
@@ -39,6 +40,7 @@ export const ArticleList: FC<ArticleListProps> = memo(
             isLoading,
             view = ArticleView.PLATE,
             target,
+            noVirtualized = false,
         } = props;
         const cn = cnBind.bind(cls);
         const { t } = useTranslation();
@@ -166,6 +168,31 @@ export const ArticleList: FC<ArticleListProps> = memo(
             return (
                 <HStack gap="20" className={cn([cls[view]])}>
                     <Text size={TextSize.L} title={t('Статьи не найдены')} />
+                </HStack>
+            );
+        }
+
+        const renderArticleNoVirtualized = (article: Article) => (
+            <ArticleListItem
+                key={article.id}
+                article={article}
+                view={view}
+                target={target}
+            />
+        );
+
+        if (noVirtualized) {
+            return (
+                <HStack
+                    gap="20"
+                    classNames={[cn(
+                        ...classNames.map((clsName) => cls[clsName] || clsName),
+                    )]}
+                >
+                    {articles.length > 0
+                        ? articles.map(renderArticleNoVirtualized)
+                        : null}
+                    {isLoading && getSkeletons(view)}
                 </HStack>
             );
         }

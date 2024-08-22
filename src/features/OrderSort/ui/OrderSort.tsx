@@ -1,23 +1,23 @@
-import { FC, memo, useMemo } from 'react';
-import cnBind from 'classnames/bind';
+import {
+    FC, memo, useCallback, useMemo,
+} from 'react';
 import { Button } from 'shared/ui/Button';
 import { ButtonSize, ButtonVariant } from 'shared/ui/Button/ui/Button';
 import {
     Icon, IconColor, IconSize, IconTypeVariant,
 } from 'shared/ui/Icon';
-import { Select, SelectType } from 'shared/ui/Select';
-import {
-    SelectItemHeight,
-    SelectItemType,
-    SelectItemWidth,
-    SelectOption,
-} from 'shared/ui/Select/ui/Select';
 import { useTranslation } from 'react-i18next';
 import sortUp from 'shared/assets/icons/sort/SortUp.svg';
 import sortDown from 'shared/assets/icons/sort/sortDown.svg';
 import { SortOrder } from 'shared/types';
 import { ArticleSortField } from 'entities/Article';
 import { HStack } from 'shared/ui/Stack';
+import {
+    ListBox,
+    ListBoxItem,
+    ListBoxItemHeight,
+    ListBoxItemWidth,
+} from 'shared/ui/ListBox/ListBox';
 
 interface OrderSortProps {
     classNames?: string[];
@@ -33,30 +33,34 @@ export const OrderSort: FC<OrderSortProps> = memo((props: OrderSortProps) => {
     } = props;
     const { t } = useTranslation();
 
-    const sortOptions = useMemo<SelectOption<ArticleSortField>[]>(
+    const onChangeNewSort = useCallback(
+        (value?: string) => {
+            onChangeSort?.(value as ArticleSortField);
+        },
+        [onChangeSort],
+    );
+
+    const sortOptions = useMemo<ListBoxItem[]>(
         () => [
             {
                 value: ArticleSortField.CREATED,
-                label: t('Дата создания'),
-                type: SelectItemType.DEFAULT,
+                content: t('Дата создания'),
             },
             {
                 value: ArticleSortField.VIEWS,
-                label: t('Просмотры'),
-                type: SelectItemType.DEFAULT,
+                content: t('Просмотры'),
             },
             {
                 value: ArticleSortField.TITLE,
-                label: t('Название'),
-                type: SelectItemType.DEFAULT,
+                content: t('Название'),
             },
         ],
         [t],
     );
 
-    const getSortOptionLabel = (sortField: ArticleSortField) => {
-        const option = sortOptions.find((opt) => opt.value === sortField);
-        return option ? option.label : sortField;
+    const getSortOptionLabel = (value: ArticleSortField) => {
+        const option = sortOptions.find((opt) => opt.value === value);
+        return option?.content as string;
     };
 
     return (
@@ -90,14 +94,13 @@ export const OrderSort: FC<OrderSortProps> = memo((props: OrderSortProps) => {
                     />
                 )}
             </Button>
-            <Select<ArticleSortField>
-                type={SelectType.DEFAULT}
-                onChange={onChangeSort}
+            <ListBox
+                onChange={onChangeNewSort}
                 value={sort}
-                title={getSortOptionLabel(sort)}
-                width={SelectItemWidth.LARGE}
-                height={SelectItemHeight.SMALL}
-                optionsList={sortOptions}
+                buttonLabel={getSortOptionLabel(sort) || undefined}
+                width={ListBoxItemWidth.LARGE}
+                height={ListBoxItemHeight.SMALL}
+                items={sortOptions}
             />
         </HStack>
     );

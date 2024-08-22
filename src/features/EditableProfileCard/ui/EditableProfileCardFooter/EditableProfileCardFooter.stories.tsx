@@ -2,19 +2,19 @@ import { StoryFn, Meta } from '@storybook/react';
 import { Theme } from 'shared/const/theme';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
-import { ProfileFooter } from './ProfileFooter';
+import { EditableProfileCardFooter } from './EditableProfileCardFooter';
 
 export default {
-    title: 'pages/Profile/ProfileFooter',
-    component: ProfileFooter,
+    title: 'features/EditableProfileCard/EditableProfileCardFooter',
+    component: EditableProfileCardFooter,
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-} as Meta<typeof ProfileFooter>;
+} as Meta<typeof EditableProfileCardFooter>;
 
-const Template: StoryFn<typeof ProfileFooter> = (args) => (
+const Template: StoryFn<typeof EditableProfileCardFooter> = (args) => (
     <div style={{ padding: 40 }}>
-        <ProfileFooter {...args} />
+        <EditableProfileCardFooter {...args} />
     </div>
 );
 

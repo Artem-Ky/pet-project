@@ -1,10 +1,5 @@
 import {
-    FC,
-    Fragment,
-    memo,
-    ReactNode,
-    useEffect,
-    useState,
+    FC, Fragment, memo, ReactNode, useEffect, useState,
 } from 'react';
 import cnBind from 'classnames/bind';
 import {
@@ -50,6 +45,7 @@ interface ListBoxProps {
     items?: ListBoxItem[];
     className?: string[];
     value?: string;
+    buttonLabel?: string;
     defaultValue?: string;
     onChange: <T extends string>(value: T) => void;
     readonly?: boolean;
@@ -64,6 +60,7 @@ export const ListBox: FC<ListBoxProps> = memo((props: ListBoxProps) => {
         className = '',
         items,
         value,
+        buttonLabel,
         defaultValue,
         onChange,
         readonly,
@@ -80,6 +77,8 @@ export const ListBox: FC<ListBoxProps> = memo((props: ListBoxProps) => {
             flip({
                 fallbackPlacements: ['bottom', 'top'],
                 fallbackStrategy: 'initialPlacement',
+                rootBoundary: 'viewport',
+                altBoundary: true,
             }),
         ],
     });
@@ -137,7 +136,7 @@ export const ListBox: FC<ListBoxProps> = memo((props: ListBoxProps) => {
                                         align="center"
                                         gap="4c"
                                     >
-                                        {value ?? defaultValue}
+                                        {buttonLabel ?? value ?? defaultValue}
                                         <span
                                             className={cn('arrowDown', {
                                                 arrowSwap: open,

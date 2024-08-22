@@ -1,7 +1,7 @@
 import { Country } from 'shared/const/common';
 import { Currency } from 'entities/CurrencySelect';
-import { ValidateProfileError } from '../../..';
 import { validateProfileData } from './validateProfileData';
+import { ValidateProfileError } from '../../types/editableProfileCardSchema';
 
 const data = {
     first: 'toad',
