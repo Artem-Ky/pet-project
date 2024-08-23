@@ -107,6 +107,7 @@ export const ProfileCard: FC<ProfileCardProps> = (props: ProfileCardProps) => {
                             placeholder={t('Ваше имя', { ns: 'profile' })}
                             onChange={onChangeFirstName}
                             readonly={readonly}
+                            data-testid="ProfileCard.firstname"
                         />
                     </VStack>
                     <VStack wrap="nowrap">
@@ -120,11 +121,12 @@ export const ProfileCard: FC<ProfileCardProps> = (props: ProfileCardProps) => {
                         <Input
                             id="lastName"
                             value={data?.lastname}
-                            placeholder={t('Вашу фамилия', {
+                            placeholder={t('Вашa фамилия', {
                                 ns: 'profile',
                             })}
                             onChange={onChangeLastName}
                             readonly={readonly}
+                            data-testid="ProfileCard.lastname"
                         />
                     </VStack>
                 </HStack>

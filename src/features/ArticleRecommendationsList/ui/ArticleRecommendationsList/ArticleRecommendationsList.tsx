@@ -16,10 +16,9 @@ export const ArticleRecommendationsList: FC<ArticleRecommendationsListProps> = m
         const { classNames = [] } = props;
         const { t } = useTranslation();
 
-        const { data: articles, isLoading } = useArticleRecommendationsList(4);
+        const { data: articles, isLoading, error } = useArticleRecommendationsList(4);
 
-        if (isLoading || !articles) {
-            console.log('Articles:', articles);
+        if (isLoading || !articles || error) {
             return null;
         }
 

@@ -5,7 +5,11 @@ import { useSelector } from 'react-redux';
 import { getUserAuthData } from 'entities/User';
 import { HStack } from 'shared/ui/Stack';
 import { Button } from 'shared/ui/Button';
-import { ButtonColor, ButtonSize, ButtonVariant } from 'shared/ui/Button/ui/Button';
+import {
+    ButtonColor,
+    ButtonSize,
+    ButtonVariant,
+} from 'shared/ui/Button/ui/Button';
 import { getProfileData } from '../../model/selectors/getProfileData/getProfileData';
 import { getProfileReadOnly } from '../../model/selectors/getProfileReadOnly/getProfileReadOnly';
 import { profileActions } from '../../model/slice/profileSlice';
@@ -30,7 +34,7 @@ export const EditableProfileCardFooter: FC<EditableProfileCardFooterProps> = mem
             dispatch(profileActions.setReadOnly(false));
         }, [dispatch]);
 
-        const onCanselEdit = useCallback(() => {
+        const onCancelEdit = useCallback(() => {
             dispatch(profileActions.cancelEdit());
         }, [dispatch]);
 
@@ -47,6 +51,7 @@ export const EditableProfileCardFooter: FC<EditableProfileCardFooterProps> = mem
                                 size={ButtonSize.LARGE}
                                 variant={ButtonVariant.OUTLINE}
                                 onClick={onEdit}
+                                data-testid="EditableProfileCardFooter.EditButton"
                             >
                                 {t('Редактировать', { ns: 'profile' })}
                             </Button>
@@ -55,7 +60,8 @@ export const EditableProfileCardFooter: FC<EditableProfileCardFooterProps> = mem
                                 <Button
                                     size={ButtonSize.LARGE}
                                     variant={ButtonVariant.OUTLINE}
-                                    onClick={onCanselEdit}
+                                    onClick={onCancelEdit}
+                                    data-testid="EditableProfileCardFooter.CancelButton"
                                 >
                                     {t('Отмена', { ns: 'profile' })}
                                 </Button>
@@ -63,6 +69,7 @@ export const EditableProfileCardFooter: FC<EditableProfileCardFooterProps> = mem
                                     size={ButtonSize.LARGE}
                                     color={ButtonColor.LIGHT_WHITE}
                                     onClick={onSave}
+                                    data-testid="EditableProfileCardFooter.SaveButton"
                                 >
                                     {t('сохранить', { ns: 'profile' })}
                                 </Button>

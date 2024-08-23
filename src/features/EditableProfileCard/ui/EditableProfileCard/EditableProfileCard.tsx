@@ -144,6 +144,7 @@ export const EditableProfileCard: FC<EditableProfileCardProps> = memo(
                         size={TextSize.XXL_TITLE}
                         theme={TextTheme.BLACK_WHITE}
                         title={t('Профиль', { ns: 'profile' })}
+                        data-testid="EditableProfileCard.Error"
                     />
                     {validateErrors?.length
                         && validateErrors.map((item: ValidateProfileError) => (
