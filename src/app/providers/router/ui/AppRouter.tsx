@@ -11,9 +11,6 @@ const AppRouter = () => {
     const renderWithWrapper = useCallback((route: appRouteProps) => {
         const element = (
             <Suspense fallback={<PageLoader />}>
-                {/* <div className="page-wrapper">
-
-                </div> */}
                 {route.element}
             </Suspense>
         );
@@ -23,7 +20,7 @@ const AppRouter = () => {
                 path={route.path}
                 element={
                     route.authOnly ? (
-                        <RequireAuth>{element}</RequireAuth>
+                        <RequireAuth roles={route.roles}>{element}</RequireAuth>
                     ) : (
                         element
                     )
