@@ -26,7 +26,7 @@ import { EditableProfileCardFooter } from '../EditableProfileCardFooter/Editable
 
 interface EditableProfileCardProps {
     classNames?: string[];
-    id: string;
+    id?: string;
 }
 
 export const EditableProfileCard: FC<EditableProfileCardProps> = memo(
@@ -72,9 +72,7 @@ export const EditableProfileCard: FC<EditableProfileCardProps> = memo(
         };
 
         useInitialEffect(() => {
-            if (id) {
-                dispatch(fetchProfileData(id));
-            }
+            dispatch(fetchProfileData(id));
         });
 
         const onChangeFirstName = useCallback(

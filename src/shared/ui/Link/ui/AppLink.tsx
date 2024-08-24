@@ -11,7 +11,8 @@ export enum AppLinkTheme {
 interface AppLinkProps extends LinkProps {
     classNames?: string[];
     theme?: AppLinkTheme;
-    target?: HTMLAttributeAnchorTarget
+    target?: HTMLAttributeAnchorTarget;
+    fullHeight?: boolean;
 }
 
 export const AppLink: FC<AppLinkProps> = memo((props: AppLinkProps) => {
@@ -19,6 +20,7 @@ export const AppLink: FC<AppLinkProps> = memo((props: AppLinkProps) => {
         classNames = [],
         children,
         target,
+        fullHeight,
         theme = AppLinkTheme.WHITE,
         to,
         ...otherProps
@@ -33,6 +35,7 @@ export const AppLink: FC<AppLinkProps> = memo((props: AppLinkProps) => {
                 cls.AppLink,
                 [cls[theme]],
                 ...classNames.map((clsName) => cls[clsName] || clsName),
+                { [cls.fullHeight]: fullHeight },
             )}
             {...otherProps}
         >

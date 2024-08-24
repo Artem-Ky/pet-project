@@ -4,7 +4,7 @@ import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDeco
 import AdminPanelPage from './AdminPanelPage';
 
 export default {
-    title: 'widget/AdminPanelPage',
+    title: 'pages/AdminPanelPage',
     component: AdminPanelPage,
     argTypes: {
         backgroundColor: { control: 'color' },

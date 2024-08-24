@@ -5,6 +5,7 @@ import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDeco
 import { StateSchema } from 'app/providers/StoreProvider';
 import { DeepPartial } from 'utility-types';
 import { Article, ArticleView } from 'entities/Article';
+import testAvatar from 'app/testAvatar.jpg';
 import ArticlesPage from './ArticlesPage';
 
 export default {
@@ -24,14 +25,14 @@ const article = [
         id: '1',
         title: 'Javascript news Javascript news Javascript news Javascript news',
         subtitle: 'Что нового в JS за 2022 год?',
-        img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
+        img: testAvatar,
         views: 102200000,
         createdAt: '26.02.2022',
         type: ['IT', 'some tags', 'and other tags'],
         user: {
             id: '1',
             username: 'cat',
-            avatar: 'https://www.funnyart.club/uploads/posts/2022-12/thumbs/1671406601_www-funnyart-club-p-kartinki-kotika-pushina-krasivo-14.png',
+            avatar: testAvatar,
         },
         blocks: [
             {
@@ -55,14 +56,14 @@ const article = [
         id: '2',
         title: 'Javascript news',
         subtitle: 'Что нового в JS за 2022 год?',
-        img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
+        img: testAvatar,
         views: 102200000,
         createdAt: '26.02.2022',
         type: ['IT', 'some tags', 'and other tags'],
         user: {
             id: '2',
             username: 'cat',
-            avatar: 'https://www.funnyart.club/uploads/posts/2022-12/thumbs/1671406601_www-funnyart-club-p-kartinki-kotika-pushina-krasivo-14.png',
+            avatar: testAvatar,
         },
         blocks: [
             {
@@ -86,14 +87,14 @@ const article = [
         id: '3',
         title: 'Javascript news Javascript news Javascript news Javascript news',
         subtitle: 'Что нового в JS за 2022 год?',
-        img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
+        img: testAvatar,
         views: 102200000,
         createdAt: '26.02.2022',
         type: ['IT', 'some tags', 'and other tags'],
         user: {
             id: '1',
             username: 'cat',
-            avatar: 'https://www.funnyart.club/uploads/posts/2022-12/thumbs/1671406601_www-funnyart-club-p-kartinki-kotika-pushina-krasivo-14.png',
+            avatar: testAvatar,
         },
         blocks: [
             {

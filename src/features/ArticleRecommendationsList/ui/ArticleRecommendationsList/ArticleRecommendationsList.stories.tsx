@@ -8,18 +8,6 @@ import { Article } from 'entities/Article';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ArticleRecommendationsList } from './ArticleRecommendationsList';
 
-export default {
-    title: 'features/ArticleRecommendationsList',
-    component: ArticleRecommendationsList,
-    argTypes: {
-        backgroundColor: { control: 'color' },
-    },
-} as Meta<typeof ArticleRecommendationsList>;
-
-const Template: StoryFn<typeof ArticleRecommendationsList> = (args) => (
-    <ArticleRecommendationsList {...args} />
-);
-
 const article = [
     {
         id: '1',
@@ -146,6 +134,28 @@ const article = [
         ],
     } as Article,
 ];
+
+export default {
+    title: 'features/ArticleRecommendationsList',
+    component: ArticleRecommendationsList,
+    argTypes: {
+        backgroundColor: { control: 'color' },
+    },
+    parameters: {
+        mockData: [
+            {
+                url: `${__API__}/articles?_limit=4`,
+                method: 'GET',
+                status: 200,
+                response: article,
+            },
+        ],
+    },
+} as Meta<typeof ArticleRecommendationsList>;
+
+const Template: StoryFn<typeof ArticleRecommendationsList> = (args) => (
+    <ArticleRecommendationsList {...args} />
+);
 
 const initialState: DeepPartial<StateSchema> = {
     articleDetailsRecommendations: {

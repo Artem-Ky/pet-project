@@ -5,7 +5,7 @@ import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDeco
 import ArticleCRUDPage from './ArticleCRUDPage';
 
 export default {
-    title: 'widget/ArticleCRUDPage',
+    title: 'pages/ArticleCRUDPage',
     component: ArticleCRUDPage,
     argTypes: {
         backgroundColor: { control: 'color' },

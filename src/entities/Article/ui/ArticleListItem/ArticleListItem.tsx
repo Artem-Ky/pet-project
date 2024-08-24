@@ -67,6 +67,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo(
                     to={RoutePath.article_details + article.id}
                     classNames={[cls.plateCardLink]}
                     target={target}
+                    fullHeight
                 >
                     <Card
                         view={CardView.LITTLE}

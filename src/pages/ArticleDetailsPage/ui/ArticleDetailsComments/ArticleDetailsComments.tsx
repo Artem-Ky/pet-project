@@ -1,4 +1,6 @@
-import { FC, memo, useCallback } from 'react';
+import {
+    FC, memo, Suspense, useCallback,
+} from 'react';
 import cn from 'classnames';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
@@ -8,6 +10,7 @@ import { AddCommentForm } from 'features/AddCommentForm';
 import { CommentList } from 'entities/Comment';
 import { useTranslation } from 'react-i18next';
 import { VStack } from 'shared/ui/Stack';
+import { Loader } from 'shared/ui/Loader/Loader';
 import { getArticleComments } from '../../model/slices/articleDetailsCommentsSlice';
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
@@ -15,7 +18,7 @@ import { getArticleCommentsIsLoading } from '../../model/selectors/getComments';
 
 interface ArticleDetailsCommentsProps {
     classNames?: string[];
-    id: string;
+    id?: string;
 }
 
 export const ArticleDetailsComments: FC<ArticleDetailsCommentsProps> = memo(
@@ -50,7 +53,9 @@ export const ArticleDetailsComments: FC<ArticleDetailsCommentsProps> = memo(
                     theme={TextTheme.BLACK_WHITE}
                     title={t('Комментарии')}
                 />
-                <AddCommentForm onSendComment={onSendComment} />
+                <Suspense fallback={<Loader />}>
+                    <AddCommentForm onSendComment={onSendComment} />
+                </Suspense>
                 <CommentList
                     isLoading={commentsIsLoading}
                     comments={comments}

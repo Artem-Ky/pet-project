@@ -27,16 +27,8 @@ const reducersList: ReducersList = {
 const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
     const { classNames = [] } = props;
     const { t } = useTranslation('article-details');
-    let { id } = useParams<{ id: string }>();
+    const { id } = useParams<{ id: string }>();
     const cn = cnBind.bind(cls);
-
-    if (__PROJECT__ === 'storybook') {
-        id = '1';
-    }
-
-    if (!id) {
-        return <div>{t('Статья не найдена')}</div>;
-    }
 
     return (
         <DynamicModuleLoader reducers={reducersList} removeAfterUnmount>
