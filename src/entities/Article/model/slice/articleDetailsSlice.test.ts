@@ -2,7 +2,8 @@ import { User } from 'entities/User';
 import { articleDetailsReducer } from './articleDetailsSlice';
 import { ArticleDetailsSchema } from '../types/articleDetailsSchema';
 import { fetchArticleById } from '../services/fetchArticleById/fetchArticleById';
-import { Article, ArticleBlock, ArticleType } from '../types/article';
+import { Article, ArticleBlock } from '../types/article';
+import { ArticleType } from '../consts/consts';
 
 describe('articleDetailsSlice', () => {
     test('should handle fetchArticleById.pending', () => {

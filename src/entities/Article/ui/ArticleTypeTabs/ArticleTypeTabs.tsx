@@ -4,7 +4,7 @@ import {
 import { useTranslation } from 'react-i18next';
 import { TabItem } from 'shared/ui/Tabs/model/type';
 import { Tabs } from 'shared/ui/Tabs/ui/Tabs/Tabs';
-import { ArticleType } from '../../model/types/article';
+import { ArticleType } from '../..';
 
 interface ArticleTypeTabsProps {
     classNames?: string[];
@@ -39,9 +39,12 @@ export const ArticleTypeTabs: FC<ArticleTypeTabsProps> = memo(
             [t],
         );
 
-        const onTabChange = useCallback((tab: TabItem) => {
-            onChangeType(tab.value as ArticleType);
-        }, [onChangeType]);
+        const onTabChange = useCallback(
+            (tab: TabItem) => {
+                onChangeType(tab.value as ArticleType);
+            },
+            [onChangeType],
+        );
         return (
             <Tabs
                 onTabClick={onTabChange}

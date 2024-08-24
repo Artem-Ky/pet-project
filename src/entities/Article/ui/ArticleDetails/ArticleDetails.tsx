@@ -14,6 +14,7 @@ import { AvatarSize } from 'shared/ui/Avatar/ui/Avatar';
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
 import cnBind from 'classnames/bind';
 import { HStack } from 'shared/ui/Stack';
+import { ArticleBlockType } from '../..';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 import { ArticleImageBlockComponent } from '../ArticleImageBlockComponent/ArticleImageBlockComponent';
 import { ArticleCodeBlockComponent } from '../ArticleCodeBlockComponent/ArticleCodeBlockComponent';
@@ -25,7 +26,7 @@ import {
     getArticleDetailsError,
     getArticleDetailsIsLoading,
 } from '../../model/selectors/articleDetails';
-import { ArticleBlock, ArticleBlockType } from '../../model/types/article';
+import { ArticleBlock } from '../../model/types/article';
 
 interface ArticleDetailsProps {
     classNames?: string[];

@@ -15,13 +15,9 @@ import { ButtonSize, ButtonVariant } from 'shared/ui/Button/ui/Button';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { AppLink } from 'shared/ui/Link';
 import { HStack, VStack } from 'shared/ui/Stack';
+import { ArticleBlockType, ArticleView } from '../..';
 import cls from './ArticleListItem.module.scss';
-import {
-    Article,
-    ArticleBlockType,
-    ArticleTextBlock,
-    ArticleView,
-} from '../../model/types/article';
+import { Article, ArticleTextBlock } from '../../model/types/article';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 
 interface ArticleListItemProps {
@@ -138,11 +134,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo(
                 fullWidth
             >
                 <VStack gap="16r">
-                    <HStack
-                        justify="between"
-                        align="center"
-                        fullWidth
-                    >
+                    <HStack justify="between" align="center" fullWidth>
                         <HStack justify="start" align="center" gap="8c">
                             <Avatar
                                 alt={t('изображение автора статьи')}
@@ -198,12 +190,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo(
                                 {t('Читать далее', { ns: 'article' })}
                             </Button>
                         </AppLink>
-                        <HStack
-                            justify="end"
-                            align="center"
-                            gap="4c"
-                            grow="1"
-                        >
+                        <HStack justify="end" align="center" gap="4c" grow="1">
                             <Icon
                                 color={IconColor.LIGHT_GRAY}
                                 icon={viewIcon}

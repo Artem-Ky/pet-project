@@ -4,9 +4,9 @@ import { DeepPartial } from 'utility-types';
 import { updateProfileData } from '../services/updateProfileData/updateProfileData';
 import {
     ProfileSchema,
-    ValidateProfileError,
 } from '../types/editableProfileCardSchema';
 import { profileActions, profileReducer } from './profileSlice';
+import { ValidateProfileError } from '../consts/consts';
 
 const data = {
     first: 'toad',

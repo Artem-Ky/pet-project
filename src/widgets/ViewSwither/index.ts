@@ -1,1 +1,1 @@
-import { ViewSwitcher } from './ui/ViewSwitcher';
+export { ViewSwitcher } from './ui/ViewSwitcher';
