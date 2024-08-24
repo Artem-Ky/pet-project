@@ -14,7 +14,7 @@ import { AvatarSize } from 'shared/ui/Avatar/ui/Avatar';
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
 import cnBind from 'classnames/bind';
 import { HStack } from 'shared/ui/Stack';
-import { ArticleBlockType } from '../..';
+import { ArticleBlockType } from '../../model/consts/consts';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 import { ArticleImageBlockComponent } from '../ArticleImageBlockComponent/ArticleImageBlockComponent';
 import { ArticleCodeBlockComponent } from '../ArticleCodeBlockComponent/ArticleCodeBlockComponent';

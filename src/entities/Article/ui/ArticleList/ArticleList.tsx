@@ -18,7 +18,7 @@ import {
     WindowScroller,
 } from 'react-virtualized';
 import { HStack } from 'shared/ui/Stack';
-import { ArticleView } from '../..';
+import { ArticleView } from '../../model/consts/consts';
 import { Article } from '../../model/types/article';
 import cls from './ArticleList.module.scss';
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton';
