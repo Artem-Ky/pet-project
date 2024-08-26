@@ -1,0 +1,44 @@
+@import 'app/styles/index';
+
+.options {
+    border-radius: 0 0 var(--border-radius-small) var(--border-radius-small);
+}
+
+.optionsFlip {
+    border-radius: var(--border-radius-small) var(--border-radius-small) 0 0;
+}
+
+.item {
+    &:not(:last-child) {
+        border-bottom: 1px solid var(--select-item-border-bottom);
+    }
+
+    &:first-child {
+        border-top: 1px solid var(--select-item-border-bottom);
+    }
+}
+
+.itemFLip {
+    &:first-child {
+        border-top: none;
+    }
+
+    &:last-child {
+        border-bottom: 1px solid var(--select-item-border-bottom);
+    }
+}
+
+.active {
+    background-color: var(--select-item-bg);
+}
+
+.buttonSelectOpen {
+    border-radius: var(--border-radius-small) var(--border-radius-small) 0 0;
+}
+
+.buttonSelectOpenFlip {
+    border-radius: 0 0 var(--border-radius-small) var(--border-radius-small);
+}
+
+
+

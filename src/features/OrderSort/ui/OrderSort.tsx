@@ -12,12 +12,8 @@ import sortDown from 'shared/assets/icons/sort/sortDown.svg';
 import { SortOrder } from 'shared/types';
 import { ArticleSortField } from 'entities/Article';
 import { HStack } from 'shared/ui/Stack';
-import {
-    ListBox,
-    ListBoxItem,
-    ListBoxItemHeight,
-    ListBoxItemWidth,
-} from 'shared/ui/ListBox/ListBox';
+import { ListBox, popupsItemHeight, popupsItemWidth } from 'shared/ui/Popups';
+import { ListBoxItem } from 'shared/ui/Popups/components/ListBox/ListBox';
 
 interface OrderSortProps {
     classNames?: string[];
@@ -98,8 +94,8 @@ export const OrderSort: FC<OrderSortProps> = memo((props: OrderSortProps) => {
                 onChange={onChangeNewSort}
                 value={sort}
                 buttonLabel={getSortOptionLabel(sort) || undefined}
-                width={ListBoxItemWidth.LARGE}
-                height={ListBoxItemHeight.SMALL}
+                width={popupsItemWidth.LARGE}
+                height={popupsItemHeight.SMALL}
                 items={sortOptions}
             />
         </HStack>

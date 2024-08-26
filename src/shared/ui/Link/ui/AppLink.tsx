@@ -13,6 +13,7 @@ interface AppLinkProps extends LinkProps {
     theme?: AppLinkTheme;
     target?: HTMLAttributeAnchorTarget;
     fullHeight?: boolean;
+    fullWidth?: boolean;
 }
 
 export const AppLink: FC<AppLinkProps> = memo((props: AppLinkProps) => {
@@ -21,6 +22,7 @@ export const AppLink: FC<AppLinkProps> = memo((props: AppLinkProps) => {
         children,
         target,
         fullHeight,
+        fullWidth,
         theme = AppLinkTheme.WHITE,
         to,
         ...otherProps
@@ -33,9 +35,12 @@ export const AppLink: FC<AppLinkProps> = memo((props: AppLinkProps) => {
             target={target}
             className={cn(
                 cls.AppLink,
-                [cls[theme]],
                 ...classNames.map((clsName) => cls[clsName] || clsName),
-                { [cls.fullHeight]: fullHeight },
+                [cls[theme]],
+                {
+                    [cls.fullHeight]: fullHeight,
+                    [cls.fullWidth]: fullWidth,
+                },
             )}
             {...otherProps}
         >

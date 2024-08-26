@@ -157,21 +157,10 @@ const Template: StoryFn<typeof ArticleRecommendationsList> = (args) => (
     <ArticleRecommendationsList {...args} />
 );
 
-const initialState: DeepPartial<StateSchema> = {
-    articleDetailsRecommendations: {
-        ids: article.map((article) => article.id),
-        entities: article.reduce<Record<string, Article>>((acc, article) => {
-            acc[article.id] = article;
-            return acc;
-        }, {}),
-        isLoading: false,
-    },
-};
-
 export const Light = Template.bind({});
 Light.args = {};
-Light.decorators = [StoreDecorator(initialState)];
+Light.decorators = [StoreDecorator({})];
 
 export const Dark = Template.bind({});
 Dark.args = {};
-Dark.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator(initialState)];
+Dark.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({})];

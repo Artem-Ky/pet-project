@@ -1,7 +1,8 @@
 import {
     FC, memo, useCallback, useMemo,
 } from 'react';
-import { ListBox, ListBoxItem } from 'shared/ui/ListBox/ListBox';
+import { ListBox } from 'shared/ui/Popups';
+import { ListBoxItem } from 'shared/ui/Popups/components/ListBox/ListBox';
 import { HStack } from 'shared/ui/Stack';
 import { Currency } from '../../model/currency';
 

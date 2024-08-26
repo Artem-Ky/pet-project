@@ -1,0 +1,30 @@
+@import 'app/styles/index';
+
+.menu {
+    min-width: max-content;
+    border-radius: var(--border-radius-small);
+}
+
+.item {
+    padding-inline: 10px;
+}
+
+.active {
+    background-color: var(--select-item-bg);
+    border-radius: var(--border-radius-small);
+}
+
+.disableDefaultHover {
+    @include hover {
+        opacity: 1;
+    }
+}
+
+.widthAutoPadding {
+    width: auto;
+    padding-inline: 10px;
+}
+
+.BorderRadius {
+    border-radius: var(--border-radius-small);
+}

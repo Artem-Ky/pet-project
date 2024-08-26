@@ -1,11 +1,12 @@
 import { StoryFn, Meta } from '@storybook/react';
 import { Theme } from 'shared/const/theme';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { Button } from '../../Button';
-import { DropDown, dropDownContentColor } from './DropDown';
+import { popupsContentColor } from '../../../consts/consts';
+import { Button } from '../../../../Button';
+import { DropDown } from './DropDown';
 
 export default {
-    title: 'shared/DropDown',
+    title: 'shared/Popups/DropDown',
     component: DropDown,
     argTypes: {
         backgroundColor: { control: 'color' },
@@ -32,7 +33,7 @@ Light.args = {
         },
         {
             content: 'third third third',
-            contentColor: dropDownContentColor.RED,
+            contentColor: popupsContentColor.RED,
             href: '#',
         },
     ],
@@ -56,7 +57,7 @@ Dark.args = {
         },
         {
             content: 'third third third',
-            contentColor: dropDownContentColor.RED,
+            contentColor: popupsContentColor.RED,
             href: '#',
         },
     ],

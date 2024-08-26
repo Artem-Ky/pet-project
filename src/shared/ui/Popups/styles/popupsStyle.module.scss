@@ -1,0 +1,69 @@
+@import 'app/styles/index';
+
+.Popups {
+    position: relative;
+    z-index: 2;
+    font: var(--font-inter-md-regular);
+    display: inline-block;
+
+    .height-small {
+        height: var(--select-height-small);
+    }
+    
+    .height-medium {
+        height: var(--select-height-medium);
+    }
+    
+    .height-large {
+        height: var(--select-height-large);
+    }
+
+    .width-small {
+        width: var(--select-width-small);
+    }
+    
+    .width-medium {
+        width: var(--select-width-medium);
+    }
+    
+    .width-large {
+        width: var(--select-width-large);
+    }
+
+    .fullWidth {
+        width: 100%;
+    }
+
+    .fullWidthContent {
+        min-width: max-content;
+    }
+
+    .disabled {
+        opacity: 0.3;
+    }
+    
+    .selected {
+        display: none;
+    }
+}
+
+.menuPopups {
+    position: absolute;
+    background-color: var(--select-bg);
+    outline: none;
+}
+
+.itemPopups {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonHoverPopups {
+    @include hover {
+        background-color: var(--select-item-bg);
+        opacity: 1;
+    }
+}

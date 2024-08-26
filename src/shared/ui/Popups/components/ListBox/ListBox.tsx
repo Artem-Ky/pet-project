@@ -11,12 +11,14 @@ import {
 import { useFloating } from '@floating-ui/react';
 import { flip } from '@floating-ui/react-dom';
 import cls from './ListBox.module.scss';
-import { Button } from '../Button';
-import { HStack } from '../Stack';
-import { ButtonColor } from '../Button/ui/Button';
+import clsPopups from '../../styles/popupsStyle.module.scss';
+import { Button } from '../../../Button';
+import { HStack } from '../../../Stack';
+import { ButtonColor } from '../../../Button/ui/Button';
 import {
     Text, TextAlign, TextSize, TextTheme,
-} from '../Text/ui/Text';
+} from '../../../Text/ui/Text';
+import { popupsItemHeight, popupsItemWidth } from '../../consts/consts';
 
 export interface ListBoxItem {
     value: string;
@@ -24,21 +26,9 @@ export interface ListBoxItem {
     disabled?: boolean;
 }
 
-export enum ListBoxItemWidth {
-    SMALL = 'width-small',
-    MEDIUM = 'width-medium',
-    LARGE = 'width-large',
-}
-
 export enum ListBoxPlacement {
     TOP_BOTTOM = 'top',
     BOTTOM_TOP = 'bottom',
-}
-
-export enum ListBoxItemHeight {
-    SMALL = 'height-small',
-    MEDIUM = 'height-medium',
-    LARGE = 'height-large',
 }
 
 interface ListBoxProps {
@@ -50,8 +40,8 @@ interface ListBoxProps {
     onChange: <T extends string>(value: T) => void;
     readonly?: boolean;
     label?: string;
-    height?: ListBoxItemHeight;
-    width?: ListBoxItemWidth;
+    height?: popupsItemHeight;
+    width?: popupsItemWidth;
     placementList?: ListBoxPlacement;
 }
 
@@ -65,8 +55,8 @@ export const ListBox: FC<ListBoxProps> = memo((props: ListBoxProps) => {
         onChange,
         readonly,
         label,
-        height = ListBoxItemHeight.MEDIUM,
-        width = ListBoxItemWidth.MEDIUM,
+        height = popupsItemHeight.MEDIUM,
+        width = popupsItemWidth.MEDIUM,
         placementList = ListBoxPlacement.BOTTOM_TOP,
     } = props;
     const cn = cnBind.bind(cls);
@@ -103,7 +93,7 @@ export const ListBox: FC<ListBoxProps> = memo((props: ListBoxProps) => {
             <HListBox
                 disabled={readonly}
                 as="div"
-                className={cn(cls.ListBox, [className])}
+                className={cn(clsPopups.Popups, [className])}
                 value={value}
                 onChange={onChange}
             >
@@ -117,8 +107,8 @@ export const ListBox: FC<ListBoxProps> = memo((props: ListBoxProps) => {
                             <Button
                                 color={ButtonColor.ALT_WHITE_DARK_GRAY}
                                 classNames={[
-                                    cn(cls[height], cls[width], {
-                                        [cls.buttonHover]: !readonly,
+                                    cn(clsPopups[height], clsPopups[width], {
+                                        [clsPopups.buttonHoverPopups]: !readonly,
                                         [cls.buttonSelectOpen]: open,
                                         [cls.buttonSelectOpenFlip]:
                                             placement === 'top' && open,
@@ -147,7 +137,7 @@ export const ListBox: FC<ListBoxProps> = memo((props: ListBoxProps) => {
                             </Button>
                         </HListboxButton>
                         <HListboxOptions
-                            className={cn(cls.options, {
+                            className={cn(cls.options, clsPopups.menuPopups, {
                                 [cls.optionsFlip]: placement === 'top',
                             })}
                             ref={refs.setFloating}
@@ -165,10 +155,10 @@ export const ListBox: FC<ListBoxProps> = memo((props: ListBoxProps) => {
                                     {({ focus, selected }) => (
                                         <li
                                             className={cn(
-                                                cls[width],
-                                                cls[height],
-                                                cls.fullWidth,
+                                                clsPopups[width],
+                                                clsPopups[height],
                                                 cls.item,
+                                                clsPopups.itemPopups,
                                                 {
                                                     [cls.itemFLip]:
                                                         placement === 'top',
@@ -184,7 +174,7 @@ export const ListBox: FC<ListBoxProps> = memo((props: ListBoxProps) => {
                                                 align={TextAlign.CENTER}
                                                 theme={TextTheme.BLACK_WHITE}
                                                 className={cn({
-                                                    [cls.disabled]:
+                                                    [clsPopups.disabled]:
                                                         item.disabled
                                                         || selected,
                                                 })}

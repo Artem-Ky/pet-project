@@ -66,7 +66,7 @@ export const Text = memo((props: TextProps) => {
         title,
         label,
         labelId,
-        theme = TextTheme.MAIN,
+        theme = TextTheme.BLACK_WHITE,
         align = TextAlign.LEFT,
         size = TextSize.M,
         widthAuto,

@@ -1,46 +1,31 @@
-import {
-    FC, memo, ReactNode,
-} from 'react';
+import { FC, memo, ReactNode } from 'react';
 import cnBind from 'classnames/bind';
 import {
     Menu, MenuButton, MenuItem, MenuItems,
 } from '@headlessui/react';
-import {
-    autoUpdate,
-    flip,
-    offset,
-    useFloating,
-} from '@floating-ui/react-dom';
-import { AppLink } from '../../Link';
+import { useAutoFloating } from 'shared/lib/hooks/useAutoFloating/useAutoFloating';
+import { popupsContentColor, popupsItemHeight } from '../../../consts/consts';
+import { AppLink } from '../../../../Link';
 import {
     Text, TextAlign, TextSize, TextTheme,
-} from '../../Text/ui/Text';
-import { Button } from '../../Button';
-import { HStack } from '../../Stack';
+} from '../../../../Text/ui/Text';
+import { Button } from '../../../../Button';
+import { HStack } from '../../../../Stack';
 import cls from './DropDown.module.scss';
-
-export enum dropDownContentColor {
-    BLACK_WHITE = 'BLACK_WHITE',
-    RED = 'ERROR',
-}
+import clsPopups from '../../../styles/popupsStyle.module.scss';
 
 export interface DropdownItem {
     disabled?: boolean;
     content?: ReactNode;
     onClick?: () => void;
-    contentColor?: dropDownContentColor;
+    contentColor?: popupsContentColor;
     href?: string;
-}
-
-export enum dropDownItemHeight {
-    SMALL = 'height-small',
-    MEDIUM = 'height-medium',
-    LARGE = 'height-large',
 }
 
 interface DropDownProps {
     classNames?: string[];
-    height?: dropDownItemHeight;
+    offset?: number;
+    height?: popupsItemHeight;
     items: DropdownItem[];
     trigger: ReactNode;
 }
@@ -49,35 +34,18 @@ export const DropDown: FC<DropDownProps> = memo((props: DropDownProps) => {
     const {
         classNames = [],
         items,
+        offset = 5,
         trigger,
-        height = dropDownItemHeight.MEDIUM,
+        height = popupsItemHeight.MEDIUM,
     } = props;
     const cn = cnBind.bind(cls);
 
-    const { refs, floatingStyles } = useFloating({
-        placement: 'bottom',
-        whileElementsMounted: autoUpdate,
-        middleware: [
-            offset(5),
-            flip({
-                fallbackPlacements: [
-                    'bottom',
-                    'top',
-                    'right-end',
-                    'left-end',
-                    'right-start',
-                    'left-start',
-                ],
-                rootBoundary: 'viewport',
-                altBoundary: true,
-            }),
-        ],
-    });
+    const { refs, floatingStyles } = useAutoFloating({ floatOffset: offset });
 
     return (
         <div
             className={cn(
-                cls.DropDown,
+                clsPopups.Popups,
                 ...classNames.map((clsName) => cls[clsName] || clsName),
             )}
         >
@@ -108,13 +76,17 @@ export const DropDown: FC<DropDownProps> = memo((props: DropDownProps) => {
                             </Button>
                         </MenuButton>
                         <MenuItems
-                            className={cls.menu}
+                            className={cn(cls.menu, clsPopups.menuPopups)}
                             ref={refs.setFloating}
                             style={floatingStyles}
                         >
                             {items.map((item, index) => (
-                                // eslint-disable-next-line react/no-array-index-key
-                                <MenuItem as="div" disabled={item.disabled} key={index}>
+                                <MenuItem
+                                    as="div"
+                                    disabled={item.disabled}
+                                    // eslint-disable-next-line react/no-array-index-key
+                                    key={index}
+                                >
                                     {({ focus }) => (
                                         // eslint-disable-next-line react/jsx-no-useless-fragment
                                         <>
@@ -124,7 +96,8 @@ export const DropDown: FC<DropDownProps> = memo((props: DropDownProps) => {
                                                     classNames={[
                                                         cn(
                                                             cls.item,
-                                                            cls[height],
+                                                            clsPopups.itemPopups,
+                                                            clsPopups[height],
                                                             {
                                                                 [cls.active]:
                                                                     focus,
@@ -155,7 +128,7 @@ export const DropDown: FC<DropDownProps> = memo((props: DropDownProps) => {
                                                         cn(
                                                             cls.item,
                                                             cls.disableDefaultHover,
-                                                            cls[height],
+                                                            clsPopups[height],
                                                             {
                                                                 [cls.active]:
                                                                     focus,
