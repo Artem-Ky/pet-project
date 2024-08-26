@@ -31,7 +31,7 @@ export const NotificationItem: FC<NotificationItemProps> = memo(
 
         if (item.href) {
             return (
-                <AppLink fullWidth fullHeight target="_blank" to={item.href}>
+                <AppLink fullWidth fullHeight target="_blank" href={item.href} to={item.href}>
                     {content}
                 </AppLink>
             );
