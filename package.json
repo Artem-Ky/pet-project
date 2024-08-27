@@ -122,9 +122,11 @@
   "dependencies": {
     "@floating-ui/react-dom": "^2.1.1",
     "@headlessui/react": "^2.1.2",
+    "@react-spring/web": "^9.7.4",
     "@reduxjs/toolkit": "^2.2.6",
     "@typescript-eslint/eslint-plugin": "^7.16.0",
     "@typescript-eslint/parser": "^7.16.0",
+    "@use-gesture/react": "^10.3.1",
     "assert": "^2.1.0",
     "axios": "^1.7.2",
     "classnames": "^2.5.1",
