@@ -12,6 +12,8 @@ import { getUserAuthData } from 'entities/User';
 import { HStack } from 'shared/ui/Stack';
 import { NotificationButton } from 'features/NotificationButton';
 import { AvatarDropDown } from 'features/AvatarDropDown';
+import { Drawer } from 'shared/ui/Drawer/Drawer';
+import { NotificationList } from 'entities/Notification';
 import cls from './NavBar.module.scss';
 
 export const NavBar: FC = memo(() => {

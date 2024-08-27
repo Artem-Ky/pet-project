@@ -10,6 +10,8 @@ import React, {
     useState,
 } from 'react';
 import cnBind from 'classnames/bind';
+import { HStack } from '../../Stack';
+import { Overlay } from '../../Overlay/Overlay';
 import { Portal } from '../../Portal/Portal';
 import cls from './Modal.module.scss';
 
@@ -58,10 +60,6 @@ export const Modal: FC<ModalProps> = (props) => {
         [closeHandler],
     );
 
-    const onContentClick = (e: React.MouseEvent) => {
-        e.stopPropagation();
-    };
-
     useEffect(() => {
         if (isOpen) {
             window.addEventListener('keydown', onKeyDown);
@@ -78,27 +76,33 @@ export const Modal: FC<ModalProps> = (props) => {
 
     return (
         <Portal element={document.getElementById('app') ?? document.body}>
-            <div
-                className={cn(
-                    cls.Modal,
-                    { [cls.opened]: isOpen },
-                    { [cls.isClosing]: isClosing },
-                )}
+            <HStack
+                justify="center"
+                align="center"
+                classNames={[
+                    cn(
+                        cls.Modal,
+                        { [cls.opened]: isOpen },
+                        { [cls.isClosing]: isClosing },
+                    ),
+                ]}
             >
-                <div onClick={closeHandler} className={cn(cls.overlay)}>
-                    <div
-                        onClick={onContentClick}
-                        className={cn(
+                <Overlay onClick={closeHandler} />
+                <HStack
+                    justify="center"
+                    align="center"
+                    classNames={[
+                        cn(
                             cls.content,
                             ...classNames.map(
                                 (clsName) => cls[clsName] || clsName,
                             ),
-                        )}
-                    >
-                        {children}
-                    </div>
-                </div>
-            </div>
+                        ),
+                    ]}
+                >
+                    {children}
+                </HStack>
+            </HStack>
         </Portal>
     );
 };
