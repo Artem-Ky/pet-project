@@ -1,8 +1,8 @@
 import { StoryFn, Meta } from '@storybook/react';
-import { Theme } from 'shared/const/theme';
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
-import { UserRole } from 'entities/User';
+import { Theme } from '@/shared/const/theme';
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
+import { UserRole } from '@/entities/User';
 import { AvatarDropDown } from './AvatarDropDown';
 
 export default {

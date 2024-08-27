@@ -1,6 +1,6 @@
 import { FC, ReactNode } from 'react';
 import cnBind from 'classnames/bind';
-import { useModal } from 'shared/lib/hooks/useModal/useModal';
+import { useModal } from '@/shared/lib/hooks/useModal/useModal';
 import { HStack } from '../../Stack';
 import { Overlay } from '../../Overlay/Overlay';
 import { Portal } from '../../Portal/Portal';

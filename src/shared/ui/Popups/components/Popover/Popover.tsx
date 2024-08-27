@@ -5,7 +5,7 @@ import {
     PopoverButton as HPopoverButton,
     PopoverPanel as HPopoverPanel,
 } from '@headlessui/react';
-import { useAutoFloating } from 'shared/lib/hooks/useAutoFloating/useAutoFloating';
+import { useAutoFloating } from '@/shared/lib/hooks/useAutoFloating/useAutoFloating';
 import { Button } from '../../../Button';
 import { HStack } from '../../../Stack';
 import { Text } from '../../../Text';

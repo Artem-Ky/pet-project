@@ -1,19 +1,19 @@
 import {
     FC, memo, useCallback, useMemo,
 } from 'react';
-import { Button } from 'shared/ui/Button';
-import { ButtonSize, ButtonVariant } from 'shared/ui/Button/ui/Button';
+import { useTranslation } from 'react-i18next';
+import { Button } from '@/shared/ui/Button';
+import { ButtonSize, ButtonVariant } from '@/shared/ui/Button/ui/Button';
 import {
     Icon, IconColor, IconSize, IconTypeVariant,
-} from 'shared/ui/Icon';
-import { useTranslation } from 'react-i18next';
-import sortUp from 'shared/assets/icons/sort/SortUp.svg';
-import sortDown from 'shared/assets/icons/sort/sortDown.svg';
-import { SortOrder } from 'shared/types';
-import { ArticleSortField } from 'entities/Article';
-import { HStack } from 'shared/ui/Stack';
-import { ListBox, popupsItemHeight, popupsItemWidth } from 'shared/ui/Popups';
-import { ListBoxItem } from 'shared/ui/Popups/components/ListBox/ListBox';
+} from '@/shared/ui/Icon';
+import sortUp from '@/shared/assets/icons/sort/SortUp.svg';
+import sortDown from '@/shared/assets/icons/sort/sortDown.svg';
+import { SortOrder } from '@/shared/types';
+import { ArticleSortField } from '@/entities/Article';
+import { HStack } from '@/shared/ui/Stack';
+import { ListBox, popupsItemHeight, popupsItemWidth } from '@/shared/ui/Popups';
+import { ListBoxItem } from '@/shared/ui/Popups/components/ListBox/ListBox';
 
 interface OrderSortProps {
     classNames?: string[];

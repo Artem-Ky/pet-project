@@ -1,5 +1,5 @@
-import { User } from 'entities/User';
-import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
+import { User } from '@/entities/User';
+import { TestAsyncThunk } from '@/shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
 import { Article, ArticleBlock } from '../../types/article';
 import { fetchArticleById } from './fetchArticleById';
 import { ArticleType } from '../../consts/consts';

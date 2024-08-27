@@ -1,10 +1,10 @@
-import { NavBar } from 'widgets/NavBar';
-import { SideBar } from 'widgets/SideBar';
 import { Suspense, useEffect } from 'react';
 import classNames from 'classnames';
-import { getUserInited, userActions } from 'entities/User';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
+import { NavBar } from '@/widgets/NavBar';
+import { SideBar } from '@/widgets/SideBar';
+import { getUserInited, userActions } from '@/entities/User';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Router } from './providers/router';
 
 const App = () => {

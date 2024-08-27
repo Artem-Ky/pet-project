@@ -1,7 +1,7 @@
 import { FC, memo } from 'react';
 import cnBind from 'classnames/bind';
-import { Page } from 'widgets/Page';
 import { useParams } from 'react-router-dom';
+import { Page } from '@/widgets/Page';
 import cls from './ArticleCRUDPage.module.scss';
 
 interface ArticleCRUDPageProps {

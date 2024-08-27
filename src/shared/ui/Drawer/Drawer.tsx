@@ -2,8 +2,8 @@ import {
     FC, memo, ReactNode, useCallback, useEffect,
 } from 'react';
 import cnBind from 'classnames/bind';
-import { useTheme } from 'shared/lib/hooks/useTheme/useTheme';
-import { useAnimationLibs } from 'shared/lib/components/DynamicModuleLoader/AnimationProvider';
+import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
+import { useAnimationLibs } from '@/shared/lib/components/DynamicModuleLoader/AnimationProvider';
 import cls from './Drawer.module.scss';
 import { Portal } from '../Portal/Portal';
 import { Overlay } from '../Overlay/Overlay';

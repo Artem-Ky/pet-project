@@ -1,9 +1,9 @@
 import { StoryFn, Meta } from '@storybook/react';
-import { Theme } from 'shared/const/theme';
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
-import testAvatar from 'app/testAvatar.jpg';
-import { Currency } from 'entities/CurrencySelect';
+import { Theme } from '@/shared/const/theme';
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
+import testAvatar from '@/app/testAvatar.jpg';
+import { Currency } from '@/entities/CurrencySelect';
 import { ProfileCard } from './ProfileCard';
 
 export default {

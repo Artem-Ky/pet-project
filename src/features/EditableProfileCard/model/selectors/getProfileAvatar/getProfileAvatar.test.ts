@@ -1,5 +1,5 @@
-import { StateSchema } from 'app/providers/StoreProvider';
 import { DeepPartial } from 'utility-types';
+import { StateSchema } from '@/app/providers/StoreProvider';
 import { getProfileAvatar } from './getProfileAvatar';
 
 describe('getProfileAvatar.test', () => {

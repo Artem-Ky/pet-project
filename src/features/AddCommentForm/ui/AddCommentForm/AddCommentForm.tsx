@@ -1,16 +1,16 @@
 import { FC, memo, useCallback } from 'react';
 import cnBind from 'classnames/bind';
 import { useTranslation } from 'react-i18next';
-import { Button } from 'shared/ui/Button';
-import { ButtonSize, ButtonVariant } from 'shared/ui/Button/ui/Button';
-import { TextArea } from 'shared/ui/TextArea';
 import { useSelector } from 'react-redux';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { Button } from '@/shared/ui/Button';
+import { ButtonSize, ButtonVariant } from '@/shared/ui/Button/ui/Button';
+import { TextArea } from '@/shared/ui/TextArea';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import {
     DynamicModuleLoader,
     ReducersList,
-} from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { VStack } from 'shared/ui/Stack';
+} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { VStack } from '@/shared/ui/Stack';
 import {
     addCommentFormActions,
     addCommentFormReducer,

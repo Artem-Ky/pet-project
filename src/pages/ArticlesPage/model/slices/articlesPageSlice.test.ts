@@ -3,8 +3,8 @@ import {
     ArticleSortField,
     ArticleType,
     ArticleView,
-} from 'entities/Article';
-import { SortOrder } from 'shared/types';
+} from '@/entities/Article';
+import { SortOrder } from '@/shared/types';
 import { ArticlesPageSchema } from '../..';
 import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList';
 import { articlesPageActions, articlesPageReducer } from './articlesPageSlice';

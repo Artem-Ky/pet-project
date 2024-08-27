@@ -1,7 +1,7 @@
-import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
-import { Comment } from 'entities/Comment';
-import { getUserAuthData, User } from 'entities/User';
-import { getArticleDetailsData } from 'entities/Article';
+import { TestAsyncThunk } from '@/shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
+import { Comment } from '@/entities/Comment';
+import { getUserAuthData, User } from '@/entities/User';
+import { getArticleDetailsData } from '@/entities/Article';
 import { fetchCommentsByArticleId } from '../../services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import { addCommentForArticle } from './addCommentForArticle';
 

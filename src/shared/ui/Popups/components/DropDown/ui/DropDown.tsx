@@ -3,7 +3,7 @@ import cnBind from 'classnames/bind';
 import {
     Menu, MenuButton, MenuItem, MenuItems,
 } from '@headlessui/react';
-import { useAutoFloating } from 'shared/lib/hooks/useAutoFloating/useAutoFloating';
+import { useAutoFloating } from '@/shared/lib/hooks/useAutoFloating/useAutoFloating';
 import { popupsContentColor, popupsItemHeight } from '../../../consts/consts';
 import { AppLink } from '../../../../Link';
 import {

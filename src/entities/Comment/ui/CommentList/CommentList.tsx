@@ -1,8 +1,8 @@
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Text, TextTheme } from 'shared/ui/Text/ui/Text';
 import cnBind from 'classnames/bind';
-import { VStack } from 'shared/ui/Stack';
+import { Text, TextTheme } from '@/shared/ui/Text/ui/Text';
+import { VStack } from '@/shared/ui/Stack';
 import cls from './CommentList.module.scss';
 import { CommentCard } from '../CommentCard/CommentCard';
 import { Comment } from '../../model/types/comment';

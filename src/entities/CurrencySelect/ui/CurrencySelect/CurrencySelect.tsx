@@ -1,9 +1,9 @@
 import {
     FC, memo, useCallback, useMemo,
 } from 'react';
-import { ListBox } from 'shared/ui/Popups';
-import { ListBoxItem } from 'shared/ui/Popups/components/ListBox/ListBox';
-import { HStack } from 'shared/ui/Stack';
+import { ListBox } from '@/shared/ui/Popups';
+import { ListBoxItem } from '@/shared/ui/Popups/components/ListBox/ListBox';
+import { HStack } from '@/shared/ui/Stack';
 import { Currency } from '../../model/currency';
 
 interface CurrencySelectProps {

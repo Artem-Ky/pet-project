@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import cnBind from 'classnames/bind';
 import { useTranslation } from 'react-i18next';
-import { Button } from 'shared/ui/Button';
-import { VStack } from 'shared/ui/Stack';
+import { Button } from '@/shared/ui/Button';
+import { VStack } from '@/shared/ui/Stack';
 import cls from './PageError.module.scss';
 
 interface PageErrorProps {

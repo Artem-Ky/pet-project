@@ -1,7 +1,7 @@
-import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
+import { TestAsyncThunk } from '@/shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
 import {
     Article, ArticleSortField, ArticleType, ArticleView,
-} from 'entities/Article';
+} from '@/entities/Article';
 import { fetchArticlesList } from './fetchArticlesList';
 
 const mockArticles: Article[] = [

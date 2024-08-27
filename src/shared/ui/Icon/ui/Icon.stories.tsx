@@ -1,7 +1,7 @@
 import { StoryFn, Meta } from '@storybook/react';
-import { Theme } from 'shared/const/theme';
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import testIcon from 'app/testIcon.svg';
+import { Theme } from '@/shared/const/theme';
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import testIcon from '@/app/testIcon.svg';
 import {
     Icon, IconColor, IconSize, IconTypeVariant,
 } from './Icon';

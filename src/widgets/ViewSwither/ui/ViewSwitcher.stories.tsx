@@ -1,8 +1,8 @@
 import { StoryFn, Meta } from '@storybook/react';
-import { Theme } from 'shared/const/theme';
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { ArticleView } from 'entities/Article';
 import { useState } from 'react';
+import { Theme } from '@/shared/const/theme';
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import { ArticleView } from '@/entities/Article';
 import { ViewSwitcher } from './ViewSwitcher';
 
 export default {

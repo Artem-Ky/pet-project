@@ -1,6 +1,6 @@
 import cnBind from 'classnames/bind';
 import { memo } from 'react';
-import { Text, TextSize, TextTheme } from 'shared/ui/Text/ui/Text';
+import { Text, TextSize, TextTheme } from '@/shared/ui/Text/ui/Text';
 import cls from './ArticleTextBlockComponent.module.scss';
 import { ArticleTextBlock } from '../../model/types/article';
 

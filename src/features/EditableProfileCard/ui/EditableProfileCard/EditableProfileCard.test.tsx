@@ -1,11 +1,11 @@
 import { screen } from '@testing-library/react';
-import { Profile } from 'entities/Profile';
 import userEvent from '@testing-library/user-event';
-import { $api } from 'shared/api/api';
-import { Currency } from 'entities/CurrencySelect';
-import { Country } from 'shared/const/common';
-import { ComponentRender } from 'shared/lib/tests/componentRender/ComponentRender';
 import { Reducer, UnknownAction } from '@reduxjs/toolkit';
+import { Profile } from '@/entities/Profile';
+import { $api } from '@/shared/api/api';
+import { Currency } from '@/entities/CurrencySelect';
+import { Country } from '@/shared/const/common';
+import { ComponentRender } from '@/shared/lib/tests/componentRender/ComponentRender';
 import { profileReducer } from '../../model/slice/profileSlice';
 import { EditableProfileCard } from './EditableProfileCard';
 import { ProfileSchema } from '../..';

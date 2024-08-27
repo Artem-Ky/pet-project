@@ -1,11 +1,11 @@
 import { StoryFn, Meta } from '@storybook/react';
-import { Theme } from 'shared/const/theme';
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
-import testAvatar from 'app/testAvatar.jpg';
-import { Article, ArticleView } from 'entities/Article';
 import { DeepPartial } from 'utility-types';
-import { StateSchema } from 'app/providers/StoreProvider';
+import { Theme } from '@/shared/const/theme';
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
+import testAvatar from '@/app/testAvatar.jpg';
+import { Article, ArticleView } from '@/entities/Article';
+import { StateSchema } from '@/app/providers/StoreProvider';
 import { ArticleInfinityList } from './ArticleInfinityList';
 
 export default {

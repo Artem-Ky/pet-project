@@ -1,6 +1,6 @@
-import { Loader } from 'shared/ui/Loader/Loader';
 import { FC } from 'react';
-import { HStack } from 'shared/ui/Stack';
+import { Loader } from '@/shared/ui/Loader/Loader';
+import { HStack } from '@/shared/ui/Stack';
 import cls from './PageLoader.module.scss';
 
 export const PageLoader: FC = () => (

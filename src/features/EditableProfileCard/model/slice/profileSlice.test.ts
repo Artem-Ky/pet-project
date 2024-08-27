@@ -1,6 +1,6 @@
-import { Country } from 'shared/const/common';
-import { Currency } from 'entities/CurrencySelect';
 import { DeepPartial } from 'utility-types';
+import { Country } from '@/shared/const/common';
+import { Currency } from '@/entities/CurrencySelect';
 import { updateProfileData } from '../services/updateProfileData/updateProfileData';
 import {
     ProfileSchema,

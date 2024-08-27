@@ -1,13 +1,13 @@
 import { FC, memo } from 'react';
 import cnBind from 'classnames/bind';
-import { Button } from 'shared/ui/Button';
-import ListIcon from 'shared/assets/icons/article-mod/horizontal.svg';
-import PlateIcon from 'shared/assets/icons/article-mod/vertical.svg';
+import { Button } from '@/shared/ui/Button';
+import ListIcon from '@/shared/assets/icons/article-mod/horizontal.svg';
+import PlateIcon from '@/shared/assets/icons/article-mod/vertical.svg';
 import {
     Icon, IconColor, IconSize, IconTypeVariant,
-} from 'shared/ui/Icon';
-import { ArticleView } from 'entities/Article';
-import { HStack } from 'shared/ui/Stack';
+} from '@/shared/ui/Icon';
+import { ArticleView } from '@/entities/Article';
+import { HStack } from '@/shared/ui/Stack';
 import cls from './ViewSwitcher.module.scss';
 
 interface ViewSwitcherProps {

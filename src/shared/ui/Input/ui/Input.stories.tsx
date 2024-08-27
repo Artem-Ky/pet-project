@@ -1,7 +1,7 @@
 import { StoryFn, Meta } from '@storybook/react';
-import { Theme } from 'shared/const/theme';
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import testAvatar from 'app/testAvatar.jpg';
+import { Theme } from '@/shared/const/theme';
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import testAvatar from '@/app/testAvatar.jpg';
 import { Input, InputSize, InputView } from './Input';
 
 export default {

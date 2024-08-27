@@ -1,20 +1,20 @@
 import { FC, HTMLAttributeAnchorTarget, memo } from 'react';
 import cnBind from 'classnames/bind';
+import { useTranslation } from 'react-i18next';
 import {
     Text, TextAlign, TextSize, TextTheme,
-} from 'shared/ui/Text/ui/Text';
-import { Icon, IconColor } from 'shared/ui/Icon';
-import viewIcon from 'shared/assets/icons/eye.svg';
-import { Card, CardSize } from 'shared/ui/Card';
-import { Avatar } from 'shared/ui/Avatar';
-import { useTranslation } from 'react-i18next';
-import { AvatarSize } from 'shared/ui/Avatar/ui/Avatar';
-import { CardView } from 'shared/ui/Card/ui/Card';
-import { Button } from 'shared/ui/Button';
-import { ButtonSize, ButtonVariant } from 'shared/ui/Button/ui/Button';
-import { RoutePath } from 'shared/config/routeConfig/routeConfig';
-import { AppLink } from 'shared/ui/Link';
-import { HStack, VStack } from 'shared/ui/Stack';
+} from '@/shared/ui/Text/ui/Text';
+import { Icon, IconColor } from '@/shared/ui/Icon';
+import viewIcon from '@/shared/assets/icons/eye.svg';
+import { Card, CardSize } from '@/shared/ui/Card';
+import { Avatar } from '@/shared/ui/Avatar';
+import { AvatarSize } from '@/shared/ui/Avatar/ui/Avatar';
+import { CardView } from '@/shared/ui/Card/ui/Card';
+import { Button } from '@/shared/ui/Button';
+import { ButtonSize, ButtonVariant } from '@/shared/ui/Button/ui/Button';
+import { RoutePath } from '@/shared/config/routeConfig/routeConfig';
+import { AppLink } from '@/shared/ui/Link';
+import { HStack, VStack } from '@/shared/ui/Stack';
 import { ArticleBlockType, ArticleView } from '../../model/consts/consts';
 import cls from './ArticleListItem.module.scss';
 import { Article, ArticleTextBlock } from '../../model/types/article';

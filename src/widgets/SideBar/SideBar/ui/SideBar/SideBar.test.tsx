@@ -1,6 +1,6 @@
 import { fireEvent, screen } from '@testing-library/react';
 // eslint-disable-next-line max-len
-import { ComponentRender } from 'shared/lib/tests/componentRender/ComponentRender';
+import { ComponentRender } from '@/shared/lib/tests/componentRender/ComponentRender';
 import { SideBar } from './SideBar';
 
 describe('SideBar', () => {

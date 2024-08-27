@@ -1,12 +1,12 @@
 import { memo } from 'react';
-import { AppLink } from 'shared/ui/Link';
-import { AppLinkTheme } from 'shared/ui/Link/ui/AppLink';
 import { useTranslation } from 'react-i18next';
 import cnBind from 'classnames/bind';
-import { Text, TextSize, TextTheme } from 'shared/ui/Text/ui/Text';
 import { useSelector } from 'react-redux';
-import { getUserAuthData } from 'entities/User';
-import { Icon } from 'shared/ui/Icon';
+import { AppLink } from '@/shared/ui/Link';
+import { AppLinkTheme } from '@/shared/ui/Link/ui/AppLink';
+import { Text, TextSize, TextTheme } from '@/shared/ui/Text/ui/Text';
+import { getUserAuthData } from '@/entities/User';
+import { Icon } from '@/shared/ui/Icon';
 import cls from './SideBarItem.module.scss';
 import { SideBarItemType } from '../../model/types/sidebar';
 

@@ -7,9 +7,7 @@ import React, {
     useState,
 } from 'react';
 import cnBind from 'classnames/bind';
-import { Text, TextSize } from 'shared/ui/Text/ui/Text';
 import { useTranslation } from 'react-i18next';
-import { PAGE_ID } from 'widgets/Page/ui/Page';
 import {
     CellMeasurer,
     CellMeasurerCache,
@@ -17,7 +15,9 @@ import {
     ListRowProps,
     WindowScroller,
 } from 'react-virtualized';
-import { HStack } from 'shared/ui/Stack';
+import { Text, TextSize } from '@/shared/ui/Text/ui/Text';
+import { PAGE_ID } from '@/widgets/Page/ui/Page';
+import { HStack } from '@/shared/ui/Stack';
 import { ArticleView } from '../../model/consts/consts';
 import { Article } from '../../model/types/article';
 import cls from './ArticleList.module.scss';

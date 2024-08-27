@@ -1,21 +1,21 @@
 import { FC, memo, useCallback } from 'react';
+import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import {
     getUserAuthData,
     isUserAdmin,
     isUserManager,
     userActions,
-} from 'entities/User';
-import { useSelector } from 'react-redux';
+} from '@/entities/User';
 import {
     DropDown,
     DropdownItem,
-} from 'shared/ui/Popups/components/DropDown/ui/DropDown';
-import { RoutePath } from 'shared/config/routeConfig/routeConfig';
-import { popupsContentColor } from 'shared/ui/Popups';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { Avatar } from 'shared/ui/Avatar';
-import { AvatarSize } from 'shared/ui/Avatar/ui/Avatar';
-import { useTranslation } from 'react-i18next';
+} from '@/shared/ui/Popups/components/DropDown/ui/DropDown';
+import { RoutePath } from '@/shared/config/routeConfig/routeConfig';
+import { popupsContentColor } from '@/shared/ui/Popups';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { Avatar } from '@/shared/ui/Avatar';
+import { AvatarSize } from '@/shared/ui/Avatar/ui/Avatar';
 
 interface AvatarDropDownProps {
     classNames?: string[];

@@ -1,9 +1,9 @@
 import cnBind from 'classnames/bind';
 import { memo } from 'react';
-import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
-import { Card, CardSize } from 'shared/ui/Card';
-import { CardView } from 'shared/ui/Card/ui/Card';
-import { HStack, VStack } from 'shared/ui/Stack';
+import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
+import { Card, CardSize } from '@/shared/ui/Card';
+import { CardView } from '@/shared/ui/Card/ui/Card';
+import { HStack, VStack } from '@/shared/ui/Stack';
 import { ArticleView } from '../../model/consts/consts';
 import cls from './ArticleListItem.module.scss';
 

@@ -1,7 +1,7 @@
-import { StateSchema } from 'app/providers/StoreProvider';
-import { Country } from 'shared/const/common';
-import { Currency } from 'entities/CurrencySelect';
 import { DeepPartial } from 'utility-types';
+import { StateSchema } from '@/app/providers/StoreProvider';
+import { Country } from '@/shared/const/common';
+import { Currency } from '@/entities/CurrencySelect';
 import { getProfileData } from './getProfileData';
 
 describe('getProfileData.test', () => {

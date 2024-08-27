@@ -1,8 +1,8 @@
 import { FC, memo } from 'react';
 import cnBind from 'classnames/bind';
-import { VStack } from 'shared/ui/Stack';
-import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
 import { BrowserView, MobileView } from 'react-device-detect';
+import { VStack } from '@/shared/ui/Stack';
+import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
 import { useNotifications } from '../../api/NotificationAPI';
 import cls from './NotificationList.module.scss';
 import { NotificationItem } from '../NotificationItem/NotificationItem';

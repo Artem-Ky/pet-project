@@ -1,8 +1,8 @@
 import { FC, memo } from 'react';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { Text, TextTheme } from 'shared/ui/Text/ui/Text';
-import { ArticleList } from 'entities/Article';
+import { Text, TextTheme } from '@/shared/ui/Text/ui/Text';
+import { ArticleList } from '@/entities/Article';
 import {
     getArticlesPageError,
     getArticlesPageIsLoading,

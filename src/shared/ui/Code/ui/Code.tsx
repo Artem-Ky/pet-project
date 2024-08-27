@@ -1,6 +1,6 @@
 import { memo, useCallback } from 'react';
-import CopyIcon from 'shared/assets/icons/copy.svg';
 import cnBind from 'classnames/bind';
+import CopyIcon from '@/shared/assets/icons/copy.svg';
 import { Icon, IconColor, IconSize } from '../../Icon';
 import { Button } from '../../Button';
 import { ButtonVariant } from '../../Button/ui/Button';

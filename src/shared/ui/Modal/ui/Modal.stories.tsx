@@ -1,7 +1,7 @@
 import { StoryFn, Meta } from '@storybook/react';
-import { Theme } from 'shared/const/theme';
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { classNames } from 'shared/lib/classNames/classNames';
+import { Theme } from '@/shared/const/theme';
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import { Modal } from './Modal';
 
 export default {

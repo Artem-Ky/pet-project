@@ -1,23 +1,23 @@
 import { FC, memo, useCallback } from 'react';
 import cnBind from 'classnames/bind';
 import { useTranslation } from 'react-i18next';
-import { Input } from 'shared/ui/Input';
-import { Button } from 'shared/ui/Button';
-import { InputSize } from 'shared/ui/Input/ui/Input';
+import { useSelector } from 'react-redux';
+import { Input } from '@/shared/ui/Input';
+import { Button } from '@/shared/ui/Button';
+import { InputSize } from '@/shared/ui/Input/ui/Input';
 import {
     ButtonOutlineColor,
     ButtonSize,
     ButtonVariant,
-} from 'shared/ui/Button/ui/Button';
-import { useSelector } from 'react-redux';
+} from '@/shared/ui/Button/ui/Button';
 import {
     Text, TextAlign, TextSize, TextTheme,
-} from 'shared/ui/Text/ui/Text';
+} from '@/shared/ui/Text/ui/Text';
 import {
     DynamicModuleLoader,
     ReducersList,
-} from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { getLoginError } from '../../model/selectors/getLoginError/getLoginError';
 import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername';
 import { getRememberMe } from '../../model/selectors/getRememberMe/getRememberMe';

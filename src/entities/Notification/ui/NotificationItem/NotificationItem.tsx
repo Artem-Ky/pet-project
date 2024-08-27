@@ -1,8 +1,8 @@
 import { FC, memo } from 'react';
 import cnBind from 'classnames/bind';
-import { Card } from 'shared/ui/Card';
-import { Text } from 'shared/ui/Text';
-import { AppLink } from 'shared/ui/Link';
+import { Card } from '@/shared/ui/Card';
+import { Text } from '@/shared/ui/Text';
+import { AppLink } from '@/shared/ui/Link';
 import { Notification } from '../../model/types/notification';
 import cls from './NotificationItem.module.scss';
 

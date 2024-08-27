@@ -2,11 +2,11 @@ import {
     FC, memo, useCallback, useMemo, useState,
 } from 'react';
 import cnBind from 'classnames/bind';
-import { Button } from 'shared/ui/Button';
-import { ButtonSize, ButtonVariant } from 'shared/ui/Button/ui/Button';
-import { Text, TextSize, TextTheme } from 'shared/ui/Text/ui/Text';
 import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { Button } from '@/shared/ui/Button';
+import { ButtonSize, ButtonVariant } from '@/shared/ui/Button/ui/Button';
+import { Text, TextSize, TextTheme } from '@/shared/ui/Text/ui/Text';
 import cls from './SideBar.module.scss';
 import { SideBarItem } from '../SideBarItem/SideBarItem';
 import { getSideBarItems } from '../../model/selectors/getSideBarItems';
