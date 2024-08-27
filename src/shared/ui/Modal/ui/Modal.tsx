@@ -1,9 +1,4 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-import {
-    FC,
-    ReactNode,
-} from 'react';
+import { FC, ReactNode } from 'react';
 import cnBind from 'classnames/bind';
 import { useModal } from 'shared/lib/hooks/useModal/useModal';
 import { HStack } from '../../Stack';
@@ -25,7 +20,11 @@ export const Modal: FC<ModalProps> = (props) => {
     } = props;
     const cn = cnBind.bind(cls);
 
-    const { isClosing, isMounted, closeHandler } = useModal({ animationDelay: 300, onClose, isOpen });
+    const { isClosing, isMounted, closeHandler } = useModal({
+        animationDelay: 300,
+        onClose,
+        isOpen,
+    });
 
     if (lazy && !isMounted) {
         return null;

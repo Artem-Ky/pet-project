@@ -59,6 +59,7 @@ const LoginForm: FC<LoginFormProps> = memo((props: LoginFormProps) => {
         },
         [dispatch],
     );
+
     const onChangeRememberMe = useCallback(() => {
         dispatch(loginActions.setRememberMe(!rememberMe));
     }, [dispatch, rememberMe]);
@@ -123,7 +124,7 @@ const LoginForm: FC<LoginFormProps> = memo((props: LoginFormProps) => {
                         id="rememberMe"
                         name="rememberMe"
                         type="checkbox"
-                        placeholder={t('Повторите пароль')}
+                        placeholder={t('Запомнить меня?')}
                         onChange={onChangeRememberMe}
                         checked={rememberMe}
                     />
