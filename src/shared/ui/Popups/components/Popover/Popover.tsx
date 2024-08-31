@@ -45,17 +45,15 @@ export const Popover: FC<PopoverProps> = memo((props: PopoverProps) => {
             )}
         >
             <HPopoverButton as="div" ref={refs.setReference}>
-                <Button>
-                    <HStack justify="center" align="center" gap="4c">
-                        <Text
-                            size={TextSize.M}
-                            align={TextAlign.CENTER}
-                            theme={TextTheme.BLACK_WHITE}
-                        >
-                            {trigger}
-                        </Text>
-                    </HStack>
-                </Button>
+                <HStack justify="center" align="center" gap="4c">
+                    <Text
+                        size={TextSize.M}
+                        align={TextAlign.CENTER}
+                        theme={TextTheme.BLACK_WHITE}
+                    >
+                        {trigger}
+                    </Text>
+                </HStack>
             </HPopoverButton>
             <HPopoverPanel
                 as="div"

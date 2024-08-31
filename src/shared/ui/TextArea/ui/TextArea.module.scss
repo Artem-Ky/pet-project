@@ -4,6 +4,7 @@
     @include reset-button;
 
     color: var(--main-font-color);
+    min-height: 24px;
     border: 1px solid transparent;
     border-radius: var(--border-radius-small);
     font: var(--font-inter-md-regular);
@@ -42,23 +43,14 @@
 }
 
 .small {
-    // height: var(--input-height-s);
-    // min-height: var(--input-height-s);
-    // max-height: calc(var(--input-height-s) * 2);
     width:  var(--input-width-s);
 }
 
 .medium {
-    // height: calc(var(--input-height-m) * 2);
-    // min-height: calc(var(--input-height-m) * 2);
-    // max-height: calc(var(--input-height-m) * 4);
     width:  var(--input-width-m);
 }
 
 .large {
-    // height: calc(var(--input-height-l) * 3);
-    // min-height: calc(var(--input-height-l) * 3);
-    // max-height: calc(var(--input-height-l) * 6);
     width:  var(--input-width-l);
     font: var(--font-inter-lg-regular);
 }

@@ -8,10 +8,7 @@ import {
     PADDING_COMPENSATION,
 } from '../constants/constants';
 
-export const useAutoSize = (
-    valueText: string,
-    maxRows: number = MAX_ROWS,
-) => {
+export const useAutoSize = (valueText: string, maxRows: number = MAX_ROWS) => {
     const [isOverflowAuto, setIsOverflowAuto] = useState(false);
     const [currentLineHeight, setCurrentLineHeight] = useState(
         INITIAL_SCROLL_LINE_HEIGHT,
@@ -42,18 +39,15 @@ export const useAutoSize = (
     }, [currentMaxRows, maxRows]);
 
     useLayoutEffect(() => {
-        if (!valueText) {
-            setTextAreaHeight(`${currentScrollHeight}px`);
-            return;
-        }
+        if (!textAreaRef.current) return;
 
-        const currentCountRows = Math.floor(
-            (Number(textAreaRef.current?.scrollHeight) - PADDING_COMPENSATION)
-                / currentLineHeight,
-        );
+        const { scrollHeight } = textAreaRef.current;
+        const newHeight = scrollHeight - PADDING_COMPENSATION;
+
+        const currentCountRows = Math.floor(newHeight / currentLineHeight);
 
         if (currentCountRows < currentMaxRows) {
-            setTextAreaHeight(`${textAreaRef.current?.scrollHeight}px`);
+            setTextAreaHeight(`${scrollHeight * 2}px`);
             setIsOverflowAuto(false);
         } else {
             setTextAreaHeight(`${currentMaxHeightRef.current}px`);

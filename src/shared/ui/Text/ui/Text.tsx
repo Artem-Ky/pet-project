@@ -112,9 +112,9 @@ export const Text = memo((props: TextProps) => {
                 </label>
             )}
             {children && (
-                <p className={cls.text} data-testid={`${dataTestId}.Children`}>
+                <div className={cls.text} data-testid={`${dataTestId}.Children`}>
                     {children}
-                </p>
+                </div>
             )}
         </div>
     );
