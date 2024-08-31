@@ -1,5 +1,12 @@
 import {
-    FC, memo, MutableRefObject, ReactNode, useRef, UIEvent,
+    FC,
+    memo,
+    MutableRefObject,
+    ReactNode,
+    useRef,
+    UIEvent,
+    useState,
+    useEffect,
 } from 'react';
 import cnBind from 'classnames/bind';
 import { useLocation } from 'react-router-dom';
@@ -40,6 +47,7 @@ export const Page: FC<PageProps> = memo((props: PageProps) => {
         console.log(scrollPosition);
         console.log(wrapperRef);
         wrapperRef.current.scrollTop = scrollPosition;
+        // не работает из-за рендера | не знаю как без лагов досролить через requestAnimationFrame
     });
 
     const onScroll = useThrottle((e: UIEvent<HTMLDivElement>) => {

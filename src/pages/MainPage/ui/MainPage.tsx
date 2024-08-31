@@ -11,28 +11,6 @@ const MainPage: FC = memo(() => {
         <Page>
             {t('Главная страница сайта', { ns: 'mainPage' })}
             <BugButton />
-            <VStack gap="32">
-                <VStack>1</VStack>
-                <VStack>1</VStack>
-                <VStack>1</VStack>
-                <VStack>1</VStack>
-                <VStack>1</VStack>
-                <VStack>1</VStack>
-                <VStack>1</VStack>
-                <VStack>1</VStack>
-                <VStack>1</VStack>
-                <VStack>1</VStack>
-                <VStack>1</VStack>
-                <VStack>1</VStack>
-                <VStack>1</VStack>
-                <VStack>1</VStack>
-                <VStack>1</VStack>
-                <VStack>1</VStack>
-                <VStack>1</VStack>
-                <VStack>1</VStack>
-                <VStack>1</VStack>
-                <VStack>1</VStack>
-            </VStack>
         </Page>
     );
 });
