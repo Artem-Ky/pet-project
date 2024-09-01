@@ -37,15 +37,15 @@ export const DrawerContent: FC<DrawerProps> = memo((props: DrawerProps) => {
     useEffect(() => {
         if (isOpen) {
             openDrawer();
-            document.body.classList.add('no-scroll');
+            document.body.classList.add(cn(cls.noScroll));
         } else {
-            document.body.classList.remove('no-scroll');
+            document.body.classList.remove(cn(cls.noScroll));
         }
 
         return () => {
-            document.body.classList.remove('no-scroll');
+            document.body.classList.remove(cn(cls.noScroll));
         };
-    }, [api, isOpen, openDrawer]);
+    }, [api, isOpen, openDrawer, cn]);
 
     const close = (velocity = 0) => {
         api.start({

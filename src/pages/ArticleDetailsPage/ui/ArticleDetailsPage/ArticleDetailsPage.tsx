@@ -1,6 +1,7 @@
 import { memo } from 'react';
 import { useParams } from 'react-router-dom';
 import cnBind from 'classnames/bind';
+import { isMobile } from 'react-device-detect';
 import { ArticleDetails } from '@/entities/Article';
 import {
     DynamicModuleLoader,
@@ -42,6 +43,7 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
                     cn(
                         cls.ArticleDetailsPage,
                         ...classNames.map((clsName) => cls[clsName] || clsName),
+                        { [cls.mobile]: isMobile },
                     ),
                 ]}
             >

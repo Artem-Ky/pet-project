@@ -5,11 +5,20 @@
     padding: 13px;
     height: calc(100% - var(--nav-bar-height) - var(--nav-bar-padding));
     max-width: 100%;
+
+    &.mobile {
+        padding: 10px;
+        height: calc(100% - var(--nav-bar-height) - var(--nav-bar-padding));
+    }
 }
 
 .pageHeightScroll {
     height: calc(100vh - var(--nav-bar-height) - var(--nav-bar-padding));
     overflow-y: auto;
+
+    &.mobile {
+        height: calc(100% - var(--nav-bar-height) - var(--nav-bar-padding));
+    }
 }
 
 .trigger {

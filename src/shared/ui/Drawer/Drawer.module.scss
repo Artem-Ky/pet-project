@@ -30,4 +30,6 @@
 .noScroll {
     overflow: hidden; 
     padding-right: 0;
+    height: 100vh;
+    position: fixed;
 }
