@@ -26,3 +26,8 @@
     touch-action: none;
     padding: 15px;
 }
+
+.noScroll {
+    overflow: hidden; 
+    padding-right: 0;
+}
