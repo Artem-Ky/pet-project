@@ -143,15 +143,15 @@
 }
 
 .growNone {
-    flex-shrink: 0;
+    flex-grow: 0;
 }
 
 .growDefault {
-    flex-shrink: 1;
+    flex-grow: 1;
 }
 
 .growMedium {
-    flex-shrink: 0.5;
+    flex-grow: 0.5;
 }
 
 .fullWidth {

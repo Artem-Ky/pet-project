@@ -62,7 +62,7 @@ export const MobileNavigate: FC<MobileNavigateProps> = memo(
                     ]}
                 >
                     <nav>
-                        <ul>
+                        <ul className={cls.navList}>
                             <HStack align="center" gap="16c">
                                 {itemsList}
                             </HStack>
@@ -96,7 +96,7 @@ export const MobileNavigate: FC<MobileNavigateProps> = memo(
                 ]}
             >
                 <nav>
-                    <ul>
+                    <ul className={cls.navList}>
                         <HStack align="center" gap="16c">
                             {itemsList}
                         </HStack>

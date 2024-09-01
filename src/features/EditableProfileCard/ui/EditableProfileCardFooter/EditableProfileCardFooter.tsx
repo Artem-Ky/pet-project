@@ -1,6 +1,7 @@
 import { FC, memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
+import { isMobile } from 'react-device-detect';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { getUserAuthData } from '@/entities/User';
 import { HStack } from '@/shared/ui/Stack';
@@ -45,10 +46,13 @@ export const EditableProfileCardFooter: FC<EditableProfileCardFooterProps> = mem
         return (
             <HStack justify="end" side="bottom" wrap="nowrap" fullWidth>
                 {canEdit && (
-                    <HStack gap="20c" side="bottom">
+                    <HStack gap="20c" side="bottom" fullWidth justify="end">
                         {readonly ? (
                             <Button
                                 size={ButtonSize.LARGE}
+                                {...(isMobile
+                                    ? { fullWidth: true }
+                                    : { fullWidth: false })}
                                 variant={ButtonVariant.OUTLINE}
                                 onClick={onEdit}
                                 data-testid="EditableProfileCardFooter.EditButton"

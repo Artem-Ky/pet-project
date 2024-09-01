@@ -2,7 +2,12 @@ import { FC, memo, useCallback } from 'react';
 import cnBind from 'classnames/bind';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { BrowserView, isMobile, MobileView } from 'react-device-detect';
+import {
+    BrowserView,
+    isBrowser,
+    isMobile,
+    MobileView,
+} from 'react-device-detect';
 import { Input } from '@/shared/ui/Input';
 import { Button } from '@/shared/ui/Button';
 import { InputSize } from '@/shared/ui/Input/ui/Input';
@@ -123,12 +128,10 @@ const LoginForm: FC<LoginFormProps> = memo((props: LoginFormProps) => {
                     onChange={onChangePassword}
                     value={password}
                 />
-                <BrowserView>
+                {isBrowser && (
                     <label
                         htmlFor="rememberMe"
-                        className={cn(cls.checkboxLabel, {
-                            [cls.fullWidth]: isMobile,
-                        })}
+                        className={cn(cls.checkboxLabel)}
                     >
                         <Input
                             classNames={[cls.checkbox]}
@@ -141,7 +144,7 @@ const LoginForm: FC<LoginFormProps> = memo((props: LoginFormProps) => {
                         />
                         {t('Запомнить меня')}
                     </label>
-                </BrowserView>
+                )}
                 {isMobile && (
                     <HStack justify="end" align="center" gap="16c" fullWidth>
                         <Text

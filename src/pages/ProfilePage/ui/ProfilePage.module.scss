@@ -3,7 +3,7 @@
 .profilePageWrapper {
     padding: 0 67px 59px;
 
-    @include mobile {
+    .mobile {
         padding: 15px;
     }
 }

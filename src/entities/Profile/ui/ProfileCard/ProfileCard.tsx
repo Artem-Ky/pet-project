@@ -86,13 +86,13 @@ export const ProfileCard: FC<ProfileCardProps> = (props: ProfileCardProps) => {
                 alt="you cute avatar"
                 size={AvatarSize.BIG_SQUARE}
             />
-            <VStack wrap="nowrap" gap="16r">
+            <VStack wrap="nowrap" gap="16r" shrink="1">
                 <Text
                     title={t('Личные данные', { ns: 'profile' })}
                     size={TextSize.L_BOLD}
                     theme={TextTheme.BLACK_WHITE}
                 />
-                <HStack gap="16c" wrap="nowrap">
+                <HStack gap="16" wrap="wrap">
                     <VStack wrap="nowrap">
                         <Text
                             label={t('Имя', { ns: 'profile' })}
@@ -130,7 +130,7 @@ export const ProfileCard: FC<ProfileCardProps> = (props: ProfileCardProps) => {
                         />
                     </VStack>
                 </HStack>
-                <HStack gap="16c" wrap="nowrap">
+                <HStack gap="16" wrap="wrap">
                     <VStack wrap="nowrap">
                         <Text
                             label={t('Дата рождения', { ns: 'profile' })}
@@ -172,7 +172,7 @@ export const ProfileCard: FC<ProfileCardProps> = (props: ProfileCardProps) => {
                     theme={TextTheme.BLACK_WHITE}
                     className={cls.optionTitle}
                 />
-                <HStack gap="16c" wrap="nowrap">
+                <HStack gap="16" wrap="wrap">
                     <VStack wrap="nowrap">
                         <Text
                             label={t('Имя пользователя', { ns: 'profile' })}
@@ -188,7 +188,7 @@ export const ProfileCard: FC<ProfileCardProps> = (props: ProfileCardProps) => {
                             readonly={readonly}
                         />
                     </VStack>
-                    <VStack wrap="nowrap">
+                    <VStack wrap="wrap">
                         <Text
                             label={t('Ссылка на аватар', { ns: 'profile' })}
                             size={TextSize.S}
@@ -207,7 +207,7 @@ export const ProfileCard: FC<ProfileCardProps> = (props: ProfileCardProps) => {
                         />
                     </VStack>
                 </HStack>
-                <HStack gap="16c" wrap="nowrap">
+                <HStack gap="16" wrap="wrap">
                     <VStack wrap="nowrap">
                         <Text
                             label={t('Валюта', { ns: 'profile' })}
