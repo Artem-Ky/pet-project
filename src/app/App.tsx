@@ -1,11 +1,13 @@
 import { Suspense, useEffect } from 'react';
 import classNames from 'classnames';
 import { useSelector } from 'react-redux';
+import { BrowserView, MobileView } from 'react-device-detect';
 import { NavBar } from '@/widgets/NavBar';
 import { SideBar } from '@/widgets/SideBar';
 import { getUserInited, userActions } from '@/entities/User';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Router } from './providers/router';
+import { MobileNavigate } from '@/widgets/MobileNavigate';
 
 const App = () => {
     const dispatch = useAppDispatch();
@@ -19,10 +21,17 @@ const App = () => {
         <div className={classNames('app')}>
             <Suspense fallback="">
                 <div className="content-page">
-                    <SideBar />
+                    <BrowserView>
+                        <SideBar />
+                    </BrowserView>
                     <div className="content">
-                        <NavBar />
-                        { userInited && <Router /> }
+                        <BrowserView>
+                            <NavBar />
+                        </BrowserView>
+                        {userInited && <Router />}
+                        <MobileView>
+                            <MobileNavigate />
+                        </MobileView>
                     </div>
                 </div>
             </Suspense>

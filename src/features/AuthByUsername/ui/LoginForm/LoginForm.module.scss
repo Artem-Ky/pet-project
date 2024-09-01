@@ -7,6 +7,10 @@
     align-items: center;
     row-gap: 25px;
     max-width: var(--input-width-m);
+
+    &.mobile {
+        max-width: 100%;
+    }
 }
 
 .LoginFormButton {
@@ -30,4 +34,9 @@
     @include hover {
         filter: brightness(1.3);
     }
+}
+
+.mobileCheckbox {
+    display: inline-block;
+    width: 100%;
 }

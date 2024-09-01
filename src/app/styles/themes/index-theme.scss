@@ -1,6 +1,5 @@
 
 
-
 body {
     font-family: Inter, sans-serif;
     font-weight: 400;
@@ -14,10 +13,18 @@ body {
 
 .content-page {
     display: flex;
+
+    @include mobile {
+        height: 100vh;
+    }
 }
 
 .content {
     width: 100%;
     min-width: 0;
     padding-top: var(--nav-bar-padding);
+
+    @include mobile {
+        padding-top: 0;
+    }
 }

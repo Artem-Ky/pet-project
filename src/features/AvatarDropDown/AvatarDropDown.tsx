@@ -1,6 +1,7 @@
 import { FC, memo, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import { BrowserView, MobileView } from 'react-device-detect';
 import {
     getUserAuthData,
     isUserAdmin,
@@ -16,6 +17,9 @@ import { popupsContentColor } from '@/shared/ui/Popups';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Avatar } from '@/shared/ui/Avatar';
 import { AvatarSize } from '@/shared/ui/Avatar/ui/Avatar';
+import { VStack } from '@/shared/ui/Stack';
+import { Text } from '@/shared/ui/Text';
+import { TextSize, TextTheme } from '@/shared/ui/Text/ui/Text';
 
 interface AvatarDropDownProps {
     classNames?: string[];
@@ -61,17 +65,39 @@ export const AvatarDropDown: FC<AvatarDropDownProps> = memo(
         ];
 
         return (
-            <DropDown
-                classNames={classNames}
-                items={optionsList}
-                trigger={(
-                    <Avatar
-                        size={AvatarSize.MEDIUM_ROUND}
-                        src={authData.avatar}
-                        alt={t('Ваш аватар')}
+            <>
+                <BrowserView>
+                    <DropDown
+                        classNames={classNames}
+                        items={optionsList}
+                        trigger={(
+                            <Avatar
+                                size={AvatarSize.MEDIUM_ROUND}
+                                src={authData.avatar}
+                                alt={t('Ваш аватар')}
+                            />
+                        )}
                     />
-                )}
-            />
+                </BrowserView>
+                <MobileView>
+                    <VStack gap="4r" align="center" justify="center">
+                        <DropDown
+                            classNames={classNames}
+                            items={optionsList}
+                            trigger={(
+                                <Avatar
+                                    size={AvatarSize.SMALL_ROUND}
+                                    src={authData.avatar}
+                                    alt={t('Ваш аватар')}
+                                />
+                            )}
+                        />
+                        <Text theme={TextTheme.BLACK_WHITE} size={TextSize.S}>
+                            {t('Профиль')}
+                        </Text>
+                    </VStack>
+                </MobileView>
+            </>
         );
     },
 );

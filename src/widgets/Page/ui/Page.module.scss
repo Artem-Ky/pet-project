@@ -1,13 +1,24 @@
+@import '/src/app/styles/index';
+
 .Page {
     flex-grow: 1;
     padding: 13px;
     height: calc(100% - var(--nav-bar-height) - var(--nav-bar-padding));
     max-width: 100%;
+
+    @include mobile {
+        padding: 10px;
+        height: calc(100% - var(--nav-bar-height));
+    }
 }
 
 .pageHeightScroll {
     height: calc(100vh - var(--nav-bar-height) - var(--nav-bar-padding));
     overflow-y: auto;
+
+    @include mobile {
+        height: calc(100vh - var(--nav-bar-height));
+    }
 }
 
 .trigger {

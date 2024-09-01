@@ -1,3 +1,9 @@
+@import '/src/app/styles/index';
+
 .profilePageWrapper {
     padding: 0 67px 59px;
+
+    @include mobile {
+        padding: 15px;
+    }
 }

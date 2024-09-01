@@ -2,6 +2,7 @@ import { FC, memo, useCallback } from 'react';
 import cnBind from 'classnames/bind';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
+import { BrowserView, isMobile, MobileView } from 'react-device-detect';
 import { Input } from '@/shared/ui/Input';
 import { Button } from '@/shared/ui/Button';
 import { InputSize } from '@/shared/ui/Input/ui/Input';
@@ -26,6 +27,7 @@ import { getPassword } from '../../model/selectors/getPassword/getPassword';
 import { loginActions, loginReducer } from '../../model/slice/LoginSlice';
 import { getLoginLoading } from '../../model/selectors/getLoginLoading/getLoginLoading';
 import cls from './LoginForm.module.scss';
+import { HStack } from '@/shared/ui/Stack';
 
 interface LoginFormProps {
     classNames?: string[];
@@ -83,6 +85,7 @@ const LoginForm: FC<LoginFormProps> = memo((props: LoginFormProps) => {
                 className={cn(
                     cls.LoginForm,
                     ...classNames.map((clsName) => cls[clsName] || clsName),
+                    { [cls.mobile]: isMobile },
                 )}
             >
                 {error && (
@@ -100,9 +103,10 @@ const LoginForm: FC<LoginFormProps> = memo((props: LoginFormProps) => {
                     id="username"
                     name="username"
                     type="text"
-                    size={InputSize.MEDIUM}
+                    size={isMobile ? InputSize.LARGE : InputSize.MEDIUM}
                     autoFocus
                     placeholder={t('Имя')}
+                    {...(isMobile ? { fullWidth: true } : {})}
                     onChange={onChangeUsername}
                     value={username}
                 />
@@ -113,23 +117,52 @@ const LoginForm: FC<LoginFormProps> = memo((props: LoginFormProps) => {
                     id="password"
                     name="password"
                     type="password"
-                    size={InputSize.MEDIUM}
+                    size={isMobile ? InputSize.LARGE : InputSize.MEDIUM}
                     placeholder={t('Пароль')}
+                    {...(isMobile ? { fullWidth: true } : {})}
                     onChange={onChangePassword}
                     value={password}
                 />
-                <label htmlFor="rememberMe" className={cls.checkboxLabel}>
-                    <Input
-                        classNames={[cls.checkbox]}
-                        id="rememberMe"
-                        name="rememberMe"
-                        type="checkbox"
-                        placeholder={t('Запомнить меня?')}
-                        onChange={onChangeRememberMe}
-                        checked={rememberMe}
-                    />
-                    {t('Запомнить меня')}
-                </label>
+                <BrowserView>
+                    <label
+                        htmlFor="rememberMe"
+                        className={cn(cls.checkboxLabel, {
+                            [cls.fullWidth]: isMobile,
+                        })}
+                    >
+                        <Input
+                            classNames={[cls.checkbox]}
+                            id="rememberMe"
+                            name="rememberMe"
+                            type="checkbox"
+                            placeholder={t('Запомнить меня?')}
+                            onChange={onChangeRememberMe}
+                            checked={rememberMe}
+                        />
+                        {t('Запомнить меня')}
+                    </label>
+                </BrowserView>
+                {isMobile && (
+                    <HStack justify="end" align="center" gap="16c" fullWidth>
+                        <Text
+                            label={t('Запомнить меня')}
+                            labelId="rememberMe"
+                            theme={TextTheme.BLACK_WHITE}
+                            size={TextSize.L_BOLD}
+                            align={TextAlign.RIGHT}
+                        />
+                        <Input
+                            classNames={[cls.checkbox]}
+                            id="rememberMe"
+                            name="rememberMe"
+                            type="checkbox"
+                            size={InputSize.LARGE}
+                            placeholder={t('Запомнить меня?')}
+                            onChange={onChangeRememberMe}
+                            checked={rememberMe}
+                        />
+                    </HStack>
+                )}
                 <Button
                     variant={ButtonVariant.OUTLINE}
                     outlineColor={ButtonOutlineColor.Gray_White}
@@ -137,6 +170,7 @@ const LoginForm: FC<LoginFormProps> = memo((props: LoginFormProps) => {
                     classNames={[cls.LoginFormButton]}
                     onClick={onLoginClick}
                     disabled={isLoading}
+                    {...(isMobile ? { fullWidth: true } : { fullWidth: false })}
                     type="submit"
                 >
                     {t('Войти')}

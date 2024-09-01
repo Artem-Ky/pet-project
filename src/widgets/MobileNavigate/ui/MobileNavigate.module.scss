@@ -1,0 +1,9 @@
+.MobileNavigate {
+    padding-inline: 16px;
+    height: var(--nav-bar-height);
+    background-color: var(--bg-color);
+    color: var(--main-font-color);
+    position: fixed;
+    bottom: 0;
+    z-index: 2;
+}
