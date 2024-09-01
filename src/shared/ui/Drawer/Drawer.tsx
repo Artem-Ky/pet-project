@@ -35,15 +35,25 @@ export const DrawerContent: FC<DrawerProps> = memo((props: DrawerProps) => {
     }, [api]);
 
     useEffect(() => {
+        const preventScroll = (event: Event) => {
+            event.preventDefault();
+        };
+
         if (isOpen) {
             openDrawer();
             document.body.classList.add(cn(cls.noScroll));
+            window.addEventListener('touchmove', preventScroll, { passive: false });
+            window.addEventListener('wheel', preventScroll, { passive: false });
         } else {
             document.body.classList.remove(cn(cls.noScroll));
+            window.removeEventListener('touchmove', preventScroll);
+            window.removeEventListener('wheel', preventScroll);
         }
 
         return () => {
             document.body.classList.remove(cn(cls.noScroll));
+            window.removeEventListener('touchmove', preventScroll);
+            window.removeEventListener('wheel', preventScroll);
         };
     }, [api, isOpen, openDrawer, cn]);
 
