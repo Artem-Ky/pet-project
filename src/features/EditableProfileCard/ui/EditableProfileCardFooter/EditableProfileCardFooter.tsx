@@ -63,6 +63,9 @@ export const EditableProfileCardFooter: FC<EditableProfileCardFooterProps> = mem
                             <>
                                 <Button
                                     size={ButtonSize.LARGE}
+                                    {...(isMobile
+                                        ? { fullWidth: true }
+                                        : { fullWidth: false })}
                                     variant={ButtonVariant.OUTLINE}
                                     onClick={onCancelEdit}
                                     data-testid="EditableProfileCardFooter.CancelButton"
@@ -71,6 +74,9 @@ export const EditableProfileCardFooter: FC<EditableProfileCardFooterProps> = mem
                                 </Button>
                                 <Button
                                     size={ButtonSize.LARGE}
+                                    {...(isMobile
+                                        ? { fullWidth: true }
+                                        : { fullWidth: false })}
                                     color={ButtonColor.LIGHT_WHITE}
                                     onClick={onSave}
                                     data-testid="EditableProfileCardFooter.SaveButton"
