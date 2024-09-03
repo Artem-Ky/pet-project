@@ -2,7 +2,7 @@ import {
     FC, memo, ReactNode, useCallback, useEffect,
 } from 'react';
 import cnBind from 'classnames/bind';
-import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock-upgrade';
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock-upgrade';
 import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
 import {
     AnimationProvider,
@@ -31,8 +31,6 @@ export const DrawerContent: FC<DrawerProps> = memo((props: DrawerProps) => {
     const { Spring, Gesture } = useAnimationLibs();
     const [{ y }, api] = Spring.useSpring(() => ({ y: height }));
 
-    const targetElement = document.getElementById('drawer');
-
     const openDrawer = useCallback(() => {
         api.start({ y: 0, immediate: false });
     }, [api]);
@@ -40,18 +38,22 @@ export const DrawerContent: FC<DrawerProps> = memo((props: DrawerProps) => {
     useEffect(() => {
         if (isOpen) {
             openDrawer();
+            const targetElement = document.getElementById('drawer');
+            document.body.classList.add(cn(cls.noScroll));
             disableBodyScroll(targetElement as HTMLElement);
         }
-    }, [api, isOpen, openDrawer, targetElement]);
+    }, [api, isOpen, openDrawer, cn]);
 
     const close = (velocity = 0) => {
+        const targetElement = document.getElementById('drawer');
+        enableBodyScroll(targetElement as HTMLElement);
         api.start({
             y: height,
             immediate: false,
             config: { ...Spring.config.stiff, velocity },
             onResolve: onClose,
         });
-        enableBodyScroll(targetElement as HTMLElement);
+        document.body.classList.remove(cn(cls.noScroll));
     };
 
     const bind = Gesture.useDrag(
