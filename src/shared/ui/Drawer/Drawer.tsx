@@ -2,6 +2,7 @@ import {
     FC, memo, ReactNode, useCallback, useEffect,
 } from 'react';
 import cnBind from 'classnames/bind';
+import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
 import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
 import {
     AnimationProvider,
@@ -30,32 +31,18 @@ export const DrawerContent: FC<DrawerProps> = memo((props: DrawerProps) => {
     const { Spring, Gesture } = useAnimationLibs();
     const [{ y }, api] = Spring.useSpring(() => ({ y: height }));
 
+    const targetElement = document.getElementById('drawer');
+
     const openDrawer = useCallback(() => {
         api.start({ y: 0, immediate: false });
     }, [api]);
 
     useEffect(() => {
-        // const preventScroll = (event: Event) => {
-        //     event.preventDefault();
-        // };
-
         if (isOpen) {
             openDrawer();
-            document.body.classList.add(cn(cls.noScroll));
-            // window.addEventListener('touchmove', preventScroll, { passive: false });
-            // window.addEventListener('wheel', preventScroll, { passive: false });
-        } else {
-            document.body.classList.remove(cn(cls.noScroll));
-            // window.removeEventListener('touchmove', preventScroll);
-            // window.removeEventListener('wheel', preventScroll);
+            disableBodyScroll(targetElement as Element | HTMLElement);
         }
-
-        return () => {
-            document.body.classList.remove(cn(cls.noScroll));
-            // window.removeEventListener('touchmove', preventScroll);
-            // window.removeEventListener('wheel', preventScroll);
-        };
-    }, [api, isOpen, openDrawer, cn]);
+    }, [api, isOpen, openDrawer, targetElement]);
 
     const close = (velocity = 0) => {
         api.start({
@@ -64,6 +51,7 @@ export const DrawerContent: FC<DrawerProps> = memo((props: DrawerProps) => {
             config: { ...Spring.config.stiff, velocity },
             onResolve: onClose,
         });
+        enableBodyScroll(targetElement as Element | HTMLElement);
     };
 
     const bind = Gesture.useDrag(
@@ -103,6 +91,7 @@ export const DrawerContent: FC<DrawerProps> = memo((props: DrawerProps) => {
     return (
         <Portal element={document.getElementById('app') ?? document.body}>
             <div
+                id="drawer"
                 className={cn(
                     cls.Drawer,
                     theme,

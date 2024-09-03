@@ -1,4 +1,8 @@
 .row {
     display: inline-flex;
     column-gap: 20px;
+
+    &.mobile {
+        column-gap: 10px;
+    }
 }

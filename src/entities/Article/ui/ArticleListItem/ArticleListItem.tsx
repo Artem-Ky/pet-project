@@ -1,6 +1,7 @@
 import { FC, HTMLAttributeAnchorTarget, memo } from 'react';
 import cnBind from 'classnames/bind';
 import { useTranslation } from 'react-i18next';
+import { isMobile } from 'react-device-detect';
 import {
     Text, TextAlign, TextSize, TextTheme,
 } from '@/shared/ui/Text/ui/Text';
@@ -67,7 +68,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo(
                 >
                     <Card
                         view={CardView.LITTLE}
-                        size={CardSize.MEDIUM}
+                        size={isMobile ? CardSize.SMALL : CardSize.MEDIUM}
                         classNames={classNames}
                     >
                         <VStack gap="8r" shrink="0">
@@ -77,16 +78,14 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo(
                                 text={article.createdAt}
                                 className={cls.date}
                             />
-                            <HStack
-                                align="center"
-                                justify="center"
-                                className={cls.imageWrapper}
-                            >
+                            <HStack align="center" justify="center" fullHeight fullWidth>
                                 <img
                                     src={article.img}
                                     alt="article preview"
                                     loading="lazy"
-                                    className={cls.articleImage}
+                                    className={cn(cls.articleImage, {
+                                        [cls.mobile]: isMobile,
+                                    })}
                                 />
                             </HStack>
                             <HStack
@@ -170,7 +169,9 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo(
                             src={article.img}
                             alt="article preview"
                             loading="lazy"
-                            className={cls.articleImage}
+                            className={cn(cls.articleImage, {
+                                [cls.mobile]: isMobile,
+                            })}
                         />
                     </HStack>
                     {textBlock && (

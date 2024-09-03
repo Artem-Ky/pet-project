@@ -15,6 +15,7 @@ import {
     ListRowProps,
     WindowScroller,
 } from 'react-virtualized';
+import { isMobile } from 'react-device-detect';
 import { Text, TextSize } from '@/shared/ui/Text/ui/Text';
 import { PAGE_ID } from '@/widgets/Page/ui/Page';
 import { HStack } from '@/shared/ui/Stack';
@@ -47,6 +48,9 @@ export const ArticleList: FC<ArticleListProps> = memo(
         const { t } = useTranslation();
         const [containerWidth, setContainerWidth] = useState(1000);
 
+        const PADDING_INLINE = isMobile ? 10 : 67;
+        const HEIGHT_CARD_PLATE = isMobile ? 220 : 290;
+
         const cache = new CellMeasurerCache({
             fixedWidth: true,
             defaultHeight: 786,
@@ -59,7 +63,7 @@ export const ArticleList: FC<ArticleListProps> = memo(
                 if (pageElement) {
                     let calculatedWidth = pageElement.clientWidth;
 
-                    calculatedWidth -= 67 * 2;
+                    calculatedWidth -= PADDING_INLINE * 2;
                     setContainerWidth(calculatedWidth);
                 }
             };
@@ -75,7 +79,7 @@ export const ArticleList: FC<ArticleListProps> = memo(
             return () => {
                 resizeObserver.disconnect();
             };
-        }, []);
+        }, [PADDING_INLINE]);
 
         const getSkeletons = (view: ArticleView) => new Array(view === ArticleView.PLATE ? 9 : 3)
             .fill(0)
@@ -88,8 +92,8 @@ export const ArticleList: FC<ArticleListProps> = memo(
             ));
 
         const isList = view === ArticleView.LIST;
-        const itemWidthPlate = 214;
-        const gapPlate = 20;
+        const itemWidthPlate = isMobile ? 160 : 214;
+        const gapPlate = isMobile ? 10 : 20;
 
         const itemsPerRow = isList
             ? 1
@@ -117,7 +121,11 @@ export const ArticleList: FC<ArticleListProps> = memo(
             }
 
             return (
-                <div key={key} style={style} className={cls.row}>
+                <div
+                    key={key}
+                    style={style}
+                    className={cn(cls.row, { [cls.mobile]: isMobile })}
+                >
                     {items}
                 </div>
             );
@@ -186,9 +194,13 @@ export const ArticleList: FC<ArticleListProps> = memo(
             return (
                 <HStack
                     gap="20"
-                    classNames={[cn(
-                        ...classNames.map((clsName) => cls[clsName] || clsName),
-                    )]}
+                    classNames={[
+                        cn(
+                            ...classNames.map(
+                                (clsName) => cls[clsName] || clsName,
+                            ),
+                        ),
+                    ]}
                 >
                     {articles.length > 0
                         ? articles.map(renderArticleNoVirtualized)
@@ -212,7 +224,7 @@ export const ArticleList: FC<ArticleListProps> = memo(
                     scrollTop,
                 }) => (
                     <HStack
-                        gap="20"
+                        gap={isMobile ? '10' : '20'}
                         wrap="wrap"
                         ref={
                             registerChild as
@@ -232,7 +244,7 @@ export const ArticleList: FC<ArticleListProps> = memo(
                             rowHeight={
                                 isList
                                     ? (index) => cache.rowHeight(index) + 30
-                                    : 290
+                                    : HEIGHT_CARD_PLATE
                             }
                             rowRenderer={
                                 isList ? rowRenderLIST : rowRenderPLATE

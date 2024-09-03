@@ -1,5 +1,6 @@
 import cnBind from 'classnames/bind';
 import { memo } from 'react';
+import { isMobile } from 'react-device-detect';
 import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
 import { Card, CardSize } from '@/shared/ui/Card';
 import { CardView } from '@/shared/ui/Card/ui/Card';
@@ -34,9 +35,9 @@ export const ArticleListItemSkeleton = memo(
                             </HStack>
                             <Skeleton height={20} width={100} />
                         </HStack>
-                        <Skeleton height={40} width={300} />
-                        <Skeleton height={30} width={500} />
-                        <Skeleton height={20} width={300} />
+                        <Skeleton height={40} width="100%" />
+                        <Skeleton height={30} width="100%" />
+                        <Skeleton height={20} width="100%" />
                         <HStack justify="center" fullWidth>
                             <Skeleton
                                 className={cls.articleImage}
@@ -72,14 +73,14 @@ export const ArticleListItemSkeleton = memo(
         return (
             <Card
                 view={CardView.LITTLE}
-                size={CardSize.MEDIUM}
+                size={isMobile ? CardSize.SMALL : CardSize.MEDIUM}
                 classNames={[cls[view]]}
             >
                 <HStack justify="center" fullWidth>
                     <Skeleton
                         className={cls.articleImage}
-                        height={190}
-                        width={190}
+                        height={isMobile ? 130 : 190}
+                        width={isMobile ? 130 : 190}
                         border="3"
                     />
                 </HStack>
@@ -95,7 +96,7 @@ export const ArticleListItemSkeleton = memo(
                         <Skeleton height={10} width={50} />
                     </HStack>
                 </HStack>
-                <Skeleton height={30} width={180} />
+                <Skeleton height={30} width={130} />
             </Card>
         );
     },
