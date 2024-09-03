@@ -5,11 +5,11 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { Button } from '@/shared/ui/Button';
 import { ButtonSize, ButtonVariant } from '@/shared/ui/Button/ui/Button';
-import { RoutePath } from '@/shared/config/routeConfig/routeConfig';
 import { getArticleDetailsData } from '@/entities/Article';
 import { HStack } from '@/shared/ui/Stack';
 import cls from './ArticleDetailsPageHeader.module.scss';
 import { getCanUserEditArticle } from '../../model/selectors/getCanUserEditAricle';
+import { RoutePath } from '@/shared/const/router';
 
 interface ArticleDetailsPageHeaderProps {
     classNames?: string[];

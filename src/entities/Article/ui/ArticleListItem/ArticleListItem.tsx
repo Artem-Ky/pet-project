@@ -13,13 +13,13 @@ import { AvatarSize } from '@/shared/ui/Avatar/ui/Avatar';
 import { CardView } from '@/shared/ui/Card/ui/Card';
 import { Button } from '@/shared/ui/Button';
 import { ButtonSize, ButtonVariant } from '@/shared/ui/Button/ui/Button';
-import { RoutePath } from '@/shared/config/routeConfig/routeConfig';
 import { AppLink } from '@/shared/ui/Link';
 import { HStack, VStack } from '@/shared/ui/Stack';
 import { ArticleBlockType, ArticleView } from '../../model/consts/consts';
 import cls from './ArticleListItem.module.scss';
 import { Article, ArticleTextBlock } from '../../model/types/article';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
+import { RoutePath } from '@/shared/const/router';
 
 interface ArticleListItemProps {
     classNames?: string[];

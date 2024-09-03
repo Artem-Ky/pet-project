@@ -22,7 +22,6 @@ import { useDebounce } from '@/shared/lib/hooks/useDebounce/useDebounce';
 import { Button } from '@/shared/ui/Button';
 import { ButtonSize, ButtonVariant } from '@/shared/ui/Button/ui/Button';
 import { AppLink } from '@/shared/ui/Link';
-import { RoutePath } from '@/shared/config/routeConfig/routeConfig';
 import { HStack, VStack } from '@/shared/ui/Stack';
 import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList';
 import { articlesPageActions } from '../../model/slices/articlesPageSlice';
@@ -34,6 +33,7 @@ import {
     getArticlesPageType,
     getArticlesPageView,
 } from '../../model/selectors/articlesPageSelectors';
+import { RoutePath } from '@/shared/const/router';
 
 interface ArticlesPageFiltersProps {
     classNames?: string[];

@@ -12,7 +12,6 @@ import {
     DropDown,
     DropdownItem,
 } from '@/shared/ui/Popups/components/DropDown/ui/DropDown';
-import { RoutePath } from '@/shared/config/routeConfig/routeConfig';
 import { popupsContentColor } from '@/shared/ui/Popups';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Avatar } from '@/shared/ui/Avatar';
@@ -20,6 +19,7 @@ import { AvatarSize } from '@/shared/ui/Avatar/ui/Avatar';
 import { VStack } from '@/shared/ui/Stack';
 import { Text } from '@/shared/ui/Text';
 import { TextSize, TextTheme } from '@/shared/ui/Text/ui/Text';
+import { RoutePath } from '@/shared/const/router';
 
 interface AvatarDropDownProps {
     classNames?: string[];
