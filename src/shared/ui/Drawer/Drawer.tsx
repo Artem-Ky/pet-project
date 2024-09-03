@@ -37,19 +37,14 @@ export const DrawerContent: FC<DrawerProps> = memo((props: DrawerProps) => {
 
     useEffect(() => {
         const targetElement = document.getElementById('drawer');
-        console.log('1', targetElement);
         if (isOpen) {
             openDrawer();
-            const targetElementblock = document.getElementById('drawer');
-            console.log('2', targetElementblock);
-            // document.body.classList.add(cn(cls.noScroll));
             disableBodyScroll(targetElement as HTMLElement);
         }
     }, [api, isOpen, openDrawer, cn]);
 
     const close = (velocity = 0) => {
         const targetElementClose = document.getElementById('drawer');
-        console.log('3', targetElementClose);
         enableBodyScroll(targetElementClose as HTMLElement);
         api.start({
             y: height,
@@ -57,7 +52,6 @@ export const DrawerContent: FC<DrawerProps> = memo((props: DrawerProps) => {
             config: { ...Spring.config.stiff, velocity },
             onResolve: onClose,
         });
-        // document.body.classList.remove(cn(cls.noScroll));
     };
 
     const bind = Gesture.useDrag(
