@@ -16,7 +16,7 @@ import {
     WindowScroller,
 } from 'react-virtualized';
 import { isMobile } from 'react-device-detect';
-import { Text, TextSize } from '@/shared/ui/Text/ui/Text';
+import { Text, TextSize } from '@/shared/ui/Text';
 import { PAGE_ID } from '@/widgets/Page';
 import { HStack } from '@/shared/ui/Stack';
 import { ArticleView } from '../../model/consts/consts';

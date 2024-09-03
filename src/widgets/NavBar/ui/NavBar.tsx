@@ -3,8 +3,7 @@ import {
     FC, memo, useCallback, useState,
 } from 'react';
 import { useSelector } from 'react-redux';
-import { Button } from '@/shared/ui/Button';
-import { ButtonVariant } from '@/shared/ui/Button/ui/Button';
+import { Button, ButtonVariant } from '@/shared/ui/Button';
 import { LoginModal } from '@/features/AuthByUsername';
 import { ThemeSwitcher } from '@/widgets/ThemeSwither';
 import { getUserAuthData } from '@/entities/User';

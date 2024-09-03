@@ -2,8 +2,7 @@ import {
     FC, memo, useCallback, useMemo,
 } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Button } from '@/shared/ui/Button';
-import { ButtonSize, ButtonVariant } from '@/shared/ui/Button/ui/Button';
+import { Button, ButtonSize, ButtonVariant } from '@/shared/ui/Button';
 import {
     Icon, IconColor, IconSize, IconTypeVariant,
 } from '@/shared/ui/Icon';
@@ -12,8 +11,9 @@ import sortDown from '@/shared/assets/icons/sort/sortDown.svg';
 import { SortOrder } from '@/shared/types';
 import { ArticleSortField } from '@/entities/Article';
 import { HStack } from '@/shared/ui/Stack';
-import { ListBox, popupsItemHeight, popupsItemWidth } from '@/shared/ui/Popups';
-import { ListBoxItem } from '@/shared/ui/Popups/components/ListBox/ListBox';
+import {
+    ListBox, popupsItemHeight, popupsItemWidth, ListBoxItem,
+} from '@/shared/ui/Popups';
 
 interface OrderSortProps {
     classNames?: string[];

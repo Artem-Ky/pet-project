@@ -3,11 +3,9 @@ import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { mobileNavigateItemType } from '../../model/types/mobileNavigate';
 import { getUserAuthData } from '@/entities/User';
-import { AppLink } from '@/shared/ui/Link';
-import { AppLinkTheme } from '@/shared/ui/Link/ui/AppLink';
+import { AppLink, AppLinkTheme } from '@/shared/ui/Link';
 import { Icon, IconColor, IconSize } from '@/shared/ui/Icon';
-import { Text } from '@/shared/ui/Text';
-import { TextSize, TextTheme } from '@/shared/ui/Text/ui/Text';
+import { Text, TextSize, TextTheme } from '@/shared/ui/Text';
 import { VStack } from '@/shared/ui/Stack';
 
 interface MobileNavigateNavItemProps {

@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Button } from '@/shared/ui/Button';
-import { ButtonVariant } from '@/shared/ui/Button/ui/Button';
+import { Button, ButtonVariant } from '@/shared/ui/Button';
 
 // компонент для тестирования errorBoundary
 export const BugButton = () => {

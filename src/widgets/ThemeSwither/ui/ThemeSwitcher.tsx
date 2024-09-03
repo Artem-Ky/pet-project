@@ -2,8 +2,7 @@ import { FC, memo } from 'react';
 import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
 import ThemeIcon from '@/shared/assets/icons/theme/theme.svg';
 import { Theme } from '@/shared/const/theme';
-import { Button } from '@/shared/ui/Button';
-import { ButtonVariant } from '@/shared/ui/Button/ui/Button';
+import { Button, ButtonVariant } from '@/shared/ui/Button';
 import cls from './ThemeSwitcher.module.scss';
 
 interface ThemeSwitcherProps {

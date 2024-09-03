@@ -1,1 +1,1 @@
-export { Avatar } from './ui/Avatar';
+export * from './ui/Avatar';

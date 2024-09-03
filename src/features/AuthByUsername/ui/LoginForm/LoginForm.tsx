@@ -8,17 +8,16 @@ import {
     isMobile,
     MobileView,
 } from 'react-device-detect';
-import { Input } from '@/shared/ui/Input';
-import { Button } from '@/shared/ui/Button';
-import { InputSize } from '@/shared/ui/Input/ui/Input';
+import { Input, InputSize } from '@/shared/ui/Input';
 import {
+    Button,
     ButtonOutlineColor,
     ButtonSize,
     ButtonVariant,
-} from '@/shared/ui/Button/ui/Button';
+} from '@/shared/ui/Button';
 import {
     Text, TextAlign, TextSize, TextTheme,
-} from '@/shared/ui/Text/ui/Text';
+} from '@/shared/ui/Text';
 import {
     DynamicModuleLoader,
     ReducersList,

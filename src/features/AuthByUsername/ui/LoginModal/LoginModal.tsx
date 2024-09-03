@@ -1,9 +1,9 @@
 import { FC, Suspense } from 'react';
 import { BrowserView, MobileView } from 'react-device-detect';
 import { Modal } from '@/shared/ui/Modal';
-import { Loader } from '@/shared/ui/Loader/Loader';
+import { Loader } from '@/shared/ui/Loader';
 import { LoginFormLazy } from '../LoginForm/LoginForm.lazy';
-import { Drawer } from '@/shared/ui/Drawer/Drawer';
+import { Drawer } from '@/shared/ui/Drawer';
 
 interface LoginModalProps {
     isOpen: boolean;

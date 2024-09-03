@@ -10,8 +10,7 @@ import {
 } from '@/entities/Article';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { ViewSwitcher } from '@/widgets/ViewSwither';
-import { Input } from '@/shared/ui/Input';
-import { InputSize, InputView } from '@/shared/ui/Input/ui/Input';
+import { Input, InputSize, InputView } from '@/shared/ui/Input';
 import searchIcon from '@/shared/assets/icons/search.svg';
 import {
     Icon, IconColor, IconSize, IconTypeVariant,
@@ -19,8 +18,7 @@ import {
 import { OrderSort } from '@/features/OrderSort';
 import { SortOrder } from '@/shared/types';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce/useDebounce';
-import { Button } from '@/shared/ui/Button';
-import { ButtonSize, ButtonVariant } from '@/shared/ui/Button/ui/Button';
+import { Button, ButtonSize, ButtonVariant } from '@/shared/ui/Button';
 import { AppLink } from '@/shared/ui/Link';
 import { HStack, VStack } from '@/shared/ui/Stack';
 import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList';

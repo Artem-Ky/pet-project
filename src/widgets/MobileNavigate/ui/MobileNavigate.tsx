@@ -12,8 +12,7 @@ import { getMobileNavigateItems } from '../model/selectors/getMobileNavigateItem
 import { MobileNavigateNavItem } from './MobileNavigateNavItem/MobileNavigateNavItem';
 import { getUserAuthData } from '@/entities/User';
 import { LoginModal } from '@/features/AuthByUsername';
-import { Button } from '@/shared/ui/Button';
-import { ButtonVariant } from '@/shared/ui/Button/ui/Button';
+import { Button, ButtonVariant } from '@/shared/ui/Button';
 
 interface MobileNavigateProps {
     classNames?: string[];

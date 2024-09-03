@@ -6,14 +6,12 @@ import { Popover } from '@/shared/ui/Popups';
 import {
     Icon, IconColor, IconSize, IconTypeVariant,
 } from '@/shared/ui/Icon';
-import { Button } from '@/shared/ui/Button';
+import { Button, ButtonVariant } from '@/shared/ui/Button';
 import { NotificationList } from '@/entities/Notification';
 import NotificationIcon from '@/shared/assets/icons/notify.svg';
-import { Drawer } from '@/shared/ui/Drawer/Drawer';
+import { Drawer } from '@/shared/ui/Drawer';
 import cls from './NotificationButton.module.scss';
-import { ButtonVariant } from '@/shared/ui/Button/ui/Button';
-import { Text } from '@/shared/ui/Text';
-import { TextSize, TextTheme } from '@/shared/ui/Text/ui/Text';
+import { Text, TextSize, TextTheme } from '@/shared/ui/Text';
 import { VStack } from '@/shared/ui/Stack';
 import { getUserAuthData } from '@/entities/User';
 

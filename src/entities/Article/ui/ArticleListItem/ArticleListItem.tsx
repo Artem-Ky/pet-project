@@ -4,15 +4,12 @@ import { useTranslation } from 'react-i18next';
 import { isMobile } from 'react-device-detect';
 import {
     Text, TextAlign, TextSize, TextTheme,
-} from '@/shared/ui/Text/ui/Text';
+} from '@/shared/ui/Text';
 import { Icon, IconColor } from '@/shared/ui/Icon';
 import viewIcon from '@/shared/assets/icons/eye.svg';
-import { Card, CardSize } from '@/shared/ui/Card';
-import { Avatar } from '@/shared/ui/Avatar';
-import { AvatarSize } from '@/shared/ui/Avatar/ui/Avatar';
-import { CardView } from '@/shared/ui/Card/ui/Card';
-import { Button } from '@/shared/ui/Button';
-import { ButtonSize, ButtonVariant } from '@/shared/ui/Button/ui/Button';
+import { Card, CardSize, CardView } from '@/shared/ui/Card';
+import { Avatar, AvatarSize } from '@/shared/ui/Avatar';
+import { Button, ButtonSize, ButtonVariant } from '@/shared/ui/Button';
 import { AppLink } from '@/shared/ui/Link';
 import { HStack, VStack } from '@/shared/ui/Stack';
 import { ArticleBlockType, ArticleView } from '../../model/consts/consts';

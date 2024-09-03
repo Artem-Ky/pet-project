@@ -9,10 +9,9 @@ import {
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import {
     Text, TextAlign, TextSize, TextTheme,
-} from '@/shared/ui/Text/ui/Text';
-import { Avatar } from '@/shared/ui/Avatar';
-import { AvatarSize } from '@/shared/ui/Avatar/ui/Avatar';
-import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
+} from '@/shared/ui/Text';
+import { Avatar, AvatarSize } from '@/shared/ui/Avatar';
+import { Skeleton } from '@/shared/ui/Skeleton';
 import { HStack } from '@/shared/ui/Stack';
 import { ArticleBlockType } from '../../model/consts/consts';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';

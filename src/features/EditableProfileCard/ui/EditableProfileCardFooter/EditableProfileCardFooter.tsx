@@ -5,12 +5,12 @@ import { isMobile } from 'react-device-detect';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { getUserAuthData } from '@/entities/User';
 import { HStack } from '@/shared/ui/Stack';
-import { Button } from '@/shared/ui/Button';
 import {
+    Button,
     ButtonColor,
     ButtonSize,
     ButtonVariant,
-} from '@/shared/ui/Button/ui/Button';
+} from '@/shared/ui/Button';
 import { getProfileData } from '../../model/selectors/getProfileData/getProfileData';
 import { getProfileReadOnly } from '../../model/selectors/getProfileReadOnly/getProfileReadOnly';
 import { profileActions } from '../../model/slice/profileSlice';

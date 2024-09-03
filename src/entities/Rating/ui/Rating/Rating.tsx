@@ -5,18 +5,17 @@ import { useTranslation } from 'react-i18next';
 import { BrowserView, MobileView } from 'react-device-detect';
 import { Card } from '@/shared/ui/Card';
 import { HStack, VStack } from '@/shared/ui/Stack';
-import { Text } from '@/shared/ui/Text';
-import { StarRating } from '@/shared/ui/StarRating/StarRating';
+import { Text, TextAlign, TextSize } from '@/shared/ui/Text';
+import { StarRating } from '@/shared/ui/StarRating';
 import { Modal } from '@/shared/ui/Modal';
 import { TextArea } from '@/shared/ui/TextArea';
-import { Button } from '@/shared/ui/Button';
 import {
+    Button,
     ButtonOutlineColor,
     ButtonSize,
     ButtonVariant,
-} from '@/shared/ui/Button/ui/Button';
-import { TextAlign, TextSize } from '@/shared/ui/Text/ui/Text';
-import { Drawer } from '@/shared/ui/Drawer/Drawer';
+} from '@/shared/ui/Button';
+import { Drawer } from '@/shared/ui/Drawer';
 
 interface RatingProps {
     classNames?: string[];

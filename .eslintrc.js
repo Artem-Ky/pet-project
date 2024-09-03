@@ -23,6 +23,7 @@ module.exports = {
         '@typescript-eslint',
         'i18next',
         'react-hooks',
+        '@conarti/feature-sliced',
         'ulbi-tv-plugin',
     ],
     rules: {
@@ -55,12 +56,39 @@ module.exports = {
         'react-hooks/rules-of-hooks': 'error',
         'react-hooks/exhaustive-deps': 'error',
         'no-param-reassign': 'off',
-        'ulbi-tv-plugin/path-checker': ['error', { alias: '@' }],
-        'ulbi-tv-plugin/public-api-imports': ['error',
+        'ulbi-tv-plugin/path-checker': [
+            'error',
             {
                 alias: '@',
-                testFilesPatterns: ['**/*.test.*', '**/*.story.*', '**/StoreDecorator.tsx'],
-            }],
+            },
+        ],
+        'ulbi-tv-plugin/layer-imports': [
+            'error',
+            {
+                alias: '@',
+                ignoreImportPatterns: ['**/StoreProvider', '**/testing'],
+            },
+        ],
+        // 'ulbi-tv-plugin/public-api-imports': [
+        //     'error',
+        //     {
+        //         alias: '@',
+        //         testFilesPatterns: [
+        //             '**/*.test.*',
+        //             '**/*.story.*',
+        //             '**/StoreDecorator.tsx',
+        //         ],
+        //     },
+        // ],
+        // '@conarti/feature-sliced/layers-slices': [
+        //     'error',
+        //     {
+        //         alias: '@',
+        //         ignoreImportPatterns: ['**/StoreProvider', '**/testing'],
+        //     },
+        // ],
+        // '@conarti/feature-sliced/absolute-relative': 'error',
+        '@conarti/feature-sliced/public-api': 'error',
     },
     globals: {
         __IS_DEV__: true,

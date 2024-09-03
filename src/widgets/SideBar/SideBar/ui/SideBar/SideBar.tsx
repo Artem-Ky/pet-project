@@ -4,9 +4,8 @@ import {
 import cnBind from 'classnames/bind';
 import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { Button } from '@/shared/ui/Button';
-import { ButtonSize, ButtonVariant } from '@/shared/ui/Button/ui/Button';
-import { Text, TextSize, TextTheme } from '@/shared/ui/Text/ui/Text';
+import { Button, ButtonSize, ButtonVariant } from '@/shared/ui/Button';
+import { Text, TextSize, TextTheme } from '@/shared/ui/Text';
 import cls from './SideBar.module.scss';
 import { SideBarItem } from '../SideBarItem/SideBarItem';
 import { getSideBarItems } from '../../model/selectors/getSideBarItems';

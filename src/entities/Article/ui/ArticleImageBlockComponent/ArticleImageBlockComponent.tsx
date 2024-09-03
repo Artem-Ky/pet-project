@@ -2,7 +2,7 @@ import { memo } from 'react';
 import cnBind from 'classnames/bind';
 import {
     Text, TextAlign, TextSize, TextTheme,
-} from '@/shared/ui/Text/ui/Text';
+} from '@/shared/ui/Text';
 import { HStack } from '@/shared/ui/Stack';
 import cls from './ArticleImageBlockComponent.module.scss';
 import { ArticleImageBlock } from '../../model/types/article';

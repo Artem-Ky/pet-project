@@ -1,9 +1,8 @@
 import { memo } from 'react';
 import cnBind from 'classnames/bind';
-import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
-import { Avatar } from '@/shared/ui/Avatar';
-import { AvatarSize } from '@/shared/ui/Avatar/ui/Avatar';
-import { Text, TextSize, TextTheme } from '@/shared/ui/Text/ui/Text';
+import { Skeleton } from '@/shared/ui/Skeleton';
+import { Avatar, AvatarSize } from '@/shared/ui/Avatar';
+import { Text, TextSize, TextTheme } from '@/shared/ui/Text';
 import { AppLink } from '@/shared/ui/Link';
 import cls from './CommentCard.module.scss';
 import { Comment } from '../../model/types/comment';

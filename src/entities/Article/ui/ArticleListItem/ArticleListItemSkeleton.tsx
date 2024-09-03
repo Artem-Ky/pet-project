@@ -1,9 +1,8 @@
 import cnBind from 'classnames/bind';
 import { memo } from 'react';
 import { isMobile } from 'react-device-detect';
-import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
-import { Card, CardSize } from '@/shared/ui/Card';
-import { CardView } from '@/shared/ui/Card/ui/Card';
+import { Skeleton } from '@/shared/ui/Skeleton';
+import { Card, CardSize, CardView } from '@/shared/ui/Card';
 import { HStack, VStack } from '@/shared/ui/Stack';
 import { ArticleView } from '../../model/consts/consts';
 import cls from './ArticleListItem.module.scss';

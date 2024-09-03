@@ -1,3 +1,1 @@
-export { CardSize } from './ui/Card';
-
-export { Card } from './ui/Card';
+export * from './ui/Card';

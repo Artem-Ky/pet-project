@@ -2,8 +2,7 @@ import { FC, memo, useCallback } from 'react';
 import cnBind from 'classnames/bind';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { Button } from '@/shared/ui/Button';
-import { ButtonSize, ButtonVariant } from '@/shared/ui/Button/ui/Button';
+import { Button, ButtonSize, ButtonVariant } from '@/shared/ui/Button';
 import { TextArea } from '@/shared/ui/TextArea';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import {

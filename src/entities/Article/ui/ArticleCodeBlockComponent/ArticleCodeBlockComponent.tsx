@@ -1,6 +1,6 @@
 import cnBind from 'classnames/bind';
 import { memo } from 'react';
-import { Code } from '@/shared/ui/Code/ui/Code';
+import { Code } from '@/shared/ui/Code';
 import cls from './ArticleCodeBlockComponent.module.scss';
 import { ArticleCodeBlock } from '../../model/types/article';
 
