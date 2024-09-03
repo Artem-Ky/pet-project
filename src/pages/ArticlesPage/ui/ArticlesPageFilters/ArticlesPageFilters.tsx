@@ -9,7 +9,7 @@ import {
     ArticleView,
 } from '@/entities/Article';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { ViewSwitcher } from '@/widgets/ViewSwither/ui/ViewSwitcher';
+import { ViewSwitcher } from '@/widgets/ViewSwither';
 import { Input } from '@/shared/ui/Input';
 import { InputSize, InputView } from '@/shared/ui/Input/ui/Input';
 import searchIcon from '@/shared/assets/icons/search.svg';

@@ -44,14 +44,14 @@ export const Page: FC<PageProps> = memo((props: PageProps) => {
     });
 
     useInitialEffect(() => {
-        console.log(scrollPosition);
-        console.log(wrapperRef);
+        // console.log(scrollPosition);
+        // console.log(wrapperRef);
         wrapperRef.current.scrollTop = scrollPosition;
         // не работает из-за рендера | не знаю как без лагов досролить через requestAnimationFrame
     });
 
     const onScroll = useThrottle((e: UIEvent<HTMLDivElement>) => {
-        console.log(e.currentTarget.scrollTop);
+        // console.log(e.currentTarget.scrollTop);
         dispatch(
             pageScrollActions.setScrollPosition({
                 position: e.currentTarget.scrollTop,

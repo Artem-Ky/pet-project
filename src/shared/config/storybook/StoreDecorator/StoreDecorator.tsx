@@ -1,3 +1,4 @@
+/* eslint-disable ulbi-tv-plugin/public-api-imports */
 import { StoryFn } from '@storybook/react';
 import { DeepPartial } from 'utility-types';
 import { StateSchema, StoreProvider } from '@/app/providers/StoreProvider';

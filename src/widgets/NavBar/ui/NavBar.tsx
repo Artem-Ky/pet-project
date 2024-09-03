@@ -7,12 +7,12 @@ import { Button } from '@/shared/ui/Button';
 import { ButtonVariant } from '@/shared/ui/Button/ui/Button';
 import { LoginModal } from '@/features/AuthByUsername';
 import { ThemeSwitcher } from '@/widgets/ThemeSwither';
-import { LangSwitcher } from '@/widgets/LangSwitcher/ui/LangSwitcher';
 import { getUserAuthData } from '@/entities/User';
 import { HStack } from '@/shared/ui/Stack';
 import { NotificationButton } from '@/features/NotificationButton';
 import { AvatarDropDown } from '@/features/AvatarDropDown';
 import cls from './NavBar.module.scss';
+import { LangSwitcher } from '@/widgets/LangSwitcher';
 
 export const NavBar: FC = memo(() => {
     const { t } = useTranslation();

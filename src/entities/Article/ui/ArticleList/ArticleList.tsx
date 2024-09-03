@@ -17,7 +17,7 @@ import {
 } from 'react-virtualized';
 import { isMobile } from 'react-device-detect';
 import { Text, TextSize } from '@/shared/ui/Text/ui/Text';
-import { PAGE_ID } from '@/widgets/Page/ui/Page';
+import { PAGE_ID } from '@/widgets/Page';
 import { HStack } from '@/shared/ui/Stack';
 import { ArticleView } from '../../model/consts/consts';
 import { Article } from '../../model/types/article';
