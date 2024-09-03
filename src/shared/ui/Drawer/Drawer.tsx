@@ -2,7 +2,7 @@ import {
     FC, memo, ReactNode, useCallback, useEffect,
 } from 'react';
 import cnBind from 'classnames/bind';
-import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
+import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock-upgrade';
 import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
 import {
     AnimationProvider,
@@ -40,7 +40,7 @@ export const DrawerContent: FC<DrawerProps> = memo((props: DrawerProps) => {
     useEffect(() => {
         if (isOpen) {
             openDrawer();
-            disableBodyScroll(targetElement as Element | HTMLElement);
+            disableBodyScroll(targetElement as HTMLElement);
         }
     }, [api, isOpen, openDrawer, targetElement]);
 
@@ -51,7 +51,7 @@ export const DrawerContent: FC<DrawerProps> = memo((props: DrawerProps) => {
             config: { ...Spring.config.stiff, velocity },
             onResolve: onClose,
         });
-        enableBodyScroll(targetElement as Element | HTMLElement);
+        enableBodyScroll(targetElement as HTMLElement);
     };
 
     const bind = Gesture.useDrag(
