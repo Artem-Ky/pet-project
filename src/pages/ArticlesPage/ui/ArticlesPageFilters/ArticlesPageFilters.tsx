@@ -72,10 +72,15 @@ export const ArticlesPageFilters: FC<ArticlesPageFiltersProps> = memo(
         useEffect(() => {
             if (page && filtersRef.current) {
                 let prevScrollpos = page.scrollTop;
+                console.log('start ', prevScrollpos);
 
                 page.onscroll = () => {
                     const currentScrollPos = page.scrollTop;
                     const filtersHeight = filtersRef.current!.clientHeight;
+
+                    console.log('onScroll current pos ', currentScrollPos);
+                    console.log('onScroll prev pos ', prevScrollpos);
+                    console.log('onScroll filter height ', filtersHeight);
 
                     if (prevScrollpos > currentScrollPos) {
                         filtersRef.current!.style.top = '0';
