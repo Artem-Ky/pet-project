@@ -59,8 +59,6 @@ export const ArticlesPageFilters: FC<ArticlesPageFiltersProps> = memo(
         const order = useSelector(getArticlesPageOrder);
         const search = useSelector(getArticlesPageSearch);
         const type = useSelector(getArticlesPageType);
-
-        const page = document.getElementById(PAGE_ID);
         const filtersRef = useRef<HTMLDivElement | null>(null);
 
         const fetchData = useCallback(() => {
@@ -70,28 +68,32 @@ export const ArticlesPageFilters: FC<ArticlesPageFiltersProps> = memo(
         const debouncedFetchData = useDebounce(fetchData, 500);
 
         useEffect(() => {
-            if (page && filtersRef.current) {
+            const page = document.getElementById(PAGE_ID);
+            const filters = filtersRef.current;
+
+            if (page && filters) {
                 let prevScrollpos = page.scrollTop;
-                console.log('start ', prevScrollpos);
 
                 page.onscroll = () => {
                     const currentScrollPos = page.scrollTop;
-                    const filtersHeight = filtersRef.current!.clientHeight;
-
-                    console.log('onScroll current pos ', currentScrollPos);
-                    console.log('onScroll prev pos ', prevScrollpos);
-                    console.log('onScroll filter height ', filtersHeight);
+                    const filtersHeight = filters.clientHeight;
 
                     if (prevScrollpos > currentScrollPos) {
-                        filtersRef.current!.style.top = '0';
+                        filters.style.top = '0';
                     } else if (currentScrollPos > filtersHeight) {
-                        filtersRef.current!.style.top = `-${filtersHeight}px`;
+                        filters.style.top = `-${filtersHeight}px`;
                     }
 
                     prevScrollpos = currentScrollPos;
                 };
             }
-        }, [page]);
+
+            return () => {
+                if (page) {
+                    page.onscroll = null;
+                }
+            };
+        }, []);
 
         const onChangeSort = useCallback(
             (newSort: ArticleSortField) => {
