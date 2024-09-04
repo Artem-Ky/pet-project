@@ -4,6 +4,8 @@ import React, {
     memo,
     RefObject,
     useCallback,
+    useEffect,
+    useRef,
     useState,
 } from 'react';
 import cnBind from 'classnames/bind';
@@ -40,6 +42,7 @@ import {
     getArticlesPageView,
 } from '../../model/selectors/articlesPageSelectors';
 import { RoutePath } from '@/shared/const/router';
+import { PAGE_ID } from '@/widgets/Page';
 
 interface ArticlesPageFiltersProps {
     classNames?: string[];
@@ -57,11 +60,33 @@ export const ArticlesPageFilters: FC<ArticlesPageFiltersProps> = memo(
         const search = useSelector(getArticlesPageSearch);
         const type = useSelector(getArticlesPageType);
 
+        const page = document.getElementById(PAGE_ID);
+        const filtersRef = useRef<HTMLDivElement | null>(null);
+
         const fetchData = useCallback(() => {
             dispatch(fetchArticlesList({ replace: true }));
         }, [dispatch]);
 
         const debouncedFetchData = useDebounce(fetchData, 500);
+
+        useEffect(() => {
+            if (page && filtersRef.current) {
+                let prevScrollpos = page.scrollTop;
+
+                page.onscroll = () => {
+                    const currentScrollPos = page.scrollTop;
+                    const filtersHeight = filtersRef.current!.clientHeight;
+
+                    if (prevScrollpos > currentScrollPos) {
+                        filtersRef.current!.style.top = '0';
+                    } else if (currentScrollPos > filtersHeight) {
+                        filtersRef.current!.style.top = `-${filtersHeight}px`;
+                    }
+
+                    prevScrollpos = currentScrollPos;
+                };
+            }
+        }, [page]);
 
         const onChangeSort = useCallback(
             (newSort: ArticleSortField) => {
@@ -108,8 +133,10 @@ export const ArticlesPageFilters: FC<ArticlesPageFiltersProps> = memo(
 
         return (
             <VStack
+                ref={filtersRef}
                 gap={isMobile ? '10' : '32r'}
                 classNames={[
+                    cls.sticky,
                     cn(...classNames.map((clsName) => cls[clsName] || clsName)),
                 ]}
             >
