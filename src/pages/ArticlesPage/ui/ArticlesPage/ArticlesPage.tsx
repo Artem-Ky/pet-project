@@ -1,4 +1,6 @@
-import { FC, memo, useCallback } from 'react';
+import {
+    FC, memo, useCallback, useRef,
+} from 'react';
 import { useSearchParams } from 'react-router-dom';
 import cnBind from 'classnames/bind';
 import { isMobile } from 'react-device-detect';

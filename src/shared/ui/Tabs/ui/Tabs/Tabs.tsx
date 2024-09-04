@@ -3,6 +3,7 @@ import cnBind from 'classnames/bind';
 import cls from './Tabs.module.scss';
 import { TabItem } from '../../model/type';
 import { Tab } from '../Tab/Tab';
+import { HStack } from '../../../Stack';
 
 interface TabsProps {
     classNames?: string[];
@@ -17,16 +18,23 @@ export const Tabs: FC<TabsProps> = memo((props: TabsProps) => {
     } = props;
     const cn = cnBind.bind(cls);
 
-    const clickHandle = useCallback((tab: TabItem) => () => {
-        onTabClick(tab);
-    }, [onTabClick]);
+    const clickHandle = useCallback(
+        (tab: TabItem) => () => {
+            onTabClick(tab);
+        },
+        [onTabClick],
+    );
 
     return (
-        <div
-            className={cn(
-                cls.Tabs,
-                ...classNames.map((clsName) => cls[clsName] || clsName),
-            )}
+        <HStack
+            gap="4"
+            wrap="wrap"
+            classNames={[
+                cn(
+                    cls.Tabs,
+                    ...classNames.map((clsName) => cls[clsName] || clsName),
+                ),
+            ]}
         >
             {tabs.map((tab) => (
                 <Tab
@@ -37,6 +45,6 @@ export const Tabs: FC<TabsProps> = memo((props: TabsProps) => {
                     {tab.content}
                 </Tab>
             ))}
-        </div>
+        </HStack>
     );
 });

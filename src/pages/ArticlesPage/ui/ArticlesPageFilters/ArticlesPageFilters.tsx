@@ -1,7 +1,15 @@
-import { FC, memo, useCallback } from 'react';
+import React, {
+    FC,
+    LegacyRef,
+    memo,
+    RefObject,
+    useCallback,
+    useState,
+} from 'react';
 import cnBind from 'classnames/bind';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import { BrowserView, isMobile } from 'react-device-detect';
 import {
     ArticleSortField,
     ArticleType,
@@ -100,13 +108,19 @@ export const ArticlesPageFilters: FC<ArticlesPageFiltersProps> = memo(
 
         return (
             <VStack
-                gap="32r"
+                gap={isMobile ? '10' : '32r'}
                 classNames={[
                     cn(...classNames.map((clsName) => cls[clsName] || clsName)),
                 ]}
             >
-                <HStack align="center" justify="between" fullWidth>
-                    <div>
+                <HStack
+                    align="center"
+                    gap="10"
+                    justify="between"
+                    fullWidth
+                    wrap="wrap"
+                >
+                    <>
                         <Input
                             placeholder={t('Поиск')}
                             value={search}
@@ -114,6 +128,9 @@ export const ArticlesPageFilters: FC<ArticlesPageFiltersProps> = memo(
                             size={InputSize.LARGE}
                             view={InputView.ICON_MEDIUM}
                             id="search"
+                            {...(isMobile
+                                ? { fullWidth: true }
+                                : { fullWidth: false })}
                         >
                             <Icon
                                 classNames={[cls.searchIcon]}
@@ -126,19 +143,33 @@ export const ArticlesPageFilters: FC<ArticlesPageFiltersProps> = memo(
                         <label className="sr-only" htmlFor="search">
                             {t('Поиск: введите текст')}
                         </label>
-                    </div>
-                    <AppLink to={RoutePath.article_create}>
-                        <Button
-                            size={ButtonSize.LARGE}
-                            variant={ButtonVariant.OUTLINE}
-                        >
-                            {t('Создать статью')}
-                        </Button>
-                    </AppLink>
+                    </>
+                    <BrowserView>
+                        <AppLink to={RoutePath.article_create}>
+                            <Button
+                                size={ButtonSize.LARGE}
+                                variant={ButtonVariant.OUTLINE}
+                            >
+                                {t('Создать статью')}
+                            </Button>
+                        </AppLink>
+                    </BrowserView>
                 </HStack>
-                <HStack align="center" justify="between" fullWidth>
+                <HStack
+                    gap="10"
+                    align="center"
+                    justify="between"
+                    fullWidth
+                    wrap="wrap"
+                >
                     <ArticleTypeTabs onChangeType={onChangeType} value={type} />
-                    <HStack align="center" gap="20c">
+                    <HStack
+                        align="center"
+                        gap="20c"
+                        wrap="wrap"
+                        justify="end"
+                        fullWidth
+                    >
                         <OrderSort
                             order={order}
                             sort={sort}
