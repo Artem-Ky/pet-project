@@ -2,7 +2,7 @@
 
 .Page {
     flex-grow: 1;
-    padding: 13px;
+    padding: 13px 13px calc(var(--nav-bar-height) + var(--nav-bar-padding));
     height: calc(100% - var(--nav-bar-height) - var(--nav-bar-padding));
     max-width: 100%;
 
@@ -14,10 +14,6 @@
 .pageHeightScroll {
     height: calc(100vh - var(--nav-bar-height) - var(--nav-bar-padding) - 13px);
     overflow-y: auto;
-
-    // &.mobile {
-    //     height: calc(100vh - var(--nav-bar-height) - var(--nav-bar-padding) - 13px);
-    // }
 }
 
 .trigger {
