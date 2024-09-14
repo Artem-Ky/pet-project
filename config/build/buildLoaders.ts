@@ -44,7 +44,7 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
         codeBabelLoader,
         tsxCodeBabelLoader,
         // typescriptLoader,
-        cssLoader,
+        ...cssLoader,
         mjsLoader,
     ];
 }

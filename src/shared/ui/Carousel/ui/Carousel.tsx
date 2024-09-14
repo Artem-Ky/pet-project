@@ -7,6 +7,10 @@ import {
 import { useTranslation } from 'react-i18next';
 import cls from './Carousel.module.scss';
 
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+
 import { AppLink } from '../../Link';
 import {
     Text, TextAlign, TextSize, TextTheme,
