@@ -20,7 +20,6 @@ body {
     padding-top: var(--nav-bar-padding);
 
     &.mobile {
-        padding-top: 0;
-        padding-bottom: calc(var(--nav-bar-padding) + var(--nav-bar-height));
+        padding-block: 0;
     }
 }
