@@ -12,12 +12,12 @@
 }
 
 .pageHeightScroll {
-    height: calc(100vh - var(--nav-bar-height) - var(--nav-bar-padding));
+    height: calc(100vh - var(--nav-bar-height) - var(--nav-bar-padding) - 13px);
     overflow-y: auto;
 
-    &.mobile {
-        height: 100%;
-    }
+    // &.mobile {
+    //     height: calc(100vh - var(--nav-bar-height) - var(--nav-bar-padding) - 13px);
+    // }
 }
 
 .trigger {
