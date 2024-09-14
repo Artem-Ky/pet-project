@@ -8,7 +8,6 @@
 
     &.mobile {
         padding: 10px;
-        height: calc(100% - var(--nav-bar-height) - var(--nav-bar-padding));
     }
 }
 
@@ -16,9 +15,9 @@
     height: calc(100vh - var(--nav-bar-height) - var(--nav-bar-padding));
     overflow-y: auto;
 
-    &.mobile {
-        height: calc(100% - var(--nav-bar-height) - var(--nav-bar-padding));
-    }
+    // &.mobile {
+    //     height: calc(100% - var(--nav-bar-height) - var(--nav-bar-padding));
+    // }
 }
 
 .trigger {
