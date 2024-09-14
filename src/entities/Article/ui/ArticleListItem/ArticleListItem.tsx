@@ -54,8 +54,6 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo(
         classNames.push(cls[view]);
 
         if (view === ArticleView.PLATE) {
-            // classNames.push(cls.articleGap);
-
             return (
                 <AppLink
                     to={RoutePath.article_details + article.id}

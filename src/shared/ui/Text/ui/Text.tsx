@@ -30,6 +30,14 @@ export enum TextSize {
     XXL_TITLE = 'size_xxl_title',
 }
 
+export enum TextH {
+    H1 = 'h1',
+    H2 = 'h2',
+    H3 = 'h3',
+    H4 = 'h4',
+    H5 = 'h5',
+}
+
 interface TextProps {
     className?: string;
     title?: string;
@@ -41,22 +49,10 @@ interface TextProps {
     size?: TextSize;
     widthAuto?: boolean;
     children?: ReactNode;
+    H?: TextH;
 
     'data-testid'?: string;
 }
-
-type HeaderTagType = 'h1' | 'h2' | 'h3' | 'h4' | 'h5';
-
-const mapSizeToHeaderTag: Record<TextSize, HeaderTagType> = {
-    [TextSize.S]: 'h5',
-    [TextSize.S_BOLD]: 'h5',
-    [TextSize.M]: 'h4',
-    [TextSize.M_BOLD]: 'h4',
-    [TextSize.L]: 'h3',
-    [TextSize.L_BOLD]: 'h3',
-    [TextSize.XL_TITLE]: 'h2',
-    [TextSize.XXL_TITLE]: 'h1',
-};
 
 export const Text = memo((props: TextProps) => {
     const cn = cnBind.bind(cls);
@@ -71,40 +67,58 @@ export const Text = memo((props: TextProps) => {
         size = TextSize.M,
         widthAuto,
         children,
+        H = TextH.H3,
         'data-testid': dataTestId = 'Text',
     } = props;
 
-    const HeaderTag = mapSizeToHeaderTag[size];
-
     return (
-        <div
-            className={cn(
-                cls.Text,
-                {
-                    [cls.widthAuto]: widthAuto,
-                    [cls[theme]]: true,
-                    [cls[align]]: true,
-                    [cls[size]]: true,
-                },
-                [className],
-            )}
-        >
+        <>
             {title && (
-                <HeaderTag
-                    className={cls.title}
+                <H
+                    className={cn(
+                        cls.title,
+                        {
+                            [cls.widthAuto]: widthAuto,
+                            [cls[theme]]: true,
+                            [cls[align]]: true,
+                            [cls[size]]: true,
+                        },
+                        [className],
+                    )}
                     data-testid={`${dataTestId}.Header`}
                 >
                     {title}
-                </HeaderTag>
+                </H>
             )}
             {text && (
-                <p className={cls.text} data-testid={`${dataTestId}.Paragraph`}>
+                <p
+                    className={cn(
+                        cls.text,
+                        cls[size],
+                        cls[theme],
+                        cls[align],
+                        {
+                            [cls.widthAuto]: widthAuto,
+                        },
+                        [className],
+                    )}
+                    data-testid={`${dataTestId}.Paragraph`}
+                >
                     {text}
                 </p>
             )}
             {label && (
                 <label
-                    className={cls.text}
+                    className={cn(
+                        cls.text,
+                        {
+                            [cls.widthAuto]: widthAuto,
+                            [cls[theme]]: true,
+                            [cls[align]]: true,
+                            [cls[size]]: true,
+                        },
+                        [className],
+                    )}
                     htmlFor={labelId}
                     data-testid={`${dataTestId}.Label`}
                 >
@@ -112,10 +126,22 @@ export const Text = memo((props: TextProps) => {
                 </label>
             )}
             {children && (
-                <div className={cls.text} data-testid={`${dataTestId}.Children`}>
+                <div
+                    className={cn(
+                        cls.text,
+                        {
+                            [cls.widthAuto]: widthAuto,
+                            [cls[theme]]: true,
+                            [cls[align]]: true,
+                            [cls[size]]: true,
+                        },
+                        [className],
+                    )}
+                    data-testid={`${dataTestId}.Children`}
+                >
                     {children}
                 </div>
             )}
-        </div>
+        </>
     );
 });

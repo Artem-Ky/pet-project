@@ -28,12 +28,10 @@
         min-width: 1px;
     }
     
-    .tags, .paragraphsTagsWrapper {
-        p {
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
+    .tags p, .paragraphsTagsWrapper {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     .date {

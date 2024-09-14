@@ -3,6 +3,10 @@
 .AppLink {
     color: var(--light-color);
     height: var(--link-height);
+
+    &.fullWidth {
+        width: 100%;
+    }
 }
 
 .main-color {
@@ -14,13 +18,10 @@
 }
 
 .fullHeight {
+    display: inline-block;
     height: 100%;
 }
 
 .autoHeight {
     height: auto;
-}
-
-.fullWidth {
-    width: 100%;
 }

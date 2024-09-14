@@ -1,60 +1,43 @@
+.text {
+    display: inline-block;
+}
+
 .main {
-    .title,
-    .text {
-        color: var(--main-font-color);
-    }
+    color: var(--main-font-color);
+    
 }
 
 .black-white {
-    .title,
-    .text {
-        color: var(--main-font-color);
-    }
+    color: var(--main-font-color);
+    
 }
 
 .white {
-    .title,
-    .text {
-        color: var(--light-color);
-    }
+    color: var(--light-color);
+    
 }
 
 .white-gray {
-    .title,
-    .text {
-        color: var(--sub-font-color-alt);
-    }
+    color: var(--sub-font-color-alt);
+    
 }
 
 .gray {
-    .title,
-    .text {
-        color: var(--gray-color);
-    }
+    color: var(--gray-color);
+
 }
 
 .gray-light {
-    .title,
-    .text {
-        color: var(--gray-color-light);
-    }
+    color: var(--gray-color-light);
 }
 
 .error {
-    .title {
-        color: var(--accent-color);
-    }
-
-    .text {
-        color: var(--accent-color-alt);
-    }
+    color: var(--accent-color);
+    
 }
 
 .inverted {
-    .title,
-    .text {
-        color: var(--inverted-font-color);
-    }
+    color: var(--inverted-font-color);
 }
 
 .left,
@@ -77,57 +60,42 @@
 }
 
 .size_s {
-    .title,
-    .text {
-        font: var(--font-inter-sm-regular);
-    }
+    font: var(--font-inter-sm-regular);
+
 }
 
 .size_s_bold {
-    .title,
-    .text {
-        font: var(--font-inter-sm-semibold);
-    }
+    font: var(--font-inter-sm-semibold);
+    
 }
 
 .size_m {
-    .title,
-    .text {
-        font: var(--font-inter-md-regular);
-    }
+    font: var(--font-inter-md-regular);
+
 }
 
 .size_m_bold {
-    .title,
-    .text {
-        font: var(--font-inter-md-semibold);
-    }
+    font: var(--font-inter-md-semibold);
+    
 }
 
 .size_l {
-    .title,
-    .text {
-        font: var(--font-inter-lg-regular);
-    }
+    font: var(--font-inter-lg-regular);
+
 }
 
 .size_l_bold {
-    .title,
-    .text {
-        font: var(--font-inter-lg-semibold);
-    }
+    font: var(--font-inter-lg-semibold);
+
 }
 
 .size_xl_title {
-    .title {
-        font: var(--font-tuffy-md-bold);
-    }
+    font: var(--font-tuffy-md-bold);
+
 }
 
 .size_xxl_title {
-    .title {
-        font: var(--font-inter-xxl-semibold)
-    }
+    font: var(--font-inter-xxl-semibold)
 }
 
 .widthAuto {

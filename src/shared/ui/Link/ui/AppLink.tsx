@@ -65,6 +65,7 @@ export const AppLink: FC<AppLinkProps> = memo((props: AppLinkProps) => {
                 [cls[theme]],
                 {
                     [cls.fullHeight]: fullHeight,
+                    [cls.autoHeight]: autoHeight,
                     [cls.fullWidth]: fullWidth,
                 },
             )}

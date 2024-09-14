@@ -28,7 +28,7 @@ export const NavBar: FC = memo(() => {
 
     if (authData) {
         return (
-            <header className={cls.NavBar}>
+            <header className={cls.NavBar} id="navbarBrowser">
                 <HStack gap="20c" justify="end" align="center" fullHeight>
                     <LangSwitcher />
                     <ThemeSwitcher />
