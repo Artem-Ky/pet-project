@@ -1,6 +1,7 @@
 import { FC, memo } from 'react';
 import cnBind from 'classnames/bind';
 import cls from './AdminPanelPage.module.scss';
+import { Page } from '@/widgets/Page';
 
 interface AdminPanelPageProps {
     classNames?: string[];
@@ -12,12 +13,15 @@ const AdminPanelPage: FC<AdminPanelPageProps> = memo(
         const cn = cnBind.bind(cls);
 
         return (
-            <div
-                className={cn(
-                    cls.AdminPanelPage,
-                    ...classNames.map((clsName) => cls[clsName] || clsName),
-                )}
-            />
+            <Page
+                data-testid="AdminPanelPage"
+                // className={cn(
+                //     cls.AdminPanelPage,
+                //     ...classNames.map((clsName) => cls[clsName] || clsName),
+                // )}
+            >
+                1
+            </Page>
         );
     },
 );

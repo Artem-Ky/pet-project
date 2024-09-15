@@ -23,7 +23,7 @@ import {
     Icon, IconColor, IconSize, IconTypeVariant,
 } from '@/shared/ui/Icon';
 import { OrderSort } from '@/features/OrderSort';
-import { SortOrder } from '@/shared/types';
+import { SortOrder } from '@/shared/types/sort';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce/useDebounce';
 import { Button, ButtonSize, ButtonVariant } from '@/shared/ui/Button';
 import { AppLink } from '@/shared/ui/Link';

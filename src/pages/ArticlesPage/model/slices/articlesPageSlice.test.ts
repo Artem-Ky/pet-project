@@ -4,7 +4,7 @@ import {
     ArticleType,
     ArticleView,
 } from '@/entities/Article';
-import { SortOrder } from '@/shared/types';
+import { SortOrder } from '@/shared/types/sort';
 import { ArticlesPageSchema } from '../..';
 import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList';
 import { articlesPageActions, articlesPageReducer } from './articlesPageSlice';

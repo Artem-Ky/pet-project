@@ -5,7 +5,7 @@ import { Page } from '@/widgets/Page';
 const AboutPage: React.FC = memo(() => {
     const { t } = useTranslation('about');
 
-    return <Page>{t('О сайте', { ns: 'about' })}</Page>;
+    return <Page data-testid="AboutPage">{t('О сайте', { ns: 'about' })}</Page>;
 });
 
 export default AboutPage;

@@ -8,7 +8,7 @@ import {
 } from '@/shared/ui/Icon';
 import sortUp from '@/shared/assets/icons/sort/SortUp.svg';
 import sortDown from '@/shared/assets/icons/sort/sortDown.svg';
-import { SortOrder } from '@/shared/types';
+import { SortOrder } from '@/shared/types/sort';
 import { ArticleSortField } from '@/entities/Article';
 import { HStack } from '@/shared/ui/Stack';
 import {

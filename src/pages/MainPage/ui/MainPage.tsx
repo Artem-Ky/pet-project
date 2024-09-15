@@ -7,8 +7,7 @@ const MainPage: FC = memo(() => {
     const { t } = useTranslation('mainPage');
 
     return (
-        <Page>
-            {/* <Text title={t('Главная страница сайта', { ns: 'mainPage' })} H={TextH.H1} size={TextSize.XXL_TITLE}/> */}
+        <Page data-testid="MainPage">
             <FirstSectionMainPage />
         </Page>
     );

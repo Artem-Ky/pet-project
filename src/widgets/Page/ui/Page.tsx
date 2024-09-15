@@ -17,8 +17,9 @@ import { StateSchema } from '@/app/providers/StoreProvider';
 import { getPageScrollByPath } from '../model/selectors/PageScrollSelector';
 import { pageScrollActions } from '../model/slices/PageScrollSlice';
 import cls from './Page.module.scss';
+import { TestProps } from '@/shared/types/tests';
 
-interface PageProps {
+interface PageProps extends TestProps{
     classNames?: string[];
     children: ReactNode;
     onScrollEnd?: () => void;
@@ -67,6 +68,7 @@ export const Page: FC<PageProps> = memo((props: PageProps) => {
                 { [cls.pageHeightScroll]: onScrollEnd },
             )}
             id={PAGE_ID}
+            data-testid={props['data-testid'] ?? 'Page'}
             onScroll={onScroll}
         >
             {children}

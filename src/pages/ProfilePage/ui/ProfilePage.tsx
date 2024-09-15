@@ -11,6 +11,7 @@ const ProfilePage: FC = memo(() => {
     const cn = cnBind.bind(cls);
     return (
         <Page
+            data-testid="ProfilePage"
             classNames={[
                 cn(cls.profilePageWrapper, { [cls.mobile]: isMobile }),
             ]}

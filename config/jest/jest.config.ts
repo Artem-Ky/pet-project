@@ -4,6 +4,7 @@ import path from 'path';
 const config: Config = {
     clearMocks: true,
     testEnvironment: 'jsdom',
+    // transformIgnorePatterns: ['/node_modules/(?!swiper|dom7)'],
     coveragePathIgnorePatterns: ['/node_modules/'],
     moduleDirectories: ['node_modules'],
     modulePaths: ['<rootDir>src'],
@@ -21,12 +22,16 @@ const config: Config = {
     rootDir: '../../',
     setupFilesAfterEnv: ['<rootDir>/config/jest/setupTests.ts'],
     moduleNameMapper: {
-        // '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
-        //     '<rootDir>/__mocks__/fileMock.js',
+        '^swiper$': '<rootDir>/config/jest/emptyModule.js',
+        '^swiper/(.*)$': '<rootDir>/config/jest/emptyModule.js',
         '\\.s?css$': 'identity-obj-proxy',
         '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
         '^@/(.*)$': '<rootDir>/src/$1',
     },
+    // transform: {
+    //     '^.+\\.(ts|tsx|js)$': 'babel-jest', // this is probably something you already had, if using ts-jest, it's probably fine to leave as ts-jest
+    //     '^.+\\.(css)$': '<rootDir>/config/jest/fileTransform.js', // add this to fix css import issues
+    // },
     globals: {
         __IS_DEV__: true,
         __API__: '',
@@ -34,12 +39,15 @@ const config: Config = {
     },
     reporters: [
         'default',
-        ['jest-html-reporters', {
-            publicPath: '<rootDir>/reports/unit',
-            filename: 'report.html',
-            openReport: true,
-            inlineSource: true,
-        }],
+        [
+            'jest-html-reporters',
+            {
+                publicPath: '<rootDir>/reports/unit',
+                filename: 'report.html',
+                openReport: true,
+                inlineSource: true,
+            },
+        ],
     ],
 };
 
