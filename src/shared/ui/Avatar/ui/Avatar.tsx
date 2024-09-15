@@ -1,6 +1,10 @@
 import { FC, memo } from 'react';
 import cnBind from 'classnames/bind';
 import cls from './Avatar.module.scss';
+import { AppImage } from '../../AppImage/AppImage';
+import ProfileIcon from '@/shared/assets/icons/profile.svg';
+import { Icon, IconColor } from '../../Icon';
+import { Skeleton } from '../../Skeleton';
 
 export enum AvatarSize {
     SMALL_ROUND = 'small-round',
@@ -25,8 +29,31 @@ export const Avatar: FC<AvatarProps> = memo((props: AvatarProps) => {
     } = props;
     const cn = cnBind.bind(cls);
 
+    const errorFallBack = (
+        <Icon
+            classNames={[cn(
+                cls.Avatar,
+                cls[size],
+                ...classNames.map((clsName) => cls[clsName] || clsName),
+            )]}
+            icon={ProfileIcon}
+            color={IconColor.BLACK_WHITE}
+        />
+    );
+    const loadingFallBack = (
+        <Skeleton
+            className={cn(
+                cls.Avatar,
+                cls[size],
+                ...classNames.map((clsName) => cls[clsName] || clsName),
+            )}
+        />
+    );
+
     return (
-        <img
+        <AppImage
+            errorFallback={errorFallBack}
+            fallback={loadingFallBack}
             className={cn(
                 cls.Avatar,
                 cls[size],

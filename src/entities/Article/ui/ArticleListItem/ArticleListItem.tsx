@@ -17,6 +17,8 @@ import cls from './ArticleListItem.module.scss';
 import { Article, ArticleTextBlock } from '../../model/types/article';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 import { getRouteArticleDetails } from '@/shared/const/router';
+import { AppImage } from '@/shared/ui/AppImage/AppImage';
+import { Skeleton } from '@/shared/ui/Skeleton';
 
 interface ArticleListItemProps {
     classNames?: string[];
@@ -79,10 +81,17 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo(
                                 fullHeight
                                 fullWidth
                             >
-                                <img
+                                <AppImage
+                                    fallback={(
+                                        <Skeleton
+                                            width={isMobile ? '130px' : '190px'}
+                                            height={
+                                                isMobile ? '130px' : '190px'
+                                            }
+                                        />
+                                    )}
                                     src={article.img}
                                     alt="article preview"
-                                    loading="lazy"
                                     className={cn(cls.articleImage, {
                                         [cls.mobile]: isMobile,
                                     })}
@@ -139,6 +148,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo(
                                 alt={t('изображение автора статьи')}
                                 src={article.user.avatar}
                                 size={AvatarSize.LARGE_ROUND}
+                                classNames={[cls.flexShrink]}
                             />
                             <Text
                                 text={article.user.username}
@@ -165,10 +175,20 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo(
                     />
                     {types}
                     <HStack justify="center" fullWidth>
-                        <img
+                        <AppImage
+                            fallback={(
+                                <Skeleton
+                                    className={cn(cls.articleImage, {
+                                        [cls.mobile]: isMobile,
+                                    })}
+                                    width={isMobile ? '100%' : '100%'}
+                                    height={
+                                        isMobile ? '210px' : '420px'
+                                    }
+                                />
+                            )}
                             src={article.img}
                             alt="article preview"
-                            loading="lazy"
                             className={cn(cls.articleImage, {
                                 [cls.mobile]: isMobile,
                             })}
