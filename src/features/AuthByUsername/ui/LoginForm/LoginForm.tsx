@@ -3,10 +3,8 @@ import cnBind from 'classnames/bind';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import {
-    BrowserView,
     isBrowser,
     isMobile,
-    MobileView,
 } from 'react-device-detect';
 import { Input, InputSize } from '@/shared/ui/Input';
 import {

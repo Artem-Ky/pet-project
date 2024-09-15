@@ -95,7 +95,7 @@ export const ArticleListItemSkeleton = memo(
                         <Skeleton height={10} width={50} />
                     </HStack>
                 </HStack>
-                <Skeleton height={30} width={130} />
+                <Skeleton height={30} width={isMobile ? 130 : 184} />
             </Card>
         );
     },

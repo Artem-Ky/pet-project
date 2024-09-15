@@ -5,7 +5,6 @@ import { addCommentFormReducer } from '@/features/AddCommentForm/testing';
 import { loginReducer } from '@/features/AuthByUsername/testing';
 import { profileReducer } from '@/features/EditableProfileCard/testing';
 import {
-    articleDetailsPageReducer,
     articleDetailsCommentsReducer,
     articleDetailsPageRecommendationsReducer,
 } from '@/pages/ArticleDetailsPage/testing';

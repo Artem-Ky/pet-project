@@ -1,4 +1,4 @@
-import webpack, { DefinePlugin, RuleSetRule } from 'webpack';
+import webpack, { DefinePlugin } from 'webpack';
 import path from 'path';
 import { BuildPaths } from '../build/types/config';
 import { BuildCSSLoader } from '../build/loaders/BuildCSSLoader';
@@ -35,7 +35,11 @@ export default ({ config }: { config: webpack.Configuration }) => {
         use: ['@svgr/webpack'],
     });
 
-    config!.module!.rules?.push(BuildCSSLoader(true));
+    const cssRules = BuildCSSLoader(true);
+
+    cssRules.pop(); // исключается css loader который ломает сторибук и нужен только для сборки
+
+    config!.module!.rules?.push(...cssRules);
 
     config!.module!.rules?.push({
         test: /\.(js|jsx|ts|tsx)$/,

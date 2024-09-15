@@ -4,7 +4,7 @@ import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDe
 import { Theme } from '@/shared/const/theme';
 
 export default {
-    title: 'widgets/CatSwiper',
+    title: 'widget/CatSwiper',
     component: CatSwiper,
     argTypes: {
         backgroundColor: { control: 'color' },

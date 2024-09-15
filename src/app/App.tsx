@@ -1,7 +1,12 @@
 import { Suspense, useEffect } from 'react';
 import classNames from 'classnames';
 import { useSelector } from 'react-redux';
-import { BrowserView, isMobile, MobileView } from 'react-device-detect';
+import {
+    BrowserView,
+    isMobile,
+    MobileView,
+    isBrowser,
+} from 'react-device-detect';
 import { NavBar } from '@/widgets/NavBar';
 import { SideBar } from '@/widgets/SideBar';
 import { getUserInited, userActions } from '@/entities/User';
@@ -25,9 +30,7 @@ const App = () => {
                         <SideBar />
                     </BrowserView>
                     <div className={`content ${isMobile ? 'mobile' : ''}`}>
-                        <BrowserView>
-                            <NavBar />
-                        </BrowserView>
+                        {isBrowser && <NavBar />}
                         {userInited && <Router />}
                         <MobileView>
                             <MobileNavigate />

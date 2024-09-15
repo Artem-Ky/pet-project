@@ -3,7 +3,7 @@ import cnBind from 'classnames/bind';
 import { useTranslation } from 'react-i18next';
 import cls from './FirstSectionMainPage.module.scss';
 import { CatSwiper } from '@/widgets/catSwiper';
-import { HStack, VStack } from '@/shared/ui/Stack';
+import { VStack } from '@/shared/ui/Stack';
 import { CarouselSizeWidth, CarouselVariantView } from '@/shared/ui/Carousel';
 import {
     Text, TextAlign, TextH, TextSize,

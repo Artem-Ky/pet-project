@@ -3,13 +3,6 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 export function BuildCSSLoader(isDev: boolean) {
     return [
         {
-            test: /\.css$/i,
-            use: [
-                isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
-                'css-loader',
-            ],
-        },
-        {
             test: /\.s[ac]ss$/i,
             use: [
                 isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
@@ -25,6 +18,14 @@ export function BuildCSSLoader(isDev: boolean) {
                     },
                 },
                 'sass-loader',
+            ],
+        },
+        {
+            test: /\.css$/,
+            include: /node_modules\/swiper/,
+            use: [
+                isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
+                'css-loader',
             ],
         },
     ];

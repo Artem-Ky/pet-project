@@ -1,12 +1,9 @@
 import React, {
     FC,
-    LegacyRef,
     memo,
-    RefObject,
     useCallback,
     useEffect,
     useRef,
-    useState,
 } from 'react';
 import cnBind from 'classnames/bind';
 import { useSelector } from 'react-redux';
@@ -19,7 +16,7 @@ import {
     ArticleView,
 } from '@/entities/Article';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { ViewSwitcher } from '@/widgets/ViewSwither';
+import { ViewSwitcher } from '@/features/ViewSwither';
 import { Input, InputSize, InputView } from '@/shared/ui/Input';
 import searchIcon from '@/shared/assets/icons/search.svg';
 import {

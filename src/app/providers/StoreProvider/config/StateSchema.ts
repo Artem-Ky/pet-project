@@ -13,7 +13,6 @@ import { LoginSchema } from '@/features/AuthByUsername';
 import { ProfileSchema } from '@/features/EditableProfileCard';
 import {
     ArticleDetailsCommentsSchema,
-    ArticleDetailsPageSchema,
     ArticleDetailsRecommendationsSchema,
 } from '@/pages/ArticleDetailsPage';
 import { ArticlesPageSchema } from '@/pages/ArticlesPage';

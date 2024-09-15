@@ -1,7 +1,7 @@
 import { StoryFn, Meta } from '@storybook/react';
 import { Theme } from '@/shared/const/theme';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { Flex, FlexJustify } from './Flex';
+import { Flex } from './Flex';
 
 export default {
     title: 'shared/Flex',

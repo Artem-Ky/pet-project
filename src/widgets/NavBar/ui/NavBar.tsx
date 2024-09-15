@@ -5,13 +5,13 @@ import {
 import { useSelector } from 'react-redux';
 import { Button, ButtonVariant } from '@/shared/ui/Button';
 import { LoginModal } from '@/features/AuthByUsername';
-import { ThemeSwitcher } from '@/widgets/ThemeSwither';
+import { ThemeSwitcher } from '@/features/ThemeSwither';
 import { getUserAuthData } from '@/entities/User';
 import { HStack } from '@/shared/ui/Stack';
 import { NotificationButton } from '@/features/NotificationButton';
 import { AvatarDropDown } from '@/features/AvatarDropDown';
 import cls from './NavBar.module.scss';
-import { LangSwitcher } from '@/widgets/LangSwitcher';
+import { LangSwitcher } from '@/features/LangSwitcher';
 
 export const NavBar: FC = memo(() => {
     const { t } = useTranslation();

@@ -5,8 +5,6 @@ import {
     ReactNode,
     useRef,
     UIEvent,
-    useState,
-    useEffect,
 } from 'react';
 import cnBind from 'classnames/bind';
 import { useLocation } from 'react-router-dom';

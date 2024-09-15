@@ -1,5 +1,5 @@
 import {
-    FC, memo, useCallback, useRef,
+    FC, memo, useCallback,
 } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import cnBind from 'classnames/bind';
