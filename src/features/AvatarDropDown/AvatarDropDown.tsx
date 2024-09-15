@@ -16,8 +16,8 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch
 import { Avatar, AvatarSize } from '@/shared/ui/Avatar';
 import { VStack } from '@/shared/ui/Stack';
 import { Text, TextSize, TextTheme } from '@/shared/ui/Text';
-import { RoutePath } from '@/shared/const/router';
 import { DropdownItem } from '@/shared/ui/Popups/components/DropDown/ui/DropDown';
+import { getRouteAdmin, getRouteProfile } from '@/shared/const/router';
 
 interface AvatarDropDownProps {
     classNames?: string[];
@@ -47,13 +47,13 @@ export const AvatarDropDown: FC<AvatarDropDownProps> = memo(
                 ? [
                     {
                         content: 'Админка',
-                        href: RoutePath.admin_panel,
+                        href: getRouteAdmin(),
                     },
                 ]
                 : []),
             {
                 content: 'Профиль',
-                href: RoutePath.profile + authData.id,
+                href: getRouteProfile(authData.id),
             },
             {
                 content: 'Выйти',

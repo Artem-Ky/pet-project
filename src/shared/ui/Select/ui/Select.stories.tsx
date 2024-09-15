@@ -14,7 +14,7 @@ import {
     SelectOption,
     SelectType,
 } from './Select';
-import { RoutePath } from '@/shared/const/router';
+import { getRouteProfile } from '@/shared/const/router';
 
 export default {
     title: 'shared/Select',
@@ -63,7 +63,7 @@ const optionsList: SelectOption<string>[] = [
         value: 'Профиль',
         label: 'Профиль',
         type: SelectItemType.LINK,
-        to: RoutePath.profile,
+        to: getRouteProfile('1'),
     },
     {
         value: 'Выйти',

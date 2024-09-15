@@ -6,12 +6,17 @@ import ProfileIcon from '@/shared/assets/icons/profile.svg';
 import ArticleIcon from '@/shared/assets/icons/article.svg';
 import { IconTypeVariant } from '@/shared/ui/Icon';
 import { SideBarItemType } from '../types/sidebar';
-import { RoutePath } from '@/shared/const/router';
+import {
+    getRouteAbout,
+    getRouteArticles,
+    getRouteMain,
+    getRouteProfile,
+} from '@/shared/const/router';
 
 export const getSideBarItems = createSelector(getUserAuthData, (userData) => {
     const sideBarItemsList: SideBarItemType[] = [
         {
-            path: RoutePath.main,
+            path: getRouteMain(),
             Icon: HomeIcon,
             IconType: IconTypeVariant.FILL_NO_STOKE,
             text: 'Главная страница',
@@ -21,14 +26,14 @@ export const getSideBarItems = createSelector(getUserAuthData, (userData) => {
     if (userData) {
         sideBarItemsList.push(
             {
-                path: RoutePath.articles,
+                path: getRouteArticles(),
                 Icon: ArticleIcon,
                 IconType: IconTypeVariant.STROKE_NO_FILL,
                 text: 'Статьи',
                 authOnly: true,
             },
             {
-                path: RoutePath.profile + userData.id,
+                path: getRouteProfile(userData.id),
                 Icon: ProfileIcon,
                 IconType: IconTypeVariant.FILL_NO_STOKE,
                 text: 'Профиль',
@@ -37,14 +42,12 @@ export const getSideBarItems = createSelector(getUserAuthData, (userData) => {
         );
     }
 
-    sideBarItemsList.push(
-        {
-            path: RoutePath.about,
-            Icon: AboutIcon,
-            IconType: IconTypeVariant.FILL_NO_STOKE,
-            text: 'Страница о нас',
-        },
-    );
+    sideBarItemsList.push({
+        path: getRouteAbout(),
+        Icon: AboutIcon,
+        IconType: IconTypeVariant.FILL_NO_STOKE,
+        text: 'Страница о нас',
+    });
 
     return sideBarItemsList;
 });

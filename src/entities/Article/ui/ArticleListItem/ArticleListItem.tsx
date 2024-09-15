@@ -16,7 +16,7 @@ import { ArticleBlockType, ArticleView } from '../../model/consts/consts';
 import cls from './ArticleListItem.module.scss';
 import { Article, ArticleTextBlock } from '../../model/types/article';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
-import { RoutePath } from '@/shared/const/router';
+import { getRouteArticleDetails } from '@/shared/const/router';
 
 interface ArticleListItemProps {
     classNames?: string[];
@@ -56,7 +56,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo(
         if (view === ArticleView.PLATE) {
             return (
                 <AppLink
-                    to={RoutePath.article_details + article.id}
+                    to={getRouteArticleDetails(article.id)}
                     classNames={[cls.plateCardLink]}
                     target={target}
                     fullHeight
@@ -73,7 +73,12 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo(
                                 text={article.createdAt}
                                 className={cls.date}
                             />
-                            <HStack align="center" justify="center" fullHeight fullWidth>
+                            <HStack
+                                align="center"
+                                justify="center"
+                                fullHeight
+                                fullWidth
+                            >
                                 <img
                                     src={article.img}
                                     alt="article preview"
@@ -178,7 +183,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo(
                         fullWidth
                         classNames={[cls.marginTopAuto]}
                     >
-                        <AppLink to={RoutePath.article_details + article.id}>
+                        <AppLink to={getRouteArticleDetails(article.id)}>
                             <Button
                                 variant={ButtonVariant.OUTLINE}
                                 size={ButtonSize.LARGE}

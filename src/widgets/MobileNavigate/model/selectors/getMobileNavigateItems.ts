@@ -5,14 +5,14 @@ import HomeIcon from '@/shared/assets/icons/home.svg';
 import ArticleIcon from '@/shared/assets/icons/article.svg';
 import { IconTypeVariant } from '@/shared/ui/Icon';
 import { mobileNavigateItemType } from '../types/mobileNavigate';
-import { RoutePath } from '@/shared/const/router';
+import { getRouteAbout, getRouteArticles, getRouteMain } from '@/shared/const/router';
 
 export const getMobileNavigateItems = createSelector(
     getUserAuthData,
     (userData) => {
         const mobileNavigateItemsList: mobileNavigateItemType[] = [
             {
-                path: RoutePath.main,
+                path: getRouteMain(),
                 Icon: HomeIcon,
                 IconType: IconTypeVariant.FILL_NO_STOKE,
                 text: 'Главная страница',
@@ -22,7 +22,7 @@ export const getMobileNavigateItems = createSelector(
         if (userData) {
             mobileNavigateItemsList.push(
                 {
-                    path: RoutePath.articles,
+                    path: getRouteArticles(),
                     Icon: ArticleIcon,
                     IconType: IconTypeVariant.STROKE_NO_FILL,
                     text: 'Статьи',
@@ -32,7 +32,7 @@ export const getMobileNavigateItems = createSelector(
         }
 
         mobileNavigateItemsList.push({
-            path: RoutePath.about,
+            path: getRouteAbout(),
             Icon: AboutIcon,
             IconType: IconTypeVariant.FILL_NO_STOKE,
             text: 'Страница о нас',

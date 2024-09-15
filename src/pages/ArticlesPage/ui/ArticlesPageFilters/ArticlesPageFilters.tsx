@@ -38,8 +38,8 @@ import {
     getArticlesPageType,
     getArticlesPageView,
 } from '../../model/selectors/articlesPageSelectors';
-import { RoutePath } from '@/shared/const/router';
 import { PAGE_ID } from '@/widgets/Page';
+import { getRouteArticleCreate } from '@/shared/const/router';
 
 interface ArticlesPageFiltersProps {
     classNames?: string[];
@@ -176,7 +176,7 @@ export const ArticlesPageFilters: FC<ArticlesPageFiltersProps> = memo(
                         </label>
                     </>
                     <BrowserView>
-                        <AppLink to={RoutePath.article_create}>
+                        <AppLink to={getRouteArticleCreate()}>
                             <Button
                                 size={ButtonSize.LARGE}
                                 variant={ButtonVariant.OUTLINE}
