@@ -4,7 +4,6 @@ import path from 'path';
 const config: Config = {
     clearMocks: true,
     testEnvironment: 'jsdom',
-    // transformIgnorePatterns: ['/node_modules/(?!swiper|dom7)'],
     coveragePathIgnorePatterns: ['/node_modules/'],
     moduleDirectories: ['node_modules'],
     modulePaths: ['<rootDir>src'],
@@ -25,13 +24,10 @@ const config: Config = {
         '^swiper$': '<rootDir>/config/jest/emptyModule.js',
         '^swiper/(.*)$': '<rootDir>/config/jest/emptyModule.js',
         '\\.s?css$': 'identity-obj-proxy',
-        '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
+        // '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
+        '\\.svg$': '<rootDir>/config/jest/jestEmptyComponent.tsx',
         '^@/(.*)$': '<rootDir>/src/$1',
     },
-    // transform: {
-    //     '^.+\\.(ts|tsx|js)$': 'babel-jest', // this is probably something you already had, if using ts-jest, it's probably fine to leave as ts-jest
-    //     '^.+\\.(css)$': '<rootDir>/config/jest/fileTransform.js', // add this to fix css import issues
-    // },
     globals: {
         __IS_DEV__: true,
         __API__: '',
