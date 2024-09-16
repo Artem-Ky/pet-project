@@ -1,5 +1,5 @@
 import type { Config } from 'jest';
-// import path from 'path';
+import path from 'path';
 
 const config: Config = {
     clearMocks: true,
@@ -21,12 +21,12 @@ const config: Config = {
     rootDir: '../../',
     setupFilesAfterEnv: ['<rootDir>/config/jest/setupTests.ts'],
     moduleNameMapper: {
+        '\\.s?css$': 'identity-obj-proxy',
+        '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
+        // '\\.svg$': '<rootDir>/config/jest/jestEmptyComponent.tsx',
+        '^@/(.*)$': '<rootDir>/src/$1',
         '^swiper$': '<rootDir>/config/jest/emptyModule.js',
         '^swiper/(.*)$': '<rootDir>/config/jest/emptyModule.js',
-        '\\.s?css$': 'identity-obj-proxy',
-        // '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
-        '\\.svg$': '<rootDir>/config/jest/jestEmptyComponent.tsx',
-        '^@/(.*)$': '<rootDir>/src/$1',
     },
     globals: {
         __IS_DEV__: true,
