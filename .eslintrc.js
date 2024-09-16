@@ -9,6 +9,7 @@ module.exports = {
         'airbnb',
         'plugin:i18next/recommended',
         'plugin:storybook/recommended',
+        'plugin:cypress/recommended',
     ],
     parser: '@typescript-eslint/parser',
     parserOptions: {
@@ -56,7 +57,7 @@ module.exports = {
         'react-hooks/rules-of-hooks': 'error',
         'react-hooks/exhaustive-deps': 'error',
         'no-param-reassign': 'off',
-        "unused-imports/no-unused-imports": "error",
+        'unused-imports/no-unused-imports': 'error',
         'ulbi-tv-plugin/path-checker': [
             'error',
             {

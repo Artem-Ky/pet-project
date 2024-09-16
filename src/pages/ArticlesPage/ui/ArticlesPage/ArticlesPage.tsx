@@ -1,6 +1,4 @@
-import {
-    FC, memo, useCallback,
-} from 'react';
+import { FC, memo, useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import cnBind from 'classnames/bind';
 import { isMobile } from 'react-device-detect';
@@ -38,6 +36,7 @@ const ArticlesPage: FC = () => {
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
             <Page
+                data-testid="ArticlesPage"
                 onScrollEnd={onLoadNextPart}
                 classNames={[cn([cls.ArticlePage], { [cls.mobile]: isMobile })]}
             >
